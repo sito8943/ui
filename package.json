@@ -1,0 +1,46 @@
+{
+  "name": "siui",
+  "version": "0.0.1",
+  "description": "SiUi",
+  "main": "build/index.js",
+  "peerDependencies": {
+    "react": "^15.5.4"
+  },
+  "keywords": [
+    "ui",
+    "react"
+  ],
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "bugs": {
+    "url": ""
+  },
+  "license": "MIT",
+  "dependencies": {
+    "framer-motion": "^5.5.5",
+    "prop-types": "^15.8.0",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "sass": "^1.45.1",
+    "webpack": "^5.65.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "webpack --watch",
+    "build": "webpack"
+  },
+  "author": {
+    "name": "Sito",
+    "email": "sito8943@gmail.com"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.16.0",
+    "@babel/core": "^7.16.5",
+    "@babel/plugin-transform-react-jsx": "^7.16.5",
+    "@babel/preset-env": "^7.16.5",
+    "babel-loader": "^7.0.0",
+    "babel-plugin-transform-object-rest-spread": "6.26.0"
+  }
+}
