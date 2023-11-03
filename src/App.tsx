@@ -1,11 +1,7 @@
 import Button from "./components/Button/Button";
 
 function App() {
-  return (
-    <div>
-      <Button>Hola</Button>
-    </div>
-  );
+  return <div></div>;
 }
 
 export default App;

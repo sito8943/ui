@@ -1,33 +1,79 @@
-.primary.icon-button {
-  @apply text-primary hover:bg-pdark-hover;
-}
-.secondary.icon-button {
-  @apply text-secondary hover:bg-pdark-hover;
-}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-.secondary.submit {
-  @apply border-secondary bg-secondary hover:bg-sdark hover:border-sdark text-white;
-}
+@layer components {
+  .button {
+    @apply px-7 py-2 rounded-3xl transition duration-300 font-semibold cursor-default;
+  }
+  .outlined {
+    @apply border-2;
+  }
 
-.primary.submit {
-  @apply border-primary bg-primary hover:bg-pdark hover:border-pdark text-white;
-}
+  .primary {
+    color: theme(color.primary.default);
+  }
+  .primary:hover {
+    color: theme(color.primary.200);
+  }
+  .primary.icon-button {
+    background-color: theme(color.primary.500 / 25%);
+  }
+  .primary.submit {
+    color: theme(color.light);
+    background-color: theme(color.primary.default);
+  }
+  .primary.submit:hover {
+    background-color: theme(color.primary.200);
+  }
+  .primary.outlined {
+    border-color: theme(color.primary.default);
+  }
+  .primary.outlined:hover {
+    background-color: theme(color.primary.default);
+  }
+  .secondary {
+    color: theme(color.secondary.default);
+  }
+  .secondary.button {
+    background-color: theme(color.secondary.500 / 25%);
+  }
+  .secondary.submit {
+    color: theme(color.light);
+    background-color: theme(color.secondary.default);
+  }
+  .secondary.submit:hover {
+    background-color: theme(color.secondary.500);
+  }
+  .secondary.outlined {
+    border-color: theme(color.secondary.default);
+  }
+  .secondary.outlined:hover {
+    background-color: theme(color.secondary.default);
+  }
 
-.submit {
-  @apply border-2;
-}
+  .ternary {
+    color: theme(color.ternary.default);
+  }
+  .ternary.button {
+    background-color: theme(color.ternary.500 / 25%);
+  }
+  .ternary.submit {
+    color: theme(color.light);
+    background-color: theme(color.ternary.default);
+  }
+  .ternary.submit:hover {
+    background-color: theme(color.ternary.500);
+  }
 
-.primary.outlined {
-  @apply border-primary hover:bg-primary text-white;
-}
-.secondary.outlined {
-  @apply border-secondary hover:bg-secondary text-white;
-}
-.outlined {
-  @apply border-2;
-}
+  .ternary.outlined {
+    border-color: theme(color.ternary.default);
+  }
+  .ternary.outlined:hover {
+    background-color: theme(color.ternary.default);
+  }
 
-.button,
-button {
-  @apply px-5 py-2 rounded-3xl transition duration-300 font-semibold cursor-default;
+  .outlined:hover {
+    color: theme(color.light);
+  }
 }
