@@ -1,12 +1,20 @@
 @tailwind components;
 
 @layer components {
+  .input-control {
+    @apply flex gap-1 items-start
+    justify-start w-full;
+  }
   .column {
     @apply flex-col;
   }
 
   .row {
     @apply flex-row;
+  }
+
+  .input-control textarea {
+    @apply w-full px-4 py-2 rounded-xl resize-none;
   }
 
   .input-control input,
@@ -18,21 +26,24 @@
     @apply w-full rounded-3xl;
   }
 
+  .input-control textarea:focus-visible,
+  .input-control textarea,
   .input-control input:focus-visible,
   .input-control input {
     outline: none !important;
   }
 
   .input-control .sub,
+  .input-control textarea,
   .input-control input,
   .input-control select {
     color: theme(color.dark.default);
     background-color: theme(color.light.alter);
-    @apply flex gap-1 items-start
-      justify-start w-full;
+    @apply w-full;
   }
 
   .dark .input-control .sub,
+  .dark .input-control textarea,
   .dark .input-control input,
   .dark .input-control select {
     color: theme(color.light.default);
@@ -40,6 +51,7 @@
   }
 
   .primary.input-control .sub,
+  .primary.input-control textarea,
   .primary.input-control input,
   .primary.input-control select {
     color: theme(color.light.default);
@@ -47,6 +59,7 @@
   }
 
   .secondary.input-control .sub,
+  .secondary.input-control textarea,
   .secondary.input-control input,
   .secondary.input-control select {
     color: theme(color.light.default);
@@ -54,6 +67,7 @@
   }
 
   .ternary.input-control .sub,
+  .ternary.input-control textarea,
   .ternary.input-control input,
   .ternary.input-control select {
     color: theme(color.light.default);
