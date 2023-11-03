@@ -1,10 +1,8 @@
-@tailwind base;
 @tailwind components;
-@tailwind utilities;
 
 @layer components {
   .button {
-    @apply px-7 py-2 rounded-3xl transition duration-300 font-semibold cursor-default;
+    @apply flex items-center justify-center px-7 py-2 rounded-3xl transition duration-300 font-semibold cursor-default;
   }
   .outlined {
     @apply border-2;
@@ -16,9 +14,7 @@
   .primary:hover {
     color: theme(color.primary.200);
   }
-  .primary.icon-button {
-    background-color: theme(color.primary.500 / 25%);
-  }
+
   .primary.submit {
     color: theme(color.light);
     background-color: theme(color.primary.default);
@@ -35,9 +31,7 @@
   .secondary {
     color: theme(color.secondary.default);
   }
-  .secondary.button {
-    background-color: theme(color.secondary.500 / 25%);
-  }
+
   .secondary.submit {
     color: theme(color.light);
     background-color: theme(color.secondary.default);
@@ -55,9 +49,7 @@
   .ternary {
     color: theme(color.ternary.default);
   }
-  .ternary.button {
-    background-color: theme(color.ternary.500 / 25%);
-  }
+
   .ternary.submit {
     color: theme(color.light);
     background-color: theme(color.ternary.default);

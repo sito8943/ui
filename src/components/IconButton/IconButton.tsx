@@ -22,7 +22,7 @@ function IconButton(props: IconButtonProps) {
       {...rest}
       ref={ref as Ref<HTMLButtonElement>}
       type="button"
-      className={`hover:bg-pdark-hover icon-button ${rest.className}`}
+      className={`icon-button ${rest.className}`}
     >
       <FontAwesomeIcon icon={icon} />
     </Button>
