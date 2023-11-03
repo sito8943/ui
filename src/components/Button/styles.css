@@ -41,7 +41,7 @@
     background-color: theme(color.secondary.default);
   }
   .secondary.submit.button:hover {
-    background-color: theme(color.secondary.500);
+    background-color: theme(color.secondary.200);
   }
   .secondary.outlined.button {
     border-color: theme(color.secondary.default);
@@ -62,7 +62,7 @@
     background-color: theme(color.ternary.default);
   }
   .ternary.submit.button:hover {
-    background-color: theme(color.ternary.500);
+    background-color: theme(color.ternary.200);
   }
 
   .ternary.outlined.button {

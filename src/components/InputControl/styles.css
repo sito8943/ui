@@ -14,11 +14,16 @@
     @apply w-full px-4 py-2 rounded-3xl;
   }
 
+  .input-control .sub {
+    @apply w-full rounded-3xl;
+  }
+
   .input-control input:focus-visible,
   .input-control input {
     outline: none !important;
   }
 
+  .input-control .sub,
   .input-control input,
   .input-control select {
     color: theme(color.dark.default);
@@ -27,23 +32,28 @@
       justify-start w-full;
   }
 
+  .dark .input-control .sub,
   .dark .input-control input,
   .dark .input-control select {
     color: theme(color.light.default);
     background-color: theme(color.dark.alter);
   }
 
+  .primary.input-control .sub,
   .primary.input-control input,
   .primary.input-control select {
     color: theme(color.light.default);
     background-color: theme(color.primary.default);
   }
 
+  .secondary.input-control .sub,
   .secondary.input-control input,
   .secondary.input-control select {
     color: theme(color.light.default);
     background-color: theme(color.secondary.default);
   }
+
+  .ternary.input-control .sub,
   .ternary.input-control input,
   .ternary.input-control select {
     color: theme(color.light.default);
