@@ -22,10 +22,9 @@ export default {
       // => @media (max-width: 639px) { ... }
     },
     color: {
-      dark: "#262220",
-      "dark-alter": "#222333",
-      light: "#fbfbfb",
-      "light-alter": "#ffeace",
+      dark: { default: "#262220", alter: "#222333" },
+      light: { default: "#fbfbfb", alter: "#eaeaea" },
+
       primary: {
         default: "#ef476f",
         200: "#cc1f54",

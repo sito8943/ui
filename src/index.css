@@ -3,8 +3,8 @@
 @tailwind utilities;
 
 .dark body {
-  background: theme(color.dark);
+  background: theme(color.dark.default);
 }
 .light body {
-  background: theme(color.light);
+  background: theme(color.light.default);
 }

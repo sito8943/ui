@@ -4,68 +4,80 @@
   .button {
     @apply flex items-center justify-center px-7 py-2 rounded-3xl transition duration-300 font-semibold cursor-default;
   }
-  .outlined {
+  .outlined.button {
     @apply border-2;
   }
 
-  .primary {
+  .primary.button {
     color: theme(color.primary.default);
   }
-  .primary:hover {
+  .primary.button:hover {
     color: theme(color.primary.200);
   }
 
-  .primary.submit {
-    color: theme(color.light);
+  .primary.submit.button {
     background-color: theme(color.primary.default);
   }
-  .primary.submit:hover {
+
+  .primary.submit.button:hover {
     background-color: theme(color.primary.200);
   }
-  .primary.outlined {
+  .primary.outlined.button {
     border-color: theme(color.primary.default);
   }
-  .primary.outlined:hover {
+  .primary.outlined.button:hover {
     background-color: theme(color.primary.default);
   }
-  .secondary {
+
+  .secondary.button {
     color: theme(color.secondary.default);
   }
 
-  .secondary.submit {
-    color: theme(color.light);
+  .secondary.button:hover {
+    color: theme(color.secondary.200);
+  }
+
+  .secondary.submit.button {
     background-color: theme(color.secondary.default);
   }
-  .secondary.submit:hover {
+  .secondary.submit.button:hover {
     background-color: theme(color.secondary.500);
   }
-  .secondary.outlined {
+  .secondary.outlined.button {
     border-color: theme(color.secondary.default);
   }
-  .secondary.outlined:hover {
+  .secondary.outlined.button:hover {
     background-color: theme(color.secondary.default);
   }
 
-  .ternary {
+  .ternary.button {
     color: theme(color.ternary.default);
   }
 
-  .ternary.submit {
-    color: theme(color.light);
+  .ternary.button:hover {
+    color: theme(color.ternary.200);
+  }
+
+  .ternary.submit.button {
     background-color: theme(color.ternary.default);
   }
-  .ternary.submit:hover {
+  .ternary.submit.button:hover {
     background-color: theme(color.ternary.500);
   }
 
-  .ternary.outlined {
+  .ternary.outlined.button {
     border-color: theme(color.ternary.default);
   }
   .ternary.outlined:hover {
     background-color: theme(color.ternary.default);
   }
 
-  .outlined:hover {
-    color: theme(color.light);
+  .submit.button,
+  .submit.button:hover {
+    color: theme(color.light.default);
+  }
+
+  .outlined.button:hover {
+    color: theme(color.light.default);
   }
 }
