@@ -1,7 +1,11 @@
-import React from "react";
+import Button from "./components/Button/Button";
 
 function App() {
-  return <div></div>;
+  return (
+    <div>
+      <Button>Hola</Button>
+    </div>
+  );
 }
 
 export default App;

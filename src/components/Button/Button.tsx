@@ -5,7 +5,7 @@ import Tippy from "@tippyjs/react";
 import "./styles.css";
 
 export interface ButtonProps extends HTMLProps<HTMLButtonElement> {
-  tooltip: string;
+  tooltip?: string | undefined;
   type?: "button" | "submit" | "reset" | undefined;
 }
 
