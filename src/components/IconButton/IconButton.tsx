@@ -1,3 +1,5 @@
+import { forwardRef, ForwardedRef } from "react";
+
 // font awesome
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
@@ -7,26 +9,27 @@ import Button, { ButtonProps } from "../Button/Button";
 
 // styles
 import "./styles.css";
-import { Ref, useRef } from "react";
 
 interface IconButtonProps extends ButtonProps {
   icon: IconProp;
 }
 
-function IconButton(props: IconButtonProps) {
+const IconButton = forwardRef(function (
+  props: IconButtonProps,
+  ref: ForwardedRef<HTMLButtonElement>
+) {
   const { icon, ...rest } = props;
 
-  const ref = useRef(rest.ref);
   return (
     <Button
       {...rest}
-      ref={ref as Ref<HTMLButtonElement>}
+      ref={ref}
       type="button"
       className={`icon-button ${rest.className}`}
     >
       <FontAwesomeIcon icon={icon} />
     </Button>
   );
-}
+});
 
 export default IconButton;
