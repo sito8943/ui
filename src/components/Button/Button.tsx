@@ -29,7 +29,12 @@ const Button = forwardRef(function (
 
   return (
     <Tippy content={tooltip}>
-      <button ref={ref} {...rest}>
+      <button
+        type={type}
+        ref={ref}
+        {...rest}
+        className={`button ${rest.className}`}
+      >
         {rest.children}
       </button>
     </Tippy>
