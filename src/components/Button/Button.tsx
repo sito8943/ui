@@ -6,6 +6,7 @@ import "./styles.css";
 
 export interface ButtonProps extends HTMLProps<HTMLButtonElement> {
   tooltip?: string | undefined;
+  color?: "primary" | "secondary" | "ternary" | "inherit" | undefined;
   type?: "button" | "submit" | "reset" | undefined;
 }
 
@@ -13,7 +14,7 @@ const Button = forwardRef(function (
   props: ButtonProps,
   ref: ForwardedRef<HTMLButtonElement>
 ) {
-  const { tooltip, type = "button", ...rest } = props;
+  const { tooltip, color = "primary", type = "button", ...rest } = props;
 
   if (!tooltip || !tooltip.length)
     return (
@@ -21,7 +22,7 @@ const Button = forwardRef(function (
         type={type}
         ref={ref}
         {...rest}
-        className={`button ${rest.className}`}
+        className={`button ${color} ${rest.className}`}
       >
         {rest.children}
       </button>
@@ -33,7 +34,7 @@ const Button = forwardRef(function (
         type={type}
         ref={ref}
         {...rest}
-        className={`button ${rest.className}`}
+        className={`button ${color} ${rest.className}`}
       >
         {rest.children}
       </button>
