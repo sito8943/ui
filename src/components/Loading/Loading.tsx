@@ -1,26 +1,29 @@
-import PropTypes from "prop-types";
+import { HTMLProps } from "react";
 
 // styles
 import "./style.css";
 
-const Loading = (props) => {
+export interface LoadingProps extends HTMLProps<HTMLDivElement> {
+  color?: "primary" | "secondary" | "ternary" | "inherit" | undefined;
+  loaderClass?: "string" | undefined;
+  strokeWidth?: "string" | undefined;
+}
+
+const Loading = (props: LoadingProps) => {
   const {
-    type,
-    className,
-    strokeColor,
+    color = "primary",
     loaderClass = "",
     strokeWidth = "4",
+    ...rest
   } = props;
 
   return (
-    <div
-      className={`dark:bg-dark-background flex w-full h-full items-center justify-center type-${type} ${className}`}
-    >
+    <div {...rest} className={`loading ${color} ${rest.className}`}>
       <div className="loader-container">
         <div className={`loader ${loaderClass}`}>
           <svg className="circular" viewBox="25 25 50 50">
             <circle
-              className={`path ${strokeColor}`}
+              className={`path ${color}`}
               cx="50"
               cy="50"
               r="20"
@@ -33,16 +36,6 @@ const Loading = (props) => {
       </div>
     </div>
   );
-};
-
-Loading.defaultProps = {
-  strokeColor: "stroke-primary",
-};
-
-Loading.propTypes = {
-  type: PropTypes.string,
-  className: PropTypes.string,
-  strokeColor: PropTypes.string,
 };
 
 export default Loading;
