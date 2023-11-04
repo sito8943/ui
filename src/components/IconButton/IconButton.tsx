@@ -10,7 +10,7 @@ import Button, { ButtonProps } from "../Button/Button";
 // styles
 import "./styles.css";
 
-interface IconButtonProps extends ButtonProps {
+export interface IconButtonProps extends ButtonProps {
   icon: IconProp;
 }
 

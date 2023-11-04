@@ -1,18 +1,12 @@
-import { useEffect } from "react";
-import Notification from "./components/Notification/Notification";
-
-import { useNotification } from "./providers/NotificationProvider";
+import Button from "./components/Button/Button";
+import PrintAfter from "./components/PrintAfter/PrintAfter";
 
 function App() {
-  const { setNotificationState } = useNotification();
-
-  useEffect(() => {
-    setNotificationState({ type: "error", message: "This is an error" });
-  }, []);
-
   return (
     <div>
-      <Notification />
+      <PrintAfter>
+        <Button className="submit">Hola Mundo</Button>
+      </PrintAfter>
     </div>
   );
 }

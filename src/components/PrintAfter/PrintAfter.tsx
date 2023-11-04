@@ -1,10 +1,16 @@
 import { memo, useEffect, useState } from "react";
-import PropTypes from "prop-types";
 
 // @emotion/css
 import { css } from "@emotion/css";
 
-function PrintAfter({ children, delay, animation }) {
+interface PrintAfterProps {
+  children: React.ReactNode;
+  delay?: number | undefined;
+  animation?: "string" | undefined;
+}
+
+function _PrintAfter(props: PrintAfterProps) {
+  const { children, delay = 100, animation = "appear" } = props;
   const [see, setSee] = useState(false);
 
   useEffect(() => {
@@ -18,19 +24,13 @@ function PrintAfter({ children, delay, animation }) {
   );
 }
 
-PrintAfter.propTypes = {
-  children: PropTypes.node,
-  delay: PropTypes.number,
-  animation: PropTypes.string,
-};
-
-const PrintAfterMemo = memo(
-  (props) => <PrintAfter {...props} />,
+const PrintAfter = memo(
+  (props: PrintAfterProps) => <_PrintAfter {...props} />,
   arePropsEqual
 );
-PrintAfterMemo.displayName = "PrintAfter";
+PrintAfter.displayName = "PrintAfter";
 
-function arePropsEqual(oldProps, newProps) {
+function arePropsEqual(oldProps: PrintAfterProps, newProps: PrintAfterProps) {
   return (
     oldProps.delay === newProps.delay &&
     oldProps.animation === newProps.animation &&
@@ -38,4 +38,4 @@ function arePropsEqual(oldProps, newProps) {
   );
 }
 
-export default PrintAfterMemo;
+export default PrintAfter;

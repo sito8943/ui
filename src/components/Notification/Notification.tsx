@@ -7,12 +7,16 @@ import { faClose } from "@fortawesome/free-solid-svg-icons";
 import { useNotification } from "../../providers/NotificationProvider";
 
 // components
-import IconButton from "../IconButton/IconButton";
+import IconButton, { IconButtonProps } from "../IconButton/IconButton";
 
 // styles
 import "./styles.css";
 
-export default function Notification(props) {
+interface NotificationProps {
+  closeProps?: IconButtonProps | undefined;
+}
+
+export default function Notification(props: NotificationProps) {
   const { closeProps } = props;
   const { notificationState, setNotificationState } = useNotification();
 
@@ -68,6 +72,7 @@ export default function Notification(props) {
           <IconButton
             {...closeProps}
             icon={faClose}
+            ref={null}
             onClick={handleClose}
             name="close-notification"
             className={`absolute top-1 right-1 text-white ${closeProps?.className}`}
