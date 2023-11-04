@@ -1,3 +1,21 @@
-.notification {
+@tailwind components;
+
+@layer {
+  .notification {
     min-width: 150px;
+    max-width: 300px;
+  }
+
+  .info.notification {
+    background-color: theme(color.info);
+  }
+  .warning.notification {
+    background-color: theme(color.warning);
+  }
+  .success.notification {
+    background-color: theme(color.success);
+  }
+  .error.notification {
+    background-color: theme(color.error);
+  }
 }

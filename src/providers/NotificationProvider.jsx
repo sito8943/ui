@@ -6,16 +6,16 @@ import PropTypes from "prop-types";
 const NotificationContext = React.createContext();
 
 const notificationReducer = (notificationState, action) => {
+  const { type, message } = action;
   switch (action.type) {
     case "hide": {
       return { ...notificationState, visible: false };
     }
-    case "set":
-      return {
-        visible: true,
-        type: action.ntype,
-        message: action.message,
-      };
+    case "error":
+    case "info":
+    case "warning":
+    case "success":
+      return { visible: true, message, type };
     default:
       throw new Error(`Unhandled action type: ${action.type}`);
   }

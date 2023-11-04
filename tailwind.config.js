@@ -46,7 +46,11 @@ export default {
         400: "#003c5f",
         500: "#002545"
 
-      }
+      },
+      error: "#CC0000",
+      warning: "#FF8800",
+      success: "#007733",
+      info: "#0099CC",
     },
     extend: {},
   },

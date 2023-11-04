@@ -1,19 +1,19 @@
-import { useRef, useState, useEffect, useCallback } from "react";
+import { useRef, useState, useEffect, useMemo, useCallback } from "react";
 
 // @fortawesome
 import { faClose } from "@fortawesome/free-solid-svg-icons";
 
-// @emotion/css
-import { css } from "@emotion/css";
-
 // contexts
-import { useNotification } from "../../contexts/NotificationProvider";
+import { useNotification } from "../../providers/NotificationProvider";
+
+// components
+import IconButton from "../IconButton/IconButton";
 
 // styles
 import "./styles.css";
-import IconButton from "../IconButton/IconButton";
 
-export default function Notification() {
+export default function Notification(props) {
+  const { closeProps } = props;
   const { notificationState, setNotificationState } = useNotification();
 
   const [open, setOpen] = useState(false);
@@ -35,16 +35,16 @@ export default function Notification() {
     setNotificationState({ type: "hide" });
   }, [open, openR, setNotificationState]);
 
-  const getColor = useCallback(() => {
+  const color = useMemo(() => {
     switch (notificationState.type) {
       case "info":
-        return "bg-info";
+        return "info";
       case "warning":
-        return "bg-warning";
+        return "warning";
       case "success":
-        return "bg-success";
+        return "success";
       default:
-        return "bg-error";
+        return "error";
     }
   }, [notificationState]);
 
@@ -64,20 +64,13 @@ export default function Notification() {
       className={`fixed left-1 bottom-1 z-40 ${open ? "appear" : "disappear"}`}
     >
       {openR ? (
-        <div
-          className={`relative notification rounded-scard p-5 ${getColor()} ${css(
-            {
-              maxWidth: "300px",
-              border: "1px solid #8080804a",
-            }
-          )}`}
-        >
+        <div className={`relative notification rounded-xl p-5 pr-10 ${color}`}>
           <IconButton
+            {...closeProps}
             icon={faClose}
             onClick={handleClose}
             name="close-notification"
-            className="absolute top-1 right-2 text-white"
-            aria-label="Click para cerrar la notificación"
+            className={`absolute top-1 right-1 text-white ${closeProps?.className}`}
           />
           <p className="text-body1 text-white">{notificationState.message}</p>
         </div>
