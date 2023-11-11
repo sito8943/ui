@@ -1,30 +1,45 @@
-.check-input {
-  height: 0;
-  width: 0;
-  display: none !important;
-}
+@tailwind components;
 
-.switcher {
-  width: 55px;
-  height: 25px;
-  border-radius: 100px;
-  position: relative;
-}
+@layer components {
+  .check-input {
+    height: 0;
+    width: 0;
+    display: none !important;
+  }
 
-.ball {
-  width: 20px;
-  height: 15px;
-  position: absolute;
-  border-radius: 20px;
-  top: 50%;
-  transition: all 500ms ease;
-  @apply bg-white;
-}
+  .switcher {
+    width: 55px;
+    height: 25px;
+    border-radius: 100px;
+    position: relative;
+    @apply transition duration-300 ease-in-out;
+  }
 
-.deactivated {
-  transform: translate(20%, -50%);
-}
+  .primary.switcher {
+    background-color: theme(color.primary.default);
+  }
+  .secondary.switcher {
+    background-color: theme(color.secondary.default);
+  }
+  .ternary.switcher {
+    background-color: theme(color.ternary.default);
+  }
 
-.activated {
-  transform: translate(150%, -50%);
+  .ball {
+    width: 20px;
+    height: 15px;
+    position: absolute;
+    border-radius: 20px;
+    top: 50%;
+    transition: all 500ms ease;
+    background-color: theme(color.light.alter);
+  }
+
+  .deactivated {
+    transform: translate(20%, -50%);
+  }
+
+  .activated {
+    transform: translate(150%, -50%);
+  }
 }

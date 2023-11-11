@@ -1,4 +1,4 @@
-import { forwardRef, ForwardedRef, HTMLProps, ReactNode } from "react";
+import { forwardRef, ForwardedRef, HTMLProps, ReactNode, useMemo } from "react";
 
 // styles.css
 import "./styles.css";
@@ -9,6 +9,18 @@ export interface InputControlProps extends HTMLProps<HTMLInputElement> {
   color?: "primary" | "secondary" | "ternary" | "inherit" | undefined;
   orientation?: "column" | "row" | undefined;
   label?: string | undefined;
+  type:
+    | "date"
+    | "datetime-local"
+    | "email"
+    | "number"
+    | "password"
+    | "search"
+    | "tel"
+    | "time"
+    | "url"
+    | "text"
+    | undefined;
 }
 
 const InputControl = forwardRef(function (
@@ -21,8 +33,27 @@ const InputControl = forwardRef(function (
     leftComponent,
     rightComponent,
     label,
+    type = "text",
     ...rest
   } = props;
+
+  const parsedType = useMemo(() => {
+    switch (type) {
+      case "date":
+      case "datetime-local":
+      case "email":
+      case "number":
+      case "password":
+      case "search":
+      case "tel":
+      case "time":
+      case "url":
+        return type;
+
+      default:
+        return "text";
+    }
+  }, [type]);
 
   return (
     <div className={`input-control ${orientation} ${color}`}>
@@ -34,6 +65,7 @@ const InputControl = forwardRef(function (
           ) : null}
           <input
             {...rest}
+            type={parsedType}
             ref={ref as ForwardedRef<HTMLInputElement>}
             className={`${leftComponent ? "!pl-0" : ""} ${
               rightComponent ? "!pr-0" : ""

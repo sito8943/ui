@@ -1,9 +1,14 @@
-import ToTop from "./components/ToTop/ToTop";
+import { useState } from "react";
+import Switch from "./components/Switch/Switch";
 
 function App() {
+  const [switchV, setSwitch] = useState(false);
   return (
-    <div className="h-[200vh]">
-      <ToTop />
+    <div>
+      <Switch
+        value={switchV}
+        onChange={() => setSwitch((switchV) => !switchV)}
+      />
     </div>
   );
 }
