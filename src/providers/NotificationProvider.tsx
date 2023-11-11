@@ -67,6 +67,7 @@ export const NotificationProvider = (props: NotificationProviderProps) => {
 };
 
 // hooks
+// eslint-disable-next-line react-refresh/only-export-components
 export const useNotification = (): NotificationProviderData => {
   const context = useContext(NotificationContext);
   if (context === undefined)
