@@ -4,27 +4,38 @@ import {
   useContext,
   useEffect,
   useState,
+  ReactNode,
 } from "react";
 
 // prop-types is a library for typechecking of props
 import PropTypes from "prop-types";
 
-const ModeContext = createContext();
+export interface ModeProviderData {
+  mode: "dark" | "light" | "OS";
+  setMode: React.Dispatch<React.SetStateAction<"dark" | "light" | "OS">>;
+  toggleMode: () => void;
+}
 
-const ModeProvider = ({ children }) => {
-  function setModeState(value) {
-    setMode(value);
-  }
+export interface ModeProviderProps {
+  children: ReactNode;
+}
 
-  const [modeState, setMode] = useState(localStorage.theme ?? "dark");
+const ModeContext = createContext({} as ModeProviderData);
 
-  const toggleModeState = useCallback(() => {
-    setMode(modeState === "dark" ? "light" : "dark");
-  }, [modeState]);
+export const ModeProvider = (props: ModeProviderProps) => {
+  const { children } = props;
+
+  const [mode, setMode] = useState<"dark" | "light" | "OS">(
+    localStorage.theme ?? "dark"
+  );
+
+  const toggleMode = useCallback(() => {
+    setMode(mode === "dark" ? "light" : "dark");
+  }, [mode]);
 
   useEffect(() => {
     // On page load or when changing themes, best to add inline in `head` to avoid FOUC
-    if (modeState === "dark") {
+    if (mode === "dark") {
       // Whenever the user explicitly chooses dark mode
       localStorage.theme = "dark";
       document.documentElement.classList.add("dark");
@@ -33,12 +44,12 @@ const ModeProvider = ({ children }) => {
       localStorage.theme = "light";
       document.documentElement.classList.remove("dark");
     }
-    if (modeState === "OS")
+    if (mode === "OS")
       // Whenever the user explicitly chooses to respect the OS preference
       localStorage.removeItem("theme");
-  }, [modeState]);
+  }, [mode]);
 
-  const value = { modeState, setModeState, toggleModeState };
+  const value = { mode, setMode, toggleMode };
   return <ModeContext.Provider value={value}>{children}</ModeContext.Provider>;
 };
 
@@ -47,11 +58,9 @@ ModeProvider.propTypes = {
 };
 
 // hooks
-const useMode = () => {
+// eslint-disable-next-line react-refresh/only-export-components
+export const useMode = (): ModeProviderData => {
   const context = useContext(ModeContext);
-  if (context === undefined)
-    throw new Error("modeContext must be used within a Provider");
+  if (!context) throw new Error("modeContext must be used within a Provider");
   return context;
 };
-
-export { ModeProvider, useMode };
