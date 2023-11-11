@@ -8,7 +8,7 @@ import {
 // styles
 import "./style.css";
 
-interface SwitcherProps
+export interface SwitcherProps
   extends Omit<InputHTMLAttributes<HTMLInputElement>, "value"> {
   value?: boolean | undefined;
   activeColor?: "primary" | "secondary" | "ternary" | "inherit" | undefined;
@@ -16,7 +16,7 @@ interface SwitcherProps
   label: string | undefined;
 }
 
-const Switch = forwardRef(function (
+const Switcher = forwardRef(function (
   props: SwitcherProps,
   ref: ForwardedRef<HTMLInputElement>
 ) {
@@ -50,4 +50,4 @@ const Switch = forwardRef(function (
   );
 });
 
-export default Switch;
+export default Switcher;

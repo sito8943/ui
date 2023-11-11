@@ -1,9 +1,13 @@
-import React, { useState } from "react";
+import { HTMLProps, useState } from "react";
 
 // styles
 import "./styles.css";
 
-function LazyImage(props) {
+export interface ImageProps extends HTMLProps<HTMLImageElement> {
+  container: HTMLProps<HTMLDivElement>;
+}
+
+function Image(props: ImageProps) {
   const { container = {}, ...rest } = props;
   const [loaded, setLoaded] = useState(false);
 
@@ -17,4 +21,4 @@ function LazyImage(props) {
   );
 }
 
-export default LazyImage;
+export default Image;

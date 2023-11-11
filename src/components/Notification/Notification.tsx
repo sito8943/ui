@@ -12,7 +12,7 @@ import IconButton, { IconButtonProps } from "../IconButton/IconButton";
 // styles
 import "./styles.css";
 
-interface NotificationProps {
+export interface NotificationProps {
   closeProps?: IconButtonProps | undefined;
 }
 

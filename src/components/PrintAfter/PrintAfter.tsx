@@ -3,7 +3,7 @@ import { memo, useEffect, useState } from "react";
 // @emotion/css
 import { css } from "@emotion/css";
 
-interface PrintAfterProps {
+export interface PrintAfterProps {
   children: React.ReactNode;
   delay?: number | undefined;
   animation?: "string" | undefined;

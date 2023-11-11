@@ -3,7 +3,7 @@ import { forwardRef, ForwardedRef, HTMLProps, ReactNode } from "react";
 // styles.css
 import "./styles.css";
 
-export interface TextAreaControlProps extends HTMLProps<HTMLTextAreaElement> {
+export interface TextareaControlProps extends HTMLProps<HTMLTextAreaElement> {
   leftComponent?: ReactNode | undefined;
   rightComponent?: ReactNode | undefined;
   color?: "primary" | "secondary" | "ternary" | "inherit" | undefined;
@@ -11,16 +11,11 @@ export interface TextAreaControlProps extends HTMLProps<HTMLTextAreaElement> {
   label: string | undefined;
 }
 
-const TextAreaControl = forwardRef(function (
-  props: TextAreaControlProps,
+const TextareaControl = forwardRef(function (
+  props: TextareaControlProps,
   ref: ForwardedRef<HTMLTextAreaElement> | ForwardedRef<HTMLSelectElement>
 ) {
-  const {
-    orientation = "column",
-    color = "inherit",
-    label,
-    ...rest
-  } = props;
+  const { orientation = "column", color = "inherit", label, ...rest } = props;
 
   return (
     <div className={`input-control ${orientation} ${color}`}>
@@ -30,4 +25,4 @@ const TextAreaControl = forwardRef(function (
   );
 });
 
-export default TextAreaControl;
+export default TextareaControl;
