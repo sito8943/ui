@@ -9,7 +9,7 @@ import {
   NotificationProviderData,
   NotificationProviderProps,
   NotificationActionType,
-  Notification,
+  NotificationType,
   NotificationProvider,
   useNotification,
 } from "./NotificationProvider";
@@ -20,6 +20,6 @@ export type {
   NotificationProviderData,
   NotificationProviderProps,
   NotificationActionType,
-  Notification,
+  NotificationType,
 };
 export { ModeProvider, useMode, NotificationProvider, useNotification };

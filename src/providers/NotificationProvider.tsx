@@ -1,7 +1,7 @@
 import { createContext, useContext, ReactNode, useReducer } from "react";
 
 export interface NotificationProviderData {
-  notification: Notification;
+  notification: NotificationType;
   setNotification: React.Dispatch<NotificationActionType>;
 }
 
@@ -9,7 +9,7 @@ export interface NotificationProviderProps {
   children: ReactNode;
 }
 
-export interface Notification {
+export interface NotificationType {
   visible: boolean;
   type: "success" | "error" | "info" | "warning" | "hide";
   message: string;
@@ -23,9 +23,9 @@ export interface NotificationActionType {
 const NotificationContext = createContext({} as NotificationProviderData);
 
 const notificationReducer = (
-  notification: Notification,
+  notification: NotificationType,
   action: NotificationActionType
-): Notification => {
+): NotificationType => {
   const { type, message } = action;
   switch (action.type) {
     case "hide":
@@ -41,20 +41,20 @@ const notificationReducer = (
   }
 };
 
-const notificationInitializer = (initial: Notification) => initial;
+const notificationInitializer = (initial: NotificationType) => initial;
 
 export const NotificationProvider = (props: NotificationProviderProps) => {
   const { children } = props;
   const [notification, setNotification] = useReducer<
     typeof notificationReducer,
-    Notification
+    NotificationType
   >(
     notificationReducer,
     {
       visible: false,
       type: "success",
       message: "message",
-    } as Notification,
+    } as NotificationType,
     notificationInitializer
   );
 
