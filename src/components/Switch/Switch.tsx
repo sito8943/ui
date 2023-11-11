@@ -10,10 +10,10 @@ import "./style.css";
 
 interface SwitcherProps
   extends Omit<InputHTMLAttributes<HTMLInputElement>, "value"> {
-  value: boolean | undefined;
+  value?: boolean | undefined;
   activeColor?: "primary" | "secondary" | "ternary" | "inherit" | undefined;
-  inactiveColor: "primary" | "secondary" | "ternary" | "inherit" | undefined;
-  label?: string | undefined;
+  inactiveColor?: "primary" | "secondary" | "ternary" | "inherit" | undefined;
+  label: string | undefined;
 }
 
 const Switch = forwardRef(function (

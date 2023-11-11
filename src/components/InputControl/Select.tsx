@@ -8,7 +8,7 @@ export interface SelectControlProps extends HTMLProps<HTMLSelectElement> {
   rightComponent?: ReactNode | undefined;
   color?: "primary" | "secondary" | "ternary" | "inherit" | undefined;
   orientation?: "column" | "row" | undefined;
-  label?: string | undefined;
+  label: string | undefined;
 }
 
 const SelectControl = forwardRef(function (

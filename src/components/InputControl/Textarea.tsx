@@ -8,7 +8,7 @@ export interface TextAreaControlProps extends HTMLProps<HTMLTextAreaElement> {
   rightComponent?: ReactNode | undefined;
   color?: "primary" | "secondary" | "ternary" | "inherit" | undefined;
   orientation?: "column" | "row" | undefined;
-  label?: string | undefined;
+  label: string | undefined;
 }
 
 const TextAreaControl = forwardRef(function (

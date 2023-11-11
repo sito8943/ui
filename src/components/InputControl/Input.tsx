@@ -8,8 +8,8 @@ export interface InputControlProps extends HTMLProps<HTMLInputElement> {
   rightComponent?: ReactNode | undefined;
   color?: "primary" | "secondary" | "ternary" | "inherit" | undefined;
   orientation?: "column" | "row" | undefined;
-  label?: string | undefined;
-  type:
+  label: string | undefined;
+  type?:
     | "date"
     | "datetime-local"
     | "email"
