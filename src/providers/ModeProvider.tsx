@@ -7,9 +7,6 @@ import {
   ReactNode,
 } from "react";
 
-// prop-types is a library for typechecking of props
-import PropTypes from "prop-types";
-
 export interface ModeProviderData {
   mode: "dark" | "light" | "OS";
   setMode: React.Dispatch<React.SetStateAction<"dark" | "light" | "OS">>;
@@ -51,10 +48,6 @@ export const ModeProvider = (props: ModeProviderProps) => {
 
   const value = { mode, setMode, toggleMode };
   return <ModeContext.Provider value={value}>{children}</ModeContext.Provider>;
-};
-
-ModeProvider.propTypes = {
-  children: PropTypes.node.isRequired,
 };
 
 // hooks

@@ -18,29 +18,29 @@ export interface NotificationProps {
 
 export default function Notification(props: NotificationProps) {
   const { closeProps } = props;
-  const { notificationState, setNotificationState } = useNotification();
+  const { notification, setNotification } = useNotification();
 
   const [open, setOpen] = useState(false);
   const [openR, setOpenR] = useState(false);
 
   useEffect(() => {
-    if (notificationState.visible) {
+    if (notification.visible) {
       setOpen(true);
       setOpenR(true);
       setTimeout(() => {
-        setNotificationState({ type: "hide" });
+        setNotification({ type: "hide" });
       }, 6000);
     }
-  }, [notificationState, setNotificationState]);
+  }, [notification, setNotification]);
 
   const handleClose = useCallback(() => {
     if (open) setOpen(false);
     if (openR) setTimeout(() => setOpenR(false), 400);
-    setNotificationState({ type: "hide" });
-  }, [open, openR, setNotificationState]);
+    setNotification({ type: "hide" });
+  }, [open, openR, setNotification]);
 
   const color = useMemo(() => {
-    switch (notificationState.type) {
+    switch (notification.type) {
       case "info":
         return "info";
       case "warning":
@@ -50,7 +50,7 @@ export default function Notification(props: NotificationProps) {
       default:
         return "error";
     }
-  }, [notificationState]);
+  }, [notification]);
 
   const ref = useRef(null);
 
@@ -77,7 +77,7 @@ export default function Notification(props: NotificationProps) {
             name="close-notification"
             className={`absolute top-1 right-1 text-white ${closeProps?.className}`}
           />
-          <p className="text-body1 text-white">{notificationState.message}</p>
+          <p className="text-body1 text-white">{notification.message}</p>
         </div>
       ) : null}
     </div>
