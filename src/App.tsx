@@ -1,12 +1,9 @@
-import Button from "./components/Button/Button";
-import PrintAfter from "./components/PrintAfter/PrintAfter";
+import ToTop from "./components/ToTop/ToTop";
 
 function App() {
   return (
-    <div>
-      <PrintAfter>
-        <Button className="submit">Hola Mundo</Button>
-      </PrintAfter>
+    <div className="h-[200vh]">
+      <ToTop />
     </div>
   );
 }

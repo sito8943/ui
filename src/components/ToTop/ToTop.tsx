@@ -1,25 +1,32 @@
-import { useState, useCallback, useEffect } from "react";
+import {
+  useState,
+  useCallback,
+  useEffect,
+  forwardRef,
+  ForwardedRef,
+  HTMLProps,
+} from "react";
 
 // fortawesome
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowUp } from "@fortawesome/free-solid-svg-icons";
 
 // utils
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
 import { scrollTo } from "some-javascript-utils/browser";
 
-// contexts
-import { useLanguage } from "../../contexts/LanguageProvider";
-
 // components
-import IconButton from "../IconButton/IconButton";
+import IconButton, { IconButtonProps } from "../IconButton/IconButton";
 
 // styles
-import "./style.css";
+import "./styles.css";
 
-const ToTop = () => {
+const ToTop = forwardRef(function (
+  props: HTMLProps<HTMLButtonElement>,
+  ref: ForwardedRef<HTMLButtonElement>
+) {
+  const { className, style } = props;
   const [visible, setVisible] = useState(false);
-
-  const { languageState } = useLanguage();
 
   const onScroll = useCallback(() => {
     let top = 0;
@@ -39,18 +46,18 @@ const ToTop = () => {
 
   return (
     <IconButton
-      icon={faArrowUp}
       onClick={handleToTop}
-      {...props}
+      {...(props as IconButtonProps)}
+      icon={faArrowUp}
+      ref={ref}
       style={{
+        ...style,
         zIndex: visible ? 10 : -1,
         transform: visible ? "scale(1)" : "scale(0)",
       }}
-      className={`to-top fixed bottom-5 right-5 rounded-circle w-9 h-9 pt-1 dark:text-primary  dark:hover:bg-primary hover:bg-primary transition hover:text-white dark:hover:text-white ${className}`}
-    >
-      <FontAwesomeIcon className="external" />
-    </IconButton>
+      className={`to-top ${className}`}
+    />
   );
-};
+});
 
 export default ToTop;

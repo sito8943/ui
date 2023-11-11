@@ -1,0 +1,3 @@
+.to-top {
+  @apply fixed bottom-1 right-1;
+}
