@@ -1,8 +1,21 @@
 {
-  "name": "app",
-  "private": true,
+  "name": "siui",
+  "private": false,
   "version": "0.0.26",
   "type": "module",
+  "files": [
+    "dist"
+  ],
+  "main": "./dist/siui.cjs",
+  "module": "./dist/siui.js",
+  "types": "./dist/siui.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/siui.js",
+      "require": "./dist/siui.cjs"
+    }
+  },
+  "sideEffects": false,
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
@@ -57,6 +70,5 @@
     "typescript": "^5.0.2",
     "use-screen-width": "^1.0.3",
     "vite": "^4.4.5"
-  },
-  "packageManager": "yarn@4.0.1"
+  }
 }

@@ -1,17 +1,25 @@
 import { defineConfig } from "vite";
-import path from "path";
+import { resolve } from "path";
 import react from "@vitejs/plugin-react";
+import dts from "vite-plugin-dts";
+
+const srcPath = resolve(__dirname, "src");
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [react()],
   resolve: {
     alias: {
-      // Your alias goes here
-      assets: path.resolve(__dirname, "./src/assets"),
-      Components: path.resolve(__dirname, "./src/Components"),
-      functions: path.resolve(__dirname, "./src/functions"),
+      components: resolve(srcPath, "components"),
+      providers: resolve(srcPath, "providers"),
     },
   },
-  server: { port: 3000 },
+  plugins: [react(), dts({ insertTypesEntry: true })],
+  build: {
+    lib: {
+      entry: resolve(__dirname, "src/main.ts"),
+      name: "SiUi",
+      fileName: "siui",
+      formats: ["es", "cjs"],
+    },
+  },
 });
