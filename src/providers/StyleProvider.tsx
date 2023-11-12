@@ -17,7 +17,7 @@ import "../assets/styles/switch.css";
 import "../assets/styles/totop.css";
 
 // theme
-import theme from "../assets/styles/theme";
+import * as theme from "../assets/styles/theme";
 
 import { createContext, useContext, ReactNode } from "react";
 
