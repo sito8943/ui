@@ -6,13 +6,17 @@
   "files": [
     "dist"
   ],
-  "main": "./dist/@sito/ui.cjs",
-  "module": "./dist/@sito/ui.js",
-  "types": "./dist/@sito/ui.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/SitoNumbis/ui.git"
+  },
+  "main": "./dist/ui.cjs",
+  "module": "./dist/ui.js",
+  "types": "./dist/ui.d.ts",
   "exports": {
     ".": {
-      "import": "./dist/@sito/ui.js",
-      "require": "./dist/@sito/ui.cjs"
+      "import": "./dist/ui.js",
+      "require": "./dist/ui.cjs"
     }
   },
   "sideEffects": [

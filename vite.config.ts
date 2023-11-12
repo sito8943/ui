@@ -22,8 +22,6 @@ export default defineConfig({
     },
     lib: {
       entry: resolve(__dirname, "src/main.ts"),
-      name: "@sito/ui",
-      fileName: "@sito/ui",
       formats: ["es", "cjs"],
     },
   },
