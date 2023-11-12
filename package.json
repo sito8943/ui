@@ -1,18 +1,18 @@
 {
-  "name": "siui",
+  "name": "@sito/ui",
   "private": false,
   "version": "0.0.31",
   "type": "module",
   "files": [
     "dist"
   ],
-  "main": "./dist/siui.cjs",
-  "module": "./dist/siui.js",
-  "types": "./dist/siui.ts",
+  "main": "./dist/@sito/ui.cjs",
+  "module": "./dist/@sito/ui.js",
+  "types": "./dist/@sito/ui.ts",
   "exports": {
     ".": {
-      "import": "./dist/siui.js",
-      "require": "./dist/siui.cjs"
+      "import": "./dist/@sito/ui.js",
+      "require": "./dist/@sito/ui.cjs"
     }
   },
   "sideEffects": false,
@@ -23,9 +23,6 @@
     "preview": "vite preview"
   },
   "peerDependencies": {
-    "@emotion/css": "^11.10.6",
-    "@emotion/react": "^11.11.0",
-    "@emotion/styled": "^11.11.0",
     "@fortawesome/fontawesome-svg-core": "^6.3.0",
     "@fortawesome/free-brands-svg-icons": "^6.3.0",
     "@fortawesome/free-regular-svg-icons": "^6.3.0",
@@ -42,9 +39,6 @@
     "react-dom": "^18.2.0"
   },
   "devDependencies": {
-    "@emotion/css": "^11.10.6",
-    "@emotion/react": "^11.11.0",
-    "@emotion/styled": "^11.11.0",
     "@fortawesome/fontawesome-svg-core": "^6.3.0",
     "@fortawesome/free-brands-svg-icons": "^6.3.0",
     "@fortawesome/free-regular-svg-icons": "^6.3.0",

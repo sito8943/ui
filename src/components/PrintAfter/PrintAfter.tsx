@@ -1,8 +1,5 @@
 import { memo, useEffect, useState } from "react";
 
-// @emotion/css
-import { css } from "@emotion/css";
-
 export interface PrintAfterProps {
   children: React.ReactNode;
   delay?: number | undefined;
@@ -18,7 +15,7 @@ function _PrintAfter(props: PrintAfterProps) {
   }, [delay]);
 
   return (
-    <div className={see ? animation : css({ visibility: "hidden" })}>
+    <div className={see ? animation : "invisible"}>
       {children}
     </div>
   );
