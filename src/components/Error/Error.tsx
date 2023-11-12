@@ -7,36 +7,41 @@ import {
 
 // components
 import Button, { ButtonProps } from "../Button/Button";
-import { ForwardedRef, HTMLProps, Ref, useRef } from "react";
+import { Ref, useRef } from "react";
 
 export interface ErrorProps {
-  onRetry: () => void;
+  onRetry?: () => void | undefined;
   icon?: IconDefinition | undefined;
-  title: string;
+  title?: string | undefined;
   text: string;
-  button?: string;
+  button?: string | undefined;
   buttonProps?: ButtonProps;
+  className?: string | undefined;
 }
 
 export const Error = (props: ErrorProps) => {
   const buttonRef = useRef<HTMLButtonElement>(null);
 
   const {
-    onRetry,
-    title,
+    onRetry = () => window.location.reload(),
+    className = "",
+    title = "Something went wrong",
     text,
     icon = faCircleExclamation,
-    button = "Reload",
+    button = "Try again",
     buttonProps,
   } = props;
 
   return (
-    <div className="w-full flex flex-col items-center justify-center gap-3 min-h-screen">
-      <h3 className="font-bold text-error text-2xl">
+    <div
+      role="alert"
+      className={`w-full flex flex-col items-center justify-center gap-3 min-h-screen ${className}`}
+    >
+      <p>
         <FontAwesomeIcon icon={icon} className="mr-1" />
         {title}
-      </h3>
-      <p className="text-error">{text}</p>
+      </p>
+      <pre className="text-error">{text}</pre>
       {onRetry ? (
         <Button
           name="reload"

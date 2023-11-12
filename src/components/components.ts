@@ -15,6 +15,8 @@ import PrintAfter, { PrintAfterProps } from "./PrintAfter/PrintAfter";
 import ToTop from "./ToTop/ToTop";
 import Notification, { NotificationProps } from "./Notification/Notification";
 import Loading, { LoadingProps } from "./Loading/Loading";
+import Handler, { ErrorFallbackProps, HandlerProps } from "./Error/Handler";
+import Error, { ErrorProps } from "./Error/Error";
 
 export {
   Button,
@@ -28,8 +30,13 @@ export {
   ToTop,
   Notification,
   Loading,
+  Handler,
+  Error,
 };
 export type {
+  ErrorFallbackProps,
+  HandlerProps,
+  ErrorProps,
   ButtonProps,
   IconButtonProps,
   InputControlProps,
