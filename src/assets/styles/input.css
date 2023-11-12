@@ -50,39 +50,63 @@
     background-color: theme(color.dark.alter);
   }
 
+  /* PRIMARY */
+  /* LIGHT */
+  .light .primary.input-control .sub,
+  .light .primary.input-control textarea,
+  .light .primary.input-control input,
+  .light .primary.input-control select,
+  /* DARK */
   .dark .primary.input-control .sub,
   .dark .primary.input-control textarea,
   .dark .primary.input-control input,
   .dark .primary.input-control select,
-  .light .primary.input-control .sub,
-  .light .primary.input-control textarea,
-  .light .primary.input-control input,
-  .light .primary.input-control select {
-    color: theme(color.light.default);
-    background-color: theme(color.primary.default);
-  }
 
+
+  /* SECONDARY */
+  /* LIGHT */
   .light .secondary.input-control .sub,
   .light .secondary.input-control textarea,
   .light .secondary.input-control input,
   .light .secondary.input-control select,
+  /* DARK */
   .dark .secondary.input-control .sub,
   .dark .secondary.input-control textarea,
   .dark .secondary.input-control input,
-  .dark .secondary.input-control select {
-    color: theme(color.light.default);
-    background-color: theme(color.secondary.default);
-  }
+  .dark .secondary.input-control select,
 
+  /* TERNARY */
+  /* LIGHT */
   .light .ternary.input-control .sub,
   .light .ternary.input-control textarea,
   .light .ternary.input-control input,
   .light .ternary.input-control select,
+  /* DARK */
   .dark .ternary.input-control .sub,
   .dark .ternary.input-control textarea,
   .dark .ternary.input-control input,
   .dark .ternary.input-control select {
     color: theme(color.light.default);
+  }
+
+  .primary.input-control .sub,
+  .primary.input-control textarea,
+  .primary.input-control input,
+  .primary.input-control select {
+    background-color: theme(color.primary.default);
+  }
+
+  .secondary.input-control .sub,
+  .secondary.input-control textarea,
+  .secondary.input-control input,
+  .secondary.input-control select {
+    background-color: theme(color.secondary.default);
+  }
+
+  .ternary.input-control .sub,
+  .ternary.input-control textarea,
+  .ternary.input-control input,
+  .ternary.input-control select {
     background-color: theme(color.ternary.default);
   }
 }
