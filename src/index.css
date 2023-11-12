@@ -9,6 +9,10 @@
   background: theme(color.light.default);
 }
 
-body {
-  background-color: #222;
+.light * {
+  color: theme(color.dark.default);
+}
+
+.dark * {
+  color: theme(color.light.default);
 }
