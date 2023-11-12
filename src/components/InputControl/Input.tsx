@@ -6,6 +6,7 @@ export interface InputControlProps extends HTMLProps<HTMLInputElement> {
   color?: "primary" | "secondary" | "ternary" | "inherit" | undefined;
   orientation?: "column" | "row" | undefined;
   label: string | undefined;
+  helperText?: string | undefined;
   type?:
     | "date"
     | "datetime-local"
@@ -25,6 +26,7 @@ const InputControl = forwardRef(function (
   ref: ForwardedRef<HTMLInputElement> | ForwardedRef<HTMLSelectElement>
 ) {
   const {
+    helperText = "",
     orientation = "column",
     color = "inherit",
     leftComponent,
@@ -75,6 +77,7 @@ const InputControl = forwardRef(function (
       ) : (
         <input {...rest} ref={ref as ForwardedRef<HTMLInputElement>} />
       )}
+      {helperText && helperText.length ? <p>{helperText}</p> : null}
     </div>
   );
 });

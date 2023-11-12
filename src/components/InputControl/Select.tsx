@@ -6,6 +6,7 @@ export interface SelectControlProps extends HTMLProps<HTMLSelectElement> {
   color?: "primary" | "secondary" | "ternary" | "inherit" | undefined;
   orientation?: "column" | "row" | undefined;
   label: string | undefined;
+  helperText?: string | undefined;
 }
 
 const SelectControl = forwardRef(function (
@@ -13,6 +14,7 @@ const SelectControl = forwardRef(function (
   ref: ForwardedRef<HTMLSelectElement> | ForwardedRef<HTMLSelectElement>
 ) {
   const {
+    helperText = "",
     orientation = "column",
     color = "inherit",
     leftComponent,
@@ -47,6 +49,7 @@ const SelectControl = forwardRef(function (
           {rest.children}
         </select>
       )}
+      {helperText && helperText.length ? <p>{helperText}</p> : null}
     </div>
   );
 });
