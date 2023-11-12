@@ -1,10 +1,10 @@
 {
   "name": "@sito/ui",
   "private": false,
-  "version": "0.0.35",
+  "version": "0.0.37",
   "type": "module",
   "files": [
-    "dist"
+    "dist/"
   ],
   "repository": {
     "type": "git",

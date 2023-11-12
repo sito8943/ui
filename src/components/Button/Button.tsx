@@ -1,7 +1,6 @@
 import { forwardRef, ForwardedRef, HTMLProps } from "react";
 import Tippy from "@tippyjs/react";
 
-import styles from "./styles.module.css";
 export interface ButtonProps extends HTMLProps<HTMLButtonElement> {
   tooltip?: string | undefined;
   color?: "primary" | "secondary" | "ternary" | "inherit" | undefined;
@@ -20,7 +19,7 @@ const Button = forwardRef(function (
         type={type}
         ref={ref}
         {...rest}
-        className={`${styles.button} ${styles[color]} ${rest.className}`}
+        className={`button ${color} ${rest.className}`}
       >
         {rest.children}
       </button>

@@ -8,3 +8,7 @@
 .light body {
   background: theme(color.light.default);
 }
+
+body {
+  background-color: #222;
+}
