@@ -94,13 +94,16 @@
     background-color: theme(color.dark.default);
   }
 
-  .primary.loading .path {
+  .light .primary.loading .path,
+  .dark .primary.loading .path {
     stroke: theme(color.primary.default);
   }
-  .secondary.loading .path {
+  .light .secondary.loading .path,
+  .dark .secondary.loading .path {
     stroke: theme(color.secondary.default);
   }
-  .ternary.loading .path {
+  .light .ternary.loading .path,
+  .dark .ternary.loading .path {
     stroke: theme(color.ternary.default);
   }
 }

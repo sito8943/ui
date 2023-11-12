@@ -6,15 +6,21 @@
     min-height: theme(spacing.10);
     @apply w-10 h-10 rounded-full text-xl p-0;
   }
+  .icon-button:hover,
   .icon-button:hover {
     background-color: theme(color.dark.default / 15%);
   }
+
+  .primary.icon-button:hover,
   .primary.icon-button:hover {
     background-color: theme(color.primary.500 / 15%);
   }
+
+  .secondary.icon-button:hover,
   .secondary.icon-button:hover {
     background-color: theme(color.secondary.500 / 15%);
   }
+  .ternary.icon-button:hover,
   .ternary.icon-button:hover {
     background-color: theme(color.ternary.500 / 15%);
   }
