@@ -14,6 +14,8 @@ import {
   useNotification,
 } from "./NotificationProvider";
 
+import { StyleProvider, StyleProviderProps, useStyle } from "./StyleProvider";
+
 export type {
   ModeProviderData,
   ModeProviderProps,
@@ -21,5 +23,13 @@ export type {
   NotificationProviderProps,
   NotificationActionType,
   NotificationType,
+  StyleProviderProps,
 };
-export { ModeProvider, useMode, NotificationProvider, useNotification };
+export {
+  ModeProvider,
+  useMode,
+  NotificationProvider,
+  useNotification,
+  useStyle,
+  StyleProvider,
+};
