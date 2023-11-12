@@ -87,22 +87,19 @@
   .loading {
     @apply flex w-full h-full items-center justify-center;
   }
-  .light .loading {
+  .loading {
     background-color: theme(color.light.default);
   }
-  .dark .loading {
-    background-color: theme(color.dark.default);
-  }
 
-  .light .primary.loading .path,
+  .primary.loading .path,
   .dark .primary.loading .path {
     stroke: theme(color.primary.default);
   }
-  .light .secondary.loading .path,
+  .secondary.loading .path,
   .dark .secondary.loading .path {
     stroke: theme(color.secondary.default);
   }
-  .light .ternary.loading .path,
+  .ternary.loading .path,
   .dark .ternary.loading .path {
     stroke: theme(color.ternary.default);
   }

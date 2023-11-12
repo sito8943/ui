@@ -52,10 +52,10 @@
 
   /* PRIMARY */
   /* LIGHT */
-  .light .primary.input-control .sub,
-  .light .primary.input-control textarea,
-  .light .primary.input-control input,
-  .light .primary.input-control select,
+  .primary.input-control .sub,
+  .primary.input-control textarea,
+  .primary.input-control input,
+  .primary.input-control select,
   /* DARK */
   .dark .primary.input-control .sub,
   .dark .primary.input-control textarea,
@@ -65,10 +65,10 @@
 
   /* SECONDARY */
   /* LIGHT */
-  .light .secondary.input-control .sub,
-  .light .secondary.input-control textarea,
-  .light .secondary.input-control input,
-  .light .secondary.input-control select,
+  .secondary.input-control .sub,
+  .secondary.input-control textarea,
+  .secondary.input-control input,
+  .secondary.input-control select,
   /* DARK */
   .dark .secondary.input-control .sub,
   .dark .secondary.input-control textarea,
@@ -77,10 +77,10 @@
 
   /* TERNARY */
   /* LIGHT */
-  .light .ternary.input-control .sub,
-  .light .ternary.input-control textarea,
-  .light .ternary.input-control input,
-  .light .ternary.input-control select,
+  .ternary.input-control .sub,
+  .ternary.input-control textarea,
+  .ternary.input-control input,
+  .ternary.input-control select,
   /* DARK */
   .dark .ternary.input-control .sub,
   .dark .ternary.input-control textarea,

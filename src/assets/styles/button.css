@@ -8,15 +8,15 @@
     @apply border-2;
   }
 
-  .light .primary.button *,
+  .primary.button *,
+  .primary.button,
   .dark .primary.button *,
-  .light .primary.button,
   .dark .primary.button {
     color: theme(color.primary.default);
   }
-  .light .primary.button:hover *,
+  .primary.button:hover *,
+  .primary.button:hover,
   .dark .primary.button:hover *,
-  .light .primary.button:hover,
   .dark .primary.button:hover {
     color: theme(color.primary.200);
   }
@@ -40,16 +40,16 @@
     background-color: theme(color.primary.default);
   }
 
-  .light .secondary.button *,
+  .secondary.button *,
+  .secondary.button,
   .dark .secondary.button *,
-  .light .secondary.button,
   .dark .secondary.button {
     color: theme(color.secondary.default);
   }
 
-  .light .secondary.button:hover *,
+  .secondary.button:hover *,
+  .secondary.button:hover,
   .dark .secondary.button:hover *,
-  .light .secondary.button:hover,
   .dark .secondary.button:hover {
     color: theme(color.secondary.200);
   }
@@ -74,16 +74,16 @@
     background-color: theme(color.secondary.default);
   }
 
-  .light .ternary.button *,
+  .ternary.button *,
+  .ternary.button,
   .dark .ternary.button *,
-  .light .ternary.button,
   .dark .ternary.button {
     color: theme(color.ternary.default);
   }
 
-  .light .ternary.button:hover *,
+  .ternary.button:hover *,
+  .ternary.button:hover,
   .dark .ternary.button:hover *,
-  .light .ternary.button:hover,
   .dark .ternary.button:hover {
     color: theme(color.ternary.200);
   }
@@ -108,21 +108,21 @@
     background-color: theme(color.ternary.default);
   }
 
-  .light .submit.button *,
-  .light .submit.button:hover *,
+  .submit.button *,
+  .submit.button:hover *,
+  .submit.button,
+  .submit.button:hover,
   .dark .submit.button *,
   .dark .submit.button:hover *,
-  .light .submit.button,
-  .light .submit.button:hover,
   .dark .submit.button,
   .dark .submit.button:hover {
     color: theme(color.light.default);
   }
 
+  .outlined.button:hover *,
+  .outlined.button:hover,
   .dark .outlined.button:hover *,
-  .light .outlined.button:hover *,
-  .dark .outlined.button:hover,
-  .light .outlined.button:hover {
+  .dark .outlined.button:hover {
     color: theme(color.light.default);
   }
 }
