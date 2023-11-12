@@ -7,9 +7,6 @@ import { IconProp } from "@fortawesome/fontawesome-svg-core";
 // components
 import Button, { ButtonProps } from "../Button/Button";
 
-// styles
-import "./styles.css";
-
 export interface IconButtonProps extends ButtonProps {
   icon: IconProp;
 }

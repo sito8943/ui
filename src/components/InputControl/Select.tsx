@@ -1,8 +1,5 @@
 import { forwardRef, ForwardedRef, HTMLProps, ReactNode } from "react";
 
-// styles.css
-import "./styles.css";
-
 export interface SelectControlProps extends HTMLProps<HTMLSelectElement> {
   leftComponent?: ReactNode | undefined;
   rightComponent?: ReactNode | undefined;

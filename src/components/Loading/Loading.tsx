@@ -1,8 +1,5 @@
 import { HTMLProps } from "react";
 
-// styles
-import "./style.css";
-
 export interface LoadingProps extends HTMLProps<HTMLDivElement> {
   color?: "primary" | "secondary" | "ternary" | "inherit" | undefined;
   loaderClass?: "string" | undefined;

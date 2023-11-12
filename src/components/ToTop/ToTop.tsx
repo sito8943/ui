@@ -18,9 +18,6 @@ import { scrollTo } from "some-javascript-utils/browser";
 // components
 import IconButton, { IconButtonProps } from "../IconButton/IconButton";
 
-// styles
-import "./styles.css";
-
 const ToTop = forwardRef(function (
   props: HTMLProps<HTMLButtonElement>,
   ref: ForwardedRef<HTMLButtonElement>

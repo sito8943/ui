@@ -9,9 +9,6 @@ import { useNotification } from "../../providers/NotificationProvider";
 // components
 import IconButton, { IconButtonProps } from "../IconButton/IconButton";
 
-// styles
-import "./styles.css";
-
 export interface NotificationProps {
   closeProps?: IconButtonProps | undefined;
 }

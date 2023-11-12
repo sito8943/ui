@@ -5,9 +5,6 @@ import {
   forwardRef,
 } from "react";
 
-// styles
-import "./style.css";
-
 export interface SwitcherProps
   extends Omit<InputHTMLAttributes<HTMLInputElement>, "value"> {
   value?: boolean | undefined;

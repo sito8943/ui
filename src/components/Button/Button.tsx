@@ -1,9 +1,6 @@
 import { forwardRef, ForwardedRef, HTMLProps } from "react";
 import Tippy from "@tippyjs/react";
 
-// styles
-import "./styles.css";
-
 export interface ButtonProps extends HTMLProps<HTMLButtonElement> {
   tooltip?: string | undefined;
   color?: "primary" | "secondary" | "ternary" | "inherit" | undefined;

@@ -1,8 +1,5 @@
 import { HTMLProps, useState } from "react";
 
-// styles
-import "./styles.css";
-
 export interface ImageProps extends HTMLProps<HTMLImageElement> {
   container: HTMLProps<HTMLDivElement>;
 }

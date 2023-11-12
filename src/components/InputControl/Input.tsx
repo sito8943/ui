@@ -1,8 +1,5 @@
 import { forwardRef, ForwardedRef, HTMLProps, ReactNode, useMemo } from "react";
 
-// styles.css
-import "./styles.css";
-
 export interface InputControlProps extends HTMLProps<HTMLInputElement> {
   leftComponent?: ReactNode | undefined;
   rightComponent?: ReactNode | undefined;
