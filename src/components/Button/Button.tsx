@@ -12,7 +12,7 @@ export interface ButtonProps extends HTMLProps<HTMLButtonElement> {
 
 const Button = forwardRef(function (
   props: ButtonProps,
-  ref: ForwardedRef<HTMLButtonElement>
+  ref?: ForwardedRef<HTMLButtonElement>
 ) {
   const { tooltip, color = "primary", type = "button", ...rest } = props;
 
