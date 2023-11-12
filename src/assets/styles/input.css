@@ -23,7 +23,7 @@
   }
 
   .input-control .sub {
-    @apply w-full rounded-3xl;
+    @apply w-full rounded-3xl relative;
   }
 
   .input-control textarea:focus-visible,
@@ -61,7 +61,6 @@
   .dark .primary.input-control textarea,
   .dark .primary.input-control input,
   .dark .primary.input-control select,
-
 
   /* SECONDARY */
   /* LIGHT */
