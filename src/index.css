@@ -16,3 +16,24 @@
 .dark * {
   color: theme(color.light.default);
 }
+
+.primary,
+.primary *,
+.dark .primary,
+.dark .primary * {
+  color: theme(color.primary.default);
+}
+
+.secondary,
+.secondary *,
+.dark .secondary,
+.dark .secondary * {
+  color: theme(color.secondary.default);
+}
+
+.ternary,
+.ternary *,
+.dark .ternary,
+.dark .ternary * {
+  color: theme(color.ternary.default);
+}
