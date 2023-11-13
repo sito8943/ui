@@ -7,15 +7,15 @@
   }
 
   .info.notification {
-    background-color: theme(color.info);
+    background-color: theme(colors.info);
   }
   .warning.notification {
-    background-color: theme(color.warning);
+    background-color: theme(colors.warning);
   }
   .success.notification {
-    background-color: theme(color.success);
+    background-color: theme(colors.success);
   }
   .error.notification {
-    background-color: theme(color.error);
+    background-color: theme(colors.error);
   }
 }

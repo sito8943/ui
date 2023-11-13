@@ -16,13 +16,13 @@
   }
 
   .primary.switcher {
-    background-color: theme(color.primary.default);
+    background-color: theme(colors.primary.default);
   }
   .secondary.switcher {
-    background-color: theme(color.secondary.default);
+    background-color: theme(colors.secondary.default);
   }
   .ternary.switcher {
-    background-color: theme(color.ternary.default);
+    background-color: theme(colors.ternary.default);
   }
 
   .ball {
@@ -32,7 +32,7 @@
     border-radius: 20px;
     top: 50%;
     transition: all 500ms ease;
-    background-color: theme(color.light.alter);
+    background-color: theme(colors.light.alter);
   }
 
   .deactivated {

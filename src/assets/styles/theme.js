@@ -1,5 +1,5 @@
-const theme = {
-  theme: {
+module.exports = {
+  screen: {
     "2xl": { max: "1535px" },
     // => @media (max-width: 1535px) { ... }
     xl: { max: "1279px" },
@@ -11,7 +11,7 @@ const theme = {
     sm: { max: "639px" },
     // => @media (max-width: 639px) { ... }
   },
-  color: {
+  colors: {
     dark: { default: "#262220", alter: "#222333" },
     light: { default: "#fbfbfb", alter: "#eaeaea" },
 
@@ -42,5 +42,3 @@ const theme = {
     info: "#0099CC",
   },
 };
-
-export default theme;

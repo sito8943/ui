@@ -3,37 +3,37 @@
 @tailwind utilities;
 
 .dark body {
-  background: theme(color.dark.default);
+  background: theme(colors.dark.default);
 }
 .light body {
-  background: theme(color.light.default);
+  background: theme(colors.light.default);
 }
 
 .light * {
-  color: theme(color.dark.default);
+  color: theme(colors.dark.default);
 }
 
 .dark * {
-  color: theme(color.light.default);
+  color: theme(colors.light.default);
 }
 
 .primary,
 .primary *,
 .dark .primary,
 .dark .primary * {
-  color: theme(color.primary.default);
+  color: theme(colors.primary.default);
 }
 
 .secondary,
 .secondary *,
 .dark .secondary,
 .dark .secondary * {
-  color: theme(color.secondary.default);
+  color: theme(colors.secondary.default);
 }
 
 .ternary,
 .ternary *,
 .dark .ternary,
 .dark .ternary * {
-  color: theme(color.ternary.default);
+  color: theme(colors.ternary.default);
 }
