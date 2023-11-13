@@ -17,6 +17,9 @@ export default {
 
       sm: { max: "639px" },
       // => @media (max-width: 639px) { ... }
+
+      xs: { max: "383px" },
+      // => @media (max-width: 383px) { ... }
     },
     colors: {
       dark: { default: "#262220", alter: "#222333" },
