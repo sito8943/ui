@@ -4,6 +4,11 @@
   .notification {
     min-width: 150px;
     max-width: 300px;
+    padding: 1.25rem 3rem 1.25rem 1.25rem
+  }
+
+  .notification p {
+    color: theme(colors.light.default);
   }
 
   .info.notification {

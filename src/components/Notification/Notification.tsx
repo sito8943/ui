@@ -65,16 +65,16 @@ export default function Notification(props: NotificationProps) {
       className={`fixed left-1 bottom-1 z-40 ${open ? "appear" : "disappear"}`}
     >
       {openR ? (
-        <div className={`relative notification rounded-xl p-5 pr-10 ${color}`}>
+        <div className={`relative notification rounded-xl ${color}`}>
           <IconButton
             {...closeProps}
             icon={faClose}
             ref={null}
             onClick={handleClose}
             name="close-notification"
-            className={`absolute top-1 right-1 text-white ${closeProps?.className}`}
+            className={`absolute top-1 right-1 text-light-default ${closeProps?.className}`}
           />
-          <p className="text-body1 text-white">{notification.message}</p>
+          <p>{notification.message}</p>
         </div>
       ) : null}
     </div>
