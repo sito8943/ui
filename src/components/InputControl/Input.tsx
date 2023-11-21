@@ -75,7 +75,11 @@ const InputControl = forwardRef(function (
           ) : null}
         </div>
       ) : (
-        <input {...rest} ref={ref as ForwardedRef<HTMLInputElement>} />
+        <input
+          {...rest}
+          type={type}
+          ref={ref as ForwardedRef<HTMLInputElement>}
+        />
       )}
       {helperText && helperText.length ? <p>{helperText}</p> : null}
     </div>
