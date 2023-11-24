@@ -11,15 +11,21 @@
     background-color: theme(colors.dark.default / 15%);
   }
 
+  /* PRIMARY */
+
   .primary.icon-button:hover,
   .primary.icon-button:hover {
     background-color: theme(colors.primary.500 / 15%);
   }
 
+  /* SECONDARY */
+
   .secondary.icon-button:hover,
   .secondary.icon-button:hover {
     background-color: theme(colors.secondary.500 / 15%);
   }
+
+  /* TERNARY */
   .ternary.icon-button:hover,
   .ternary.icon-button:hover {
     background-color: theme(colors.ternary.500 / 15%);

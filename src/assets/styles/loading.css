@@ -91,14 +91,22 @@
     background-color: theme(colors.light.default);
   }
 
+  /* PRIMARY */
+
   .primary.loading .path,
   .dark .primary.loading .path {
     stroke: theme(colors.primary.default);
   }
+
+  /* SECONDARY */
+
   .secondary.loading .path,
   .dark .secondary.loading .path {
     stroke: theme(colors.secondary.default);
   }
+
+  /* TERNARY */
+
   .ternary.loading .path,
   .dark .ternary.loading .path {
     stroke: theme(colors.ternary.default);

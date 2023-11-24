@@ -15,12 +15,20 @@
     @apply transition duration-300 ease-in-out;
   }
 
+  /* PRIMARY */
+
   .primary.switcher {
     background-color: theme(colors.primary.default);
   }
+
+  /* SECONDARY */
+
   .secondary.switcher {
     background-color: theme(colors.secondary.default);
   }
+
+  /* TERNARY */
+
   .ternary.switcher {
     background-color: theme(colors.ternary.default);
   }

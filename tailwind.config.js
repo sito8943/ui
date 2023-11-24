@@ -22,8 +22,8 @@ export default {
       // => @media (max-width: 383px) { ... }
     },
     colors: {
-      dark: { default: "#262220", alter: "#222333" },
-      light: { default: "#fbfbfb", alter: "#eaeaea" },
+      dark: { default: "#262220", alter: "#222333", 200: "#1b1b1b" },
+      light: { default: "#fbfbfb", alter: "#eaeaea", 200: "#fde5f8" },
 
       primary: {
         default: "#ef476f",

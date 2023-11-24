@@ -65,6 +65,16 @@
   .dark .primary.input-control input,
   .dark .primary.input-control select,
 
+  /* SUB */
+
+
+  .primary.input-control .sub,
+  .primary.input-control textarea,
+  .primary.input-control input,
+  .primary.input-control select {
+    background-color: theme(colors.primary.default);
+  }
+
   /* SECONDARY */
   /* LIGHT */
   .secondary.input-control .sub,
@@ -76,6 +86,15 @@
   .dark .secondary.input-control textarea,
   .dark .secondary.input-control input,
   .dark .secondary.input-control select,
+
+  /* SUB */
+
+  .secondary.input-control .sub,
+  .secondary.input-control textarea,
+  .secondary.input-control input,
+  .secondary.input-control select {
+    background-color: theme(colors.secondary.default);
+  }
 
   /* TERNARY */
   /* LIGHT */
@@ -91,19 +110,7 @@
     color: theme(colors.light.default);
   }
 
-  .primary.input-control .sub,
-  .primary.input-control textarea,
-  .primary.input-control input,
-  .primary.input-control select {
-    background-color: theme(colors.primary.default);
-  }
-
-  .secondary.input-control .sub,
-  .secondary.input-control textarea,
-  .secondary.input-control input,
-  .secondary.input-control select {
-    background-color: theme(colors.secondary.default);
-  }
+  /* SUB */
 
   .ternary.input-control .sub,
   .ternary.input-control textarea,
