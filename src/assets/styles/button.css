@@ -28,7 +28,7 @@
 
   .inherit.submit.button:hover,
   .inherit.submit.button:hover {
-    background-color: theme(colors.light.default);
+    background-color: theme(colors.light.alter);
   }
   .inherit.outlined.button,
   .inherit.outlined.button {
