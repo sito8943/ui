@@ -1,6 +1,9 @@
 @tailwind components;
 
 @layer components {
+  .sub {
+    @apply flex items-center justify-between px-3;
+  }
   .input-control {
     @apply flex gap-1 items-start
     justify-start w-full;

@@ -60,14 +60,14 @@ const InputControl = forwardRef(function (
       {leftComponent || rightComponent ? (
         <div className="sub">
           {leftComponent && leftComponent !== null ? (
-            <div>{leftComponent}</div>
+            <div className="">{leftComponent}</div>
           ) : null}
           <input
             {...rest}
             type={parsedType}
             ref={ref as ForwardedRef<HTMLInputElement>}
-            className={`${leftComponent ? "!pl-0" : ""} ${
-              rightComponent ? "!pr-0" : ""
+            className={`${leftComponent ? "!pl-2" : ""} ${
+              rightComponent ? "!pr-2" : ""
             } ${rest.className ?? ""}`}
           />
           {rightComponent && rightComponent !== null ? (
