@@ -3,7 +3,7 @@ import { memo, useEffect, useState } from "react";
 export interface PrintAfterProps {
   children: React.ReactNode;
   delay?: number | undefined;
-  animation?: "string" | undefined;
+  animation?: "appear" | "aGrow" | "aShrink" | "string" | undefined;
 }
 
 function _PrintAfter(props: PrintAfterProps) {
@@ -14,11 +14,7 @@ function _PrintAfter(props: PrintAfterProps) {
     setTimeout(() => setSee(true), delay);
   }, [delay]);
 
-  return (
-    <div className={see ? animation : "invisible"}>
-      {children}
-    </div>
-  );
+  return <div className={see ? animation : "invisible"}>{children}</div>;
 }
 
 const PrintAfter = memo(
