@@ -11,11 +11,54 @@
     background-color: theme(colors.dark.default / 15%);
   }
 
+  /* INHERIT */
+
+  .inherit.icon-button *,
+  .inherit.icon-button {
+    color: theme(colors.dark.default);
+  }
+
+  .inherit.icon-button:hover *,
+  .inherit.icon-button:hover {
+    color: theme(colors.dark.200);
+  }
+
+  .inherit.submit.icon-button,
+  .inherit.submit.icon-button {
+    color: theme(colors.dark.default);
+    background-color: theme(colors.light.alter);
+  }
+
+  .inherit.submit.icon-button:hover,
+  .inherit.submit.icon-button:hover {
+    background-color: theme(colors.light.200);
+  }
+
   /* PRIMARY */
 
   .primary.icon-button:hover,
   .primary.icon-button:hover {
     background-color: theme(colors.primary.500 / 15%);
+  }
+
+  /* SUBMIT */
+
+  .primary.submit.icon-button,
+  .primary.submit.icon-button {
+    color: theme(colors.light.default);
+    background-color: theme(colors.primary.default);
+  }
+  .dark .primary.submit.icon-button,
+  .dark .primary.submit.icon-button {
+    color: theme(colors.light.default);
+    background-color: theme(colors.primary.default);
+  }
+
+  .primary.submit.icon-button:hover,
+  .primary.submit.icon-button:hover,
+  .dark .primary.submit.icon-button:hover,
+  .dark .primary.submit.icon-button:hover {
+    background-color: theme(colors.primary.200);
   }
 
   /* SECONDARY */
@@ -25,9 +68,50 @@
     background-color: theme(colors.secondary.500 / 15%);
   }
 
+  /* SUBMIT */
+
+  .secondary.submit.icon-button,
+  .secondary.submit.icon-button {
+    color: theme(colors.light.default);
+    background-color: theme(colors.secondary.default);
+  }
+  .dark .secondary.submit.icon-button,
+  .dark .secondary.submit.icon-button {
+    color: theme(colors.light.default);
+    background-color: theme(colors.secondary.default);
+  }
+
+  .secondary.submit.icon-button:hover,
+  .secondary.submit.icon-button:hover,
+  .dark .secondary.submit.icon-button:hover,
+  .dark .secondary.submit.icon-button:hover {
+    background-color: theme(colors.secondary.200);
+  }
+
   /* TERNARY */
   .ternary.icon-button:hover,
   .ternary.icon-button:hover {
     background-color: theme(colors.ternary.500 / 15%);
   }
+
+  /* SUBMIT */
+
+  .ternary.submit.icon-button,
+  .ternary.submit.icon-button {
+    color: theme(colors.light.default);
+    background-color: theme(colors.ternary.default);
+  }
+  .dark .ternary.submit.icon-button,
+  .dark .ternary.submit.icon-button {
+    color: theme(colors.light.default);
+    background-color: theme(colors.ternary.default);
+  }
+
+  .ternary.submit.icon-button:hover,
+  .ternary.submit.icon-button:hover,
+  .dark .ternary.submit.icon-button:hover,
+  .dark .ternary.submit.icon-button:hover {
+    background-color: theme(colors.ternary.200);
+  }
+
 }
