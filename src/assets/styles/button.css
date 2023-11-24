@@ -20,9 +20,14 @@
     color: theme(colors.dark.200);
   }
 
+  .inherit.submit.button,
+  .inherit.submit.button {
+    background-color: theme(colors.light.alter);
+  }
+
   .inherit.submit.button:hover,
   .inherit.submit.button:hover {
-    background-color: theme(colors.light.alter);
+    background-color: theme(colors.light.200);
   }
   .inherit.outlined.button,
   .inherit.outlined.button {
@@ -44,10 +49,14 @@
     color: theme(colors.light.200);
   }
 
+  .dark .inherit.submit.button,
+  .dark .inherit.submit.button {
+    background-color: theme(colors.dark.alter);
+  }
 
   .dark .inherit.submit.button:hover,
   .dark .inherit.submit.button:hover {
-    background-color: theme(colors.dark.alter);
+    background-color: theme(colors.dark.200);
   }
   .dark .inherit.outlined.button,
   .dark .inherit.outlined.button {
