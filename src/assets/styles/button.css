@@ -10,6 +10,7 @@
 
   /* INHERIT */
 
+  .inherit.submit.button *,
   .inherit.button *,
   .inherit.button {
     color: theme(colors.dark.default);
@@ -41,6 +42,7 @@
     background-color: theme(colors.light.200);
   }
 
+  .dark .inherit.submit.button *,
   .dark .inherit.button *,
   .dark .inherit.button {
     color: theme(colors.light.default);
@@ -63,7 +65,6 @@
   }
   .dark .inherit.outlined.button,
   .dark .inherit.outlined.button {
-
     border-color: theme(colors.dark.alter);
   }
 
@@ -98,6 +99,19 @@
   .primary.submit.button:hover {
     background-color: theme(colors.primary.200);
   }
+
+  .primary.outlined.button,
+  .primary.outlined.button * {
+    color: theme(colors.dark.default);
+  }
+
+  .primary.submit.button *,
+  .primary.outlined.button:hover *,
+  .dark .primary.outlined.button,
+  .dark .primary.outlined.button * {
+    color: theme(colors.light.default);
+  }
+
   .primary.outlined.button,
   .primary.outlined.button {
     border-color: theme(colors.primary.default);
@@ -123,6 +137,18 @@
   .dark .secondary.button:hover *,
   .dark .secondary.button:hover {
     color: theme(colors.secondary.200);
+  }
+
+  .secondary.outlined.button,
+  .secondary.outlined.button * {
+    color: theme(colors.dark.default);
+  }
+
+  .secondary.submit.button *,
+  .secondary.outlined.button:hover *,
+  .dark .secondary.outlined.button,
+  .dark .secondary.outlined.button * {
+    color: theme(colors.light.default);
   }
 
   .secondary.submit.button,
@@ -172,6 +198,18 @@
   .ternary.submit.button:hover,
   .ternary.submit.button:hover {
     background-color: theme(colors.ternary.200);
+  }
+
+  .ternary.outlined.button,
+  .ternary.outlined.button * {
+    color: theme(colors.dark.default);
+  }
+
+  .ternary.submit.button *,
+  .ternary.outlined.button:hover *,
+  .dark .ternary.outlined.button,
+  .dark .ternary.outlined.button * {
+    color: theme(colors.light.default);
   }
 
   .ternary.outlined.button,
