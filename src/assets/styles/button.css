@@ -75,198 +75,222 @@
   }
 
   /* PRIMARY */
-
   .primary.button *,
   .primary.button,
   .dark .primary.button *,
   .dark .primary.button {
     color: theme(colors.primary.400);
   }
-  .primary.button:hover *,
+
+  /* HOVER BG COLOR */
   .primary.button:hover,
-  .dark .primary.button:hover *,
   .dark .primary.button:hover {
-    color: theme(colors.primary.500);
+    color: theme(colors.primary.400);
+    background-color: theme(colors.primary.500 / 15%);
   }
 
-  .primary.submit.button,
+  .primary.button:hover *,
+  .dark .primary.button:hover * {
+    color: theme(colors.primary.400);
+  }
+
+  /* SUBMIT BG COLOR */
   .primary.submit.button {
-    color: theme(colors.light.default);
     background-color: theme(colors.primary.400);
   }
 
-  .primary.submit.button:hover,
+  /* SUBMIT HOVER BG COLOR */
   .primary.submit.button:hover {
     background-color: theme(colors.primary.500);
   }
 
+  /* OUTLINED LIGHT COLOR */
   .primary.outlined.button,
   .primary.outlined.button * {
     color: theme(colors.dark.default);
   }
 
-  .primary.submit.button *,
-  .primary.outlined.button:hover *,
-  .dark .primary.outlined.button,
-  .dark .primary.outlined.button * {
-    color: theme(colors.light.default);
-  }
-
+  /* OUTLINED BORDER COLOR */
   .primary.outlined.button,
-  .primary.outlined.button {
+  .dark .primary.outlined.button {
     border-color: theme(colors.primary.400);
   }
 
+  /* OUTLINED HOVER COLOR */
   .primary.outlined.button:hover,
-  .primary.outlined.button:hover {
+  .dark .primary.outlined.button:hover {
     color: theme(colors.light.default);
     background-color: theme(colors.primary.400);
   }
 
-  /* SECONDARY */
-
-  .secondary.button *,
-  .secondary.button {
-    color: theme(colors.secondary.400);
+  .primary.outlined.button:hover *,
+  .dark .primary.outlined.button:hover * {
+    color: theme(colors.light.default);
   }
+
+  /* SUBMIT COLOR */
+  .primary.submit.button,
+  .primary.submit.button *,
+  .primary.submit.button:hover,
+  .primary.submit.button:hover *,
+  /* DARK SUBMIT COLOR */
+  .dark .primary.submit.button,
+  .dark .primary.submit.button *,
+  .dark .primary.submit.button:hover,
+  .dark .primary.submit.button:hover *,
+
+  /* OUTLINED COLOR HOVER */
+  .primary.outlined.button:hover,
+  .primary.outlined.button:hover *,
+
+  /* DARK OUTLINED COLOR */
+  .dark .primary.outlined.button,
+  .dark .primary.outlined.button *,
+  .dark .primary.outlined.button:hover,
+  .dark .primary.outlined.button:hover * {
+    color: theme(colors.light.default);
+  }
+
+  /* SECONDARY */
+  .secondary.button *,
+  .secondary.button,
   .dark .secondary.button *,
   .dark .secondary.button {
-    color: theme(colors.secondary.200);
+    color: theme(colors.secondary.700);
+  }
+
+  /* HOVER BG COLOR */
+  .secondary.button:hover,
+  .dark .secondary.button:hover {
+    color: theme(colors.secondary.800);
+    background-color: theme(colors.secondary.800 / 15%);
   }
 
   .secondary.button:hover *,
-  .secondary.button:hover {
-    color: theme(colors.secondary.500);
-  }
-  .dark .secondary.button:hover *,
-  .dark .secondary.button:hover {
-    color: theme(colors.secondary.300);
+  .dark .secondary.button:hover * {
+    color: theme(colors.secondary.800);
   }
 
-  .secondary.outlined.button,
-  .secondary.outlined.button * {
-    color: theme(colors.dark.default);
+  /* SUBMIT BG COLOR */
+  .secondary.submit.button {
+    background-color: theme(colors.secondary.700);
   }
 
-  .secondary.submit.button *,
-  .secondary.outlined.button:hover *,
+  /* SUBMIT HOVER BG COLOR */
+  .secondary.submit.button:hover {
+    background-color: theme(colors.secondary.800);
+  }
+
+  /* OUTLINED DARK COLOR */
   .dark .secondary.outlined.button,
   .dark .secondary.outlined.button * {
     color: theme(colors.light.default);
   }
 
+  /* OUTLINED DARK COLOR */
+  .secondary.outlined.button:hover {
+    color: theme(colors.dark.extra);
+    background-color: theme(colors.secondary.700);
+  }
+
+  .secondary.outlined.button:hover * {
+    color: theme(colors.dark.extra);
+  }
+
+  /* SUBMIT DARK COLOR */
   .secondary.submit.button,
-  .secondary.submit.button {
-    color: theme(colors.light.default);
-    background-color: theme(colors.secondary.400);
-  }
-
+  .secondary.submit.button *,
   .dark .secondary.submit.button,
-  .dark .secondary.submit.button {
-    color: theme(colors.light.default);
-    background-color: theme(colors.secondary.200);
-  }
-
+  .dark .secondary.submit.button *,
   .secondary.submit.button:hover,
-  .secondary.submit.button:hover {
-    background-color: theme(colors.secondary.500);
-  }
+  .secondary.submit.button:hover *,
   .dark .secondary.submit.button:hover,
-  .dark .secondary.submit.button:hover {
-    background-color: theme(colors.secondary.300);
+  .dark .secondary.submit.button:hover *,
+  /* OUTLINED DARK COLOR */
+  .secondary.outlined.button,
+  .secondary.outlined.button * {
+    color: theme(colors.dark.extra);
   }
 
   .secondary.outlined.button,
-  .secondary.outlined.button {
-    border-color: theme(colors.secondary.200);
-  }
-
-
-  .secondary.outlined.button:hover,
-  .secondary.outlined.button:hover {
-    color: theme(colors.light.default);
-    background-color: theme(colors.secondary.400);
-  }
-  .dark .secondary.outlined.button:hover,
-  .dark .secondary.outlined.button:hover {
-    color: theme(colors.light.default);
-    background-color: theme(colors.secondary.200);
+  .dark .secondary.outlined.button {
+    border-color: theme(colors.secondary.700);
   }
 
   /* TERNARY */
-
   .ternary.button *,
-  .ternary.button {
-    color: theme(colors.ternary.300);
-  }
+  .ternary.button,
   .dark .ternary.button *,
   .dark .ternary.button {
-    color: theme(colors.ternary.500);
+    color: theme(colors.ternary.400);
+  }
+
+  /* HOVER BG COLOR */
+  .ternary.button:hover,
+  .dark .ternary.button:hover {
+    color: theme(colors.ternary.400);
+    background-color: theme(colors.ternary.500 / 15%);
   }
 
   .ternary.button:hover *,
-  .ternary.button:hover {
+  .dark .ternary.button:hover * {
     color: theme(colors.ternary.400);
   }
-  .dark .ternary.button:hover *,
-  .dark .ternary.button:hover {
-    color: theme(colors.ternary.600);
-  }
 
-  .ternary.submit.button,
+  /* SUBMIT BG COLOR */
   .ternary.submit.button {
-    color: theme(colors.light.default);
-    background-color: theme(colors.ternary.300);
-  }
-
-  .dark .ternary.submit.button,
-  .dark .ternary.submit.button {
-    color: theme(colors.light.default);
-    background-color: theme(colors.ternary.500);
-  }
-
-  .ternary.submit.button:hover,
-  .ternary.submit.button:hover {
     background-color: theme(colors.ternary.400);
   }
 
-  .dark .ternary.submit.button:hover,
-  .dark .ternary.submit.button:hover {
-    background-color: theme(colors.ternary.600);
+  /* SUBMIT HOVER BG COLOR */
+  .ternary.submit.button:hover {
+    background-color: theme(colors.ternary.500);
   }
 
+  /* OUTLINED LIGHT COLOR */
   .ternary.outlined.button,
   .ternary.outlined.button * {
     color: theme(colors.dark.default);
   }
 
-  .ternary.submit.button *,
-  .ternary.outlined.button:hover *,
-  .dark .ternary.outlined.button,
-  .dark .ternary.outlined.button * {
-    color: theme(colors.light.default);
-  }
-
+  /* OUTLINED BORDER COLOR */
   .ternary.outlined.button,
-  .ternary.outlined.button {
-    border-color: theme(colors.ternary.300);
-  }
-
-  .dark .ternary.outlined.button,
   .dark .ternary.outlined.button {
-    border-color: theme(colors.ternary.500);
+    border-color: theme(colors.ternary.400);
   }
 
-  .ternary.outlined:hover,
-  .ternary.outlined:hover {
+  /* OUTLINED HOVER COLOR */
+  .ternary.outlined.button:hover,
+  .dark .ternary.outlined.button:hover {
     color: theme(colors.light.default);
-    background-color: theme(colors.ternary.300);
+    background-color: theme(colors.ternary.400);
   }
 
-  .dark .ternary.outlined:hover,
-  .dark .ternary.outlined:hover {
+  .ternary.outlined.button:hover *,
+  .dark .ternary.outlined.button:hover * {
     color: theme(colors.light.default);
-    background-color: theme(colors.ternary.500);
   }
 
+  /* SUBMIT COLOR */
+  .ternary.submit.button,
+  .ternary.submit.button *,
+  .ternary.submit.button:hover,
+  .ternary.submit.button:hover *,
+  /* DARK SUBMIT COLOR */
+  .dark .ternary.submit.button,
+  .dark .ternary.submit.button *,
+  .dark .ternary.submit.button:hover,
+  .dark .ternary.submit.button:hover *,
+
+  /* OUTLINED COLOR HOVER */
+  .ternary.outlined.button:hover,
+  .ternary.outlined.button:hover *,
+
+  /* DARK OUTLINED COLOR */
+  .dark .ternary.outlined.button,
+  .dark .ternary.outlined.button *,
+  .dark .ternary.outlined.button:hover,
+  .dark .ternary.outlined.button:hover * {
+    color: theme(colors.light.default);
+  }
 }
