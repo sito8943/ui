@@ -10,13 +10,10 @@
 
   /* INHERIT */
 
-  .inherit.submit.button *,
-  .inherit.button *,
   .inherit.button {
     color: theme(colors.dark.default);
   }
 
-  .inherit.button:hover *,
   .inherit.button:hover {
     color: theme(colors.dark.extra);
   }
@@ -42,13 +39,10 @@
     background-color: theme(colors.light.extra);
   }
 
-  .dark .inherit.submit.button *,
-  .dark .inherit.button *,
   .dark .inherit.button {
     color: theme(colors.light.default);
   }
 
-  .dark .inherit.button:hover *,
   .dark .inherit.button:hover {
     color: theme(colors.light.extra);
   }
@@ -75,9 +69,8 @@
   }
 
   /* PRIMARY */
-  .primary.button *,
+
   .primary.button,
-  .dark .primary.button *,
   .dark .primary.button {
     color: theme(colors.primary.400);
   }
@@ -87,11 +80,6 @@
   .dark .primary.button:hover {
     color: theme(colors.primary.400);
     background-color: theme(colors.primary.500 / 15%);
-  }
-
-  .primary.button:hover *,
-  .dark .primary.button:hover * {
-    color: theme(colors.primary.400);
   }
 
   /* SUBMIT BG COLOR */
@@ -105,8 +93,7 @@
   }
 
   /* OUTLINED LIGHT COLOR */
-  .primary.outlined.button,
-  .primary.outlined.button * {
+  .primary.outlined.button {
     color: theme(colors.dark.default);
   }
 
@@ -123,38 +110,22 @@
     background-color: theme(colors.primary.400);
   }
 
-  .primary.outlined.button:hover *,
-  .dark .primary.outlined.button:hover * {
-    color: theme(colors.light.default);
-  }
-
   /* SUBMIT COLOR */
   .primary.submit.button,
-  .primary.submit.button *,
   .primary.submit.button:hover,
-  .primary.submit.button:hover *,
   /* DARK SUBMIT COLOR */
   .dark .primary.submit.button,
-  .dark .primary.submit.button *,
   .dark .primary.submit.button:hover,
-  .dark .primary.submit.button:hover *,
-
   /* OUTLINED COLOR HOVER */
   .primary.outlined.button:hover,
-  .primary.outlined.button:hover *,
-
   /* DARK OUTLINED COLOR */
   .dark .primary.outlined.button,
-  .dark .primary.outlined.button *,
-  .dark .primary.outlined.button:hover,
-  .dark .primary.outlined.button:hover * {
+  .dark .primary.outlined.button:hover {
     color: theme(colors.light.default);
   }
 
   /* SECONDARY */
-  .secondary.button *,
   .secondary.button,
-  .dark .secondary.button *,
   .dark .secondary.button {
     color: theme(colors.secondary.700);
   }
@@ -164,11 +135,6 @@
   .dark .secondary.button:hover {
     color: theme(colors.secondary.800);
     background-color: theme(colors.secondary.800 / 15%);
-  }
-
-  .secondary.button:hover *,
-  .dark .secondary.button:hover * {
-    color: theme(colors.secondary.800);
   }
 
   /* SUBMIT BG COLOR */
@@ -182,8 +148,7 @@
   }
 
   /* OUTLINED DARK COLOR */
-  .dark .secondary.outlined.button,
-  .dark .secondary.outlined.button * {
+  .dark .secondary.outlined.button {
     color: theme(colors.light.default);
   }
 
@@ -193,22 +158,13 @@
     background-color: theme(colors.secondary.700);
   }
 
-  .secondary.outlined.button:hover * {
-    color: theme(colors.dark.extra);
-  }
-
   /* SUBMIT DARK COLOR */
   .secondary.submit.button,
-  .secondary.submit.button *,
   .dark .secondary.submit.button,
-  .dark .secondary.submit.button *,
   .secondary.submit.button:hover,
-  .secondary.submit.button:hover *,
   .dark .secondary.submit.button:hover,
-  .dark .secondary.submit.button:hover *,
   /* OUTLINED DARK COLOR */
-  .secondary.outlined.button,
-  .secondary.outlined.button * {
+  .secondary.outlined.button {
     color: theme(colors.dark.extra);
   }
 
@@ -218,9 +174,7 @@
   }
 
   /* TERNARY */
-  .ternary.button *,
   .ternary.button,
-  .dark .ternary.button *,
   .dark .ternary.button {
     color: theme(colors.ternary.400);
   }
@@ -230,11 +184,6 @@
   .dark .ternary.button:hover {
     color: theme(colors.ternary.400);
     background-color: theme(colors.ternary.500 / 15%);
-  }
-
-  .ternary.button:hover *,
-  .dark .ternary.button:hover * {
-    color: theme(colors.ternary.400);
   }
 
   /* SUBMIT BG COLOR */
@@ -248,8 +197,7 @@
   }
 
   /* OUTLINED LIGHT COLOR */
-  .ternary.outlined.button,
-  .ternary.outlined.button * {
+  .ternary.outlined.button {
     color: theme(colors.dark.default);
   }
 
@@ -266,29 +214,16 @@
     background-color: theme(colors.ternary.400);
   }
 
-  .ternary.outlined.button:hover *,
-  .dark .ternary.outlined.button:hover * {
-    color: theme(colors.light.default);
-  }
-
   /* SUBMIT COLOR */
   .ternary.submit.button,
-  .ternary.submit.button *,
   .ternary.submit.button:hover,
-  .ternary.submit.button:hover *,
   /* DARK SUBMIT COLOR */
   .dark .ternary.submit.button,
-  .dark .ternary.submit.button *,
   .dark .ternary.submit.button:hover,
-  .dark .ternary.submit.button:hover *,
-
   /* OUTLINED COLOR HOVER */
   .ternary.outlined.button:hover,
-  .ternary.outlined.button:hover *,
-
   /* DARK OUTLINED COLOR */
   .dark .ternary.outlined.button,
-  .dark .ternary.outlined.button *,
   .dark .ternary.outlined.button:hover,
   .dark .ternary.outlined.button:hover * {
     color: theme(colors.light.default);
