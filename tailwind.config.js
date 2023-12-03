@@ -23,7 +23,7 @@ export default {
     },
     colors: {
       dark: { default: "#1b1b1b", alter: "#222222", extra: "#333333" },
-      light: { default: "#ffffff", alter: "#f0f0f0", 200: "#e9e9e9" },
+      light: { default: "#ffffff", alter: "#f0f0f0", extra: "#e9e9e9" },
       primary: {
         50: "#FDE4EA",
         100: "#FBBCCB",

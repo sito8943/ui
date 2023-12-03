@@ -18,7 +18,7 @@
 
   .inherit.button:hover *,
   .inherit.button:hover {
-    color: theme(colors.dark.200);
+    color: theme(colors.dark.extra);
   }
 
   .inherit.submit.button,
@@ -29,7 +29,7 @@
 
   .inherit.submit.button:hover,
   .inherit.submit.button:hover {
-    background-color: theme(colors.light.200);
+    background-color: theme(colors.light.extra);
   }
   .inherit.outlined.button,
   .inherit.outlined.button {
@@ -39,7 +39,7 @@
 
   .inherit.outlined.button:hover,
   .inherit.outlined.button:hover {
-    background-color: theme(colors.light.200);
+    background-color: theme(colors.light.extra);
   }
 
   .dark .inherit.submit.button *,
@@ -50,7 +50,7 @@
 
   .dark .inherit.button:hover *,
   .dark .inherit.button:hover {
-    color: theme(colors.light.200);
+    color: theme(colors.light.extra);
   }
 
   .dark .inherit.submit.button,
@@ -61,7 +61,7 @@
 
   .dark .inherit.submit.button:hover,
   .dark .inherit.submit.button:hover {
-    background-color: theme(colors.dark.200);
+    background-color: theme(colors.dark.extra);
   }
   .dark .inherit.outlined.button,
   .dark .inherit.outlined.button {
@@ -71,7 +71,7 @@
   .dark .inherit.outlined.button:hover,
   .dark .inherit.outlined.button:hover {
     color: theme(colors.light.default);
-    background-color: theme(colors.dark.200);
+    background-color: theme(colors.dark.extra);
   }
 
   /* PRIMARY */

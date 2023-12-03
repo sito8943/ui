@@ -20,7 +20,7 @@
 
   .inherit.icon-button:hover *,
   .inherit.icon-button:hover {
-    color: theme(colors.dark.200);
+    color: theme(colors.dark.extra);
   }
 
   .inherit.submit.icon-button,
@@ -31,7 +31,7 @@
 
   .inherit.submit.icon-button:hover,
   .inherit.submit.icon-button:hover {
-    background-color: theme(colors.light.200);
+    background-color: theme(colors.light.extra);
   }
 
   /* PRIMARY */
