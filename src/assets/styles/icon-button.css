@@ -6,6 +6,7 @@
     min-height: theme(spacing.10);
     @apply w-10 h-10 rounded-full text-xl p-0;
   }
+
   .icon-button:hover,
   .icon-button:hover {
     background-color: theme(colors.dark.default / 15%);
@@ -44,10 +45,7 @@
   /* SUBMIT */
 
   .primary.submit.icon-button,
-  .primary.submit.icon-button {
-    color: theme(colors.light.default);
-    background-color: theme(colors.primary.400);
-  }
+  .primary.submit.icon-button,
   .dark .primary.submit.icon-button,
   .dark .primary.submit.icon-button {
     color: theme(colors.light.default);
@@ -58,7 +56,7 @@
   .primary.submit.icon-button:hover,
   .dark .primary.submit.icon-button:hover,
   .dark .primary.submit.icon-button:hover {
-    background-color: theme(colors.primary.200);
+    background-color: theme(colors.primary.500);
   }
 
   /* SECONDARY */
@@ -71,10 +69,7 @@
   /* SUBMIT */
 
   .secondary.submit.icon-button,
-  .secondary.submit.icon-button {
-    color: theme(colors.light.default);
-    background-color: theme(colors.secondary.200);
-  }
+  .secondary.submit.icon-button,
   .dark .secondary.submit.icon-button,
   .dark .secondary.submit.icon-button {
     color: theme(colors.light.default);
@@ -85,7 +80,7 @@
   .secondary.submit.icon-button:hover,
   .dark .secondary.submit.icon-button:hover,
   .dark .secondary.submit.icon-button:hover {
-    background-color: theme(colors.secondary.200);
+    background-color: theme(colors.secondary.300);
   }
 
   /* TERNARY */
@@ -97,10 +92,7 @@
   /* SUBMIT */
 
   .ternary.submit.icon-button,
-  .ternary.submit.icon-button {
-    color: theme(colors.light.default);
-    background-color: theme(colors.ternary.300);
-  }
+  .ternary.submit.icon-button,
   .dark .ternary.submit.icon-button,
   .dark .ternary.submit.icon-button {
     color: theme(colors.light.default);
@@ -111,7 +103,7 @@
   .ternary.submit.icon-button:hover,
   .dark .ternary.submit.icon-button:hover,
   .dark .ternary.submit.icon-button:hover {
-    background-color: theme(colors.ternary.200);
+    background-color: theme(colors.ternary.400);
   }
 
 }
