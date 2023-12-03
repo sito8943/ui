@@ -95,20 +95,20 @@
 
   .primary.loading .path,
   .dark .primary.loading .path {
-    stroke: theme(colors.primary.default);
+    stroke: theme(colors.primary.400);
   }
 
   /* SECONDARY */
 
   .secondary.loading .path,
   .dark .secondary.loading .path {
-    stroke: theme(colors.secondary.default);
+    stroke: theme(colors.secondary.200);
   }
 
   /* TERNARY */
 
   .ternary.loading .path,
   .dark .ternary.loading .path {
-    stroke: theme(colors.ternary.default);
+    stroke: theme(colors.ternary.300);
   }
 }

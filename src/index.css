@@ -21,19 +21,19 @@
 .primary *,
 .dark .primary,
 .dark .primary * {
-  color: theme(colors.primary.default);
+  color: theme(colors.primary.400);
 }
 
 .secondary,
 .secondary *,
 .dark .secondary,
 .dark .secondary * {
-  color: theme(colors.secondary.default);
+  color: theme(colors.secondary.200);
 }
 
 .ternary,
 .ternary *,
 .dark .ternary,
 .dark .ternary * {
-  color: theme(colors.ternary.default);
+  color: theme(colors.ternary.300);
 }

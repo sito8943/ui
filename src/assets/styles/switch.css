@@ -18,19 +18,19 @@
   /* PRIMARY */
 
   .primary.switcher {
-    background-color: theme(colors.primary.default);
+    background-color: theme(colors.primary.400);
   }
 
   /* SECONDARY */
 
   .secondary.switcher {
-    background-color: theme(colors.secondary.default);
+    background-color: theme(colors.secondary.200);
   }
 
   /* TERNARY */
 
   .ternary.switcher {
-    background-color: theme(colors.ternary.default);
+    background-color: theme(colors.ternary.300);
   }
 
   .ball {

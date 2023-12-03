@@ -46,12 +46,12 @@
   .primary.submit.icon-button,
   .primary.submit.icon-button {
     color: theme(colors.light.default);
-    background-color: theme(colors.primary.default);
+    background-color: theme(colors.primary.400);
   }
   .dark .primary.submit.icon-button,
   .dark .primary.submit.icon-button {
     color: theme(colors.light.default);
-    background-color: theme(colors.primary.default);
+    background-color: theme(colors.primary.400);
   }
 
   .primary.submit.icon-button:hover,
@@ -73,12 +73,12 @@
   .secondary.submit.icon-button,
   .secondary.submit.icon-button {
     color: theme(colors.light.default);
-    background-color: theme(colors.secondary.default);
+    background-color: theme(colors.secondary.200);
   }
   .dark .secondary.submit.icon-button,
   .dark .secondary.submit.icon-button {
     color: theme(colors.light.default);
-    background-color: theme(colors.secondary.default);
+    background-color: theme(colors.secondary.200);
   }
 
   .secondary.submit.icon-button:hover,
@@ -99,12 +99,12 @@
   .ternary.submit.icon-button,
   .ternary.submit.icon-button {
     color: theme(colors.light.default);
-    background-color: theme(colors.ternary.default);
+    background-color: theme(colors.ternary.300);
   }
   .dark .ternary.submit.icon-button,
   .dark .ternary.submit.icon-button {
     color: theme(colors.light.default);
-    background-color: theme(colors.ternary.default);
+    background-color: theme(colors.ternary.300);
   }
 
   .ternary.submit.icon-button:hover,
