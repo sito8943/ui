@@ -86,7 +86,7 @@
   .primary.button:hover,
   .dark .primary.button:hover *,
   .dark .primary.button:hover {
-    color: theme(colors.primary.200);
+    color: theme(colors.primary.500);
   }
 
   .primary.submit.button,
@@ -97,7 +97,7 @@
 
   .primary.submit.button:hover,
   .primary.submit.button:hover {
-    background-color: theme(colors.primary.200);
+    background-color: theme(colors.primary.500);
   }
 
   .primary.outlined.button,
@@ -136,7 +136,7 @@
   .secondary.button:hover,
   .dark .secondary.button:hover *,
   .dark .secondary.button:hover {
-    color: theme(colors.secondary.200);
+    color: theme(colors.secondary.300);
   }
 
   .secondary.outlined.button,
@@ -159,7 +159,7 @@
 
   .secondary.submit.button:hover,
   .secondary.submit.button:hover {
-    background-color: theme(colors.secondary.200);
+    background-color: theme(colors.secondary.300);
   }
 
   .secondary.outlined.button,
@@ -186,7 +186,7 @@
   .ternary.button:hover,
   .dark .ternary.button:hover *,
   .dark .ternary.button:hover {
-    color: theme(colors.ternary.200);
+    color: theme(colors.ternary.400);
   }
 
   .ternary.submit.button,
@@ -197,7 +197,7 @@
 
   .ternary.submit.button:hover,
   .ternary.submit.button:hover {
-    background-color: theme(colors.ternary.200);
+    background-color: theme(colors.ternary.400);
   }
 
   .ternary.outlined.button,
