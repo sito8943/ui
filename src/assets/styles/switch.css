@@ -24,13 +24,13 @@
   /* SECONDARY */
 
   .secondary.switcher {
-    background-color: theme(colors.secondary.200);
+    background-color: theme(colors.secondary.400);
   }
 
   /* TERNARY */
 
   .ternary.switcher {
-    background-color: theme(colors.ternary.300);
+    background-color: theme(colors.ternary.400);
   }
 
   .ball {
