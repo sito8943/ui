@@ -14,7 +14,6 @@ import "../assets/styles/input.css";
 import "../assets/styles/loading.css";
 import "../assets/styles/notification.css";
 import "../assets/styles/switch.css";
-import "../assets/styles/totop.css";
 
 // theme
 import * as theme from "../assets/styles/theme";

@@ -4,7 +4,7 @@ import {
   useEffect,
   forwardRef,
   ForwardedRef,
-  HTMLProps,
+  useMemo,
 } from "react";
 
 // fortawesome
@@ -18,11 +18,20 @@ import { scrollTo } from "some-javascript-utils/browser";
 // components
 import IconButton, { IconButtonProps } from "../IconButton/IconButton";
 
+export interface ToTopProps extends IconButtonProps {
+  position:
+    | "top-left"
+    | "top-right"
+    | "bottom-right"
+    | "bottom-left"
+    | undefined;
+}
+
 const ToTop = forwardRef(function (
-  props: HTMLProps<HTMLButtonElement>,
+  props: ToTopProps,
   ref: ForwardedRef<HTMLButtonElement>
 ) {
-  const { className, style } = props;
+  const { className, position, style, ...rest } = props;
   const [visible, setVisible] = useState(false);
 
   const onScroll = useCallback(() => {
@@ -41,10 +50,23 @@ const ToTop = forwardRef(function (
 
   const handleToTop = () => scrollTo(0);
 
+  const validatedPosition = useMemo(() => {
+    switch (position) {
+      case "bottom-left":
+        return "bottom-1 left-1";
+      case "top-left":
+        return "top-1 left-1";
+      case "top-right":
+        return "top-1 right-1";
+      default:
+        return "bottom-1 right-1";
+    }
+  }, [position]);
+
   return (
     <IconButton
+      {...rest}
       onClick={handleToTop}
-      {...(props as IconButtonProps)}
       icon={faArrowUp}
       ref={ref}
       style={{
@@ -52,7 +74,7 @@ const ToTop = forwardRef(function (
         zIndex: visible ? 10 : -1,
         transform: visible ? "scale(1)" : "scale(0)",
       }}
-      className={`to-top ${className}`}
+      className={`fixed ${validatedPosition} ${className}`}
     />
   );
 });
