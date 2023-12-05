@@ -1,7 +1,7 @@
 {
   "name": "@sito/ui",
   "private": false,
-  "version": "0.0.75",
+  "version": "0.0.77",
   "type": "module",
   "files": [
     "dist/"
