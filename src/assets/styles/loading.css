@@ -102,10 +102,4 @@
   .dark .secondary.loading .path {
     stroke: theme(colors.secondary.400);
   }
-
-  /* TERNARY */
-  .ternary.loading .path,
-  .dark .ternary.loading .path {
-    stroke: theme(colors.ternary.400);
-  }
 }

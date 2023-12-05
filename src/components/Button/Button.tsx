@@ -3,7 +3,7 @@ import Tippy from "@tippyjs/react";
 
 export interface ButtonProps extends HTMLProps<HTMLButtonElement> {
   tooltip?: string | undefined;
-  color?: "primary" | "secondary" | "ternary" | "inherit" | undefined;
+  color?: "primary" | "secondary" | "inherit" | undefined;
   type?: "button" | "submit" | "reset" | undefined;
 }
 

@@ -95,27 +95,4 @@
   .secondary.input-control select {
     background-color: theme(colors.secondary.200);
   }
-
-  /* TERNARY */
-  /* LIGHT */
-  .ternary.input-control .sub,
-  .ternary.input-control textarea,
-  .ternary.input-control input,
-  .ternary.input-control select,
-  /* DARK */
-  .dark .ternary.input-control .sub,
-  .dark .ternary.input-control textarea,
-  .dark .ternary.input-control input,
-  .dark .ternary.input-control select {
-    color: theme(colors.light.default);
-  }
-
-  /* SUB */
-
-  .ternary.input-control .sub,
-  .ternary.input-control textarea,
-  .ternary.input-control input,
-  .ternary.input-control select {
-    background-color: theme(colors.ternary.300);
-  }
 }

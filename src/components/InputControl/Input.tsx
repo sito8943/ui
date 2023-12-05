@@ -3,7 +3,7 @@ import { forwardRef, ForwardedRef, HTMLProps, ReactNode, useMemo } from "react";
 export interface InputControlProps extends HTMLProps<HTMLInputElement> {
   leftComponent?: ReactNode | undefined;
   rightComponent?: ReactNode | undefined;
-  color?: "primary" | "secondary" | "ternary" | "inherit" | undefined;
+  color?: "primary" | "secondary" | "inherit" | undefined;
   orientation?: "column" | "row" | undefined;
   label: string | undefined;
   helperText?: string | undefined;

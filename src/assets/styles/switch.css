@@ -27,12 +27,6 @@
     background-color: theme(colors.secondary.400);
   }
 
-  /* TERNARY */
-
-  .ternary.switcher {
-    background-color: theme(colors.ternary.400);
-  }
-
   .ball {
     width: 20px;
     height: 15px;

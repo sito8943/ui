@@ -30,10 +30,3 @@
 .dark .secondary * {
   color: theme(colors.secondary.200);
 }
-
-.ternary,
-.ternary *,
-.dark .ternary,
-.dark .ternary * {
-  color: theme(colors.ternary.300);
-}
