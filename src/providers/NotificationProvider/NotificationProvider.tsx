@@ -1,24 +1,12 @@
-import { createContext, useContext, ReactNode, useReducer } from "react";
+import { createContext, useContext, useReducer } from "react";
 
-export interface NotificationProviderData {
-  notification: NotificationType;
-  setNotification: React.Dispatch<NotificationActionType>;
-}
-
-export interface NotificationProviderProps {
-  children: ReactNode;
-}
-
-export interface NotificationType {
-  visible: boolean;
-  type: "success" | "error" | "info" | "warning" | "hide";
-  message: string;
-}
-
-export interface NotificationActionType {
-  type: "hide" | "success" | "error" | "info" | "warning";
-  message?: "string";
-}
+// types
+import {
+  NotificationActionType,
+  NotificationProviderData,
+  NotificationProviderProps,
+  NotificationType,
+} from "./types";
 
 const NotificationContext = createContext({} as NotificationProviderData);
 

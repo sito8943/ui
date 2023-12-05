@@ -15,21 +15,33 @@ import "../assets/styles/loading.css";
 import "../assets/styles/notification.css";
 import "../assets/styles/switch.css";
 
+// providers
+import { useMode } from "../ModeProvider/ModeProvider";
+
 // theme
-import * as theme from "../assets/styles/theme";
+import * as theme from "../../assets/styles/theme";
 
-import { createContext, useContext, ReactNode } from "react";
+import { createContext, useContext, useMemo } from "react";
 
-export interface StyleProviderProps {
-  children: ReactNode;
-}
+// types
+import { StyleProviderData, StyleProviderProps } from "./types";
 
-const StyleContext = createContext({});
+// default values
+import { defaultTheme } from "./data";
+
+const StyleContext = createContext({} as StyleProviderData);
 
 const StyleProvider = (props: StyleProviderProps) => {
-  const { children } = props;
+  const { mode } = useMode();
+  const { children, theme } = props;
 
-  return <StyleContext.Provider value={{}}>{children}</StyleContext.Provider>;
+  const colors = useMemo(() => {
+    return theme[mode] || defaultTheme[mode] || defaultTheme.dark;
+  }, [mode]);
+
+  return (
+    <StyleContext.Provider value={{ colors }}>{children}</StyleContext.Provider>
+  );
 };
 
 // hooks

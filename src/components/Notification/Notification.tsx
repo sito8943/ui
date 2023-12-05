@@ -4,7 +4,7 @@ import { useRef, useState, useEffect, useMemo, useCallback } from "react";
 import { faClose } from "@fortawesome/free-solid-svg-icons";
 
 // contexts
-import { useNotification } from "../../providers/NotificationProvider";
+import { useNotification } from "../../providers/NotificationProvider/NotificationProvider";
 
 // components
 import IconButton, { IconButtonProps } from "../IconButton/IconButton";

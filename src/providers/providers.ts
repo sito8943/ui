@@ -1,20 +1,19 @@
-import {
-  ModeProviderData,
-  ModeProviderProps,
-  ModeProvider,
-  useMode,
-} from "./ModeProvider";
+import { ModeProvider, useMode } from "./ModeProvider/ModeProvider";
+import { ModeProviderData, ModeProviderProps } from "./ModeProvider/types";
 
+import {
+  NotificationProvider,
+  useNotification,
+} from "./NotificationProvider/NotificationProvider";
 import {
   NotificationProviderData,
   NotificationProviderProps,
   NotificationActionType,
   NotificationType,
-  NotificationProvider,
-  useNotification,
-} from "./NotificationProvider";
+} from "./NotificationProvider/types";
 
-import { StyleProvider, StyleProviderProps, useStyle } from "./StyleProvider";
+import { StyleProvider, useStyle } from "./StyleProvider/StyleProvider";
+import { StyleProviderProps } from "./StyleProvider/types";
 
 export type {
   ModeProviderData,
