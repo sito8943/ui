@@ -7,11 +7,16 @@ import { faClose } from "@fortawesome/free-solid-svg-icons";
 import { useNotification } from "../../providers/NotificationProvider/NotificationProvider";
 
 // components
-import IconButton, { IconButtonProps } from "../IconButton/IconButton";
+import { IconButton } from "components/IconButton";
 
-export interface NotificationProps {
-  closeProps?: IconButtonProps | undefined;
-}
+// providers
+import { useStyle } from "providers/StyleProvider";
+
+// types
+import { NotificationProps } from "./types";
+
+// styles
+import { makeStyles } from "./styles";
 
 export default function Notification(props: NotificationProps) {
   const { closeProps } = props;
@@ -59,19 +64,22 @@ export default function Notification(props: NotificationProps) {
     };
   }, [openR, ref, handleClose]);
 
+  const { colors } = useStyle();
+  const styles = makeStyles(colors, color);
+
   return (
     <div
       ref={ref}
       className={`fixed left-1 bottom-1 z-40 ${open ? "appear" : "disappear"}`}
     >
       {openR ? (
-        <div className={`relative notification rounded-xl ${color}`}>
+        <div className={`relative notification rounded-xl ${styles}`}>
           <IconButton
+            name="close-notification"
             {...closeProps}
             icon={faClose}
             ref={null}
             onClick={handleClose}
-            name="close-notification"
             className={`absolute top-1 right-1 text-light-default ${closeProps?.className}`}
           />
           <p>{notification.message}</p>
