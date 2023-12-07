@@ -9,24 +9,20 @@
   background: theme(colors.light.default);
 }
 
-.light * {
+.light {
   color: theme(colors.dark.default);
 }
 
-.dark * {
+.dark {
   color: theme(colors.light.default);
 }
 
 .primary,
-.primary *,
-.dark .primary,
-.dark .primary * {
+.dark .primary {
   color: theme(colors.primary.400);
 }
 
 .secondary,
-.secondary *,
-.dark .secondary,
-.dark .secondary * {
+.dark .secondary {
   color: theme(colors.secondary.200);
 }
