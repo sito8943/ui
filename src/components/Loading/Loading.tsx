@@ -1,18 +1,23 @@
-import { HTMLProps } from "react";
+// types
+import { LoadingProps } from "./types";
 
-export interface LoadingProps extends HTMLProps<HTMLDivElement> {
-  color?: "primary" | "secondary"  | "basics" | undefined;
-  loaderClass?: "string" | undefined;
-  strokeWidth?: "string" | undefined;
-}
+// providers
+import { useStyle } from "main";
+
+// styles
+import { makeStyles } from "./styles";
 
 const Loading = (props: LoadingProps) => {
   const {
     color = "primary",
+    colorInverted = false,
     loaderClass = "",
     strokeWidth = "4",
     ...rest
   } = props;
+
+  const { colors } = useStyle();
+  const styles = makeStyles(colors, color, colorInverted);
 
   return (
     <div {...rest} className={`loading ${color} ${rest.className}`}>

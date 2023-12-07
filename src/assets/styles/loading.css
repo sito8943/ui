@@ -87,19 +87,4 @@
   .loading {
     @apply flex w-full h-full items-center justify-center;
   }
-  .loading {
-    background-color: theme(colors.light.default);
-  }
-
-  /* PRIMARY */
-  .primary.loading .path,
-  .dark .primary.loading .path {
-    stroke: theme(colors.primary.default);
-  }
-
-  /* SECONDARY */
-  .secondary.loading .path,
-  .dark .secondary.loading .path {
-    stroke: theme(colors.secondary.default);
-  }
 }
