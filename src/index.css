@@ -19,10 +19,10 @@
 
 .primary,
 .dark .primary {
-  color: theme(colors.primary.400);
+  color: theme(colors.primary.default);
 }
 
 .secondary,
 .dark .secondary {
-  color: theme(colors.secondary.200);
+  color: theme(colors.secondary.default);
 }
