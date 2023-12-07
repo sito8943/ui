@@ -1,3 +1,4 @@
+import { Ref, useRef } from "react";
 // @fortawesome
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -6,8 +7,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 
 // components
-import Button, { ButtonProps } from "../Button/Button";
-import { Ref, useRef } from "react";
+import { Button, ButtonProps } from "components/Button";
 
 export interface ErrorProps {
   onRetry?: () => void | undefined;
@@ -46,7 +46,8 @@ export const Error = (props: ErrorProps) => {
         <Button
           name="reload"
           onClick={onRetry}
-          className="primary submit"
+          shape="filled"
+          color="primary"
           aria-label="click to reload"
           {...buttonProps}
           ref={buttonRef as Ref<HTMLButtonElement>}
