@@ -1,8 +1,8 @@
+// providers
+import { useStyle } from "providers/StyleProvider";
+
 // types
 import { LoadingProps } from "./types";
-
-// providers
-import { useStyle } from "main";
 
 // styles
 import { makeStyles } from "./styles";
@@ -20,12 +20,12 @@ const Loading = (props: LoadingProps) => {
   const styles = makeStyles(colors, color, colorInverted);
 
   return (
-    <div {...rest} className={`loading ${color} ${rest.className}`}>
+    <div {...rest} className={`loading ${styles} ${rest.className}`}>
       <div className="loader-container">
         <div className={`loader ${loaderClass}`}>
           <svg className="circular" viewBox="25 25 50 50">
             <circle
-              className={`path ${color}`}
+              className={`path`}
               cx="50"
               cy="50"
               r="20"
