@@ -18,13 +18,13 @@
   /* PRIMARY */
 
   .primary.switcher {
-    background-color: theme(colors.primary.400);
+    background-color: theme(colors.primary.default);
   }
 
   /* SECONDARY */
 
   .secondary.switcher {
-    background-color: theme(colors.secondary.400);
+    background-color: theme(colors.secondary.default);
   }
 
   .ball {
@@ -34,7 +34,7 @@
     border-radius: 20px;
     top: 50%;
     transition: all 500ms ease;
-    background-color: theme(colors.light.alter);
+    background-color: theme(colors.light.extra);
   }
 
   .deactivated {
