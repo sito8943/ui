@@ -1,7 +1,7 @@
 import { HTMLProps } from "react";
 
 export interface LoadingProps extends HTMLProps<HTMLDivElement> {
-  color?: "primary" | "secondary"  | "inherit" | undefined;
+  color?: "primary" | "secondary"  | "basics" | undefined;
   loaderClass?: "string" | undefined;
   strokeWidth?: "string" | undefined;
 }

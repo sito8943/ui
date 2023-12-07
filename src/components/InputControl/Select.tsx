@@ -3,7 +3,7 @@ import { forwardRef, ForwardedRef, HTMLProps, ReactNode } from "react";
 export interface SelectControlProps extends HTMLProps<HTMLSelectElement> {
   leftComponent?: ReactNode | undefined;
   rightComponent?: ReactNode | undefined;
-  color?: "primary" | "secondary" | "inherit" | undefined;
+  color?: "primary" | "secondary" | "basics" | undefined;
   orientation?: "column" | "row" | undefined;
   label: string | undefined;
   helperText?: string | undefined;
@@ -16,7 +16,7 @@ const SelectControl = forwardRef(function (
   const {
     helperText = "",
     orientation = "column",
-    color = "inherit",
+    color = basics,
     leftComponent,
     rightComponent,
     label,

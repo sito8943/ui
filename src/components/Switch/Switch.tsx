@@ -8,8 +8,8 @@ import {
 export interface SwitcherProps
   extends Omit<InputHTMLAttributes<HTMLInputElement>, "value"> {
   value?: boolean | undefined;
-  activeColor?: "primary" | "secondary" | "inherit" | undefined;
-  inactiveColor?: "primary" | "secondary" | "inherit" | undefined;
+  activeColor?: "primary" | "secondary" | "basics" | undefined;
+  inactiveColor?: "primary" | "secondary" | "basics" | undefined;
   label: string | undefined;
 }
 

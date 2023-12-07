@@ -3,7 +3,7 @@ import { forwardRef, ForwardedRef, HTMLProps, ReactNode } from "react";
 export interface TextareaControlProps extends HTMLProps<HTMLTextAreaElement> {
   leftComponent?: ReactNode | undefined;
   rightComponent?: ReactNode | undefined;
-  color?: "primary" | "secondary" | "inherit" | undefined;
+  color?: "primary" | "secondary" | "basics" | undefined;
   orientation?: "column" | "row" | undefined;
   label: string | undefined;
   helperText?: string | undefined;
@@ -16,7 +16,7 @@ const TextareaControl = forwardRef(function (
   const {
     helperText = "",
     orientation = "column",
-    color = "inherit",
+    color = basics,
     label,
     ...rest
   } = props;
