@@ -1,3 +1,4 @@
+import { type } from "os";
 import { ReactNode } from "react";
 
 export interface UiTheme {
@@ -15,6 +16,7 @@ export interface ColorPalette {
 }
 
 export type ColorVariants = "primary" | "secondary" | "basics";
+export type AlertVariants = "error" | "warning" | "success" | "info";
 
 export interface StyleProviderProps {
   children: ReactNode;

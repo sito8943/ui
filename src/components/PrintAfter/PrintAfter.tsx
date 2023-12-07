@@ -1,10 +1,5 @@
 import { memo, useEffect, useState } from "react";
-
-export interface PrintAfterProps {
-  children: React.ReactNode;
-  delay?: number | undefined;
-  animation?: "appear" | "aGrow" | "aShrink" | "string" | undefined;
-}
+import { PrintAfterProps } from "./types";
 
 function _PrintAfter(props: PrintAfterProps) {
   const { children, delay = 100, animation = "appear" } = props;

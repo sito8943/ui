@@ -1,19 +1,27 @@
-import { ModeProvider, useMode } from "./ModeProvider/ModeProvider";
-import { ModeProviderData, ModeProviderProps } from "./ModeProvider/types";
+import {
+  ModeProvider,
+  useMode,
+  ModeProviderData,
+  ModeProviderProps,
+} from "./ModeProvider";
 
 import {
   NotificationProvider,
   useNotification,
-} from "./NotificationProvider/NotificationProvider";
-import {
   NotificationProviderData,
   NotificationProviderProps,
   NotificationActionType,
   NotificationType,
-} from "./NotificationProvider/types";
-
-import { StyleProvider, useStyle } from "./StyleProvider/StyleProvider";
-import { StyleProviderProps } from "./StyleProvider/types";
+} from "./NotificationProvider";
+import {
+  StyleProvider,
+  useStyle,
+  StyleProviderData,
+  StyleProviderProps,
+  UiTheme,
+  ColorPalette,
+  ColorVariants,
+} from "./StyleProvider";
 
 export type {
   ModeProviderData,
@@ -22,7 +30,11 @@ export type {
   NotificationProviderProps,
   NotificationActionType,
   NotificationType,
+  StyleProviderData,
   StyleProviderProps,
+  UiTheme,
+  ColorPalette,
+  ColorVariants,
 };
 export {
   ModeProvider,

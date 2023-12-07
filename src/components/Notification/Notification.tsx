@@ -3,14 +3,11 @@ import { useRef, useState, useEffect, useMemo, useCallback } from "react";
 // @fortawesome
 import { faClose } from "@fortawesome/free-solid-svg-icons";
 
-// contexts
-import { useNotification } from "../../providers/NotificationProvider/NotificationProvider";
+// providers
+import { useStyle, useNotification } from "providers/";
 
 // components
 import { IconButton } from "components/IconButton";
-
-// providers
-import { useStyle } from "providers/StyleProvider";
 
 // types
 import { NotificationProps } from "./types";
