@@ -15,18 +15,6 @@
     @apply transition duration-300 ease-in-out;
   }
 
-  /* PRIMARY */
-
-  .primary.switcher {
-    background-color: theme(colors.primary.default);
-  }
-
-  /* SECONDARY */
-
-  .secondary.switcher {
-    background-color: theme(colors.secondary.default);
-  }
-
   .ball {
     width: 20px;
     height: 15px;
@@ -34,7 +22,6 @@
     border-radius: 20px;
     top: 50%;
     transition: all 500ms ease;
-    background-color: theme(colors.light.extra);
   }
 
   .deactivated {
