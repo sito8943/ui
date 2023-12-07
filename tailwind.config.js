@@ -22,31 +22,17 @@ export default {
       // => @media (max-width: 383px) { ... }
     },
     colors: {
-      dark: { default: "#101010", alter: "#303030", extra: "#4e4e4e" },
-      light: { default: "#f7f7f7", alter: "#ededed", extra: "#e1e1e1" },
+      dark: { dark: "#101010", default: "#303030", light: "#4e4e4e" },
+      light: { dark: "#e1e1e1", default: "#ededed", light: "#f7f7f7" },
       primary: {
-        50: "#FFEBEE",
-        100: "#FFCDD3",
-        200: "#F19A9B",
-        300: "#E77274",
-        400: "#F25151",
-        500: "#F74037",
-        600: "#E83636", // <---
-        700: "#D62C30",
-        800: "#C92429",
-        900: "#BA161D",
+        light: "#F74037",
+        default: "#E83636", // <---
+        dark: "#D62C30",
       },
       secondary: {
-        50: "#E3F3FF",
-        100: "#BBE0FF",
-        200: "#8DCEFF",
-        300: "#59BAFF",
-        400: "#29AAFF",
-        500: "#009BFF",
-        600: "#008CFF",
-        700: "#0079F2", // <----
-        800: "#0C67E0",
-        900: "#1646C1",
+        light: "#008CFF",
+        default: "#0079F2", // <----
+        dark: "#0C67E0",
       },
       error: "#CC0000",
       warning: "#FF8800",
