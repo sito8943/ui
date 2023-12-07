@@ -1,8 +1,7 @@
-import { HTMLProps, useState } from "react";
+import { useState } from "react";
 
-export interface ImageProps extends HTMLProps<HTMLImageElement> {
-  container: HTMLProps<HTMLDivElement>;
-}
+// types
+import { ImageProps } from "./types";
 
 function Image(props: ImageProps) {
   const { container = {}, ...rest } = props;

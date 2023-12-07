@@ -1,6 +1,6 @@
 // actions
 import { Button, ButtonProps } from "components/Button/";
-import IconButton, { IconButtonProps } from "./IconButton/IconButton";
+import { IconButton, IconButtonProps } from "./IconButton/";
 // form
 import InputControl, { InputControlProps } from "./InputControl/Input";
 import SelectControl, { SelectControlProps } from "./InputControl/Select";
@@ -8,7 +8,7 @@ import TextareaControl, { TextareaControlProps } from "./InputControl/Textarea";
 import Switcher, { SwitcherProps } from "./Switch/Switch";
 
 // display
-import Image, { ImageProps } from "./Image/Image";
+import { Image, ImageProps } from "./Image/";
 import PrintAfter, { PrintAfterProps } from "./PrintAfter/PrintAfter";
 
 // complex components
