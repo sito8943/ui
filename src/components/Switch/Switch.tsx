@@ -1,17 +1,13 @@
-import {
-  ForwardedRef,
-  InputHTMLAttributes,
-  MouseEventHandler,
-  forwardRef,
-} from "react";
+import { ForwardedRef, MouseEventHandler, forwardRef } from "react";
 
-export interface SwitcherProps
-  extends Omit<InputHTMLAttributes<HTMLInputElement>, "value"> {
-  value?: boolean | undefined;
-  activeColor?: "primary" | "secondary" | "basics" | undefined;
-  inactiveColor?: "primary" | "secondary" | "basics" | undefined;
-  label: string | undefined;
-}
+// providers
+import { useStyle } from "providers/StyleProvider";
+
+// types
+import { SwitcherProps } from "./types";
+
+// styles
+import { makeStyles } from "./styles";
 
 const Switcher = forwardRef(function (
   props: SwitcherProps,
@@ -26,6 +22,10 @@ const Switcher = forwardRef(function (
     id,
     className,
   } = props;
+
+  const { colors } = useStyle();
+  const styles = makeStyles(colors, activeColor, inactiveColor);
+
   return (
     <div
       className={`flex gap-3 items-center justify-start ${className}`}
@@ -39,7 +39,7 @@ const Switcher = forwardRef(function (
         className="check-input"
         type="checkbox"
       />
-      <div className={`switcher ${value ? activeColor : inactiveColor}`}>
+      <div className={`switcher ${value ? styles.active : styles.inactive}`}>
         <div className={`ball ${value ? "activated" : "deactivated"}`} />
       </div>
       <label className="">{label}</label>
