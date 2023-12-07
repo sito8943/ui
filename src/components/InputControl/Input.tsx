@@ -1,25 +1,7 @@
-import { forwardRef, ForwardedRef, HTMLProps, ReactNode, useMemo } from "react";
+import { forwardRef, ForwardedRef, useMemo } from "react";
 
-export interface InputControlProps extends HTMLProps<HTMLInputElement> {
-  leftComponent?: ReactNode | undefined;
-  rightComponent?: ReactNode | undefined;
-  color?: "primary" | "secondary" | "basics" | undefined;
-  orientation?: "column" | "row" | undefined;
-  label: string | undefined;
-  helperText?: string | undefined;
-  type?:
-    | "date"
-    | "datetime-local"
-    | "email"
-    | "number"
-    | "password"
-    | "search"
-    | "tel"
-    | "time"
-    | "url"
-    | "text"
-    | undefined;
-}
+// types
+import { InputControlProps } from "./types";
 
 const InputControl = forwardRef(function (
   props: InputControlProps,
@@ -28,7 +10,7 @@ const InputControl = forwardRef(function (
   const {
     helperText = "",
     orientation = "column",
-    color = basics,
+    color = "basics",
     leftComponent,
     rightComponent,
     label,

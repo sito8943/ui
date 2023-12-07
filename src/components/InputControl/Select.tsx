@@ -1,13 +1,7 @@
-import { forwardRef, ForwardedRef, HTMLProps, ReactNode } from "react";
+import { forwardRef, ForwardedRef } from "react";
 
-export interface SelectControlProps extends HTMLProps<HTMLSelectElement> {
-  leftComponent?: ReactNode | undefined;
-  rightComponent?: ReactNode | undefined;
-  color?: "primary" | "secondary" | "basics" | undefined;
-  orientation?: "column" | "row" | undefined;
-  label: string | undefined;
-  helperText?: string | undefined;
-}
+// types
+import { SelectControlProps } from "./types";
 
 const SelectControl = forwardRef(function (
   props: SelectControlProps,
@@ -16,7 +10,7 @@ const SelectControl = forwardRef(function (
   const {
     helperText = "",
     orientation = "column",
-    color = basics,
+    color = "basics",
     leftComponent,
     rightComponent,
     label,

@@ -1,13 +1,7 @@
-import { forwardRef, ForwardedRef, HTMLProps, ReactNode } from "react";
+import { forwardRef, ForwardedRef } from "react";
 
-export interface TextareaControlProps extends HTMLProps<HTMLTextAreaElement> {
-  leftComponent?: ReactNode | undefined;
-  rightComponent?: ReactNode | undefined;
-  color?: "primary" | "secondary" | "basics" | undefined;
-  orientation?: "column" | "row" | undefined;
-  label: string | undefined;
-  helperText?: string | undefined;
-}
+// types
+import { TextareaControlProps } from "./types";
 
 const TextareaControl = forwardRef(function (
   props: TextareaControlProps,
@@ -16,7 +10,7 @@ const TextareaControl = forwardRef(function (
   const {
     helperText = "",
     orientation = "column",
-    color = basics,
+    color = "basics",
     label,
     ...rest
   } = props;
