@@ -1,5 +1,5 @@
 // actions
-import Button, { ButtonProps } from "./Button/Button";
+import { Button, ButtonProps } from "components/Button/";
 import IconButton, { IconButtonProps } from "./IconButton/IconButton";
 // form
 import InputControl, { InputControlProps } from "./InputControl/Input";

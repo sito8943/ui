@@ -5,19 +5,20 @@ export interface UiTheme {
 }
 
 export interface ColorPalette {
-  background?: { default: string; alter: string; extra: string };
-  text?: { default: string; alter: string; extra: string };
-  primary?: { default: string; dark: string; light: string };
-  secondary?: { default: string; dark: string; light: string };
-  error?: string;
-  warning?: string;
-  success?: string;
-  info?: string;
+  basics: { text: string; default: string; dark: string; light: string };
+  primary: { text: string; default: string; dark: string; light: string };
+  secondary: { text: string; default: string; dark: string; light: string };
+  error: string;
+  warning: string;
+  success: string;
+  info: string;
 }
+
+export type ColorVariants = "primary" | "secondary" | "basics";
 
 export interface StyleProviderProps {
   children: ReactNode;
-  theme: UiTheme;
+  theme?: UiTheme;
 }
 
 export interface StyleProviderData {

@@ -3,7 +3,7 @@ import { forwardRef, ForwardedRef, HTMLProps, ReactNode, useMemo } from "react";
 export interface InputControlProps extends HTMLProps<HTMLInputElement> {
   leftComponent?: ReactNode | undefined;
   rightComponent?: ReactNode | undefined;
-  color?: "primary" | "secondary" | "inherit" | undefined;
+  color?: "primary" | "secondary" | "basics" | undefined;
   orientation?: "column" | "row" | undefined;
   label: string | undefined;
   helperText?: string | undefined;
@@ -28,7 +28,7 @@ const InputControl = forwardRef(function (
   const {
     helperText = "",
     orientation = "column",
-    color = "inherit",
+    color = basics,
     leftComponent,
     rightComponent,
     label,

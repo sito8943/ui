@@ -2,14 +2,12 @@ import { forwardRef, ForwardedRef } from "react";
 
 // font awesome
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { IconProp } from "@fortawesome/fontawesome-svg-core";
 
 // components
-import Button, { ButtonProps } from "../Button/Button";
+import { Button } from "components/Button/";
 
-export interface IconButtonProps extends ButtonProps {
-  icon: IconProp;
-}
+// types
+import { IconButtonProps } from "./types";
 
 const IconButton = forwardRef(function (
   props: IconButtonProps,

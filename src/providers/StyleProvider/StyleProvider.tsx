@@ -1,25 +1,25 @@
-import "../index.css";
+import "../../index.css";
 
 // animations
-import "../assets/animations/appear.css";
-import "../assets/animations/grow.css";
-import "../assets/animations/shake.css";
+import "../../assets/animations/appear.css";
+import "../../assets/animations/grow.css";
+import "../../assets/animations/shake.css";
 
 // components
-import "../assets/styles/button.css";
-import "../assets/styles/icon-button.css";
-import "../assets/styles/image.css";
-import "../assets/styles/input.css";
+import "../../assets/styles/button.css";
+import "../../assets/styles/icon-button.css";
+import "../../assets/styles/image.css";
+import "../../assets/styles/input.css";
 // complex components
-import "../assets/styles/loading.css";
-import "../assets/styles/notification.css";
-import "../assets/styles/switch.css";
+import "../../assets/styles/loading.css";
+import "../../assets/styles/notification.css";
+import "../../assets/styles/switch.css";
 
 // providers
-import { useMode } from "../ModeProvider/ModeProvider";
+import { useMode } from "providers/ModeProvider/ModeProvider";
 
 // theme
-import * as theme from "../../assets/styles/theme";
+// import * as theme from "../../assets/styles/theme";
 
 import { createContext, useContext, useMemo } from "react";
 
@@ -36,7 +36,8 @@ const StyleProvider = (props: StyleProviderProps) => {
   const { children, theme } = props;
 
   const colors = useMemo(() => {
-    return theme[mode] || defaultTheme[mode] || defaultTheme.dark;
+    if (theme) return theme[mode] || defaultTheme[mode] || defaultTheme.dark;
+    else return defaultTheme[mode] || defaultTheme.light;
   }, [mode]);
 
   return (
@@ -46,10 +47,10 @@ const StyleProvider = (props: StyleProviderProps) => {
 
 // hooks
 // eslint-disable-next-line react-refresh/only-export-components
-const useStyle = (): {} => {
+const useStyle = (): StyleProviderData => {
   const context = useContext(StyleContext);
   if (!context) throw new Error("modeContext must be used within a Provider");
   return context;
 };
 
-export { StyleProvider, useStyle, theme };
+export { StyleProvider, useStyle };

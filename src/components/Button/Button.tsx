@@ -1,17 +1,29 @@
-import { forwardRef, ForwardedRef, HTMLProps } from "react";
+import { forwardRef, ForwardedRef } from "react";
 import Tippy from "@tippyjs/react";
 
-export interface ButtonProps extends HTMLProps<HTMLButtonElement> {
-  tooltip?: string | undefined;
-  color?: "primary" | "secondary" | "inherit" | undefined;
-  type?: "button" | "submit" | "reset" | undefined;
-}
+// providers
+import { useStyle } from "providers/StyleProvider/";
+
+// types
+import { ButtonProps } from "./types";
+
+// styles
+import { makeStyles } from "./styles";
 
 const Button = forwardRef(function (
   props: ButtonProps,
   ref?: ForwardedRef<HTMLButtonElement>
 ) {
-  const { tooltip, color = "primary", type = "button", ...rest } = props;
+  const {
+    tooltip,
+    color = "primary",
+    type = "button",
+    shape = "text",
+    ...rest
+  } = props;
+
+  const { colors } = useStyle();
+  const styles = makeStyles(colors, color, shape);
 
   if (!tooltip || !tooltip.length)
     return (
@@ -19,7 +31,7 @@ const Button = forwardRef(function (
         type={type}
         ref={ref}
         {...rest}
-        className={`button ${color} ${rest.className}`}
+        className={`button ${shape} ${styles} ${rest.className}`}
       >
         {rest.children}
       </button>
@@ -31,7 +43,7 @@ const Button = forwardRef(function (
         type={type}
         ref={ref}
         {...rest}
-        className={`button ${color} ${rest.className}`}
+        className={`button ${shape} ${styles} ${rest.className}`}
       >
         {rest.children}
       </button>
