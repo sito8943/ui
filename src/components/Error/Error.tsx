@@ -1,23 +1,13 @@
 import { Ref, useRef } from "react";
 // @fortawesome
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  IconDefinition,
-  faCircleExclamation,
-} from "@fortawesome/free-solid-svg-icons";
+import { faCircleExclamation } from "@fortawesome/free-solid-svg-icons";
 
 // components
-import { Button, ButtonProps } from "components/Button";
+import { Button } from "components/Button";
 
-export interface ErrorProps {
-  onRetry?: () => void | undefined;
-  icon?: IconDefinition | undefined;
-  title?: string | undefined;
-  text: string;
-  button?: string | undefined;
-  buttonProps?: ButtonProps;
-  className?: string | undefined;
-}
+// types
+import { ErrorProps } from "./types";
 
 export const Error = (props: ErrorProps) => {
   const buttonRef = useRef<HTMLButtonElement>(null);

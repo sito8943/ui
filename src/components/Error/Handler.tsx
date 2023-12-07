@@ -1,20 +1,12 @@
-import { ReactNode } from "react";
 import { ErrorBoundary as ReactErrorBoundary } from "react-error-boundary";
 
 // components
 import Error from "./Error";
 
-export interface ErrorFallbackProps {
-  error: Error;
-  resetErrorBoundary?: () => void | undefined;
-}
+// types
+import { ErrorFallbackProps, HandlerProps } from "./types";
 
-export interface HandlerProps {
-  children: ReactNode;
-  onRetry?: () => void | undefined;
-}
-
-const ErrorFallback = (props: ErrorFallbackProps) => {
+export const ErrorFallback = (props: ErrorFallbackProps) => {
   const { error, resetErrorBoundary } = props;
   return <Error onRetry={resetErrorBoundary} text={error.message} />;
 };
