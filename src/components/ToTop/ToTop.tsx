@@ -16,16 +16,10 @@ import { faArrowUp } from "@fortawesome/free-solid-svg-icons";
 import { scrollTo } from "some-javascript-utils/browser";
 
 // components
-import IconButton, { IconButtonProps } from "../IconButton/IconButton";
+import { IconButton } from "components/IconButton/";
 
-export interface ToTopProps extends IconButtonProps {
-  position:
-    | "top-left"
-    | "top-right"
-    | "bottom-right"
-    | "bottom-left"
-    | undefined;
-}
+// types
+import { ToTopProps } from "./types";
 
 const ToTop = forwardRef(function (
   props: ToTopProps,
