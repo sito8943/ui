@@ -16,14 +16,14 @@ export const makeStyles = (
   switch (shape) {
     case "filled":
       preStyles.color = colors[color].text;
-      preStyles.backgroundColor = colors[color].dark;
+      preStyles.backgroundColor = colors[color].default;
       preStyles["&:hover"] = {
         backgroundColor: colors[color].light,
       };
       break;
     case "outlined":
       preStyles.color = colors.basics.text;
-      preStyles.borderColor = colors[color].dark;
+      preStyles.borderColor = colors[color].default;
       preStyles["&:hover"] = {
         color: colors[color].text,
         borderColor: colors[color].light,
