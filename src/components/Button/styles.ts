@@ -22,7 +22,7 @@ export const makeStyles = (
       };
       break;
     case "outlined":
-      preStyles.color = colors.basics.text;
+      preStyles.color = colors[color].default;
       preStyles.borderColor = colors[color].default;
       preStyles["&:hover"] = {
         color: colors[color].text,
@@ -31,7 +31,7 @@ export const makeStyles = (
       };
       break;
     default: // text
-      preStyles.color = colors.basics.text;
+      preStyles.color = colors[color].default;
       preStyles["&:hover"] = {
         color: colors[color].light,
         backgroundColor: `${colors[color].light}2f`,
