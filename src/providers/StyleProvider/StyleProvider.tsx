@@ -1,5 +1,5 @@
 // @emotion/css
-import { injectGlobal } from "@emotion/css";
+import { CSSInterpolation, injectGlobal } from "@emotion/css";
 
 // css
 import "../../index.css";
@@ -45,13 +45,24 @@ const StyleProvider = (props: StyleProviderProps) => {
   }, [mode]);
 
   useEffect(() => {
-    injectGlobal({
-      body: {
-        background: colors.basics.dark,
-        color: colors.basics.text,
-      },
-    });
-  }, [colors]);
+    const preStyles: CSSInterpolation = {};
+    if (theme)
+      Object.keys(theme).forEach((key) => {
+        preStyles[`.${key} body`] = {
+          backgroundColor: theme[key].basics.dark,
+          color: theme[key].basics.text,
+        };
+      });
+    else
+      Object.keys(defaultTheme).forEach((key) => {
+        preStyles[`.${key} body`] = {
+          backgroundColor: defaultTheme[key].basics.dark,
+          color: defaultTheme[key].basics.text,
+        };
+      });
+
+    injectGlobal({ ...preStyles });
+  }, []);
 
   return (
     <StyleContext.Provider value={{ colors }}>{children}</StyleContext.Provider>
