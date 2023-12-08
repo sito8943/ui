@@ -25,7 +25,7 @@ const Loading = (props: LoadingProps) => {
         <div className={`loader ${loaderClass}`}>
           <svg className="circular" viewBox="25 25 50 50">
             <circle
-              className={`path ${styles.stroke}`}
+              className={`path`}
               cx="50"
               cy="50"
               r="20"

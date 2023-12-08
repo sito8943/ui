@@ -43,5 +43,5 @@ export const makeStyles = (
     preStyles["& .loading"] = preStyles["& .loading .path"];
     preStyles["& .loading .path"] = bridge;
   }
-  return css({ ...preStyles });
+  return { root: css({ ...preStyles }) };
 };
