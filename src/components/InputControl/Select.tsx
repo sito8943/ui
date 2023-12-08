@@ -39,7 +39,7 @@ const SelectControl = forwardRef(function (
             ref={ref as ForwardedRef<HTMLSelectElement>}
             className={`${leftComponent ? "!pl-0" : ""} ${
               rightComponent ? "!pr-0" : ""
-            } ${rest.className ?? ""}`}
+            } ${styles.input} ${rest.className ?? ""}`}
           >
             {rest.children}
           </select>
