@@ -1,28 +1,3 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-.dark body {
-  background: theme(colors.dark.default);
-}
-.light body {
-  background: theme(colors.light.default);
-}
-
-.light {
-  color: theme(colors.dark.default);
-}
-
-.dark {
-  color: theme(colors.light.default);
-}
-
-.primary,
-.dark .primary {
-  color: theme(colors.primary.default);
-}
-
-.secondary,
-.dark .secondary {
-  color: theme(colors.secondary.default);
-}

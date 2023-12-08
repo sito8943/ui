@@ -1,3 +1,7 @@
+// @emotion/css
+import { injectGlobal } from "@emotion/css";
+
+// css
 import "../../index.css";
 
 // animations
@@ -19,9 +23,9 @@ import "../../assets/styles/switch.css";
 import { useMode } from "providers/ModeProvider/ModeProvider";
 
 // theme
-// import * as theme from "../../assets/styles/theme";
+import * as theme from "../../assets/styles/theme";
 
-import { createContext, useContext, useMemo } from "react";
+import { createContext, useContext, useEffect, useMemo } from "react";
 
 // types
 import { StyleProviderData, StyleProviderProps } from "./types";
@@ -40,6 +44,13 @@ const StyleProvider = (props: StyleProviderProps) => {
     else return defaultTheme[mode] || defaultTheme.light;
   }, [mode]);
 
+  useEffect(() => {
+    injectGlobal({
+      background: colors.basics.dark,
+      color: colors.basics.text,
+    });
+  }, [colors]);
+
   return (
     <StyleContext.Provider value={{ colors }}>{children}</StyleContext.Provider>
   );
@@ -53,4 +64,4 @@ const useStyle = (): StyleProviderData => {
   return context;
 };
 
-export { StyleProvider, useStyle };
+export { StyleProvider, useStyle, theme };
