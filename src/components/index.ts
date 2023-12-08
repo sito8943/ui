@@ -10,7 +10,7 @@ import {
   SelectControlProps,
   TextareaControlProps,
 } from "./InputControl";
-import Switcher, { SwitcherProps } from "./Switch/Switch";
+import { Switcher, SwitcherProps } from "./Switch/";
 
 // display
 import { Image, ImageProps } from "./Image";
