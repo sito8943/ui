@@ -31,7 +31,7 @@ const Button = forwardRef(function (
         type={type}
         ref={ref}
         {...rest}
-        className={`button ${shape} ${styles} ${rest.className}`}
+        className={`button ${shape} ${styles.root} ${rest.className}`}
       >
         {rest.children}
       </button>
@@ -43,7 +43,7 @@ const Button = forwardRef(function (
         type={type}
         ref={ref}
         {...rest}
-        className={`button ${shape} ${styles} ${rest.className}`}
+        className={`button ${shape} ${styles.root} ${rest.className}`}
       >
         {rest.children}
       </button>

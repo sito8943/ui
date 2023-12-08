@@ -38,5 +38,5 @@ export const makeStyles = (
       };
       break;
   }
-  return css({ ...preStyles });
+  return { root: css({ ...preStyles }) };
 };
