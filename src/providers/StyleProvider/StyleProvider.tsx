@@ -46,8 +46,10 @@ const StyleProvider = (props: StyleProviderProps) => {
 
   useEffect(() => {
     injectGlobal({
-      background: colors.basics.dark,
-      color: colors.basics.text,
+      body: {
+        background: colors.basics.dark,
+        color: colors.basics.text,
+      },
     });
   }, [colors]);
 
