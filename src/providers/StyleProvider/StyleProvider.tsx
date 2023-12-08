@@ -22,9 +22,6 @@ import "../../assets/styles/switch.css";
 // providers
 import { useMode } from "providers/ModeProvider/ModeProvider";
 
-// theme
-import * as theme from "../../assets/styles/theme";
-
 import { createContext, useContext, useEffect, useMemo } from "react";
 
 // types
@@ -52,6 +49,9 @@ const StyleProvider = (props: StyleProviderProps) => {
           backgroundColor: theme[key].basics.dark,
           color: theme[key].basics.text,
         };
+        Object.keys(theme[key]).forEach((colorKey: string) => {
+          preStyles[`.${colorKey}`] = { color: theme[key][colorKey].default };
+        });
       });
     else
       Object.keys(defaultTheme).forEach((key) => {
@@ -77,4 +77,4 @@ const useStyle = (): StyleProviderData => {
   return context;
 };
 
-export { StyleProvider, useStyle, theme };
+export { StyleProvider, useStyle };
