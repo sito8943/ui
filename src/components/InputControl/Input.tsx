@@ -1,7 +1,13 @@
 import { forwardRef, ForwardedRef, useMemo } from "react";
 
+// providers
+import { useStyle } from "providers/StyleProvider";
+
 // types
 import { InputControlProps } from "./types";
+
+// styles
+import { makeStyles } from "./styles";
 
 const InputControl = forwardRef(function (
   props: InputControlProps,
@@ -36,11 +42,14 @@ const InputControl = forwardRef(function (
     }
   }, [type]);
 
+  const { colors } = useStyle();
+  const styles = makeStyles(colors, color);
+
   return (
-    <div className={`input-control ${orientation} ${color}`}>
+    <div className={`input-control ${orientation}`}>
       <label htmlFor={props.id}>{label}</label>
       {leftComponent || rightComponent ? (
-        <div className="sub">
+        <div className={`sub ${styles.input}`}>
           {leftComponent && leftComponent !== null ? (
             <div className="">{leftComponent}</div>
           ) : null}
@@ -60,6 +69,7 @@ const InputControl = forwardRef(function (
         <input
           {...rest}
           type={type}
+          className={`${styles.input} ${rest.className ?? ""}`}
           ref={ref as ForwardedRef<HTMLInputElement>}
         />
       )}

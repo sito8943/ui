@@ -1,7 +1,13 @@
 import { forwardRef, ForwardedRef } from "react";
 
+// providers
+import { useStyle } from "providers/StyleProvider";
+
 // types
 import { SelectControlProps } from "./types";
+
+// styles
+import { makeStyles } from "./styles";
 
 const SelectControl = forwardRef(function (
   props: SelectControlProps,
@@ -17,11 +23,14 @@ const SelectControl = forwardRef(function (
     ...rest
   } = props;
 
+  const { colors } = useStyle();
+  const styles = makeStyles(colors, color);
+
   return (
     <div className={`input-control ${orientation} ${color}`}>
       <label htmlFor={props.id}>{label}</label>
       {leftComponent || rightComponent ? (
-        <div className="sub">
+        <div className={`sub ${styles.input}`}>
           {leftComponent && leftComponent !== null ? (
             <div>{leftComponent}</div>
           ) : null}
@@ -39,7 +48,11 @@ const SelectControl = forwardRef(function (
           ) : null}
         </div>
       ) : (
-        <select {...rest} ref={ref as ForwardedRef<HTMLSelectElement>}>
+        <select
+          {...rest}
+          className={`${styles.input} ${rest.className ?? ""}`}
+          ref={ref as ForwardedRef<HTMLSelectElement>}
+        >
           {rest.children}
         </select>
       )}
