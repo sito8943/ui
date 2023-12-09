@@ -79,6 +79,7 @@ const StyleProvider = (props: StyleProviderProps) => {
         ] = preStyles[
           `${key === "light" ? "" : `.${key}`} button.filled.${colorKey}:hover`
         ] = {
+          color: renderedTheme[key][parsedColorKey].text,
           backgroundColor: renderedTheme[key][parsedColorKey].light,
         };
         // outlined
