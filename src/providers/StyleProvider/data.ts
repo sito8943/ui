@@ -19,10 +19,30 @@ export const defaultDark: ColorPalette = {
     default: "#0079F2", // 700
     dark: "#0C67E0", // 800
   },
-  error: "#CC0000",
-  warning: "#FF8800",
-  success: "#007733",
-  info: "#0099CC",
+  error: {
+    text: "#f7f7f7",
+    light: "#d63333",
+    default: "#CC0000",
+    dark: "#8e0000",
+  },
+  warning: {
+    text: "#101010",
+    light: "#e2bf33",
+    default: "#DBAF00",
+    dark: "#997a00",
+  },
+  success: {
+    text: "#f7f7f7",
+    light: "#559b33",
+    default: "#007733",
+    dark: "#1e5b00",
+  },
+  info: {
+    text: "#f7f7f7",
+    light: "#3397b9",
+    default: "#007EA8",
+    dark: "#005875",
+  },
 };
 
 export const defaultLight: ColorPalette = {
@@ -44,10 +64,30 @@ export const defaultLight: ColorPalette = {
     default: "#0079F2", // 700
     dark: "#0C67E0", // 800
   },
-  error: "#CC0000",
-  warning: "#FF8800",
-  success: "#007733",
-  info: "#0099CC",
+  error: {
+    text: "#f7f7f7",
+    light: "#d63333",
+    default: "#CC0000",
+    dark: "#8e0000",
+  },
+  warning: {
+    text: "#101010",
+    light: "#e2bf33",
+    default: "#DBAF00",
+    dark: "#997a00",
+  },
+  success: {
+    text: "#f7f7f7",
+    light: "#559b33",
+    default: "#007733",
+    dark: "#1e5b00",
+  },
+  info: {
+    text: "#f7f7f7",
+    light: "#3397b9",
+    default: "#007EA8",
+    dark: "#005875",
+  },
 };
 
 export const defaultTheme: UiTheme = {
