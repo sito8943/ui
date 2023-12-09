@@ -25,7 +25,11 @@ import { useMode } from "providers/ModeProvider/ModeProvider";
 import { createContext, useContext, useEffect, useMemo } from "react";
 
 // types
-import { StyleProviderData, StyleProviderProps } from "./types";
+import {
+  ColorVariants,
+  StyleProviderData,
+  StyleProviderProps,
+} from "./types";
 
 // default values
 import { defaultTheme } from "./data";
@@ -45,12 +49,17 @@ const StyleProvider = (props: StyleProviderProps) => {
     const preStyles: CSSInterpolation = {};
     if (theme)
       Object.keys(theme).forEach((key) => {
+        // basic background and text
         preStyles[`.${key} body`] = {
           backgroundColor: theme[key].basics.dark,
           color: theme[key].basics.text,
         };
+        // colors classes
         Object.keys(theme[key]).forEach((colorKey: string) => {
-          preStyles[`.${colorKey}`] = { color: theme[key][colorKey].default };
+          const parsedColorKey: ColorVariants = colorKey as ColorVariants;
+          preStyles[`.${colorKey}`] = {
+            color: theme[key][parsedColorKey].default,
+          };
         });
       });
     else

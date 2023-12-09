@@ -1,4 +1,3 @@
-import { type } from "os";
 import { ReactNode } from "react";
 
 export interface UiTheme {
@@ -6,17 +5,30 @@ export interface UiTheme {
 }
 
 export interface ColorPalette {
-  basics: { text: string; default: string; dark: string; light: string };
-  primary: { text: string; default: string; dark: string; light: string };
-  secondary: { text: string; default: string; dark: string; light: string };
-  error: string;
-  warning: string;
-  success: string;
-  info: string;
+  primary: ColorType;
+  secondary: ColorType;
+  basics: ColorType;
+  error: ColorType;
+  warning: ColorType;
+  success: ColorType;
+  info: ColorType;
 }
 
-export type ColorVariants = "primary" | "secondary" | "basics";
-export type AlertVariants = "error" | "warning" | "success" | "info";
+export type ColorType = {
+  text: string;
+  light: string;
+  default: string;
+  dark: string;
+};
+
+export type ColorVariants =
+  | "primary"
+  | "secondary"
+  | "basics"
+  | "error"
+  | "warning"
+  | "success"
+  | "info";
 
 export interface StyleProviderProps {
   children: ReactNode;
