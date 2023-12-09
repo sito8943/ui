@@ -2,16 +2,16 @@
 import { CSSInterpolation, css } from "@emotion/css";
 
 // styles
-import { AlertVariants, ColorPalette } from "providers/StyleProvider/types";
+import { ColorPalette, ColorVariants } from "providers/StyleProvider/types";
 
 /**
  *
  * @param colors
  * @param color
  */
-export const makeStyles = (colors: ColorPalette, color: AlertVariants) => {
+export const makeStyles = (colors: ColorPalette, color: ColorVariants) => {
   const preStyles: CSSInterpolation = {
-    backgroundColor: colors[color],
+    backgroundColor: colors[color].default,
   };
   return css({ ...preStyles });
 };
