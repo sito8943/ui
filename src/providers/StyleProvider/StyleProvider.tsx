@@ -104,7 +104,6 @@ const StyleProvider = (props: StyleProviderProps) => {
         };
       });
     });
-    console.log(preStyles);
     injectGlobal({ ...preStyles });
   }, []);
 
