@@ -12,13 +12,13 @@ export const makeStyles = (
   const preActiveStyles: CSSInterpolation = {
     backgroundColor: colors[activeColor].default,
     "& .ball": {
-      color: colors[activeColor].text,
+      backgroundColor: colors[activeColor].text,
     },
   };
   const preInactiveStyles: CSSInterpolation = {
     backgroundColor: colors[inactiveColor].default,
     "& .ball": {
-      color: colors[activeColor].text,
+      backgroundColor: colors[inactiveColor].text,
     },
   };
   return {
