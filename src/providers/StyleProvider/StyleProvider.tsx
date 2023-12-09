@@ -25,11 +25,7 @@ import { useMode } from "providers/ModeProvider/ModeProvider";
 import { createContext, useContext, useEffect, useMemo } from "react";
 
 // types
-import {
-  ColorVariants,
-  StyleProviderData,
-  StyleProviderProps,
-} from "./types";
+import { ColorVariants, StyleProviderData, StyleProviderProps } from "./types";
 
 // default values
 import { defaultTheme } from "./data";
@@ -47,29 +43,67 @@ const StyleProvider = (props: StyleProviderProps) => {
 
   useEffect(() => {
     const preStyles: CSSInterpolation = {};
-    if (theme)
-      Object.keys(theme).forEach((key) => {
-        // basic background and text
-        preStyles[`.${key} body`] = {
-          backgroundColor: theme[key].basics.dark,
-          color: theme[key].basics.text,
+    const renderedTheme = { ...defaultTheme, ...theme };
+    Object.keys(renderedTheme).forEach((key) => {
+      // basic background and text
+      preStyles[`${key === "light" ? "" : `.${key}`} body`] = {
+        backgroundColor: renderedTheme[key].basics.dark,
+        color: renderedTheme[key].basics.text,
+      };
+      // colors classes
+      Object.keys(renderedTheme[key]).forEach((colorKey: string) => {
+        const parsedColorKey: ColorVariants = colorKey as ColorVariants;
+        // color class
+        preStyles[`${key === "light" ? "" : `.${key}`} .${colorKey}`] = {
+          color: renderedTheme[key][parsedColorKey].default,
         };
-        // colors classes
-        Object.keys(theme[key]).forEach((colorKey: string) => {
-          const parsedColorKey: ColorVariants = colorKey as ColorVariants;
-          preStyles[`.${colorKey}`] = {
-            color: theme[key][parsedColorKey].default,
+        // color button class
+        // text hover
+        preStyles[
+          `${key === "light" ? "" : `.${key}`} .button.${colorKey}:hover`
+        ] = preStyles[
+          `${key === "light" ? "" : `.${key}`}  button.${colorKey}:hover`
+        ] = {
+          color: renderedTheme[key][parsedColorKey].light,
+          backgroundColor: `${renderedTheme[key][parsedColorKey].light}2f`,
+        };
+        // filled
+        preStyles[`${key === "light" ? "" : `.${key}`}  .filled.${colorKey}`] =
+          {
+            color: renderedTheme[key][parsedColorKey].text,
+            backgroundColor: renderedTheme[key][parsedColorKey].default,
           };
-        });
-      });
-    else
-      Object.keys(defaultTheme).forEach((key) => {
-        preStyles[`.${key} body`] = {
-          backgroundColor: defaultTheme[key].basics.dark,
-          color: defaultTheme[key].basics.text,
+        // filled hover
+        preStyles[
+          `${key === "light" ? "" : `.${key}`} .button.filled.${colorKey}:hover`
+        ] = preStyles[
+          `${key === "light" ? "" : `.${key}`} button.filled.${colorKey}:hover`
+        ] = {
+          backgroundColor: renderedTheme[key][parsedColorKey].light,
+        };
+        // outlined
+        preStyles[`${key === "light" ? "" : `.${key}`} .outlined.${colorKey}`] =
+          {
+            color: renderedTheme[key][parsedColorKey].default,
+            borderColor: renderedTheme[key][parsedColorKey].default,
+          };
+        // outlined hover
+        preStyles[
+          `${
+            key === "light" ? "" : `.${key}`
+          } .button.outlined.${colorKey}:hover`
+        ] = preStyles[
+          `${
+            key === "light" ? "" : `.${key}`
+          } button.outlined.${colorKey}:hover`
+        ] = {
+          color: renderedTheme[key][parsedColorKey].text,
+          borderColor: renderedTheme[key][parsedColorKey].light,
+          backgroundColor: renderedTheme[key][parsedColorKey].light,
         };
       });
-
+    });
+    console.log(preStyles);
     injectGlobal({ ...preStyles });
   }, []);
 
