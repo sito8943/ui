@@ -10,17 +10,13 @@ export const makeStyles = (
   inactiveColor: ColorVariants
 ) => {
   const preActiveStyles: CSSInterpolation = {
-    "& .switcher": {
-      backgroundColor: colors[activeColor].default,
-    },
+    backgroundColor: colors[activeColor].default,
     "& .ball": {
       color: colors[activeColor].text,
     },
   };
   const preInactiveStyles: CSSInterpolation = {
-    "& .switcher": {
-      backgroundColor: colors[inactiveColor].default,
-    },
+    backgroundColor: colors[inactiveColor].default,
     "& .ball": {
       color: colors[activeColor].text,
     },
