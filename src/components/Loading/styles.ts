@@ -17,31 +17,29 @@ export const makeStyles = (
   inverted: boolean
 ) => {
   const preStyles: CSSInterpolation = {
-    "& .loading": {
-      backgroundColor: colors.basics.default,
-    },
+    backgroundColor: colors.basics.default,
   };
   switch (color) {
     case "primary":
-      preStyles["& .loading .path"] = {
+      preStyles["& .path"] = {
         stroke: colors.primary.default,
       };
       break;
     case "secondary":
-      preStyles["& .loading .path"] = {
+      preStyles["& .path"] = {
         stroke: colors.secondary.default,
       };
       break;
     default:
-      preStyles["& .loading .path"] = {
+      preStyles["& .path"] = {
         stroke: colors.basics.text,
       };
       break;
   }
   if (inverted) {
-    const bridge = { ...preStyles["& .loading .path"] };
-    preStyles["& .loading"] = preStyles["& .loading .path"];
-    preStyles["& .loading .path"] = bridge;
+    const bridge = preStyles.backgroundColor;
+    preStyles.backgroundColor = preStyles["& .path"].stroke;
+    preStyles["& .path"] = bridge;
   }
   return { root: css({ ...preStyles }) };
 };
