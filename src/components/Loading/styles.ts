@@ -19,23 +19,9 @@ export const makeStyles = (
   const preStyles: CSSInterpolation = {
     backgroundColor: colors.basics.default,
   };
-  switch (color) {
-    case "primary":
-      preStyles["& .path"] = {
-        stroke: colors.primary.default,
-      };
-      break;
-    case "secondary":
-      preStyles["& .path"] = {
-        stroke: colors.secondary.default,
-      };
-      break;
-    default:
-      preStyles["& .path"] = {
-        stroke: colors.basics.text,
-      };
-      break;
-  }
+  preStyles["& .path"] = {
+    stroke: colors[color].default,
+  };
   if (inverted) {
     const bridge = preStyles.backgroundColor;
     preStyles.backgroundColor = preStyles["& .path"].stroke;
