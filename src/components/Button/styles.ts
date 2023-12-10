@@ -13,15 +13,15 @@ export const makeStyles = (
   shape: ButtonShapes
 ) => {
   const preStyles: CSSInterpolation = {};
-  switch (shape) {
-    case "filled":
+  const stylesMap = {
+    filled: () => {
       preStyles.color = colors[color].text;
       preStyles.backgroundColor = colors[color].default;
       preStyles["&:hover"] = {
         backgroundColor: colors[color].light,
       };
-      break;
-    case "outlined":
+    },
+    outlined: () => {
       preStyles.color = colors[color].default;
       preStyles.borderColor = colors[color].default;
       preStyles["&:hover"] = {
@@ -29,14 +29,17 @@ export const makeStyles = (
         borderColor: colors[color].light,
         backgroundColor: colors[color].light,
       };
-      break;
-    default: // text
+    },
+    text: () => {
       preStyles.color = colors[color].default;
       preStyles["&:hover"] = {
         color: colors[color].light,
         backgroundColor: `${colors[color].light}2f`,
       };
-      break;
-  }
+    },
+  };
+
+  (stylesMap[shape] || stylesMap.text)();
+
   return { root: css({ ...preStyles }) };
 };
