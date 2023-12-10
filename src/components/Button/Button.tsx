@@ -25,20 +25,11 @@ const Button = forwardRef(function (
   const { colors } = useStyle();
   const styles = makeStyles(colors, color, shape);
 
-  if (!tooltip || !tooltip.length)
-    return (
-      <button
-        type={type}
-        ref={ref}
-        {...rest}
-        className={`button ${shape} ${styles.root} ${rest.className}`}
-      >
-        {rest.children}
-      </button>
-    );
-
   return (
-    <Tippy content={tooltip}>
+    <Tippy
+      content={tooltip}
+      className={!tooltip || !tooltip.length ? "!hidden" : ""}
+    >
       <button
         type={type}
         ref={ref}

@@ -34,7 +34,7 @@ import { defaultTheme } from "./data";
 const StyleContext = createContext({} as StyleProviderData);
 
 const getSelector = (key: string, colorKey: string, extra: string = "") =>
-  `${key === "light" ? "" : `.${key}`} ${extra}.${colorKey}`;
+  `${key === "light" ? "" : `.${key}`} ${extra}${colorKey}`;
 
 const StyleProvider = (props: StyleProviderProps) => {
   const { mode } = useMode();
@@ -107,6 +107,7 @@ const StyleProvider = (props: StyleProviderProps) => {
           outlinedHoverStyles;
       }
     }
+    console.log(preStyles);
     injectGlobal({ ...preStyles });
   }, []);
 
