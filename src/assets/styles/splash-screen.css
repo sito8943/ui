@@ -1,0 +1,49 @@
+.splash-screen {
+  height: 100vh;
+  height: 100svh;
+  @apply flex w-full fixed top-0 left-0 z-50 flex-col items-center overflow-hidden transition-opacity duration-500 ease-in-out;
+}
+
+.logo-container {
+  @apply flex flex-col items-center justify-center h-full;
+}
+
+.image {
+  width: 100px;
+  height: 100px;
+  @apply object-cover rounded-full object-center;
+}
+
+.brand {
+  @apply flex flex-col items-center justify-center mb-5;
+}
+
+.brand p {
+  font-size: 15px;
+}
+
+.brand-name {
+  @apply flex items-end
+}
+
+.brand-name p {
+  font-size: 1.25rem;
+}
+
+.splash-sito-logo {
+  width: 100px;
+  height: 60px;
+  mask-size: 100%;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  mask-position: center;
+}
+
+.splash-loading {
+  background-color: #00000000 !important;
+  height: 70px !important;
+}
+
+.splash-loading .loader {
+  width: 30px;
+}
