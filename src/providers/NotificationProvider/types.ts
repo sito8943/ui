@@ -17,5 +17,5 @@ export interface NotificationType {
 
 export interface NotificationActionType {
   type: "hide" | "success" | "error" | "info" | "warning";
-  message?: "string";
+  message?: string;
 }
