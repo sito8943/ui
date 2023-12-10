@@ -20,6 +20,7 @@ import { PrintAfter, PrintAfterProps } from "./PrintAfter";
 import { ToTop, ToTopProps } from "./ToTop";
 import { Notification, NotificationProps } from "./Notification";
 import { Loading, LoadingProps } from "./Loading";
+import { SplashScreen, SplashScreenProps } from "./SplashScreen";
 import {
   Handler,
   ErrorFallbackProps,
@@ -42,6 +43,7 @@ export {
   Loading,
   Handler,
   Error,
+  SplashScreen,
 };
 export type {
   ErrorFallbackProps,
@@ -58,4 +60,5 @@ export type {
   NotificationProps,
   LoadingProps,
   ToTopProps,
+  SplashScreenProps,
 };
