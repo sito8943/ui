@@ -25,21 +25,18 @@ const InputControl = forwardRef(function (
   } = props;
 
   const parsedType = useMemo(() => {
-    switch (type) {
-      case "date":
-      case "datetime-local":
-      case "email":
-      case "number":
-      case "password":
-      case "search":
-      case "tel":
-      case "time":
-      case "url":
-        return type;
-
-      default:
-        return "text";
-    }
+    const types = [
+      "date",
+      "datetime-local",
+      "email",
+      "number",
+      "password",
+      "search",
+      "tel",
+      "time",
+      "url",
+    ];
+    return types.includes(type) ? type : "text";
   }, [type]);
 
   const { colors } = useStyle();
