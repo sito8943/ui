@@ -6,4 +6,5 @@ export interface SplashScreenProps {
   appName?: string;
   logo: ReactNode | string;
   logoClass?: string;
+  visible?: boolean;
 }
