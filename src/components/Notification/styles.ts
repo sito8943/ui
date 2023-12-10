@@ -11,6 +11,7 @@ import { ColorPalette, ColorVariants } from "providers/StyleProvider/types";
  */
 export const makeStyles = (colors: ColorPalette, color: ColorVariants) => {
   const preStyles: CSSInterpolation = {
+    color: colors[color].text,
     backgroundColor: colors[color].default,
   };
   return css({ ...preStyles });
