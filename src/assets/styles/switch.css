@@ -2,26 +2,23 @@
 
 @layer components {
   .check-input {
-    height: 0;
-    width: 0;
-    display: none !important;
+    @apply h-0 w-0 !hidden;
   }
 
   .switcher {
     width: 55px;
     height: 25px;
     border-radius: 100px;
-    position: relative;
-    @apply transition duration-300 ease-in-out;
+    @apply transition duration-300 ease-in-out relative;
   }
 
   .ball {
     width: 20px;
     height: 14px;
-    position: absolute;
     border-radius: 20px;
     top: 50%;
     transition: all 500ms ease;
+    @apply absolute
   }
 
   .deactivated {

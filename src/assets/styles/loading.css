@@ -5,30 +5,24 @@
 }
 
 .loader {
-  position: relative;
-  margin: 0px auto;
   width: 40px; /* SET SIZE OF SPINNER HERE */
+  @apply relative my-0 mx-auto;
 }
 
 .loader:before {
   content: "";
-  display: block;
   padding-top: 100%;
+  @apply block;
 }
 
 .circular {
   -webkit-animation: rotate 2s linear infinite;
   animation: rotate 2s linear infinite;
-  height: 100%;
+
   -webkit-transform-origin: center center;
   transform-origin: center center;
-  width: 100%;
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  margin: auto;
+
+  @apply w-full h-full absolute top-0 bottom-0 left-0 right-0 m-auto;
 }
 
 .path {
