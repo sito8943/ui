@@ -31,9 +31,10 @@ export const makeStyles = (
       };
     },
     text: () => {
-      preStyles.color = colors[color].text;
+      if (color === "basics") preStyles.color = colors[color].text;
+      else preStyles.color = colors[color].default;
       preStyles["&:hover"] = {
-        color: colors[color].text,
+        color: color === "basics" ? colors[color].text : colors[color].default,
         backgroundColor: `${colors[color].light}2f`,
       };
     },
