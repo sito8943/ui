@@ -45,16 +45,16 @@ const ToTop = forwardRef(function (
   const handleToTop = () => scrollTo(0);
 
   const validatedPosition = useMemo(() => {
-    switch (position) {
-      case "bottom-left":
-        return "bottom-1 left-1";
-      case "top-left":
-        return "top-1 left-1";
-      case "top-right":
-        return "top-1 right-1";
-      default:
-        return "bottom-1 right-1";
-    }
+    const positionMap = {
+      "bottom-left": "bottom-1 left-1",
+      "top-left": "top-1 left-1",
+      "top-right": "top-1 right-1",
+      "bottom-right": "bottom-1 right-1",
+    };
+
+    return (
+      positionMap[position || "bottom-right"] || positionMap["bottom-right"]
+    );
   }, [position]);
 
   return (
