@@ -9,20 +9,15 @@ export const makeStyles = (
   activeColor: ColorVariants,
   inactiveColor: ColorVariants
 ) => {
-  const preActiveStyles: CSSInterpolation = {
-    backgroundColor: colors[activeColor].default,
+  const createStyles = (color: ColorVariants): CSSInterpolation => ({
+    backgroundColor: colors[color].default,
     "& .ball": {
-      backgroundColor: colors[activeColor].text,
+      backgroundColor: colors[color].text,
     },
-  };
-  const preInactiveStyles: CSSInterpolation = {
-    backgroundColor: colors[inactiveColor].default,
-    "& .ball": {
-      backgroundColor: colors[inactiveColor].text,
-    },
-  };
+  });
+
   return {
-    active: css(preActiveStyles),
-    inactive: css(preInactiveStyles),
+    active: css(createStyles(activeColor)),
+    inactive: css(createStyles(inactiveColor)),
   };
 };
