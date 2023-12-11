@@ -15,18 +15,19 @@ const notificationReducer = (
   action: NotificationActionType
 ): NotificationType => {
   const { type, message } = action;
-  switch (action.type) {
-    case "hide":
-      return { ...notification, visible: false };
+  const actionHandlers = {
+    hide: () => ({ ...notification, visible: false }),
+    error: () => ({ visible: true, message: message ?? "", type: type }),
+    info: () => ({ visible: true, message: message ?? "", type: type }),
+    warning: () => ({ visible: true, message: message ?? "", type: type }),
+    success: () => ({ visible: true, message: message ?? "", type: type }),
+  };
 
-    case "error":
-    case "info":
-    case "warning":
-    case "success":
-      return { visible: true, message: message ?? "", type: type };
-    default:
-      throw new Error(`Unhandled action type: ${action.type}`);
+  if (!actionHandlers[action.type]) {
+    throw new Error(`Unhandled action type: ${action.type}`);
   }
+
+  return actionHandlers[action.type]();
 };
 
 const notificationInitializer = (initial: NotificationType) => initial;
