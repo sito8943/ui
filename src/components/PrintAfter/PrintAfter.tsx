@@ -6,7 +6,8 @@ function _PrintAfter(props: PrintAfterProps) {
   const [see, setSee] = useState(false);
 
   useEffect(() => {
-    setTimeout(() => setSee(true), delay);
+    const timer = setTimeout(() => setSee(true), delay);
+    return () => clearTimeout(timer);
   }, [delay]);
 
   return <div className={see ? animation : "invisible"}>{children}</div>;
