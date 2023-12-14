@@ -16,16 +16,17 @@ export const makeStyles = (
   color: ColorVariants,
   inverted: boolean
 ) => {
-  const preStyles: CSSInterpolation = {
-    backgroundColor: colors.basics.default,
-  };
-  preStyles["& .path"] = {
-    stroke: colors[color].default,
-  };
+  const preStyles: CSSInterpolation = {};
   if (inverted) {
-    const bridge = preStyles.backgroundColor;
-    preStyles.backgroundColor = preStyles["& .path"].stroke;
-    preStyles["& .path"] = bridge;
+    preStyles.backgroundColor = colors[color].text;
+    preStyles["& .path"] = {
+      stroke: colors[color].default,
+    };
+  } else {
+    preStyles.backgroundColor = colors[color].default
+    preStyles["& .path"] = {
+      stroke: colors[color].text,
+    };
   }
   return { root: css({ ...preStyles }) };
 };
