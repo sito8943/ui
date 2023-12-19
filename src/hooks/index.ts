@@ -1,3 +1,3 @@
 import { useIsElementInViewport } from "./useIsElementInViewport";
-
-export { useIsElementInViewport };
+import { useScreenHandler } from "./useScreenHandler";
+export { useIsElementInViewport, useScreenHandler };
