@@ -15,17 +15,21 @@ function _PrintAfter(props: PrintAfterProps) {
   } = props;
 
   const { elementRef, isElementInViewport } = useIsElementInViewport();
-  const [visible, setVisible] = useState(false);
+  const [visible, setVisible] = useState(onVisible === true ? false : true);
   const [see, setSee] = useState(false);
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      if (onVisible && !see) {
-        if (isElementInViewport) setVisible(true);
-      } else setSee(true);
+      if (visible) setSee(true);
     }, delay);
     return () => clearTimeout(timer);
-  }, [delay, onVisible]);
+  }, [delay, visible]);
+
+  console.log(isElementInViewport, "isElementInViewport");
+
+  useEffect(() => {
+    if (!visible && isElementInViewport) setVisible(true);
+  }, [isElementInViewport]);
 
   return (
     <div ref={elementRef} className={see && visible ? animation : "invisible"}>
