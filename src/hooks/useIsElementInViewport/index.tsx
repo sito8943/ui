@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 
-const useIsElementInViewport = () => {
+export const useIsElementInViewport = () => {
   const [isElementInViewport, setIsElementInViewport] = useState(false);
   const elementRef = useRef(null);
 
@@ -24,5 +24,3 @@ const useIsElementInViewport = () => {
 
   return { elementRef, isElementInViewport };
 };
-
-export default useIsElementInViewport;

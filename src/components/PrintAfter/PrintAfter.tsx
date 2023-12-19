@@ -1,5 +1,9 @@
 import { memo, useEffect, useState } from "react";
-import useIsInViewport from "use-is-in-viewport";
+
+// hooks
+import { useIsElementInViewport } from "../../hooks/useIsElementInViewport";
+
+// types
 import { PrintAfterProps } from "./types";
 
 function _PrintAfter(props: PrintAfterProps) {
@@ -10,21 +14,21 @@ function _PrintAfter(props: PrintAfterProps) {
     onVisible = false,
   } = props;
 
-  const [isInViewport, targetRef] = useIsInViewport({ threshold: 50 });
+  const { elementRef, isElementInViewport } = useIsElementInViewport();
   const [visible, setVisible] = useState(false);
   const [see, setSee] = useState(false);
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      if (onVisible) {
-        if (isInViewport) setVisible(true);
+      if (onVisible && !see) {
+        if (isElementInViewport) setVisible(true);
       } else setSee(true);
     }, delay);
     return () => clearTimeout(timer);
   }, [delay, onVisible]);
 
   return (
-    <div ref={targetRef} className={see && visible ? animation : "invisible"}>
+    <div ref={elementRef} className={see && visible ? animation : "invisible"}>
       {children}
     </div>
   );
