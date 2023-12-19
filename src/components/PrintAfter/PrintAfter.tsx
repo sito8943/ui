@@ -25,8 +25,6 @@ function _PrintAfter(props: PrintAfterProps) {
     return () => clearTimeout(timer);
   }, [delay, visible]);
 
-  console.log(isElementInViewport, "isElementInViewport");
-
   useEffect(() => {
     if (!visible && isElementInViewport) setVisible(true);
   }, [isElementInViewport]);
