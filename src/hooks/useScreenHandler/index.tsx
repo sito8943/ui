@@ -11,18 +11,18 @@ export const useScreenHandler = () => {
   const breakpoint = useMemo<Breakpoints>(() => {
     const { width } = windowSize;
     switch (true) {
-      case width > 1279:
-        return "2xl";
-      case width > 1023:
-        return "xl";
-      case width > 767:
-        return "lg";
-      case width > 639:
-        return "md";
-      case width > 383:
-        return "sm";
-      default:
+      case width <= 400:
         return "xs";
+      case width <= 600:
+        return "sm";
+      case width <= 900:
+        return "md";
+      case width <= 1200:
+        return "lg";
+      case width <= 1536:
+        return "xl";
+      default:
+        return "2xl";
     }
   }, [windowSize]);
 
