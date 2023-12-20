@@ -42,7 +42,6 @@ function SplashScreen(props: SplashScreenProps) {
       <div className="logo-container">
         {typeof logo === "string" ? (
           <img
-            src={logo}
             alt={appName}
             className={`puff-in-center image ${logoClass}`}
           />
