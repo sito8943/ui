@@ -22,7 +22,7 @@ export default {
       // => @media (max-width: 383px) { ... }
     },
     colors: {
-      dark: { dark: "#101010", default: "#303030", light: "#4e4e4e" },
+      dark: { dark: "#101010", default: "#202020", light: "#303030" },
       light: { dark: "#e1e1e1", default: "#ededed", light: "#f7f7f7" },
     },
     extend: {},

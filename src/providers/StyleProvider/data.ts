@@ -3,8 +3,8 @@ import { ColorType, UiTheme } from "./types";
 export const defaultDark: ColorType = {
   text: "#f7f7f7",
   dark: "#101010",
-  default: "#303030",
-  light: "#4e4e4e",
+  default: "#202020",
+  light: "#303030",
 };
 
 export const defaultLight: ColorType = {
