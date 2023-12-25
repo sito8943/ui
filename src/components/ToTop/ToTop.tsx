@@ -65,7 +65,8 @@ const ToTop = forwardRef(function (
       ref={ref}
       style={{
         ...style,
-        zIndex: visible ? 10 : -1,
+        zIndex: 10,
+        pointerEvents: visible ? "auto" : "none",
         transform: visible ? "scale(1)" : "scale(0)",
       }}
       className={`fixed ${validatedPosition} ${className}`}
