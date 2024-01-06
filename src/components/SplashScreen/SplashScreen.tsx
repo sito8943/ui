@@ -54,7 +54,12 @@ function SplashScreen(props: SplashScreenProps) {
             showLoading ? "opacity-100" : "opacity-0"
           } pointer-events-none`}
         >
-          <Loading className="splash-loading" color={color} strokeWidth="6" />
+          <Loading
+            colorInverted
+            className="splash-loading"
+            color={color}
+            strokeWidth="6"
+          />
         </div>
       </div>
 
