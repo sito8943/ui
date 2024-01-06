@@ -38,13 +38,14 @@ function SplashScreen(props: SplashScreenProps) {
   }, [visible]);
 
   return reallyShow ? (
-    <div className={`splash-screen ${visible ? "opacity-100" : "opacity-0"}`}>
+    <div
+      className={`splash-screen ${styles.splashScreen} ${
+        visible ? "opacity-100" : "opacity-0"
+      }`}
+    >
       <div className="logo-container">
         {typeof logo === "string" ? (
-          <img
-            alt={appName}
-            className={`puff-in-center image ${logoClass}`}
-          />
+          <img alt={appName} className={`puff-in-center image ${logoClass}`} />
         ) : (
           <div className={`puff-in-center ${logoClass}`}>{logo}</div>
         )}

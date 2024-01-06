@@ -18,7 +18,11 @@ export const makeStyles = (colors: ColorPalette, color: ColorVariants) => {
     WebkitMask: `url('${sitoLogo}') no-repeat center`,
     mask: `url('${sitoLogo}') no-repeat center`,
   };
+  const splashScreenStyles = {
+    backgroundColor: colors.basics.dark,
+  };
   return {
+    splashScreen: css(splashScreenStyles),
     sitoLogo: css(sitoLogoStyles),
   };
 };
