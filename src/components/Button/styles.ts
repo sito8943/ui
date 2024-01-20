@@ -22,13 +22,23 @@ export const makeStyles = (
       };
     },
     outlined: () => {
-      preStyles.color = colors[color].default;
-      preStyles.borderColor = colors[color].default;
-      preStyles["&:hover"] = {
-        color: colors[color].text,
-        borderColor: colors[color].light,
-        backgroundColor: colors[color].light,
-      };
+      if (color !== "basics") {
+        preStyles.color = colors[color].default;
+        preStyles.borderColor = colors[color].default;
+        preStyles["&:hover"] = {
+          color: colors[color].text,
+          borderColor: colors[color].light,
+          backgroundColor: colors[color].light,
+        };
+      } else {
+        preStyles.color = colors[color].text;
+        preStyles.borderColor = colors[color].default;
+        preStyles["&:hover"] = {
+          color: colors[color].text,
+          borderColor: colors[color].light,
+          backgroundColor: colors[color].light,
+        };
+      }
     },
     text: () => {
       if (color === "basics") preStyles.color = colors[color].text;
