@@ -8,6 +8,10 @@ export const makeStyles = (colors: ColorPalette, color: ColorVariants) => {
   const inputStyles: CSSInterpolation = {
     color: colors[color].text,
     backgroundColor: colors[color].default,
+    option: {
+      color: colors[color].text,
+      backgroundColor: colors[color].default,
+    },
   };
 
   return { input: css({ ...inputStyles }) };
