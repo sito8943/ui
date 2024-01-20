@@ -61,7 +61,10 @@ const StyleProvider = (props: StyleProviderProps) => {
         const parsedColorKey: ColorVariants = colorKey as ColorVariants;
         // color class
         preStyles[getSelector(key, colorKey)] = {
-          color: renderedTheme[key][parsedColorKey].default,
+          color:
+            colorKey === "basics"
+              ? renderedTheme[key][parsedColorKey].text
+              : renderedTheme[key][parsedColorKey].default,
         };
         // color button class
         // text hover styles
