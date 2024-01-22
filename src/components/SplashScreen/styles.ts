@@ -1,5 +1,5 @@
 // @emotion/css
-import { CSSInterpolation, css } from "@emotion/css";
+import { css } from "@emotion/css";
 
 // styles
 import { ColorPalette, ColorVariants } from "providers/StyleProvider";
@@ -22,7 +22,9 @@ export const makeStyles = (colors: ColorPalette, color: ColorVariants) => {
     backgroundColor: colors.basics.dark,
   };
   return {
-    splashScreen: css(splashScreenStyles),
-    sitoLogo: css(sitoLogoStyles),
+    root: css({
+      ...splashScreenStyles,
+      "sito-logo": sitoLogoStyles,
+    }),
   };
 };

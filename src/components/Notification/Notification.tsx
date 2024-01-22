@@ -1,7 +1,7 @@
 import { useRef, useState, useEffect, useMemo, useCallback } from "react";
 
 // @fortawesome
-import { faClose } from "@fortawesome/free-solid-svg-icons";
+import faClose from "../../assets/images/xmark-solid.svg";
 
 // providers
 import { useStyle, useNotification } from "providers/";
@@ -67,18 +67,26 @@ export default function Notification(props: NotificationProps) {
   return (
     <div
       ref={ref}
-      className={`fixed left-1 bottom-1 z-40 ${open ? "appear" : "disappear"}`}
+      className={`notification-root ${styles.root} ${
+        open ? "appear" : "disappear"
+      }`}
     >
       {openR ? (
-        <div className={`relative notification rounded-xl ${styles.root}`}>
+        <div className={`notification`}>
           <IconButton
             name="close-notification"
             {...closeProps}
-            icon={faClose}
+            icon={
+              <img
+                className="close-notification-icon"
+                src={faClose}
+                alt="font awesome close icon"
+              />
+            }
             ref={null}
             color="basics"
             onClick={handleClose}
-            className={`absolute top-1 right-1 ${closeProps?.className}`}
+            className={`notification-close-button ${closeProps?.className}`}
           />
           <p>{notification.message}</p>
         </div>

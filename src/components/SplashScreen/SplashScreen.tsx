@@ -39,19 +39,22 @@ function SplashScreen(props: SplashScreenProps) {
 
   return reallyShow ? (
     <div
-      className={`splash-screen ${styles.splashScreen} ${
+      className={`splash-screen ${styles.root} ${
         visible ? "opacity-100" : "opacity-0"
       }`}
     >
       <div className="logo-container">
         {typeof logo === "string" ? (
-          <img alt={appName} className={`puff-in-center image ${logoClass}`} />
+          <img
+            alt={appName}
+            className={`puff-in-center splash-image ${logoClass}`}
+          />
         ) : (
           <div className={`puff-in-center ${logoClass}`}>{logo}</div>
         )}
         <div
-          className={`transition-all duration-300 ease-in-out ${
-            showLoading ? "opacity-100" : "opacity-0"
+          className={`splash-loading ${
+            showLoading ? "splash-loading-show" : "splash-loading-hide"
           } pointer-events-none`}
         >
           <Loading
@@ -65,7 +68,7 @@ function SplashScreen(props: SplashScreenProps) {
 
       <div className={`animated slideInUp brand`}>
         <p>made width</p>
-        <div className={`splash-sito-logo ${styles.sitoLogo}`} />
+        <div className={`splash-sito-logo sito-logo`} />
       </div>
     </div>
   ) : null;

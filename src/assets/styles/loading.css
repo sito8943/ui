@@ -1,28 +1,33 @@
-@tailwind components;
-
 .loader-container {
   padding: 5%;
 }
 
 .loader {
   width: 40px; /* SET SIZE OF SPINNER HERE */
-  @apply relative my-0 mx-auto;
+  position: relative;
+  margin: 0 auto;
 }
 
 .loader:before {
   content: "";
   padding-top: 100%;
-  @apply block;
+  display: block;
 }
 
 .circular {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
   -webkit-animation: rotate 2s linear infinite;
   animation: rotate 2s linear infinite;
 
   -webkit-transform-origin: center center;
   transform-origin: center center;
-
-  @apply w-full h-full absolute top-0 bottom-0 left-0 right-0 m-auto;
 }
 
 .path {

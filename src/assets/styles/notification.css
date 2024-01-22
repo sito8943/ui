@@ -1,9 +1,26 @@
-@tailwind components;
+.notification-root {
+  position: fixed;
+  left: 0.25rem;
+  bottom: 0.25rem;
+  z-index: 40;
+}
 
-@layer {
-  .notification {
-    min-width: 150px;
-    max-width: 300px;
-    padding: 1.25rem 3rem 1.25rem 1.25rem;
-  }
+.notification {
+  min-width: 150px;
+  max-width: 300px;
+  padding: 1.25rem 3rem 1.25rem 1.25rem;
+  position: relative;
+  border-radius: 0.75rem;
+}
+
+.notification-close-button {
+  position: absolute;
+  top: 0.25rem;
+  left: 0.25rem;
+}
+
+.close-notification-icon {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
 }

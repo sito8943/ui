@@ -17,7 +17,6 @@ import { Image, ImageProps } from "./Image";
 import { PrintAfter, PrintAfterProps } from "./PrintAfter";
 
 // complex components
-import { ToTop, ToTopProps } from "./ToTop";
 import { Notification, NotificationProps } from "./Notification";
 import { Loading, LoadingProps } from "./Loading";
 import { SplashScreen, SplashScreenProps } from "./SplashScreen";
@@ -38,7 +37,6 @@ export {
   Switcher,
   Image,
   PrintAfter,
-  ToTop,
   Notification,
   Loading,
   Handler,
@@ -59,6 +57,5 @@ export type {
   PrintAfterProps,
   NotificationProps,
   LoadingProps,
-  ToTopProps,
   SplashScreenProps,
 };

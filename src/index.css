@@ -1,11 +1,6 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
 @media (pointer: coarse) {
-    [data-tippy-root] {
-      /* Attribute exists */
-      display: none !important;
-    }
+  [data-tippy-root] {
+    /* Attribute exists */
+    display: none !important;
   }
-
+}

@@ -1,8 +1,8 @@
-import { IconProp } from "@fortawesome/fontawesome-svg-core";
+import { ReactNode } from "react";
 
 // types
 import { ButtonProps } from "components/Button/";
 
 export interface IconButtonProps extends ButtonProps {
-  icon: IconProp;
+  icon: ReactNode;
 }

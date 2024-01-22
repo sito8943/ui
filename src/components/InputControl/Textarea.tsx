@@ -25,11 +25,11 @@ const TextareaControl = forwardRef(function (
   const styles = makeStyles(colors, color);
 
   return (
-    <div className={`input-control ${orientation}`}>
+    <div className={`input-control ${styles.root} ${orientation}`}>
       <label htmlFor={props.id}>{label}</label>
       <textarea
         {...rest}
-        className={`${styles.input} ${rest.className ?? ""}`}
+        className={`s-input ${rest.className ?? ""}`}
         ref={ref as ForwardedRef<HTMLTextAreaElement>}
       />
       {helperText && helperText.length ? <p>{helperText}</p> : null}

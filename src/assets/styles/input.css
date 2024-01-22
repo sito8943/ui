@@ -1,38 +1,59 @@
-@tailwind components;
+.s-no-padding-left {
+  padding-left: 0 !important;
+}
+.s-no-padding-right {
+  padding-right: 0 !important;
+}
+.s-small-padding-left {
+  padding-left: 0.5rem !important;
+}
+.s-small-padding-right {
+  padding-right: 0.5rem !important;
+}
+.sub {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 0.75rem;
+}
+.input-control {
+  display: flex;
+  gap: 0.25rem;
+  align-items: flex-start;
+  justify-content: flex-start;
+  width: 100%;
+}
+.column {
+  flex-direction: column;
+}
 
-@layer components {
-  .sub {
-    @apply flex items-center justify-between px-3;
-  }
-  .input-control {
-    @apply flex gap-1 items-start
-    justify-start w-full;
-  }
-  .column {
-    @apply flex-col;
-  }
+.row {
+  flex-direction: row;
+}
 
-  .row {
-    @apply flex-row;
-  }
+.input-control textarea {
+  width: 100%;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  resize: none;
+}
 
-  .input-control textarea {
-    @apply w-full px-4 py-2 rounded-[20px] resize-none;
-  }
+.input-control input,
+.input-control select {
+  width: 100%;
+  padding: 0.5rem 1rem;
+  border-radius: 1.5rem;
+}
 
-  .input-control input,
-  .input-control select {
-    @apply w-full px-4 py-2 rounded-3xl;
-  }
+.input-control .sub {
+  width: 100%;
+  position: relative;
+  border-radius: 1.5rem;
+}
 
-  .input-control .sub {
-    @apply w-full rounded-3xl relative;
-  }
-
-  .input-control textarea:focus-visible,
-  .input-control textarea,
-  .input-control input:focus-visible,
-  .input-control input {
-    outline: none !important;
-  }
+.input-control textarea:focus-visible,
+.input-control textarea,
+.input-control input:focus-visible,
+.input-control input {
+  outline: none !important;
 }

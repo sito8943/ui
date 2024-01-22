@@ -8,10 +8,24 @@
   @apply flex flex-col items-center justify-center h-full;
 }
 
-.image {
+.splash-loading-show {
+  opacity: 1;
+}
+
+.splash-loading-hide {
+  opacity: 0;
+}
+
+.splash-loading {
+  transition: opacity 300ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.splash-image {
   width: 100px;
   height: 100px;
-  @apply object-cover rounded-full object-center;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 100%;
 }
 
 .brand {
@@ -23,7 +37,7 @@
 }
 
 .brand-name {
-  @apply flex items-end
+  @apply flex items-end;
 }
 
 .brand-name p {

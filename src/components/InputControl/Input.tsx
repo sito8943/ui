@@ -43,10 +43,10 @@ const InputControl = forwardRef(function (
   const styles = makeStyles(colors, color);
 
   return (
-    <div className={`input-control ${orientation}`}>
+    <div className={`input-control ${styles.root} ${orientation}`}>
       <label htmlFor={props.id}>{label}</label>
       {leftComponent || rightComponent ? (
-        <div className={`sub ${styles.input}`}>
+        <div className={`sub s-input`}>
           {leftComponent && leftComponent !== null ? (
             <div className="">{leftComponent}</div>
           ) : null}
@@ -54,9 +54,9 @@ const InputControl = forwardRef(function (
             {...rest}
             type={parsedType}
             ref={ref as ForwardedRef<HTMLInputElement>}
-            className={`${leftComponent ? "!pl-2" : ""} ${
-              rightComponent ? "!pr-2" : ""
-            } ${styles.input} ${rest.className ?? ""}`}
+            className={`${leftComponent ? "s-small-padding-left" : ""} ${
+              rightComponent ? "s-small-padding-right" : ""
+            } s-input ${rest.className ?? ""}`}
           />
           {rightComponent && rightComponent !== null ? (
             <div>{rightComponent}</div>
@@ -66,7 +66,7 @@ const InputControl = forwardRef(function (
         <input
           {...rest}
           type={type}
-          className={`${styles.input} ${rest.className ?? ""}`}
+          className={`s-input ${rest.className ?? ""}`}
           ref={ref as ForwardedRef<HTMLInputElement>}
         />
       )}

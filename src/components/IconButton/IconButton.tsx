@@ -1,8 +1,5 @@
 import { forwardRef, ForwardedRef } from "react";
 
-// font awesome
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-
 // components
 import { Button } from "components/Button/";
 
@@ -22,7 +19,7 @@ const IconButton = forwardRef(function (
       type="button"
       className={`icon-button ${rest.className}`}
     >
-      <FontAwesomeIcon icon={icon} />
+      {icon}
     </Button>
   );
 });

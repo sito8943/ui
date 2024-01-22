@@ -28,7 +28,7 @@ const Switcher = forwardRef(function (
 
   return (
     <div
-      className={`flex gap-3 items-center justify-start ${className}`}
+      className={`switcher-root ${styles.root} ${className}`}
       onClick={onChange as unknown as MouseEventHandler<HTMLDivElement>}
     >
       <input
@@ -39,7 +39,7 @@ const Switcher = forwardRef(function (
         className="check-input"
         type="checkbox"
       />
-      <div className={`switcher ${value ? styles.active : styles.inactive}`}>
+      <div className={`switcher ${value ? "s-active" : "s-inactive"}`}>
         <div className={`ball ${value ? "activated" : "deactivated"}`} />
       </div>
       <label className="">{label}</label>

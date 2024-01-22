@@ -31,21 +31,21 @@ const SelectControl = forwardRef(function (
       <select
         {...rest}
         ref={ref as ForwardedRef<HTMLSelectElement>}
-        className={`${leftComponent ? "!pl-0" : ""} ${
-          rightComponent ? "!pr-0" : ""
-        } ${styles.input} ${rest.className ?? ""}`}
+        className={`${leftComponent ? "s-no-padding-left" : ""} ${
+          rightComponent ? "s-no-padding-right" : ""
+        } s-input ${rest.className ?? ""}`}
       >
         {rest.children}
       </select>
     ),
-    [leftComponent, rightComponent, rest, ref, styles.input]
+    [leftComponent, rightComponent, rest, ref]
   );
 
   return (
-    <div className={`input-control ${orientation} ${color}`}>
+    <div className={`input-control ${styles.root} ${orientation} ${color}`}>
       <label htmlFor={props.id}>{label}</label>
       {leftComponent || rightComponent ? (
-        <div className={`sub ${styles.input}`}>
+        <div className={`sub s-input`}>
           {leftComponent && leftComponent !== null ? (
             <div>{leftComponent}</div>
           ) : null}

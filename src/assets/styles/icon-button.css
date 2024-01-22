@@ -1,9 +1,10 @@
-@tailwind components;
-
-@layer components {
-  .icon-button {
-    min-width: theme(spacing.10);
-    min-height: theme(spacing.10);
-    @apply w-10 h-10 rounded-full text-xl p-0;
-  }
+.icon-button {
+  min-width: 2.5rem;
+  min-height: 2.5rem;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 100%;
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+  padding: 0;
 }

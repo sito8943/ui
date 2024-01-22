@@ -1,37 +1,46 @@
 import { Ref, useRef } from "react";
+
 // @fortawesome
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCircleExclamation } from "@fortawesome/free-solid-svg-icons";
+import faCircleExclamation from "../../assets/images/circle-exclamation-solid.svg";
 
 // components
 import { Button } from "components/Button";
 
+// providers
+import { useStyle } from "providers";
+
 // types
 import { ErrorProps } from "./types";
 
+// styles
+import { makeStyles } from "./styles";
+
 export const Error = (props: ErrorProps) => {
   const buttonRef = useRef<HTMLButtonElement>(null);
+
+  const { colors } = useStyle();
+  const styles = makeStyles(colors);
 
   const {
     onRetry = () => window.location.reload(),
     className = "",
     title = "Something went wrong",
     text,
-    icon = faCircleExclamation,
     button = "Try again",
     buttonProps,
   } = props;
 
   return (
-    <div
-      role="alert"
-      className={`w-full flex flex-col items-center justify-center gap-3 min-h-screen ${className}`}
-    >
+    <div role="alert" className={`error-root ${styles.root} ${className}`}>
       <p>
-        <FontAwesomeIcon icon={icon} className="mr-1" />
+        <img
+          src={faCircleExclamation}
+          alt="font awesome circle exclamation"
+          className="s-error-icon"
+        />
         {title}
       </p>
-      <pre className="text-error">{text}</pre>
+      <pre className="s-error-body">{text}</pre>
       {onRetry ? (
         <Button
           name="reload"
