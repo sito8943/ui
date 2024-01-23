@@ -5,26 +5,6 @@
   vertical-align: middle;
 }
 
-@layer components {
-  .box {
-    background-image: linear-gradient(
-      to right,
-      theme(colors.light.default) calc(50% - 100px),
-      theme(colors.light.dark) 50%,
-      theme(colors.light.default) calc(50% + 100px)
-    );
-  }
-
-  .dark .box {
-    background-image: linear-gradient(
-      to right,
-      theme(colors.dark.default) calc(50% - 100px),
-      theme(colors.dark.dark) 50%,
-      theme(colors.dark.default) calc(50% + 100px)
-    );
-  }
-}
-
 .box {
   background-size: 0;
   opacity: 1;
