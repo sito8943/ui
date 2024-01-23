@@ -82,8 +82,10 @@
   }
 }
 
-@layer components {
-  .loading {
-    @apply flex w-full h-full items-center justify-center;
-  }
+.loading {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
 }

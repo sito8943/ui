@@ -1,11 +1,26 @@
 .splash-screen {
   height: 100vh;
   height: 100svh;
-  @apply flex w-full fixed top-0 left-0 z-50 flex-col items-center overflow-hidden transition-opacity duration-300 ease-in-out;
+  display: flex;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 50;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden;
+  transition-duration: 300ms;
+  transition-property: opacity;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .logo-container {
-  @apply flex flex-col items-center justify-center h-full;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
 }
 
 .splash-loading-show {
@@ -29,7 +44,11 @@
 }
 
 .brand {
-  @apply flex flex-col items-center justify-center mb-5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.25rem;
 }
 
 .brand p {
@@ -37,7 +56,8 @@
 }
 
 .brand-name {
-  @apply flex items-end;
+  display: flex;
+  align-items: flex-end;
 }
 
 .brand-name p {
