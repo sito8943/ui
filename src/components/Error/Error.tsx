@@ -32,14 +32,12 @@ export const Error = (props: ErrorProps) => {
 
   return (
     <div role="alert" className={`error-root ${styles.root} ${className}`}>
-      <p>
-        <img
-          src={faCircleExclamation}
-          alt="font awesome circle exclamation"
-          className="s-error-icon"
-        />
-        {title}
-      </p>
+      <img
+        src={faCircleExclamation}
+        alt="font awesome circle exclamation"
+        className="s-error-icon"
+      />
+      <p className="s-error-title">{title}</p>
       <pre className="s-error-body">{text}</pre>
       {onRetry ? (
         <Button

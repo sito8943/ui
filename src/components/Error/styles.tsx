@@ -6,10 +6,10 @@ import { ColorPalette } from "providers/StyleProvider/types";
 
 export const makeStyles = (colors: ColorPalette) => ({
   root: css({
-    ".dark.s-error-body": {
+    ".dark .s-error-title": {
       color: colors.error.light,
     },
-    "s-error-body": {
+    ".s-error-title": {
       color: colors.error.default,
     },
   }),

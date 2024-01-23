@@ -1,6 +1,7 @@
 .error-root {
   width: 100%;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   gap: 0.75rem;
@@ -8,6 +9,14 @@
   min-height: 100svh;
 }
 
+.s-error-body {
+  width: 60%;
+  white-space: break-spaces;
+  text-align: center;
+}
+
 .s-error-icon {
-  margin-right: 0.25rem;
+  filter: invert(1);
+  width: 40px;
+  height: 40px;
 }
