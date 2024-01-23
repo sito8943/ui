@@ -40,7 +40,7 @@ function SplashScreen(props: SplashScreenProps) {
   return reallyShow ? (
     <div
       className={`splash-screen ${styles.root} ${
-        visible ? "opacity-100" : "opacity-0"
+        visible ? "splash-loading-show " : "splash-loading-hide"
       }`}
     >
       <div className="logo-container">
