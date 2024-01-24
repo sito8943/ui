@@ -15,8 +15,6 @@ export const makeStyles = (colors: ColorPalette, color: ColorVariants) => {
   };
 
   return {
-    root: css({
-      "s-input": inputStyles,
-    }),
+    input: css({ ...inputStyles }),
   };
 };

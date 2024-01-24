@@ -33,19 +33,21 @@ const SelectControl = forwardRef(function (
         ref={ref as ForwardedRef<HTMLSelectElement>}
         className={`${leftComponent ? "s-no-padding-left" : ""} ${
           rightComponent ? "s-no-padding-right" : ""
-        } s-input ${rest.className ?? ""}`}
+        } ${styles.input} ${rest.className ?? ""}`}
       >
         {rest.children}
       </select>
     ),
-    [leftComponent, rightComponent, rest, ref]
+    [leftComponent, rightComponent, rest, ref, styles]
   );
 
   return (
-    <div className={`input-control ${styles.root} ${orientation} ${color}`}>
-      <label htmlFor={props.id}>{label}</label>
+    <div className={`input-control ${orientation}`}>
+      <label className={color} htmlFor={props.id}>
+        {label}
+      </label>
       {leftComponent || rightComponent ? (
-        <div className={`sub s-input`}>
+        <div className={`sub ${styles.input}`}>
           {leftComponent && leftComponent !== null ? (
             <div>{leftComponent}</div>
           ) : null}
@@ -57,7 +59,9 @@ const SelectControl = forwardRef(function (
       ) : (
         selectElement
       )}
-      {helperText && helperText.length ? <p>{helperText}</p> : null}
+      {helperText && helperText.length ? (
+        <p className={color}>{helperText}</p>
+      ) : null}
     </div>
   );
 });
