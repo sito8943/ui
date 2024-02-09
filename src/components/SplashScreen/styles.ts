@@ -24,7 +24,7 @@ export const makeStyles = (colors: ColorPalette, color: ColorVariants) => {
   return {
     root: css({
       ...splashScreenStyles,
-      "sito-logo": sitoLogoStyles,
+      ".sito-logo": sitoLogoStyles,
     }),
   };
 };
