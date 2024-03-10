@@ -18,8 +18,8 @@ export const makeStyles = (
 
   return {
     root: css({
-      "s-active": createStyles(activeColor),
-      "s-inactive": createStyles(inactiveColor),
+      ".s-active": createStyles(activeColor),
+      ".s-inactive": createStyles(inactiveColor),
     }),
   };
 };
