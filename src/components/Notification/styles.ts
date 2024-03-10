@@ -13,6 +13,9 @@ export const makeStyles = (colors: ColorPalette, color: ColorVariants) => {
   const preStyles: CSSInterpolation = {
     color: colors[color].text,
     backgroundColor: colors[color].default,
+    ".close-notification-icon": {
+      fill: colors[color].text,
+    },
   };
   return {
     root: css(preStyles),
