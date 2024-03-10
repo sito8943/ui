@@ -15,6 +15,6 @@ export const makeStyles = (colors: ColorPalette, color: ColorVariants) => {
     backgroundColor: colors[color].default,
   };
   return {
-    root: preStyles,
+    root: css(preStyles),
   };
 };

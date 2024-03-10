@@ -20,7 +20,6 @@
 }
 
 .close-notification-icon {
-  width: 40px;
-  height: 40px;
-  object-fit: contain;
+  width: 25px;
+  height: 25px;
 }
