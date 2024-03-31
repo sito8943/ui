@@ -17,15 +17,15 @@ export const defaultLight: ColorType = {
 const commonColors = {
   primary: {
     text: "#ededed",
-    light: "#F74037", // 500
-    default: "#E83636", // 600
-    dark: "#D62C30", // 700
+    light: "#d74d54", // 500
+    default: "#CD212A", // 600
+    dark: "#8f171d", // 700
   },
   secondary: {
     text: "#f7f7f7",
-    light: "#008CFF", // 600
-    default: "#0079F2", // 700
-    dark: "#0C67E0", // 800
+    light: "#364b67", // 600
+    default: "#041E42", // 700
+    dark: "#02152e", // 800
   },
   error: {
     text: "#f7f7f7",
