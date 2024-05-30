@@ -15,8 +15,10 @@ const TextareaControl = forwardRef(function (
 ) {
   const {
     helperText = "",
+    helperTextClassName = "basics",
     orientation = "column",
     color = "basics",
+    labelClassName = "basics",
     label,
     ...rest
   } = props;
@@ -26,7 +28,7 @@ const TextareaControl = forwardRef(function (
 
   return (
     <div className={`input-control ${orientation}`}>
-      <label className={color} htmlFor={props.id}>
+      <label className={labelClassName} htmlFor={props.id}>
         {label}
       </label>
       <textarea
@@ -35,7 +37,7 @@ const TextareaControl = forwardRef(function (
         ref={ref as ForwardedRef<HTMLTextAreaElement>}
       />
       {helperText && helperText.length ? (
-        <p className={color}>{helperText}</p>
+        <p className={helperTextClassName}>{helperText}</p>
       ) : null}
     </div>
   );
