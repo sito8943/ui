@@ -17,6 +17,7 @@ const InputControl = forwardRef(function (
     helperText = "",
     orientation = "column",
     color = "basics",
+    labelClassName = "basics",
     leftComponent,
     rightComponent,
     label,
@@ -44,7 +45,7 @@ const InputControl = forwardRef(function (
 
   return (
     <div className={`input-control ${orientation}`}>
-      <label className={color} htmlFor={props.id}>
+      <label className={labelClassName} htmlFor={props.id}>
         {label}
       </label>
       {leftComponent || rightComponent ? (

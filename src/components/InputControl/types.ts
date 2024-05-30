@@ -9,6 +9,7 @@ export interface InputControlProps extends HTMLProps<HTMLInputElement> {
   color?: ColorVariants | undefined;
   orientation?: "column" | "row" | undefined;
   label: string | undefined;
+  labelClassName?: ColorVariants | string | undefined;
   helperText?: string | undefined;
   type?:
     | "date"
@@ -30,6 +31,7 @@ export interface SelectControlProps extends HTMLProps<HTMLSelectElement> {
   color?: ColorVariants | undefined;
   orientation?: "column" | "row" | undefined;
   label: string | undefined;
+  labelClassName?: ColorVariants | string | undefined;
   helperText?: string | undefined;
 }
 
@@ -39,5 +41,6 @@ export interface TextareaControlProps extends HTMLProps<HTMLTextAreaElement> {
   color?: ColorVariants | undefined;
   orientation?: "column" | "row" | undefined;
   label: string | undefined;
+  labelClassName?: ColorVariants | string | undefined;
   helperText?: string | undefined;
 }
