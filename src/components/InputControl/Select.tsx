@@ -15,11 +15,13 @@ const SelectControl = forwardRef(function (
 ) {
   const {
     helperText = "",
+    helperTextClassName = "basics",
     orientation = "column",
     color = "basics",
     leftComponent,
     rightComponent,
     label,
+    labelClassName = "basics",
     ...rest
   } = props;
 
@@ -43,7 +45,7 @@ const SelectControl = forwardRef(function (
 
   return (
     <div className={`input-control ${orientation}`}>
-      <label className={color} htmlFor={props.id}>
+      <label className={labelClassName} htmlFor={props.id}>
         {label}
       </label>
       {leftComponent || rightComponent ? (
@@ -60,7 +62,7 @@ const SelectControl = forwardRef(function (
         selectElement
       )}
       {helperText && helperText.length ? (
-        <p className={color}>{helperText}</p>
+        <p className={helperTextClassName}>{helperText}</p>
       ) : null}
     </div>
   );
