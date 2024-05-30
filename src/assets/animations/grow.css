@@ -1,9 +1,15 @@
 .aGrow {
-  animation: aGrow 0.5s ease 1;
+  animation-name: aGrow;
+  animation-fill-mode: forwards;
+  animation-timing-function: ease-in-out;
+  animation-duration: 0.3s;
 }
 
 .aShrink {
-  animation: aShrink 0.5s ease 1;
+  animation-name: aShrink;
+  animation-fill-mode: forwards;
+  animation-timing-function: ease-in-out;
+  animation-duration: 0.3s;
 }
 
 @keyframes aGrow {
@@ -12,7 +18,7 @@
   }
 
   80% {
-    transform: scale(1.01);
+    transform: scale(1.1);
   }
 
   100% {
