@@ -1,4 +1,5 @@
 .aGrow {
+  transform: scale(0);
   animation-name: aGrow;
   animation-fill-mode: forwards;
   animation-timing-function: ease-in-out;
@@ -6,6 +7,7 @@
 }
 
 .aShrink {
+  transform: scale(1);
   animation-name: aShrink;
   animation-fill-mode: forwards;
   animation-timing-function: ease-in-out;
