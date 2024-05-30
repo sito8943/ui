@@ -15,6 +15,7 @@ const InputControl = forwardRef(function (
 ) {
   const {
     helperText = "",
+    helperTextClassName = "basics",
     orientation = "column",
     color = "basics",
     labelClassName = "basics",
@@ -74,7 +75,7 @@ const InputControl = forwardRef(function (
         />
       )}
       {helperText && helperText.length ? (
-        <p className={color}>{helperText}</p>
+        <p className={helperTextClassName}>{helperText}</p>
       ) : null}
     </div>
   );
