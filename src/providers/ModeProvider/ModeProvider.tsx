@@ -12,10 +12,10 @@ import { ModeProviderData, ModeProviderProps } from "./types";
 const ModeContext = createContext({} as ModeProviderData);
 
 export const ModeProvider = (props: ModeProviderProps) => {
-  const { children } = props;
+  const { children, defaultMode } = props;
 
   const [mode, setMode] = useState<"dark" | "light" | "OS">(
-    localStorage.theme ?? "dark"
+    (defaultMode || localStorage.theme) ?? "dark"
   );
 
   const toggleMode = useCallback(() => {

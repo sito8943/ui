@@ -8,4 +8,5 @@ export interface ModeProviderData {
 
 export interface ModeProviderProps {
   children: ReactNode;
+  defaultMode: "dark" | "light" | "OS";
 }
