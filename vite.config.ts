@@ -12,6 +12,7 @@ export default defineConfig({
     alias: {
       components: resolve(srcPath, "components"),
       providers: resolve(srcPath, "providers"),
+      lib: resolve(srcPath, "lib"),
     },
   },
   plugins: [react(), dts({ insertTypesEntry: true }), libInjectCss()],
