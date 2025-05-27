@@ -1,65 +1,89 @@
-import { createContext, useContext, useReducer } from "react";
+import { useContext, createContext, useReducer } from "react";
 
-// types
+// lib
+import { NotificationEnumType, NotificationType } from "lib";
 import {
-  NotificationActionType,
-  NotificationProviderData,
   NotificationProviderProps,
-  NotificationType,
+  NotificationContextType,
+  NotificationActionType,
 } from "./types";
 
-const NotificationContext = createContext({} as NotificationProviderData);
+const NotificationContext = createContext({} as NotificationContextType);
 
-const notificationReducer = (
-  notification: NotificationType,
-  action: NotificationActionType
-): NotificationType => {
-  const { type, message } = action;
-  const actionHandlers = {
-    hide: () => ({ ...notification, visible: false }),
-    error: () => ({ visible: true, message: message ?? "", type: type }),
-    info: () => ({ visible: true, message: message ?? "", type: type }),
-    warning: () => ({ visible: true, message: message ?? "", type: type }),
-    success: () => ({ visible: true, message: message ?? "", type: type }),
-  };
+export function NotificationProvider(props: NotificationProviderProps) {
+  const { children, container = document.body } = props;
 
-  if (!actionHandlers[action.type]) {
-    throw new Error(`Unhandled action type: ${action.type}`);
-  }
+  const [notification, dispatch] = useReducer(
+    (state: NotificationType[], action: NotificationActionType) => {
+      const { type, items, index } = action;
 
-  return actionHandlers[action.type]();
-};
-
-const notificationInitializer = (initial: NotificationType) => initial;
-
-export const NotificationProvider = (props: NotificationProviderProps) => {
-  const { children } = props;
-  const [notification, setNotification] = useReducer<
-    typeof notificationReducer,
-    NotificationType
-  >(
-    notificationReducer,
-    {
-      visible: false,
-      type: "success",
-      message: "message",
-    } as NotificationType,
-    notificationInitializer
+      switch (type) {
+        case "set":
+          return (
+            items?.map((item: NotificationType, i: number) => ({
+              ...item,
+              id: i,
+            })) ?? []
+          );
+        case "remove":
+          if (index) return state.filter((_, i) => i !== index);
+          return [];
+      }
+      return state;
+    },
+    [] as NotificationType[],
+    () => [] as NotificationType[]
   );
 
-  const value = { notification, setNotification };
+  const showErrorNotification = (options: NotificationType) =>
+    dispatch({
+      type: "set",
+      items: [{ ...options, type: NotificationEnumType.error }],
+    });
+
+  const showNotification = (options: NotificationType) =>
+    dispatch({
+      type: "set",
+      items: [{ ...options }],
+    });
+
+  const showStackNotifications = (notifications: NotificationType[]) =>
+    dispatch({ type: "set", items: notifications });
+
+  const showSuccessNotification = (options: NotificationType) =>
+    dispatch({
+      type: "set",
+      items: [{ ...options, type: NotificationEnumType.success }],
+    });
+
+  const removeNotification = (index?: number) =>
+    dispatch({ type: "remove", index });
+
   return (
-    <NotificationContext.Provider value={value}>
+    <NotificationContext.Provider
+      value={{
+        notification,
+        container,
+        removeNotification,
+        showErrorNotification,
+        showNotification,
+        showSuccessNotification,
+        showStackNotifications,
+      }}
+    >
       {children}
     </NotificationContext.Provider>
   );
-};
+}
 
-// hooks
-// eslint-disable-next-line react-refresh/only-export-components
-export const useNotification = (): NotificationProviderData => {
+/**
+ *
+ * @returns notification context
+ */
+export const useNotification = () => {
   const context = useContext(NotificationContext);
+
   if (context === undefined)
-    throw new Error("notificationContext must be used within a Provider");
+    throw new Error("NotificationContext must be used within a Provider");
   return context;
 };
