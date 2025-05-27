@@ -1,25 +1,39 @@
-.notification-root {
+.notification-portal {
   position: fixed;
-  left: 0.25rem;
-  bottom: 0.25rem;
+  left: 0;
+  bottom: 0;
   z-index: 40;
+  gap: 8px;
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-start;
+  pointer-events: none;
 }
 
-.notification {
-  min-width: 150px;
-  max-width: 300px;
-  padding: 1.25rem 3rem 1.25rem 1.25rem;
+.notification-root {
+  min-width: 160px;
+  padding: 16px;
+  padding-left: 10px;
   position: relative;
-  border-radius: 0.75rem;
+  border-radius: 100px;
+  z-index: 10;
+  gap: 8px;
+  pointer-events: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .notification-close-button {
   position: absolute;
-  top: 0.25rem;
+  top: 50%;
+  transform: translateY(-50%);
   right: 0.25rem;
 }
 
 .close-notification-icon {
-  width: 25px;
-  height: 25px;
+  width: 15px;
+  height: 15px;
 }

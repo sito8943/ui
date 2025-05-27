@@ -48,7 +48,7 @@ export default function Notification(props: NotificationProps) {
 
   return createPortal(
     <div
-      className={`notification-root ${
+      className={`notification-portal ${
         notification?.length ? "w-screen h-screen" : ""
       }`}
     >
@@ -56,7 +56,7 @@ export default function Notification(props: NotificationProps) {
         ? notification?.map(({ id, type, message }, i) => {
             const styles = makeStyles(colors, color(type));
             return (
-              <div key={id} className={`notification ${styles.root}`}>
+              <div key={id} className={`notification-root ${styles.root}`}>
                 <IconButton
                   name="close-notification"
                   {...closeProps}
