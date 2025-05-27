@@ -1,61 +1,16 @@
 // actions
-import { Button, ButtonProps } from "components/Button/";
-import { IconButton, IconButtonProps } from "./IconButton";
+export * from "components/Button/";
+export * from "./IconButton";
 // form
-import {
-  InputControl,
-  SelectControl,
-  TextareaControl,
-  InputControlProps,
-  SelectControlProps,
-  TextareaControlProps,
-} from "./InputControl";
-import { Switcher, SwitcherProps } from "./Switch/";
+export * from "./InputControl";
+export * from "./Switch/";
 
 // display
-import { Image, ImageProps } from "./Image";
-import { PrintAfter, PrintAfterProps } from "./PrintAfter";
+export * from "./Image";
+export * from "./PrintAfter";
 
 // complex components
-import { Notification, NotificationProps } from "./Notification";
-import { Loading, LoadingProps } from "./Loading";
-import { SplashScreen, SplashScreenProps } from "./SplashScreen";
-import {
-  Handler,
-  ErrorFallbackProps,
-  Error,
-  ErrorProps,
-  HandlerProps,
-} from "./Error";
-
-export {
-  Button,
-  IconButton,
-  InputControl,
-  SelectControl,
-  TextareaControl,
-  Switcher,
-  Image,
-  PrintAfter,
-  Notification,
-  Loading,
-  Handler,
-  Error,
-  SplashScreen,
-};
-export type {
-  ErrorFallbackProps,
-  HandlerProps,
-  ErrorProps,
-  ButtonProps,
-  IconButtonProps,
-  InputControlProps,
-  SelectControlProps,
-  TextareaControlProps,
-  SwitcherProps,
-  ImageProps,
-  PrintAfterProps,
-  NotificationProps,
-  LoadingProps,
-  SplashScreenProps,
-};
+export * from "./Notification";
+export * from "./Loading";
+export * from "./SplashScreen";
+export * from "./Error";

@@ -51,20 +51,16 @@ const InputControl = forwardRef(function (
       </label>
       {leftComponent || rightComponent ? (
         <div className={`sub ${styles.input}`}>
-          {leftComponent && leftComponent !== null ? (
-            <div className="">{leftComponent}</div>
-          ) : null}
+          {leftComponent && leftComponent !== null ? leftComponent : null}
           <input
             {...rest}
             type={parsedType}
             ref={ref as ForwardedRef<HTMLInputElement>}
-            className={`${leftComponent ? "s-small-padding-left" : ""} ${
+            className={`no-border-radius ${leftComponent ? "s-small-padding-left" : ""} ${
               rightComponent ? "s-small-padding-right" : ""
             } ${styles.input} ${rest.className ?? ""}`}
           />
-          {rightComponent && rightComponent !== null ? (
-            <div>{rightComponent}</div>
-          ) : null}
+          {rightComponent && rightComponent !== null ? rightComponent : null}
         </div>
       ) : (
         <input

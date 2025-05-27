@@ -1,2 +1,2 @@
 export { ModeProvider, useMode } from "./ModeProvider";
-export type { ModeProviderData, ModeProviderProps } from "./types";
+export * from "./types";
