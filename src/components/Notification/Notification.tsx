@@ -1,5 +1,4 @@
 import { useCallback, useEffect } from "react";
-import { createPortal } from "react-dom";
 
 // providers
 import { useStyle, useNotification } from "providers/";
@@ -46,7 +45,7 @@ export default function Notification(props: NotificationProps) {
 
   const { colors } = useStyle();
 
-  return createPortal(
+  return (
     <div
       className={`notification-portal ${
         notification?.length ? "w-screen h-screen" : ""
@@ -79,7 +78,6 @@ export default function Notification(props: NotificationProps) {
             );
           })
         : null}
-    </div>,
-    container
+    </div>
   );
 }
