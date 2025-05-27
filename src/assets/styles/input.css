@@ -1,21 +1,26 @@
 .s-no-padding-left {
   padding-left: 0 !important;
 }
+
 .s-no-padding-right {
   padding-right: 0 !important;
 }
+
 .s-small-padding-left {
   padding-left: 0.5rem !important;
 }
+
 .s-small-padding-right {
   padding-right: 0.5rem !important;
 }
+
 .sub {
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 0 0.75rem;
 }
+
 .input-control {
   display: flex;
   gap: 0.25rem;
@@ -23,6 +28,7 @@
   justify-content: flex-start;
   width: 100%;
 }
+
 .column {
   flex-direction: column;
 }
@@ -49,6 +55,10 @@
   width: 100%;
   position: relative;
   border-radius: 1.5rem;
+}
+
+.input-control .sub input {
+  border-radius: 0;
 }
 
 .input-control textarea:focus-visible,
