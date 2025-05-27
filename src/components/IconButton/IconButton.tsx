@@ -10,14 +10,14 @@ const IconButton = forwardRef(function (
   props: IconButtonProps,
   ref: ForwardedRef<HTMLButtonElement>
 ) {
-  const { icon, ...rest } = props;
+  const { icon, size = "normal", className = "", ...rest } = props;
 
   return (
     <Button
       {...rest}
       ref={ref}
       type="button"
-      className={`icon-button ${rest.className}`}
+      className={`icon-button ${size} ${className}`}
     >
       {icon}
     </Button>

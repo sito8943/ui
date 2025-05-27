@@ -1,10 +1,20 @@
 .icon-button {
-  min-width: 2.5rem;
-  min-height: 2.5rem;
-  width: 2.5rem;
-  height: 2.5rem;
   border-radius: 100%;
   font-size: 1.25rem;
   line-height: 1.75rem;
   padding: 0;
+}
+
+.icon-button.normal {
+  min-width: 2.5rem;
+  min-height: 2.5rem;
+  width: 2.5rem;
+  height: 2.5rem;
+}
+
+.icon-button.small {
+  min-width: 2rem;
+  min-height: 2rem;
+  width: 2rem;
+  height: 2rem;
 }

@@ -71,6 +71,7 @@ export default function Notification(props: NotificationProps) {
                   ref={null}
                   color="basics"
                   onClick={() => onClose(i)}
+                  size="small"
                   className={`notification-close-button ${closeProps?.className}`}
                 />
                 <p>{message}</p>
