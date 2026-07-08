@@ -1,29 +1,36 @@
 import type { ButtonHTMLAttributes } from "react";
 
 export const BUTTON_COLOR_VARIANTS = {
+  DEFAULT: "default",
   PRIMARY: "primary",
   SECONDARY: "secondary",
-  BASICS: "basics",
   ERROR: "error",
   WARNING: "warning",
   SUCCESS: "success",
   INFO: "info",
 } as const;
 
-export const BUTTON_SHAPES = {
-  FILLED: "filled",
-  OUTLINED: "outlined",
+export const BUTTON_VARIANTS = {
   TEXT: "text",
+  SUBMIT: "submit",
+  OUTLINED: "outlined",
 } as const;
 
-type ButtonColorVariant =
+export type ButtonColor =
   (typeof BUTTON_COLOR_VARIANTS)[keyof typeof BUTTON_COLOR_VARIANTS];
 
-type ButtonShape = (typeof BUTTON_SHAPES)[keyof typeof BUTTON_SHAPES];
+export type ButtonVariant =
+  (typeof BUTTON_VARIANTS)[keyof typeof BUTTON_VARIANTS];
+
+export type ButtonBaseProps = {
+  color?: ButtonColor | undefined;
+  variant?: ButtonVariant | undefined;
+  [key: `data-${string}`]: string | number | boolean | undefined;
+};
 
 export interface ButtonProps
-  extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, "color" | "type"> {
-  color?: ButtonColorVariant | undefined;
-  shape?: ButtonShape | undefined;
+  extends
+    Omit<ButtonHTMLAttributes<HTMLButtonElement>, "color" | "type">,
+    ButtonBaseProps {
   type?: "button" | "submit" | "reset" | undefined;
 }

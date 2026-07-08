@@ -1,8 +1,19 @@
-import type { ReactNode } from "react";
-
 // types
 import type { ButtonProps } from "components/Button/";
+import type { ReactNode } from "react";
 
-export interface IconButtonProps extends ButtonProps {
-  icon: ReactNode;
-}
+type IconButtonAccessibleLabelProps =
+  | {
+      "aria-label": string;
+      children?: ReactNode;
+    }
+  | {
+      "aria-label"?: string;
+      children: ReactNode;
+    };
+
+export type IconButtonProps = Omit<ButtonProps, "aria-label" | "children"> &
+  IconButtonAccessibleLabelProps & {
+    icon: ReactNode;
+    iconClassName?: string;
+  };

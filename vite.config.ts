@@ -1,8 +1,9 @@
-import { defineConfig } from "vite";
 import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
+
 import react from "@vitejs/plugin-react";
+import { defineConfig } from "vite";
 import dts from "vite-plugin-dts";
 
 const __filename = fileURLToPath(import.meta.url);
@@ -30,7 +31,7 @@ const readCssWithImports = (filePath: string, seen = new Set<string>()) => {
 
       const importedPath = resolve(dirname(filePath), importPath);
       return readCssWithImports(importedPath, seen);
-    }
+    },
   );
 };
 
@@ -42,7 +43,7 @@ const styleEntrypoints = () => ({
     writeFileSync(resolve(distPath, "theme.css"), readFileSync(themeStylePath));
     writeFileSync(
       resolve(distPath, "styles.css"),
-      readCssWithImports(stylesPath)
+      readCssWithImports(stylesPath),
     );
   },
 });

@@ -1,4 +1,17 @@
+export type {
+  ButtonBaseProps,
+  ButtonColor,
+  ButtonProps,
+  ButtonVariant,
+} from "./Button";
 export { Button } from "./Button";
-export type { ButtonProps } from "./Button";
-export { IconButton } from "./IconButton";
+export type {
+  DialogActionButtonProps,
+  DialogActionsProps,
+  DialogInitialFocus,
+  DialogProps,
+  DialogSubmitHandler,
+} from "./Dialog";
+export { Dialog, DialogActions } from "./Dialog";
 export type { IconButtonProps } from "./IconButton";
+export { IconButton } from "./IconButton";

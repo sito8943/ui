@@ -1,33 +1,32 @@
-import { forwardRef, type ForwardedRef } from "react";
+import { type ForwardedRef, forwardRef } from "react";
 
+import { classNames } from "../../utils";
 // types
 import {
   BUTTON_COLOR_VARIANTS,
-  BUTTON_SHAPES,
+  BUTTON_VARIANTS,
   type ButtonProps,
 } from "./types";
 
 const Button = forwardRef(function (
   props: ButtonProps,
-  ref?: ForwardedRef<HTMLButtonElement>
+  ref?: ForwardedRef<HTMLButtonElement>,
 ) {
   const {
-    color = BUTTON_COLOR_VARIANTS.PRIMARY,
+    color = BUTTON_COLOR_VARIANTS.DEFAULT,
     type = "button",
-    shape = BUTTON_SHAPES.TEXT,
+    variant = BUTTON_VARIANTS.TEXT,
     className,
     children,
     ...rest
   } = props;
 
-  const buttonClassName = [
+  const buttonClassName = classNames(
     "sito-ui-button",
-    `sito-ui-button--${shape}`,
+    `sito-ui-button--${variant}`,
     `sito-ui-button--${color}`,
     className,
-  ]
-    .filter(Boolean)
-    .join(" ");
+  );
 
   return (
     <button

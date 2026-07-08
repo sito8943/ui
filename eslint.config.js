@@ -1,6 +1,6 @@
 import js from "@eslint/js";
-import prettierRecommended from "eslint-plugin-prettier/recommended";
 import jsdoc from "eslint-plugin-jsdoc";
+import prettierRecommended from "eslint-plugin-prettier/recommended";
 import reactHooks from "eslint-plugin-react-hooks";
 import reactRefresh from "eslint-plugin-react-refresh";
 import simpleImportSort from "eslint-plugin-simple-import-sort";

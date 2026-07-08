@@ -1,30 +1,43 @@
-import { forwardRef, type ForwardedRef } from "react";
+import { type ForwardedRef, forwardRef } from "react";
 
-// components
-import { Button } from "components/Button/";
-
+import { classNames } from "../../utils";
 // types
 import type { IconButtonProps } from "./types";
 
 const IconButton = forwardRef(function (
   props: IconButtonProps,
-  ref: ForwardedRef<HTMLButtonElement>
+  ref: ForwardedRef<HTMLButtonElement>,
 ) {
-  const { icon, className, ...rest } = props;
-  const iconButtonClassName = ["sito-ui-icon-button", className]
-    .filter(Boolean)
-    .join(" ");
+  const {
+    children,
+    icon,
+    iconClassName,
+    type = "button",
+    variant = "text",
+    color = "default",
+    className,
+    ...rest
+  } = props;
+  const iconButtonClassName = classNames(
+    "sito-ui-icon-button",
+    `sito-ui-icon-button--${variant}`,
+    `sito-ui-icon-button--${color}`,
+    className,
+  );
 
   return (
-    <Button
+    <button
+      data-sito-ui="icon-button"
       {...rest}
       ref={ref}
-      type="button"
-      data-sito-ui="icon-button"
+      type={type}
       className={iconButtonClassName}
     >
-      {icon}
-    </Button>
+      <span className={iconClassName} aria-hidden="true">
+        {icon}
+      </span>
+      {children}
+    </button>
   );
 });
 
