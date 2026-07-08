@@ -44,10 +44,3 @@
   );
   --sito-ui-motion-duration-normal: 300ms;
 }
-
-@media (pointer: coarse) {
-  [data-tippy-root] {
-    /* Attribute exists */
-    display: none !important;
-  }
-}
