@@ -1,4 +1,3 @@
-export * from "./components";
-export * from "./providers";
-export * from "./hooks";
+export { Button, IconButton } from "./components";
+export type { ButtonProps, IconButtonProps } from "./components";
 import "./index.css";
