@@ -1,0 +1,10 @@
+.sito-ui-icon-button {
+  min-width: var(--sito-ui-size-icon-button);
+  min-height: var(--sito-ui-size-icon-button);
+  width: var(--sito-ui-size-icon-button);
+  height: var(--sito-ui-size-icon-button);
+  border-radius: var(--sito-ui-radius-round);
+  font-size: var(--sito-ui-font-size-icon-button);
+  line-height: var(--sito-ui-line-height-icon-button);
+  padding: var(--sito-ui-space-0);
+}

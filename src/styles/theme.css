@@ -1,6 +1,3 @@
-@import "./assets/styles/button.css";
-@import "./assets/styles/icon-button.css";
-
 :root {
   --sito-ui-color-primary-text: #ededed;
   --sito-ui-color-primary-light: #d74d54;
@@ -37,10 +34,28 @@
   --sito-ui-color-info-default: #007ea8;
   --sito-ui-color-info-dark: #005875;
 
+  --sito-ui-space-0: 0;
+  --sito-ui-space-2: 0.5rem;
+  --sito-ui-space-7: 1.75rem;
+
+  --sito-ui-size-icon-button: 2.5rem;
+
+  --sito-ui-radius-pill: 1.5rem;
+  --sito-ui-radius-round: 100%;
+
+  --sito-ui-border-width-medium: 2px;
+
+  --sito-ui-font-weight-semibold: 600;
+  --sito-ui-font-size-icon-button: 1.25rem;
+  --sito-ui-line-height-icon-button: 1.75rem;
+
+  --sito-ui-motion-duration-normal: 300ms;
+  --sito-ui-motion-easing-standard: cubic-bezier(0.4, 0, 0.2, 1);
+
+  --sito-ui-button-disabled-opacity: 0.6;
   --sito-ui-button-hover-background: color-mix(
     in srgb,
     var(--sito-ui-button-light) 18%,
     transparent
   );
-  --sito-ui-motion-duration-normal: 300ms;
 }
