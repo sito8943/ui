@@ -20,7 +20,6 @@ export default defineConfig({
   resolve: {
     alias: {
       components: resolve(srcPath, "components"),
-      providers: resolve(srcPath, "providers"),
     },
   },
   plugins: [react(), dts({ insertTypesEntry: true }), libInjectCss()],

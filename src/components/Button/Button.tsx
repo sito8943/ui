@@ -1,31 +1,37 @@
 import { forwardRef, ForwardedRef } from "react";
 
-// providers
-import { useStyle } from "providers/StyleProvider/";
-
 // types
-import { ButtonProps } from "./types";
-
-// styles
-import { makeStyles } from "./styles";
+import {
+  BUTTON_COLOR_VARIANTS,
+  BUTTON_SHAPES,
+  ButtonProps,
+} from "./types";
 
 const Button = forwardRef(function (
   props: ButtonProps,
   ref?: ForwardedRef<HTMLButtonElement>
 ) {
-  const { color = "primary", type = "button", shape = "text", ...rest } = props;
+  const {
+    color = BUTTON_COLOR_VARIANTS.PRIMARY,
+    type = "button",
+    shape = BUTTON_SHAPES.TEXT,
+    className,
+    children,
+    ...rest
+  } = props;
 
-  const { colors } = useStyle();
-  const styles = makeStyles(colors, color, shape);
+  const buttonClassName = [
+    "button",
+    shape,
+    `button--${color}`,
+    className,
+  ]
+    .filter(Boolean)
+    .join(" ");
 
   return (
-    <button
-      type={type}
-      ref={ref}
-      {...rest}
-      className={`button ${shape} ${styles.root} ${rest.className}`}
-    >
-      {rest.children}
+    <button type={type} ref={ref} {...rest} className={buttonClassName}>
+      {children}
     </button>
   );
 });

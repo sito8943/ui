@@ -1,3 +1,50 @@
+@import "./assets/styles/button.css";
+@import "./assets/styles/icon-button.css";
+
+:root {
+  --sito-ui-color-primary-text: #ededed;
+  --sito-ui-color-primary-light: #d74d54;
+  --sito-ui-color-primary-default: #cd212a;
+  --sito-ui-color-primary-dark: #8f171d;
+
+  --sito-ui-color-secondary-text: #f7f7f7;
+  --sito-ui-color-secondary-light: #364b67;
+  --sito-ui-color-secondary-default: #041e42;
+  --sito-ui-color-secondary-dark: #02152e;
+
+  --sito-ui-color-basics-text: #101010;
+  --sito-ui-color-basics-light: #f7f7f7;
+  --sito-ui-color-basics-default: #ededed;
+  --sito-ui-color-basics-dark: #e1e1e1;
+
+  --sito-ui-color-error-text: #f7f7f7;
+  --sito-ui-color-error-light: #d63333;
+  --sito-ui-color-error-default: #cc0000;
+  --sito-ui-color-error-dark: #8e0000;
+
+  --sito-ui-color-warning-text: #101010;
+  --sito-ui-color-warning-light: #e2bf33;
+  --sito-ui-color-warning-default: #dbaf00;
+  --sito-ui-color-warning-dark: #997a00;
+
+  --sito-ui-color-success-text: #f7f7f7;
+  --sito-ui-color-success-light: #559b33;
+  --sito-ui-color-success-default: #007733;
+  --sito-ui-color-success-dark: #1e5b00;
+
+  --sito-ui-color-info-text: #f7f7f7;
+  --sito-ui-color-info-light: #3397b9;
+  --sito-ui-color-info-default: #007ea8;
+  --sito-ui-color-info-dark: #005875;
+
+  --sito-ui-button-hover-background: color-mix(
+    in srgb,
+    var(--sito-ui-button-light) 18%,
+    transparent
+  );
+  --sito-ui-motion-duration-normal: 300ms;
+}
+
 @media (pointer: coarse) {
   [data-tippy-root] {
     /* Attribute exists */

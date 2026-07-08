@@ -1,4 +1,9 @@
 .button {
+  --sito-ui-button-text: var(--sito-ui-color-primary-text);
+  --sito-ui-button-light: var(--sito-ui-color-primary-light);
+  --sito-ui-button-default: var(--sito-ui-color-primary-default);
+  --sito-ui-button-dark: var(--sito-ui-color-primary-dark);
+
   display: flex;
   font-weight: 600;
   cursor: default;
@@ -6,12 +11,107 @@
   justify-content: center;
   padding: 0.5rem 1.75rem;
   border-radius: 1.5rem;
-  transition-duration: 300ms;
+  border: 2px solid transparent;
+  background-color: transparent;
+  transition-duration: var(--sito-ui-motion-duration-normal);
   transition-property: color, background-color, border-color,
     text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter,
     backdrop-filter;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
-.outlined.button {
-  border-width: 2px;
+
+.button--primary {
+  --sito-ui-button-text: var(--sito-ui-color-primary-text);
+  --sito-ui-button-light: var(--sito-ui-color-primary-light);
+  --sito-ui-button-default: var(--sito-ui-color-primary-default);
+  --sito-ui-button-dark: var(--sito-ui-color-primary-dark);
+}
+
+.button--secondary {
+  --sito-ui-button-text: var(--sito-ui-color-secondary-text);
+  --sito-ui-button-light: var(--sito-ui-color-secondary-light);
+  --sito-ui-button-default: var(--sito-ui-color-secondary-default);
+  --sito-ui-button-dark: var(--sito-ui-color-secondary-dark);
+}
+
+.button--basics {
+  --sito-ui-button-text: var(--sito-ui-color-basics-text);
+  --sito-ui-button-light: var(--sito-ui-color-basics-light);
+  --sito-ui-button-default: var(--sito-ui-color-basics-default);
+  --sito-ui-button-dark: var(--sito-ui-color-basics-dark);
+}
+
+.button--error {
+  --sito-ui-button-text: var(--sito-ui-color-error-text);
+  --sito-ui-button-light: var(--sito-ui-color-error-light);
+  --sito-ui-button-default: var(--sito-ui-color-error-default);
+  --sito-ui-button-dark: var(--sito-ui-color-error-dark);
+}
+
+.button--warning {
+  --sito-ui-button-text: var(--sito-ui-color-warning-text);
+  --sito-ui-button-light: var(--sito-ui-color-warning-light);
+  --sito-ui-button-default: var(--sito-ui-color-warning-default);
+  --sito-ui-button-dark: var(--sito-ui-color-warning-dark);
+}
+
+.button--success {
+  --sito-ui-button-text: var(--sito-ui-color-success-text);
+  --sito-ui-button-light: var(--sito-ui-color-success-light);
+  --sito-ui-button-default: var(--sito-ui-color-success-default);
+  --sito-ui-button-dark: var(--sito-ui-color-success-dark);
+}
+
+.button--info {
+  --sito-ui-button-text: var(--sito-ui-color-info-text);
+  --sito-ui-button-light: var(--sito-ui-color-info-light);
+  --sito-ui-button-default: var(--sito-ui-color-info-default);
+  --sito-ui-button-dark: var(--sito-ui-color-info-dark);
+}
+
+.button.text {
+  color: var(--sito-ui-button-default);
+}
+
+.button.button--basics.text {
+  color: var(--sito-ui-button-text);
+}
+
+.button.text:hover {
+  color: var(--sito-ui-button-default);
+  background-color: var(--sito-ui-button-hover-background);
+}
+
+.button.button--basics.text:hover {
+  color: var(--sito-ui-button-text);
+}
+
+.button.filled {
+  color: var(--sito-ui-button-text);
+  background-color: var(--sito-ui-button-default);
+}
+
+.button.filled:hover {
+  background-color: var(--sito-ui-button-light);
+}
+
+.button.outlined {
+  color: var(--sito-ui-button-default);
+  border-color: var(--sito-ui-button-default);
+}
+
+.button.button--basics.outlined {
+  color: var(--sito-ui-button-text);
+}
+
+.button.outlined:hover {
+  color: var(--sito-ui-button-text);
+  border-color: var(--sito-ui-button-light);
+  background-color: var(--sito-ui-button-light);
+}
+
+.button:disabled,
+.button[aria-disabled="true"] {
+  cursor: not-allowed;
+  opacity: 0.6;
 }
