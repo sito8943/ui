@@ -3,6 +3,7 @@
   "private": false,
   "version": "0.0.203",
   "type": "module",
+  "packageManager": "pnpm@10.34.4",
   "files": [
     "dist/"
   ],
@@ -26,11 +27,11 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build --base=./",
-    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+    "lint": "eslint . --max-warnings 0",
     "preview": "vite preview"
   },
   "engines": {
-    "node": "^20.19.0 || >=22.12.0"
+    "node": "^20.19.0 || ^22.13.0 || >=24"
   },
   "peerDependencies": {
     "react": "^19.0.0",
@@ -50,20 +51,39 @@
     "minimatch": "3.1.5",
     "validator": "13.15.35"
   },
+  "pnpm": {
+    "overrides": {
+      "@microsoft/api-extractor": "7.58.9",
+      "ajv": "6.15.0",
+      "brace-expansion": "1.1.16",
+      "cross-spawn": "7.0.6",
+      "flatted": "3.4.2",
+      "lodash": "4.18.1",
+      "minimatch": "3.1.5",
+      "validator": "13.15.35"
+    }
+  },
   "devDependencies": {
+    "@eslint/js": "10.0.1",
+    "@types/eslint": "9.6.1",
     "@types/node": "20.19.43",
     "@types/react": "19.2.17",
     "@types/react-dom": "19.2.3",
-    "@typescript-eslint/eslint-plugin": "8.63.0",
-    "@typescript-eslint/parser": "8.63.0",
     "@vitejs/plugin-react": "6.0.3",
     "autoprefixer": "10.5.2",
-    "eslint": "8.57.1",
+    "eslint": "10.6.0",
+    "eslint-config-prettier": "10.1.8",
+    "eslint-plugin-jsdoc": "62.9.0",
+    "eslint-plugin-prettier": "5.5.6",
     "eslint-plugin-react-hooks": "7.1.1",
-    "eslint-plugin-react-refresh": "0.4.26",
+    "eslint-plugin-react-refresh": "0.5.3",
+    "eslint-plugin-simple-import-sort": "13.0.0",
+    "globals": "17.7.0",
+    "prettier": "3.9.4",
     "react": "19.2.7",
     "react-dom": "19.2.7",
     "typescript": "6.0.3",
+    "typescript-eslint": "8.63.0",
     "vite": "8.1.3",
     "vite-plugin-dts": "5.0.3",
     "vite-plugin-lib-inject-css": "2.2.2"
