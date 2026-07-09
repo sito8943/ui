@@ -6,6 +6,7 @@
 
 - Added a `format` script to run Prettier with `prettier . --write`.
 - Added a GitHub Actions workflow for linting, format checking, and building.
+- Added Dependabot configuration for npm dependencies and GitHub Actions updates.
 - Added JSDoc descriptions for the dialog components, dialog utilities, `useDialog`, and `classNames`.
 
 ### Changed
