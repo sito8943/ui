@@ -24,6 +24,10 @@
   transition-timing-function: var(--sito-ui-motion-easing-standard);
 }
 
+.sito-ui-button:enabled:not([aria-disabled="true"]) {
+  cursor: pointer;
+}
+
 .sito-ui-button--default {
   --sito-ui-button-text: var(--sito-ui-color-default-text);
   --sito-ui-button-light: var(--sito-ui-color-default-light);

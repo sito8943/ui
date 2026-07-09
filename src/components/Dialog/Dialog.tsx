@@ -11,8 +11,14 @@ import { createPortal } from "react-dom";
 
 import { classNames } from "../../utils";
 import { IconButton } from "../IconButton";
+import { focusableInputSelector, submitSelector } from "./constants";
 import type { DialogProps } from "./types";
-import { lockBodyScroll, unlockBodyScroll } from "./utils";
+import {
+  getActiveElement,
+  getFocusableElements,
+  lockBodyScroll,
+  unlockBodyScroll,
+} from "./utils";
 
 /**
  * Renders an accessible modal dialog in a portal.

@@ -2,7 +2,14 @@ import type { FormEvent, ReactNode } from "react";
 
 import type { ButtonProps } from "../Button";
 
-export type DialogInitialFocus = "none" | "first-input" | "submit";
+export const DIALOG_INITIAL_FOCUS = {
+  NONE: "none",
+  FIRST_INPUT: "first-input",
+  SUBMIT: "submit",
+} as const;
+
+export type DialogInitialFocus =
+  (typeof DIALOG_INITIAL_FOCUS)[keyof typeof DIALOG_INITIAL_FOCUS];
 
 export type DialogSubmitHandler = (
   event: FormEvent<HTMLFormElement>,
