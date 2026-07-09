@@ -1,6 +1,7 @@
 import {
   type FormEvent,
   type MouseEvent,
+  type ReactNode,
   useCallback,
   useEffect,
   useId,
@@ -13,19 +14,13 @@ import { IconButton } from "../IconButton";
 import type { DialogProps } from "./types";
 import { lockBodyScroll, unlockBodyScroll } from "./utils";
 
-const focusableInputSelector =
-  'input:not([type="hidden"]):not([disabled]), textarea:not([disabled]), select:not([disabled])';
-
-const submitSelector =
-  'button[type="submit"]:not([disabled]), input[type="submit"]:not([disabled])';
-
 /**
  *
- * @param props
  */
 export const Dialog = (props: DialogProps) => {
   const generatedTitleId = useId();
   const dialogRef = useRef<HTMLDivElement | null>(null);
+  const previousFocusedElementRef = useRef<HTMLElement | null>(null);
   const {
     dialogId,
     title,
@@ -42,6 +37,7 @@ export const Dialog = (props: DialogProps) => {
     containerClassName,
     className,
     closeLabel = "Close dialog",
+    closeIcon = "x",
     showCloseButton = true,
     portalContainer,
   } = props;
@@ -50,7 +46,47 @@ export const Dialog = (props: DialogProps) => {
 
   const handleKeyDown = useCallback(
     (event: KeyboardEvent) => {
-      if (event.key === "Escape" && open && closeOnEscape) onClose();
+      if (event.key === "Escape" && open && closeOnEscape) {
+        onClose();
+        return;
+      }
+
+      if (event.key !== "Tab" || !open) return;
+
+      const dialog = dialogRef.current;
+      if (!dialog) return;
+
+      const focusableElements = getFocusableElements(dialog);
+
+      if (focusableElements.length === 0) {
+        event.preventDefault();
+        dialog.focus();
+        return;
+      }
+
+      const firstFocusableElement = focusableElements[0];
+      const lastFocusableElement =
+        focusableElements[focusableElements.length - 1];
+      const activeElement = getActiveElement();
+      const focusIsOutsideDialog =
+        !activeElement || !dialog.contains(activeElement);
+
+      if (
+        event.shiftKey &&
+        (focusIsOutsideDialog || activeElement === firstFocusableElement)
+      ) {
+        event.preventDefault();
+        lastFocusableElement.focus();
+        return;
+      }
+
+      if (
+        !event.shiftKey &&
+        (focusIsOutsideDialog || activeElement === lastFocusableElement)
+      ) {
+        event.preventDefault();
+        firstFocusableElement.focus();
+      }
     },
     [closeOnEscape, onClose, open],
   );
@@ -65,17 +101,43 @@ export const Dialog = (props: DialogProps) => {
   }, [handleKeyDown, open]);
 
   useEffect(() => {
-    if (!open || initialFocus === "none") return;
+    if (!open) return;
+
+    previousFocusedElementRef.current = getActiveElement();
+
+    return () => {
+      if (previousFocusedElementRef.current?.isConnected) {
+        previousFocusedElementRef.current.focus();
+      }
+      previousFocusedElementRef.current = null;
+    };
+  }, [open]);
+
+  useEffect(() => {
+    if (!open) return;
 
     const dialog = dialogRef.current;
     if (!dialog) return;
 
     if (initialFocus === "first-input") {
-      dialog.querySelector<HTMLElement>(focusableInputSelector)?.focus();
-      return;
+      const firstInput = dialog.querySelector<HTMLElement>(
+        focusableInputSelector,
+      );
+      if (firstInput) {
+        firstInput.focus();
+        return;
+      }
     }
 
-    dialog.querySelector<HTMLElement>(submitSelector)?.focus();
+    if (initialFocus === "submit") {
+      const submitButton = dialog.querySelector<HTMLElement>(submitSelector);
+      if (submitButton) {
+        submitButton.focus();
+        return;
+      }
+    }
+
+    dialog.focus();
   }, [initialFocus, open]);
 
   useEffect(() => {
@@ -112,6 +174,13 @@ export const Dialog = (props: DialogProps) => {
     children
   );
 
+  const closeIconContent: ReactNode =
+    typeof closeIcon === "string" ? (
+      <span aria-hidden="true">{closeIcon}</span>
+    ) : (
+      closeIcon
+    );
+
   return createPortal(
     <div
       id={dialogId ? `backdrop-${dialogId}` : undefined}
@@ -142,7 +211,7 @@ export const Dialog = (props: DialogProps) => {
           ) : null}
           {showCloseButton ? (
             <IconButton
-              icon={<span aria-hidden="true">x</span>}
+              icon={closeIconContent}
               disabled={!open}
               aria-disabled={!open}
               onClick={onClose}

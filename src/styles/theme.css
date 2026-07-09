@@ -66,6 +66,7 @@
   --sito-ui-z-index-dialog: 50;
 
   --sito-ui-button-disabled-opacity: 0.6;
+  --sito-ui-button-active-scale: 0.97;
   --sito-ui-dialog-backdrop-background: rgb(16 24 40 / 20%);
   --sito-ui-dialog-backdrop-filter: blur(1rem);
 }

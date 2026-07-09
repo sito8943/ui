@@ -1,6 +1,7 @@
 import { type ForwardedRef, forwardRef } from "react";
 
 import { classNames } from "../../utils";
+import { Button } from "../Button";
 // types
 import type { IconButtonProps } from "./types";
 
@@ -18,26 +19,23 @@ const IconButton = forwardRef(function (
     className,
     ...rest
   } = props;
-  const iconButtonClassName = classNames(
-    "sito-ui-icon-button",
-    `sito-ui-icon-button--${variant}`,
-    `sito-ui-icon-button--${color}`,
-    className,
-  );
+  const iconButtonClassName = classNames("sito-ui-icon-button", className);
 
   return (
-    <button
-      data-sito-ui="icon-button"
+    <Button
       {...rest}
       ref={ref}
       type={type}
+      variant={variant}
+      color={color}
+      data-sito-ui="icon-button"
       className={iconButtonClassName}
     >
       <span className={iconClassName} aria-hidden="true">
         {icon}
       </span>
       {children}
-    </button>
+    </Button>
   );
 });
 

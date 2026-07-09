@@ -86,7 +86,7 @@
   color: var(--sito-ui-button-default);
 }
 
-.sito-ui-button--text:enabled:hover {
+.sito-ui-button--text:enabled:not([aria-disabled="true"]):hover {
   background-color: var(--sito-ui-button-light);
 }
 
@@ -95,7 +95,7 @@
   background-color: var(--sito-ui-button-default);
 }
 
-.sito-ui-button--submit:enabled:hover {
+.sito-ui-button--submit:enabled:not([aria-disabled="true"]):hover {
   background-color: var(--sito-ui-button-hover);
 }
 
@@ -110,10 +110,14 @@
   border-color: var(--sito-ui-color-border);
 }
 
-.sito-ui-button--outlined:enabled:hover {
+.sito-ui-button--outlined:enabled:not([aria-disabled="true"]):hover {
   color: var(--sito-ui-button-text);
   border-color: var(--sito-ui-button-hover);
   background-color: var(--sito-ui-button-hover);
+}
+
+.sito-ui-button:enabled:not([aria-disabled="true"]):active {
+  transform: scale(var(--sito-ui-button-active-scale));
 }
 
 .sito-ui-button:disabled,

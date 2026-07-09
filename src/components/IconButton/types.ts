@@ -1,6 +1,7 @@
-// types
-import type { ButtonProps } from "components/Button/";
 import type { ReactNode } from "react";
+
+// types
+import type { ButtonProps } from "../Button";
 
 type IconButtonAccessibleLabelProps =
   | {

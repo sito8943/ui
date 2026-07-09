@@ -39,6 +39,7 @@ type DialogBaseProps = {
   containerClassName?: string;
   className?: string;
   closeLabel?: string;
+  closeIcon?: ReactNode;
   showCloseButton?: boolean;
   portalContainer?: Element | DocumentFragment | null;
 };

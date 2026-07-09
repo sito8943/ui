@@ -1,3 +1,5 @@
+import { focusableSelector } from "./constants";
+
 let lockCount = 0;
 let previousOverflow: string | null = null;
 
@@ -29,4 +31,24 @@ export const unlockBodyScroll = () => {
     document.body.style.overflow = previousOverflow ?? "";
     previousOverflow = null;
   }
+};
+
+/**
+ *
+ */
+export const getFocusableElements = (element: HTMLElement) =>
+  Array.from(element.querySelectorAll<HTMLElement>(focusableSelector)).filter(
+    (focusableElement) =>
+      focusableElement.getAttribute("aria-disabled") !== "true",
+  );
+
+/**
+ *
+ */
+export const getActiveElement = (): HTMLElement | null => {
+  if (typeof document === "undefined") return null;
+
+  return document.activeElement instanceof HTMLElement
+    ? document.activeElement
+    : null;
 };
