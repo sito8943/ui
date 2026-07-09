@@ -1,3 +1,2 @@
-import { useIsElementInViewport } from "./useIsElementInViewport";
-import { useScreenHandler, useMediaQuery } from "./useScreenHandler";
-export { useIsElementInViewport, useScreenHandler, useMediaQuery };
+export type { UseDialogReturn } from "./useDialog";
+export { useDialog } from "./useDialog";

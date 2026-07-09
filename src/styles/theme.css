@@ -1,0 +1,76 @@
+:root {
+  --sito-ui-color-text: #101010;
+  --sito-ui-color-surface: #ffffff;
+  --sito-ui-color-border: #d9dde4;
+
+  --sito-ui-color-default-text: #101010;
+  --sito-ui-color-default-light: #f4f6f8;
+  --sito-ui-color-default-default: #e9edf2;
+  --sito-ui-color-default-hover: #dfe5ec;
+
+  --sito-ui-color-primary-text: #ededed;
+  --sito-ui-color-primary-light: rgb(205 33 42 / 10%);
+  --sito-ui-color-primary-default: #cd212a;
+  --sito-ui-color-primary-hover: #d74d54;
+
+  --sito-ui-color-secondary-text: #f7f7f7;
+  --sito-ui-color-secondary-light: rgb(4 30 66 / 10%);
+  --sito-ui-color-secondary-default: #041e42;
+  --sito-ui-color-secondary-hover: #364b67;
+
+  --sito-ui-color-error-text: #f7f7f7;
+  --sito-ui-color-error-light: rgb(204 0 0 / 10%);
+  --sito-ui-color-error-default: #cc0000;
+  --sito-ui-color-error-hover: #d63333;
+
+  --sito-ui-color-warning-text: #101010;
+  --sito-ui-color-warning-light: rgb(219 175 0 / 10%);
+  --sito-ui-color-warning-default: #dbaf00;
+  --sito-ui-color-warning-hover: #e2bf33;
+
+  --sito-ui-color-success-text: #f7f7f7;
+  --sito-ui-color-success-light: rgb(0 119 51 / 10%);
+  --sito-ui-color-success-default: #007733;
+  --sito-ui-color-success-hover: #559b33;
+
+  --sito-ui-color-info-text: #f7f7f7;
+  --sito-ui-color-info-light: rgb(0 126 168 / 10%);
+  --sito-ui-color-info-default: #007ea8;
+  --sito-ui-color-info-hover: #3397b9;
+
+  --sito-ui-space-0: 0;
+  --sito-ui-space-2: 0.5rem;
+  --sito-ui-space-4: 1rem;
+  --sito-ui-space-5: 1.25rem;
+
+  --sito-ui-size-icon-button: 1.75rem;
+  --sito-ui-size-button-spinner: 1em;
+
+  --sito-ui-radius-pill: 1.5rem;
+  --sito-ui-radius-round: 100%;
+  --sito-ui-radius-dialog: 1rem;
+
+  --sito-ui-border-width-thin: 1px;
+  --sito-ui-button-spinner-border-width: 2px;
+
+  --sito-ui-font-weight-semibold: 600;
+  --sito-ui-font-size-button: 0.875rem;
+  --sito-ui-font-size-icon-button: 1.25rem;
+  --sito-ui-font-size-dialog-title: 1.25rem;
+  --sito-ui-line-height-button: 1.25rem;
+  --sito-ui-line-height-icon-button: 1.75rem;
+  --sito-ui-line-height-dialog-title: 1.75rem;
+
+  --sito-ui-motion-duration-normal: 300ms;
+  --sito-ui-motion-duration-spin: 600ms;
+  --sito-ui-motion-duration-spin-reduced: 1500ms;
+  --sito-ui-motion-easing-standard: cubic-bezier(0.4, 0, 0.2, 1);
+
+  --sito-ui-shadow-dialog: 0 1rem 3rem rgb(16 24 40 / 18%);
+  --sito-ui-z-index-dialog: 50;
+
+  --sito-ui-button-disabled-opacity: 0.6;
+  --sito-ui-button-active-scale: 0.97;
+  --sito-ui-dialog-backdrop-background: rgb(16 24 40 / 20%);
+  --sito-ui-dialog-backdrop-filter: blur(1rem);
+}

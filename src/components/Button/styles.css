@@ -1,0 +1,163 @@
+.sito-ui-button {
+  --sito-ui-button-text: var(--sito-ui-color-default-text);
+  --sito-ui-button-light: var(--sito-ui-color-default-light);
+  --sito-ui-button-default: var(--sito-ui-color-default-default);
+  --sito-ui-button-hover: var(--sito-ui-color-default-hover);
+
+  display: flex;
+  gap: var(--sito-ui-space-2);
+  font-weight: var(--sito-ui-font-weight-semibold);
+  cursor: default;
+  align-items: center;
+  justify-content: center;
+  padding: var(--sito-ui-space-2) var(--sito-ui-space-4);
+  border-radius: var(--sito-ui-radius-pill);
+  border: var(--sito-ui-border-width-thin) solid transparent;
+  background-color: transparent;
+  color: var(--sito-ui-color-text);
+  font-size: var(--sito-ui-font-size-button);
+  line-height: var(--sito-ui-line-height-button);
+  transition-duration: var(--sito-ui-motion-duration-normal);
+  transition-property:
+    color, background-color, border-color, text-decoration-color, fill, stroke,
+    opacity, box-shadow, transform, filter, backdrop-filter;
+  transition-timing-function: var(--sito-ui-motion-easing-standard);
+}
+
+.sito-ui-button:enabled:not([aria-disabled="true"]) {
+  cursor: pointer;
+}
+
+.sito-ui-button--default {
+  --sito-ui-button-text: var(--sito-ui-color-default-text);
+  --sito-ui-button-light: var(--sito-ui-color-default-light);
+  --sito-ui-button-default: var(--sito-ui-color-default-default);
+  --sito-ui-button-hover: var(--sito-ui-color-default-hover);
+}
+
+.sito-ui-button--primary {
+  --sito-ui-button-text: var(--sito-ui-color-primary-text);
+  --sito-ui-button-light: var(--sito-ui-color-primary-light);
+  --sito-ui-button-default: var(--sito-ui-color-primary-default);
+  --sito-ui-button-hover: var(--sito-ui-color-primary-hover);
+}
+
+.sito-ui-button--secondary {
+  --sito-ui-button-text: var(--sito-ui-color-secondary-text);
+  --sito-ui-button-light: var(--sito-ui-color-secondary-light);
+  --sito-ui-button-default: var(--sito-ui-color-secondary-default);
+  --sito-ui-button-hover: var(--sito-ui-color-secondary-hover);
+}
+
+.sito-ui-button--error {
+  --sito-ui-button-text: var(--sito-ui-color-error-text);
+  --sito-ui-button-light: var(--sito-ui-color-error-light);
+  --sito-ui-button-default: var(--sito-ui-color-error-default);
+  --sito-ui-button-hover: var(--sito-ui-color-error-hover);
+}
+
+.sito-ui-button--warning {
+  --sito-ui-button-text: var(--sito-ui-color-warning-text);
+  --sito-ui-button-light: var(--sito-ui-color-warning-light);
+  --sito-ui-button-default: var(--sito-ui-color-warning-default);
+  --sito-ui-button-hover: var(--sito-ui-color-warning-hover);
+}
+
+.sito-ui-button--success {
+  --sito-ui-button-text: var(--sito-ui-color-success-text);
+  --sito-ui-button-light: var(--sito-ui-color-success-light);
+  --sito-ui-button-default: var(--sito-ui-color-success-default);
+  --sito-ui-button-hover: var(--sito-ui-color-success-hover);
+}
+
+.sito-ui-button--info {
+  --sito-ui-button-text: var(--sito-ui-color-info-text);
+  --sito-ui-button-light: var(--sito-ui-color-info-light);
+  --sito-ui-button-default: var(--sito-ui-color-info-default);
+  --sito-ui-button-hover: var(--sito-ui-color-info-hover);
+}
+
+.sito-ui-button--text {
+  color: var(--sito-ui-color-text);
+}
+
+.sito-ui-button--text.sito-ui-button--primary,
+.sito-ui-button--text.sito-ui-button--secondary,
+.sito-ui-button--text.sito-ui-button--error,
+.sito-ui-button--text.sito-ui-button--warning,
+.sito-ui-button--text.sito-ui-button--success,
+.sito-ui-button--text.sito-ui-button--info {
+  color: var(--sito-ui-button-default);
+}
+
+.sito-ui-button--text:enabled:not([aria-disabled="true"]):hover {
+  background-color: var(--sito-ui-button-light);
+}
+
+.sito-ui-button--submit {
+  color: var(--sito-ui-button-text);
+  background-color: var(--sito-ui-button-default);
+}
+
+.sito-ui-button--submit:enabled:not([aria-disabled="true"]):hover {
+  background-color: var(--sito-ui-button-hover);
+}
+
+.sito-ui-button--outlined {
+  color: var(--sito-ui-button-default);
+  border-color: var(--sito-ui-button-default);
+  background-color: transparent;
+}
+
+.sito-ui-button--outlined.sito-ui-button--default {
+  color: var(--sito-ui-color-text);
+  border-color: var(--sito-ui-color-border);
+}
+
+.sito-ui-button--outlined:enabled:not([aria-disabled="true"]):hover {
+  color: var(--sito-ui-button-text);
+  border-color: var(--sito-ui-button-hover);
+  background-color: var(--sito-ui-button-hover);
+}
+
+.sito-ui-button:enabled:not([aria-disabled="true"]):active {
+  transform: scale(var(--sito-ui-button-active-scale));
+}
+
+.sito-ui-button__spinner {
+  width: var(--sito-ui-size-button-spinner);
+  height: var(--sito-ui-size-button-spinner);
+  flex: 0 0 auto;
+  border: var(--sito-ui-button-spinner-border-width) solid currentColor;
+  border-right-color: transparent;
+  border-radius: var(--sito-ui-radius-round);
+  animation: sito-ui-button-spin var(--sito-ui-motion-duration-spin) linear
+    infinite;
+}
+
+.sito-ui-button__loading-label {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+}
+
+.sito-ui-button:disabled,
+.sito-ui-button[aria-disabled="true"] {
+  cursor: not-allowed;
+  opacity: var(--sito-ui-button-disabled-opacity);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sito-ui-button__spinner {
+    animation-duration: var(--sito-ui-motion-duration-spin-reduced);
+  }
+}
+
+@keyframes sito-ui-button-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
