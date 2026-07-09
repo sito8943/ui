@@ -3,8 +3,9 @@ import { Button } from "../Button";
 import type { DialogActionsProps } from "./types";
 
 /**
- *
- * @param props
+ * Renders primary, extra, and cancel actions for a dialog.
+ * @param props Action labels, handlers, and button state.
+ * @returns The dialog actions container.
  */
 export const DialogActions = (props: DialogActionsProps) => {
   const {

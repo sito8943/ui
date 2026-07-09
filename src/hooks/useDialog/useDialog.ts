@@ -3,8 +3,9 @@ import { useState } from "react";
 import type { UseDialogReturn } from "./types";
 
 /**
- *
- * @param initialOpen
+ * Manages dialog open state and common open/close handlers.
+ * @param initialOpen Initial open state for the dialog.
+ * @returns Current state and helpers to update it.
  */
 export const useDialog = (initialOpen = false): UseDialogReturn => {
   const [open, setOpen] = useState(initialOpen);

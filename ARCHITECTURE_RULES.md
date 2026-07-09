@@ -254,16 +254,16 @@ Rules:
 - Prefer stable names:
 
 ```ts
-Button
-ButtonProps
-IconButton
-IconButtonProps
-Dialog
-DialogProps
-DialogActions
-DialogActionsProps
-useDialog
-UseDialogReturn
+Button;
+ButtonProps;
+IconButton;
+IconButtonProps;
+Dialog;
+DialogProps;
+DialogActions;
+DialogActionsProps;
+useDialog;
+UseDialogReturn;
 ```
 
 - `main.ts` is the package entrypoint.

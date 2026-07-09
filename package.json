@@ -31,6 +31,7 @@
     "build": "tsc && vite build --base=./",
     "lint": "eslint . --max-warnings 0",
     "lint:fix": "eslint . --max-warnings 0 --fix",
+    "format": "prettier . --write",
     "preview": "vite preview"
   },
   "engines": {

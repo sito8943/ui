@@ -20,13 +20,7 @@ import "@sito/ui/theme.css";
 ## Public API
 
 ```ts
-import {
-  Button,
-  Dialog,
-  DialogActions,
-  IconButton,
-  useDialog,
-} from "@sito/ui";
+import { Button, Dialog, DialogActions, IconButton, useDialog } from "@sito/ui";
 ```
 
 Exported types include `ButtonProps`, `IconButtonProps`, `DialogProps`,

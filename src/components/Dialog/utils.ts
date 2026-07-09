@@ -6,7 +6,7 @@ let previousOverflow: string | null = null;
 const hasBody = () => typeof document !== "undefined" && !!document.body;
 
 /**
- *
+ * Prevents document body scrolling while a dialog is open.
  */
 export const lockBodyScroll = () => {
   if (!hasBody()) return;
@@ -20,7 +20,7 @@ export const lockBodyScroll = () => {
 };
 
 /**
- *
+ * Restores document body scrolling after dialogs close.
  */
 export const unlockBodyScroll = () => {
   if (!hasBody() || lockCount === 0) return;
@@ -34,7 +34,9 @@ export const unlockBodyScroll = () => {
 };
 
 /**
- *
+ * Finds enabled focusable descendants inside an element.
+ * @param element Root element to search inside.
+ * @returns Focusable descendants that are not aria-disabled.
  */
 export const getFocusableElements = (element: HTMLElement) =>
   Array.from(element.querySelectorAll<HTMLElement>(focusableSelector)).filter(
@@ -43,7 +45,8 @@ export const getFocusableElements = (element: HTMLElement) =>
   );
 
 /**
- *
+ * Gets the active element when it is an HTMLElement.
+ * @returns Active HTMLElement, or null when unavailable.
  */
 export const getActiveElement = (): HTMLElement | null => {
   if (typeof document === "undefined") return null;

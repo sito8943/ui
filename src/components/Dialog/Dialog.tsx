@@ -15,7 +15,9 @@ import type { DialogProps } from "./types";
 import { lockBodyScroll, unlockBodyScroll } from "./utils";
 
 /**
- *
+ * Renders an accessible modal dialog in a portal.
+ * @param props Dialog configuration and content.
+ * @returns The dialog portal when open, otherwise null.
  */
 export const Dialog = (props: DialogProps) => {
   const generatedTitleId = useId();
