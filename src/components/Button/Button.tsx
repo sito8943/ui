@@ -16,6 +16,10 @@ const Button = forwardRef(function (
     color = BUTTON_COLOR_VARIANTS.DEFAULT,
     type = "button",
     variant = BUTTON_VARIANTS.TEXT,
+    loading = false,
+    loadingIndicator,
+    loadingLabel = "Loading",
+    disabled,
     className,
     children,
     ...rest
@@ -25,8 +29,20 @@ const Button = forwardRef(function (
     "sito-ui-button",
     `sito-ui-button--${variant}`,
     `sito-ui-button--${color}`,
+    loading && "sito-ui-button--loading",
     className,
   );
+
+  const renderedLoadingIndicator =
+    loadingIndicator === undefined ? (
+      <span
+        className="sito-ui-button__spinner"
+        aria-hidden="true"
+        data-sito-ui="button-spinner"
+      />
+    ) : (
+      loadingIndicator
+    );
 
   return (
     <button
@@ -34,8 +50,16 @@ const Button = forwardRef(function (
       {...rest}
       type={type}
       ref={ref}
+      disabled={disabled || loading}
+      aria-busy={loading || rest["aria-busy"]}
       className={buttonClassName}
     >
+      {loading ? (
+        <>
+          {renderedLoadingIndicator}
+          <span className="sito-ui-button__loading-label">{loadingLabel}</span>
+        </>
+      ) : null}
       {children}
     </button>
   );

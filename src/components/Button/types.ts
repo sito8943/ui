@@ -1,4 +1,4 @@
-import type { ButtonHTMLAttributes } from "react";
+import type { ButtonHTMLAttributes, ReactNode } from "react";
 
 export const BUTTON_COLOR_VARIANTS = {
   DEFAULT: "default",
@@ -25,6 +25,9 @@ export type ButtonVariant =
 export type ButtonBaseProps = {
   color?: ButtonColor | undefined;
   variant?: ButtonVariant | undefined;
+  loading?: boolean | undefined;
+  loadingIndicator?: ReactNode;
+  loadingLabel?: string | undefined;
   [key: `data-${string}`]: string | number | boolean | undefined;
 };
 

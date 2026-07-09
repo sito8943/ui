@@ -124,8 +124,40 @@
   transform: scale(var(--sito-ui-button-active-scale));
 }
 
+.sito-ui-button__spinner {
+  width: var(--sito-ui-size-button-spinner);
+  height: var(--sito-ui-size-button-spinner);
+  flex: 0 0 auto;
+  border: var(--sito-ui-button-spinner-border-width) solid currentColor;
+  border-right-color: transparent;
+  border-radius: var(--sito-ui-radius-round);
+  animation: sito-ui-button-spin var(--sito-ui-motion-duration-spin) linear
+    infinite;
+}
+
+.sito-ui-button__loading-label {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+}
+
 .sito-ui-button:disabled,
 .sito-ui-button[aria-disabled="true"] {
   cursor: not-allowed;
   opacity: var(--sito-ui-button-disabled-opacity);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sito-ui-button__spinner {
+    animation-duration: var(--sito-ui-motion-duration-spin-reduced);
+  }
+}
+
+@keyframes sito-ui-button-spin {
+  to {
+    transform: rotate(360deg);
+  }
 }

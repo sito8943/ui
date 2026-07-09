@@ -16,6 +16,7 @@ const IconButton = forwardRef(function (
     type = "button",
     variant = "text",
     color = "default",
+    loading = false,
     className,
     ...rest
   } = props;
@@ -28,12 +29,15 @@ const IconButton = forwardRef(function (
       type={type}
       variant={variant}
       color={color}
+      loading={loading}
       data-sito-ui="icon-button"
       className={iconButtonClassName}
     >
-      <span className={iconClassName} aria-hidden="true">
-        {icon}
-      </span>
+      {loading ? null : (
+        <span className={iconClassName} aria-hidden="true">
+          {icon}
+        </span>
+      )}
       {children}
     </Button>
   );

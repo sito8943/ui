@@ -44,12 +44,14 @@
   --sito-ui-space-5: 1.25rem;
 
   --sito-ui-size-icon-button: 1.75rem;
+  --sito-ui-size-button-spinner: 1em;
 
   --sito-ui-radius-pill: 1.5rem;
   --sito-ui-radius-round: 100%;
   --sito-ui-radius-dialog: 1rem;
 
   --sito-ui-border-width-thin: 1px;
+  --sito-ui-button-spinner-border-width: 2px;
 
   --sito-ui-font-weight-semibold: 600;
   --sito-ui-font-size-button: 0.875rem;
@@ -60,6 +62,8 @@
   --sito-ui-line-height-dialog-title: 1.75rem;
 
   --sito-ui-motion-duration-normal: 300ms;
+  --sito-ui-motion-duration-spin: 600ms;
+  --sito-ui-motion-duration-spin-reduced: 1500ms;
   --sito-ui-motion-easing-standard: cubic-bezier(0.4, 0, 0.2, 1);
 
   --sito-ui-shadow-dialog: 0 1rem 3rem rgb(16 24 40 / 18%);

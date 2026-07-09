@@ -14,7 +14,7 @@ export const DialogActions = (props: DialogActionsProps) => {
     onPrimaryClick,
     onCancel,
     isLoading = false,
-    loadingIndicator = null,
+    loadingIndicator,
     disabled = false,
     primaryType = "submit",
     containerClassName,
@@ -42,13 +42,13 @@ export const DialogActions = (props: DialogActionsProps) => {
         color="primary"
         variant="submit"
         className={primaryClassName}
-        disabled={disabled || isLoading}
-        aria-busy={isLoading || undefined}
+        disabled={disabled}
+        loading={isLoading}
+        loadingIndicator={loadingIndicator}
         onClick={onPrimaryClick}
         name={primaryName}
         aria-label={primaryAriaLabel}
       >
-        {isLoading ? loadingIndicator : null}
         {primaryText}
       </Button>
       {extraActions.map(({ id, ...action }) => (
