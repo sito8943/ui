@@ -1,0 +1,31 @@
+{
+  "$schema": "./node_modules/oxlint/configuration_schema.json",
+  "ignorePatterns": [
+    "node_modules",
+    "dist",
+    "dist-ssr",
+    "*.local",
+    ".DS_Store"
+  ],
+  "options": {
+    "typeAware": true,
+    "maxWarnings": 0
+  },
+  "categories": {
+    "correctness": "error",
+    "suspicious": "error"
+  },
+  "rules": {
+    "typescript/no-explicit-any": "off",
+    "typescript/consistent-return": "off",
+    "typescript/no-floating-promises": "off",
+    "no-underscore-dangle": [
+      "error",
+      {
+        "allow": ["__filename", "__dirname"]
+      }
+    ],
+    "no-console": "warn",
+    "prefer-const": "warn"
+  }
+}
