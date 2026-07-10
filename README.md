@@ -24,7 +24,35 @@ import { Button, Dialog, DialogActions, IconButton, useDialog } from "@sito/ui";
 ```
 
 Exported types include `ButtonProps`, `IconButtonProps`, `DialogProps`,
-`DialogActionsProps`, `DialogState`, and `UseDialogReturn`.
+`DialogActionsProps`, `DialogState`, `IconButtonSize`, and `UseDialogReturn`.
+
+## Icon Button Sizes
+
+`IconButton` supports `size="sm" | "md" | "lg"` for the button container.
+`md` is the default size.
+
+```tsx
+<IconButton aria-label="Add" icon="+" size="sm" />
+<IconButton aria-label="Add" icon="+" size="md" />
+<IconButton aria-label="Add" icon="+" size="lg" />
+```
+
+The container sizes are `28px`, `40px`, and `48px`. Icon size is separate:
+override `iconSize` or `--sito-ui-icon-button-icon-size`.
+
+## Development
+
+Run the component test suite with:
+
+```sh
+pnpm test:run
+```
+
+Start Storybook with:
+
+```sh
+pnpm storybook
+```
 
 ## Dialog Exit Transitions
 

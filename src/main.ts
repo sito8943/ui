@@ -10,6 +10,7 @@ export type {
   DialogState,
   DialogSubmitHandler,
   IconButtonProps,
+  IconButtonSize,
 } from "./components";
 export { Button, Dialog, DialogActions, IconButton } from "./components";
 export type { UseDialogReturn } from "./hooks";

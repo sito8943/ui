@@ -1,3 +1,3 @@
 import IconButton from "./IconButton";
-export type { IconButtonProps } from "./types";
+export type { IconButtonProps, IconButtonSize } from "./types";
 export { IconButton };

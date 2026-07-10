@@ -32,7 +32,11 @@
     "lint": "oxlint --type-aware --max-warnings 0",
     "lint:fix": "oxlint --type-aware --fix --max-warnings 0",
     "format": "prettier . --write",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build",
+    "test": "vitest",
+    "test:run": "vitest run"
   },
   "engines": {
     "node": "^20.19.0 || ^22.13.0 || >=24"
@@ -64,19 +68,27 @@
     }
   },
   "devDependencies": {
+    "@storybook/addon-docs": "10.4.6",
+    "@storybook/react-vite": "10.4.6",
+    "@testing-library/jest-dom": "6.9.1",
+    "@testing-library/react": "16.3.2",
+    "@testing-library/user-event": "14.6.1",
     "@types/node": "26.1.1",
     "@types/react": "19.2.17",
     "@types/react-dom": "19.2.3",
     "@typescript/typescript6": "^6.0.2",
     "@vitejs/plugin-react": "6.0.3",
     "autoprefixer": "10.5.2",
+    "jsdom": "29.1.1",
     "oxlint": "1.73.0",
     "oxlint-tsgolint": "0.24.0",
     "prettier": "3.9.4",
     "react": "19.2.7",
     "react-dom": "19.2.7",
+    "storybook": "10.4.6",
     "typescript": "7.0.2",
     "vite": "8.1.4",
-    "vite-plugin-dts": "5.0.3"
+    "vite-plugin-dts": "5.0.3",
+    "vitest": "4.1.10"
   }
 }

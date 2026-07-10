@@ -43,7 +43,11 @@
   --sito-ui-space-4: 1rem;
   --sito-ui-space-5: 1.25rem;
 
-  --sito-ui-size-icon-button: 1.75rem;
+  --sito-ui-size-icon-button-sm: 28px;
+  --sito-ui-size-icon-button-md: 40px;
+  --sito-ui-size-icon-button-lg: 48px;
+  --sito-ui-size-icon-button: var(--sito-ui-size-icon-button-md);
+  --sito-ui-size-icon-button-icon: 1.25rem;
   --sito-ui-size-button-spinner: 1em;
 
   --sito-ui-radius-pill: 1.5rem;
@@ -55,10 +59,8 @@
 
   --sito-ui-font-weight-semibold: 600;
   --sito-ui-font-size-button: 0.875rem;
-  --sito-ui-font-size-icon-button: 1.25rem;
   --sito-ui-font-size-dialog-title: 1.25rem;
   --sito-ui-line-height-button: 1.25rem;
-  --sito-ui-line-height-icon-button: 1.75rem;
   --sito-ui-line-height-dialog-title: 1.75rem;
 
   --sito-ui-motion-duration-normal: 300ms;

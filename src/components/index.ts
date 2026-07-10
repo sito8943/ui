@@ -14,5 +14,5 @@ export type {
   DialogSubmitHandler,
 } from "./Dialog";
 export { Dialog, DialogActions } from "./Dialog";
-export type { IconButtonProps } from "./IconButton";
+export type { IconButtonProps, IconButtonSize } from "./IconButton";
 export { IconButton } from "./IconButton";
