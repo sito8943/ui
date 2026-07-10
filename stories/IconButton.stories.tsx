@@ -45,9 +45,9 @@ export const Loading: Story = {
 export const Sizes: Story = {
   render: () => (
     <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
-      <IconButton aria-label="Small" icon="+" size="sm" />
-      <IconButton aria-label="Medium" icon="+" size="md" />
-      <IconButton aria-label="Large" icon="+" size="lg" />
+      <IconButton aria-label="Small" icon="+" size="sm" variant="outlined" />
+      <IconButton aria-label="Medium" icon="+" size="md" variant="outlined" />
+      <IconButton aria-label="Large" icon="+" size="lg" variant="outlined" />
     </div>
   ),
 };

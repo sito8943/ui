@@ -45,6 +45,9 @@
   --sito-ui-space-4: 1rem;
   --sito-ui-space-5: 1.25rem;
 
+  --sito-ui-size-button-sm: 32px;
+  --sito-ui-size-button-md: 40px;
+  --sito-ui-size-button-lg: 48px;
   --sito-ui-size-icon-button-sm: 28px;
   --sito-ui-size-icon-button-md: 40px;
   --sito-ui-size-icon-button-lg: 48px;

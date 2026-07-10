@@ -29,8 +29,8 @@ Exported types include `ButtonProps`, `ButtonSize`, `IconButtonProps`,
 
 ## Button Sizes
 
-`Button` supports `size="sm" | "md" | "lg"` for padding. `md` is the default
-size.
+`Button` supports `size="sm" | "md" | "lg"` for padding and height. `md` is
+the default size.
 
 ```tsx
 <Button size="sm">Small</Button>

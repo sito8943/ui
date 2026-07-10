@@ -23,7 +23,7 @@ describe("Button", () => {
     );
   });
 
-  it("applies padding size classes independently from variant and color", () => {
+  it("applies size classes independently from variant and color", () => {
     render(
       <Button color="secondary" size="sm" variant="submit">
         Compact

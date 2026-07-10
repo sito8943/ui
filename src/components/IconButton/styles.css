@@ -3,6 +3,7 @@
   --sito-ui-icon-button-icon-size: var(--sito-ui-size-icon-button-icon);
   --sito-ui-size-button-spinner: var(--sito-ui-icon-button-icon-size);
 
+  box-sizing: border-box;
   min-width: var(--sito-ui-icon-button-container-size);
   min-height: var(--sito-ui-icon-button-container-size);
   width: var(--sito-ui-icon-button-container-size);
