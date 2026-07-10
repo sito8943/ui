@@ -7,6 +7,7 @@ export type {
   DialogActionsProps,
   DialogInitialFocus,
   DialogProps,
+  DialogState,
   DialogSubmitHandler,
   IconButtonProps,
 } from "./components";

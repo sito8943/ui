@@ -24,7 +24,22 @@ import { Button, Dialog, DialogActions, IconButton, useDialog } from "@sito/ui";
 ```
 
 Exported types include `ButtonProps`, `IconButtonProps`, `DialogProps`,
-`DialogActionsProps`, and `UseDialogReturn`.
+`DialogActionsProps`, `DialogState`, and `UseDialogReturn`.
+
+## Dialog Exit Transitions
+
+`Dialog` unmounts immediately by default. Pass `exitDurationMs` when a consumer
+needs to keep the portal mounted long enough for a CSS exit animation:
+
+```tsx
+<Dialog open={open} onClose={close} exitDurationMs={220}>
+  Dialog content
+</Dialog>
+```
+
+During that delay, the backdrop and dialog expose `data-state="closing"` plus
+`sito-ui-dialog-backdrop--closing` and `sito-ui-dialog--closing` classes.
+Use those hooks from consumer CSS to define the actual animation.
 
 ## Scope
 

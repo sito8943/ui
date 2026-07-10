@@ -1,5 +1,12 @@
 # Changelog
 
+## Unreleased
+
+### Added
+
+- Added `Dialog` exit-transition support with `exitDurationMs`,
+  `onExitComplete`, `DialogState`, and `data-state`/state class hooks.
+
 ## 0.1.0 - 2026-07-09
 
 ### Added

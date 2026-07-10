@@ -10,6 +10,7 @@ export type {
   DialogActionsProps,
   DialogInitialFocus,
   DialogProps,
+  DialogState,
   DialogSubmitHandler,
 } from "./Dialog";
 export { Dialog, DialogActions } from "./Dialog";

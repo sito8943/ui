@@ -5,5 +5,6 @@ export type {
   DialogActionsProps,
   DialogInitialFocus,
   DialogProps,
+  DialogState,
   DialogSubmitHandler,
 } from "./types";
