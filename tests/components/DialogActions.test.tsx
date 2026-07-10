@@ -53,9 +53,7 @@ describe("DialogActions", () => {
       />,
     );
 
-    expect(
-      screen.getByRole("button", { name: "LoadingSave" }),
-    ).toBeDisabled();
+    expect(screen.getByRole("button", { name: "LoadingSave" })).toBeDisabled();
     expect(screen.getByRole("button", { name: "Cancel" })).toBeDisabled();
   });
 });

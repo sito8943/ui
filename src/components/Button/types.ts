@@ -25,8 +25,7 @@ export const BUTTON_SIZES = {
 export type ButtonColor =
   (typeof BUTTON_COLOR_VARIANTS)[keyof typeof BUTTON_COLOR_VARIANTS];
 
-export type ButtonSize =
-  (typeof BUTTON_SIZES)[keyof typeof BUTTON_SIZES];
+export type ButtonSize = (typeof BUTTON_SIZES)[keyof typeof BUTTON_SIZES];
 
 export type ButtonVariant =
   (typeof BUTTON_VARIANTS)[keyof typeof BUTTON_VARIANTS];

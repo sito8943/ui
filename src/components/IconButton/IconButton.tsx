@@ -34,7 +34,9 @@ const IconButton = forwardRef(function (
     ...rest
   } = props;
   const hasContent =
-    children !== undefined && children !== null && typeof children !== "boolean";
+    children !== undefined &&
+    children !== null &&
+    typeof children !== "boolean";
   const iconSizeValue = getIconSizeValue(iconSize);
   const iconButtonStyle: IconButtonStyle | undefined =
     iconSizeValue === undefined

@@ -84,7 +84,12 @@ describe("Dialog", () => {
     const handleSubmit = vi.fn();
 
     render(
-      <Dialog title="Create item" open onClose={vi.fn()} onSubmit={handleSubmit}>
+      <Dialog
+        title="Create item"
+        open
+        onClose={vi.fn()}
+        onSubmit={handleSubmit}
+      >
         <label htmlFor="item-name">Name</label>
         <input id="item-name" />
         <button type="submit">Create</button>
