@@ -3,14 +3,20 @@
   --sito-ui-button-light: var(--sito-ui-color-default-light);
   --sito-ui-button-default: var(--sito-ui-color-default-default);
   --sito-ui-button-hover: var(--sito-ui-color-default-hover);
+  --sito-ui-button-height: var(--sito-ui-size-button-md, 40px);
+  --sito-ui-button-padding-block: var(--sito-ui-space-2);
+  --sito-ui-button-padding-inline: var(--sito-ui-space-4);
 
   display: flex;
+  box-sizing: border-box;
   gap: var(--sito-ui-space-2);
   font-weight: var(--sito-ui-font-weight-semibold);
   cursor: default;
   align-items: center;
   justify-content: center;
-  padding: var(--sito-ui-space-2) var(--sito-ui-space-4);
+  height: var(--sito-ui-button-height);
+  padding: var(--sito-ui-button-padding-block)
+    var(--sito-ui-button-padding-inline);
   border-radius: var(--sito-ui-radius-pill);
   border: var(--sito-ui-border-width-thin) solid transparent;
   background-color: transparent;
@@ -22,6 +28,24 @@
     color, background-color, border-color, text-decoration-color, fill, stroke,
     opacity, box-shadow, transform, filter, backdrop-filter;
   transition-timing-function: var(--sito-ui-motion-easing-standard);
+}
+
+.sito-ui-button--sm {
+  --sito-ui-button-height: var(--sito-ui-size-button-sm, 32px);
+  --sito-ui-button-padding-block: var(--sito-ui-space-1);
+  --sito-ui-button-padding-inline: var(--sito-ui-space-3);
+}
+
+.sito-ui-button--md {
+  --sito-ui-button-height: var(--sito-ui-size-button-md, 40px);
+  --sito-ui-button-padding-block: var(--sito-ui-space-2);
+  --sito-ui-button-padding-inline: var(--sito-ui-space-4);
+}
+
+.sito-ui-button--lg {
+  --sito-ui-button-height: var(--sito-ui-size-button-lg, 48px);
+  --sito-ui-button-padding-block: var(--sito-ui-space-3);
+  --sito-ui-button-padding-inline: var(--sito-ui-space-5);
 }
 
 .sito-ui-button:enabled:not([aria-disabled="true"]) {

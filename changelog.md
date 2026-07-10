@@ -1,5 +1,33 @@
 # Changelog
 
+## 0.3.0 - 2026-07-10
+
+### Added
+
+- Added `Dialog` exit-transition support with `exitDurationMs`,
+  `onExitComplete`, `DialogState`, and `data-state`/state class hooks.
+- Added `Button` size support with `size="sm" | "md" | "lg"`, exported
+  `ButtonSize`, and CSS tokens for 32px, 40px, and 48px button heights.
+- Added `IconButton` container size support with `size="sm" | "md" | "lg"`,
+  exported `IconButtonSize`, and separate `iconSize` control for the icon.
+- Added Vitest and Testing Library setup with coverage for `Button`,
+  `IconButton`, `Dialog`, `DialogActions`, and `useDialog`.
+- Added Storybook setup and primitive stories for `Button`, `IconButton`,
+  `Dialog`, and `DialogActions`.
+
+### Changed
+
+- Updated `IconButton` to adapt to visible content while preserving circular
+  icon-only buttons.
+- Updated `IconButton` loading and icon styling so icon size stays independent
+  from the container size.
+- Updated `Button` size styling so size controls both padding and explicit
+  height.
+
+### Fixed
+
+- Ignored generated `storybook-static` output.
+
 ## 0.1.0 - 2026-07-09
 
 ### Added

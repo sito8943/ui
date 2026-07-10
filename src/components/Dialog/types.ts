@@ -11,6 +11,8 @@ export const DIALOG_INITIAL_FOCUS = {
 export type DialogInitialFocus =
   (typeof DIALOG_INITIAL_FOCUS)[keyof typeof DIALOG_INITIAL_FOCUS];
 
+export type DialogState = "open" | "closing";
+
 export type DialogSubmitHandler = (
   event: FormEvent<HTMLFormElement>,
 ) => void | Promise<void>;
@@ -42,6 +44,8 @@ type DialogBaseProps = {
   closeIcon?: ReactNode;
   showCloseButton?: boolean;
   portalContainer?: Element | DocumentFragment | null;
+  exitDurationMs?: number;
+  onExitComplete?: () => void;
 };
 
 export type DialogProps = DialogBaseProps & DialogAccessibleNameProps;

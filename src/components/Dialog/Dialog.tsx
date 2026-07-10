@@ -5,7 +5,9 @@ import {
   useCallback,
   useEffect,
   useId,
+  useLayoutEffect,
   useRef,
+  useState,
 } from "react";
 import { createPortal } from "react-dom";
 
@@ -20,6 +22,9 @@ import {
   unlockBodyScroll,
 } from "./utils";
 
+const useClientLayoutEffect =
+  typeof window === "undefined" ? useEffect : useLayoutEffect;
+
 /**
  * Renders an accessible modal dialog in a portal.
  * @param props Dialog configuration and content.
@@ -29,6 +34,8 @@ export const Dialog = (props: DialogProps) => {
   const generatedTitleId = useId();
   const dialogRef = useRef<HTMLDivElement | null>(null);
   const previousFocusedElementRef = useRef<HTMLElement | null>(null);
+  const exitTimeoutRef = useRef<number | null>(null);
+  const onExitCompleteRef = useRef<DialogProps["onExitComplete"]>(undefined);
   const {
     dialogId,
     title,
@@ -48,18 +55,74 @@ export const Dialog = (props: DialogProps) => {
     closeIcon = "x",
     showCloseButton = true,
     portalContainer,
+    exitDurationMs = 0,
+    onExitComplete,
   } = props;
+  const [shouldRender, setShouldRender] = useState(open);
+  const [isClosing, setIsClosing] = useState(false);
 
   const titleId = title ? `${dialogId ?? generatedTitleId}-title` : undefined;
+  const dialogState = isClosing ? "closing" : "open";
+  const isInteractive = open && !isClosing;
+
+  useEffect(() => {
+    onExitCompleteRef.current = onExitComplete;
+  }, [onExitComplete]);
+
+  const clearExitTimeout = useCallback(() => {
+    if (exitTimeoutRef.current === null) return;
+
+    window.clearTimeout(exitTimeoutRef.current);
+    exitTimeoutRef.current = null;
+  }, []);
+
+  const finishExit = useCallback(() => {
+    setShouldRender(false);
+    setIsClosing(false);
+    onExitCompleteRef.current?.();
+    exitTimeoutRef.current = null;
+  }, []);
+
+  useClientLayoutEffect(() => {
+    if (open) {
+      clearExitTimeout();
+      setShouldRender(true);
+      setIsClosing(false);
+      return;
+    }
+
+    if (!shouldRender) return;
+
+    const normalizedExitDuration = Math.max(0, exitDurationMs);
+
+    if (normalizedExitDuration === 0) {
+      clearExitTimeout();
+      finishExit();
+      return;
+    }
+
+    setIsClosing(true);
+    clearExitTimeout();
+    exitTimeoutRef.current = window.setTimeout(
+      finishExit,
+      normalizedExitDuration,
+    );
+  }, [clearExitTimeout, exitDurationMs, finishExit, open, shouldRender]);
+
+  useEffect(() => {
+    return () => {
+      clearExitTimeout();
+    };
+  }, [clearExitTimeout]);
 
   const handleKeyDown = useCallback(
     (event: KeyboardEvent) => {
-      if (event.key === "Escape" && open && closeOnEscape) {
+      if (event.key === "Escape" && isInteractive && closeOnEscape) {
         onClose();
         return;
       }
 
-      if (event.key !== "Tab" || !open) return;
+      if (event.key !== "Tab" || !isInteractive) return;
 
       const dialog = dialogRef.current;
       if (!dialog) return;
@@ -96,19 +159,19 @@ export const Dialog = (props: DialogProps) => {
         firstFocusableElement.focus();
       }
     },
-    [closeOnEscape, onClose, open],
+    [closeOnEscape, isInteractive, onClose],
   );
 
   useEffect(() => {
-    if (!open || typeof window === "undefined") return;
+    if (!isInteractive || typeof window === "undefined") return;
 
     window.addEventListener("keydown", handleKeyDown);
     return () => {
       window.removeEventListener("keydown", handleKeyDown);
     };
-  }, [handleKeyDown, open]);
+  }, [handleKeyDown, isInteractive]);
 
-  useEffect(() => {
+  useClientLayoutEffect(() => {
     if (!open) return;
 
     previousFocusedElementRef.current = getActiveElement();
@@ -121,7 +184,7 @@ export const Dialog = (props: DialogProps) => {
     };
   }, [open]);
 
-  useEffect(() => {
+  useClientLayoutEffect(() => {
     if (!open) return;
 
     const dialog = dialogRef.current;
@@ -149,21 +212,25 @@ export const Dialog = (props: DialogProps) => {
   }, [initialFocus, open]);
 
   useEffect(() => {
-    if (!open || !shouldLockBodyScroll) return;
+    if (!shouldRender || !shouldLockBodyScroll) return;
 
     lockBodyScroll();
     return () => {
       unlockBodyScroll();
     };
-  }, [open, shouldLockBodyScroll]);
+  }, [shouldLockBodyScroll, shouldRender]);
 
   const handleBackdropClick = useCallback(
     (event: MouseEvent<HTMLDivElement>) => {
-      if (closeOnBackdropClick && event.target === event.currentTarget) {
+      if (
+        isInteractive &&
+        closeOnBackdropClick &&
+        event.target === event.currentTarget
+      ) {
         onClose();
       }
     },
-    [closeOnBackdropClick, onClose],
+    [closeOnBackdropClick, isInteractive, onClose],
   );
 
   const handleFormSubmit = useCallback(
@@ -174,7 +241,7 @@ export const Dialog = (props: DialogProps) => {
     [onSubmit],
   );
 
-  if (!open || typeof document === "undefined") return null;
+  if (!shouldRender || typeof document === "undefined") return null;
 
   const content = onSubmit ? (
     <form onSubmit={handleFormSubmit}>{children}</form>
@@ -193,8 +260,13 @@ export const Dialog = (props: DialogProps) => {
     <div
       id={dialogId ? `backdrop-${dialogId}` : undefined}
       data-sito-ui="dialog-backdrop"
+      data-state={dialogState}
       onClick={handleBackdropClick}
-      className={classNames("sito-ui-dialog-backdrop", containerClassName)}
+      className={classNames(
+        "sito-ui-dialog-backdrop",
+        `sito-ui-dialog-backdrop--${dialogState}`,
+        containerClassName,
+      )}
     >
       <div
         id={dialogId}
@@ -205,8 +277,10 @@ export const Dialog = (props: DialogProps) => {
         aria-labelledby={titleId}
         tabIndex={-1}
         data-sito-ui="dialog"
+        data-state={dialogState}
         className={classNames(
           "sito-ui-dialog",
+          `sito-ui-dialog--${dialogState}`,
           mobileFullScreen && "sito-ui-dialog--mobile-full-screen",
           className,
         )}
@@ -220,8 +294,8 @@ export const Dialog = (props: DialogProps) => {
           {showCloseButton ? (
             <IconButton
               icon={closeIconContent}
-              disabled={!open}
-              aria-disabled={!open}
+              disabled={!isInteractive}
+              aria-disabled={!isInteractive}
               onClick={onClose}
               variant="text"
               color="error"

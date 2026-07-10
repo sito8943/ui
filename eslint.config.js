@@ -9,7 +9,14 @@ import tseslint from "typescript-eslint";
 
 export default tseslint.config(
   {
-    ignores: ["node_modules", "dist", "dist-ssr", "*.local", ".DS_Store"],
+    ignores: [
+      "node_modules",
+      "dist",
+      "dist-ssr",
+      "storybook-static",
+      "*.local",
+      ".DS_Store",
+    ],
   },
   {
     linterOptions: {

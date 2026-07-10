@@ -12,6 +12,10 @@
   backdrop-filter: var(--sito-ui-dialog-backdrop-filter);
 }
 
+.sito-ui-dialog-backdrop--closing {
+  pointer-events: none;
+}
+
 .sito-ui-dialog {
   position: relative;
   display: flex;
