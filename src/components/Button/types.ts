@@ -16,14 +16,24 @@ export const BUTTON_VARIANTS = {
   OUTLINED: "outlined",
 } as const;
 
+export const BUTTON_SIZES = {
+  SM: "sm",
+  MD: "md",
+  LG: "lg",
+} as const;
+
 export type ButtonColor =
   (typeof BUTTON_COLOR_VARIANTS)[keyof typeof BUTTON_COLOR_VARIANTS];
+
+export type ButtonSize =
+  (typeof BUTTON_SIZES)[keyof typeof BUTTON_SIZES];
 
 export type ButtonVariant =
   (typeof BUTTON_VARIANTS)[keyof typeof BUTTON_VARIANTS];
 
 export type ButtonBaseProps = {
   color?: ButtonColor | undefined;
+  size?: ButtonSize | undefined;
   variant?: ButtonVariant | undefined;
   loading?: boolean | undefined;
   loadingIndicator?: ReactNode;

@@ -23,8 +23,20 @@ import "@sito/ui/theme.css";
 import { Button, Dialog, DialogActions, IconButton, useDialog } from "@sito/ui";
 ```
 
-Exported types include `ButtonProps`, `IconButtonProps`, `DialogProps`,
-`DialogActionsProps`, `DialogState`, `IconButtonSize`, and `UseDialogReturn`.
+Exported types include `ButtonProps`, `ButtonSize`, `IconButtonProps`,
+`DialogProps`, `DialogActionsProps`, `DialogState`, `IconButtonSize`, and
+`UseDialogReturn`.
+
+## Button Sizes
+
+`Button` supports `size="sm" | "md" | "lg"` for padding. `md` is the default
+size.
+
+```tsx
+<Button size="sm">Small</Button>
+<Button size="md">Medium</Button>
+<Button size="lg">Large</Button>
+```
 
 ## Icon Button Sizes
 

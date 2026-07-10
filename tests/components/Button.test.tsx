@@ -19,6 +19,23 @@ describe("Button", () => {
       "sito-ui-button",
       "sito-ui-button--outlined",
       "sito-ui-button--primary",
+      "sito-ui-button--md",
+    );
+  });
+
+  it("applies padding size classes independently from variant and color", () => {
+    render(
+      <Button color="secondary" size="sm" variant="submit">
+        Compact
+      </Button>,
+    );
+
+    const button = screen.getByRole("button", { name: "Compact" });
+
+    expect(button).toHaveClass(
+      "sito-ui-button--secondary",
+      "sito-ui-button--sm",
+      "sito-ui-button--submit",
     );
   });
 

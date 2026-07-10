@@ -22,7 +22,10 @@ type IconButtonAccessibleLabelProps =
       children: ReactNode;
     };
 
-export type IconButtonProps = Omit<ButtonProps, "aria-label" | "children"> &
+export type IconButtonProps = Omit<
+  ButtonProps,
+  "aria-label" | "children" | "size"
+> &
   IconButtonAccessibleLabelProps & {
     icon: ReactNode;
     iconClassName?: string;

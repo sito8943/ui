@@ -2,6 +2,7 @@ export type {
   ButtonBaseProps,
   ButtonColor,
   ButtonProps,
+  ButtonSize,
   ButtonVariant,
   DialogActionButtonProps,
   DialogActionsProps,

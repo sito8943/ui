@@ -26,7 +26,8 @@
 .sito-ui-icon-button--with-content {
   width: auto;
   height: auto;
-  padding: var(--sito-ui-space-2) var(--sito-ui-space-4);
+  padding: var(--sito-ui-button-padding-block)
+    var(--sito-ui-button-padding-inline);
   border-radius: var(--sito-ui-radius-pill);
   font-size: var(--sito-ui-font-size-button);
   line-height: var(--sito-ui-line-height-button);

@@ -4,6 +4,7 @@ import { classNames } from "../../utils";
 // types
 import {
   BUTTON_COLOR_VARIANTS,
+  BUTTON_SIZES,
   BUTTON_VARIANTS,
   type ButtonProps,
 } from "./types";
@@ -14,6 +15,7 @@ const Button = forwardRef(function (
 ) {
   const {
     color = BUTTON_COLOR_VARIANTS.DEFAULT,
+    size = BUTTON_SIZES.MD,
     type = "button",
     variant = BUTTON_VARIANTS.TEXT,
     loading = false,
@@ -29,6 +31,7 @@ const Button = forwardRef(function (
     "sito-ui-button",
     `sito-ui-button--${variant}`,
     `sito-ui-button--${color}`,
+    `sito-ui-button--${size}`,
     loading && "sito-ui-button--loading",
     className,
   );

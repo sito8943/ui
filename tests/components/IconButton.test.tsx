@@ -21,6 +21,7 @@ describe("IconButton", () => {
 
     const button = screen.getByRole("button", { name: "Open" });
 
+    expect(button).toHaveClass("sito-ui-button--sm");
     expect(button).toHaveClass("sito-ui-icon-button--sm");
     expect(button).toHaveStyle({
       "--sito-ui-icon-button-icon-size": "16px",

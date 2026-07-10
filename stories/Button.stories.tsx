@@ -13,6 +13,7 @@ const colorOptions = [
 ] as const;
 
 const variantOptions = ["text", "submit", "outlined"] as const;
+const sizeOptions = ["sm", "md", "lg"] as const;
 
 const meta = {
   title: "Primitives/Button",
@@ -21,6 +22,7 @@ const meta = {
   args: {
     children: "Save",
     color: "primary",
+    size: "md",
     variant: "submit",
   },
   argTypes: {
@@ -31,6 +33,10 @@ const meta = {
     variant: {
       control: "select",
       options: variantOptions,
+    },
+    size: {
+      control: "select",
+      options: sizeOptions,
     },
   },
 } satisfies Meta<typeof Button>;
@@ -58,6 +64,22 @@ export const Variants: Story = {
       </Button>
       <Button variant="submit" color="error">
         Delete
+      </Button>
+    </div>
+  ),
+};
+
+export const Sizes: Story = {
+  render: () => (
+    <div style={{ display: "flex", flexWrap: "wrap", gap: 12 }}>
+      <Button size="sm" variant="outlined">
+        Small
+      </Button>
+      <Button size="md" variant="outlined">
+        Medium
+      </Button>
+      <Button size="lg" variant="outlined">
+        Large
       </Button>
     </div>
   ),

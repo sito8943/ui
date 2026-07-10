@@ -57,6 +57,7 @@ const IconButton = forwardRef(function (
       type={type}
       variant={variant}
       color={color}
+      size={size}
       loading={loading}
       data-sito-ui="icon-button"
       className={iconButtonClassName}
