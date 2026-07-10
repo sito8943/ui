@@ -107,13 +107,7 @@ export const Dialog = (props: DialogProps) => {
       finishExit,
       normalizedExitDuration,
     );
-  }, [
-    clearExitTimeout,
-    exitDurationMs,
-    finishExit,
-    open,
-    shouldRender,
-  ]);
+  }, [clearExitTimeout, exitDurationMs, finishExit, open, shouldRender]);
 
   useEffect(() => {
     return () => {
