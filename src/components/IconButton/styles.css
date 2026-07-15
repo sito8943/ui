@@ -14,14 +14,17 @@
 
 .sito-ui-icon-button--sm {
   --sito-ui-icon-button-container-size: var(--sito-ui-size-icon-button-sm);
+  --sito-ui-icon-button-icon-size: var(--sito-ui-size-icon-button-icon-sm);
 }
 
 .sito-ui-icon-button--md {
   --sito-ui-icon-button-container-size: var(--sito-ui-size-icon-button-md);
+  --sito-ui-icon-button-icon-size: var(--sito-ui-size-icon-button-icon-md);
 }
 
 .sito-ui-icon-button--lg {
   --sito-ui-icon-button-container-size: var(--sito-ui-size-icon-button-lg);
+  --sito-ui-icon-button-icon-size: var(--sito-ui-size-icon-button-icon-lg);
 }
 
 .sito-ui-icon-button--with-content {

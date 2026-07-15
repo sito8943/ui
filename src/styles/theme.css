@@ -52,7 +52,10 @@
   --sito-ui-size-icon-button-md: 40px;
   --sito-ui-size-icon-button-lg: 48px;
   --sito-ui-size-icon-button: var(--sito-ui-size-icon-button-md);
-  --sito-ui-size-icon-button-icon: 1.25rem;
+  --sito-ui-size-icon-button-icon-sm: 1rem;
+  --sito-ui-size-icon-button-icon-md: 1.25rem;
+  --sito-ui-size-icon-button-icon-lg: 1.5rem;
+  --sito-ui-size-icon-button-icon: var(--sito-ui-size-icon-button-icon-md);
   --sito-ui-size-button-spinner: 1em;
 
   --sito-ui-radius-pill: 1.5rem;

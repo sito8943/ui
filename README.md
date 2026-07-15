@@ -49,8 +49,10 @@ the default size.
 <IconButton aria-label="Add" icon="+" size="lg" />
 ```
 
-The container sizes are `28px`, `40px`, and `48px`. Icon size is separate:
-override `iconSize` or `--sito-ui-icon-button-icon-size`.
+The container sizes are `28px`, `40px`, and `48px`; their default icon sizes
+are `16px`, `20px`, and `24px`. Override a specific token
+(`--sito-ui-size-icon-button-icon-sm`, `-md`, or `-lg`) for theme-wide changes,
+or use `iconSize` / `--sito-ui-icon-button-icon-size` for one button.
 
 ## Development
 
