@@ -1,5 +1,22 @@
 # Changelog
 
+## 0.3.1 - 2026-07-15
+
+### Added
+
+- Added per-size icon tokens for `IconButton`
+  (`--sito-ui-size-icon-button-icon-sm`, `-md`, `-lg`) so each container size
+  gets a matching default icon size (`16px`, `20px`, `24px`).
+
+### Changed
+
+- Updated `IconButton` size classes to set the icon size from the new per-size
+  tokens, while `iconSize` / `--sito-ui-icon-button-icon-size` still override a
+  single button.
+- Updated the README `IconButton` sizing docs with the default icon sizes and
+  token override guidance.
+- Updated dependencies via `pnpm-lock.yaml` refresh.
+
 ## 0.3.0 - 2026-07-10
 
 ### Added
