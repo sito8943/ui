@@ -303,9 +303,7 @@ export const Dialog = (props: DialogProps) => {
           className,
         )}
       >
-        <div
-          className={classNames("sito-ui-dialog__header", headerClassName)}
-        >
+        <div className={classNames("sito-ui-dialog__header", headerClassName)}>
           {title ? (
             <h3
               id={titleId}

@@ -112,7 +112,7 @@ describe("Dialog", () => {
     expect(handleOuterClose).not.toHaveBeenCalled();
 
     const outerBackdrop = document.querySelector<HTMLElement>(
-      '#backdrop-outer-dialog',
+      "#backdrop-outer-dialog",
     );
     outerBackdrop?.click();
 
@@ -186,9 +186,9 @@ describe("Dialog", () => {
       "wrapper-header",
     );
     expect(screen.getByText("Wrapped dialog")).toHaveClass("wrapper-title");
-    expect(
-      screen.getByRole("button", { name: "Close dialog" }),
-    ).toHaveClass("wrapper-close");
+    expect(screen.getByRole("button", { name: "Close dialog" })).toHaveClass(
+      "wrapper-close",
+    );
   });
 
   it("moves focus to the requested initial target and restores previous focus", () => {
