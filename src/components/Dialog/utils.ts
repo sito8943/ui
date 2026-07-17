@@ -2,6 +2,7 @@ import { focusableSelector } from "./constants";
 
 let lockCount = 0;
 let previousOverflow: string | null = null;
+const dialogStack: symbol[] = [];
 
 const hasBody = () => typeof document !== "undefined" && !!document.body;
 
@@ -55,3 +56,31 @@ export const getActiveElement = (): HTMLElement | null => {
     ? document.activeElement
     : null;
 };
+
+/**
+ * Registers an interactive dialog as the topmost dialog.
+ * @param dialogStackId Stable internal identifier for the dialog instance.
+ */
+export const registerDialog = (dialogStackId: symbol) => {
+  const existingIndex = dialogStack.indexOf(dialogStackId);
+  if (existingIndex >= 0) dialogStack.splice(existingIndex, 1);
+
+  dialogStack.push(dialogStackId);
+};
+
+/**
+ * Removes a dialog from the interactive dialog stack.
+ * @param dialogStackId Stable internal identifier for the dialog instance.
+ */
+export const unregisterDialog = (dialogStackId: symbol) => {
+  const dialogIndex = dialogStack.indexOf(dialogStackId);
+  if (dialogIndex >= 0) dialogStack.splice(dialogIndex, 1);
+};
+
+/**
+ * Checks whether a dialog is currently the topmost interactive dialog.
+ * @param dialogStackId Stable internal identifier for the dialog instance.
+ * @returns Whether the dialog is at the top of the stack.
+ */
+export const isTopmostDialog = (dialogStackId: symbol) =>
+  dialogStack[dialogStack.length - 1] === dialogStackId;

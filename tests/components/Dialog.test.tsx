@@ -79,6 +79,72 @@ describe("Dialog", () => {
     expect(handleClose).not.toHaveBeenCalled();
   });
 
+  it("only lets the topmost dialog handle dismissal", async () => {
+    const user = userEvent.setup();
+    const handleOuterClose = vi.fn();
+    const handleInnerClose = vi.fn();
+
+    const { rerender } = render(
+      <>
+        <Dialog
+          dialogId="outer-dialog"
+          title="Outer dialog"
+          open
+          onClose={handleOuterClose}
+          closeOnBackdropClick
+        >
+          Outer content
+        </Dialog>
+        <Dialog
+          title="Inner dialog"
+          open
+          onClose={handleInnerClose}
+          closeOnBackdropClick
+        >
+          Inner content
+        </Dialog>
+      </>,
+    );
+
+    await user.keyboard("{Escape}");
+
+    expect(handleInnerClose).toHaveBeenCalledTimes(1);
+    expect(handleOuterClose).not.toHaveBeenCalled();
+
+    const outerBackdrop = document.querySelector<HTMLElement>(
+      "#backdrop-outer-dialog",
+    );
+    outerBackdrop?.click();
+
+    expect(handleOuterClose).not.toHaveBeenCalled();
+
+    rerender(
+      <>
+        <Dialog
+          dialogId="outer-dialog"
+          title="Outer dialog"
+          open
+          onClose={handleOuterClose}
+          closeOnBackdropClick
+        >
+          Outer content
+        </Dialog>
+        <Dialog
+          title="Inner dialog"
+          open={false}
+          onClose={handleInnerClose}
+          closeOnBackdropClick
+        >
+          Inner content
+        </Dialog>
+      </>,
+    );
+
+    await user.keyboard("{Escape}");
+
+    expect(handleOuterClose).toHaveBeenCalledTimes(1);
+  });
+
   it("submits form content through the dialog submit handler", async () => {
     const user = userEvent.setup();
     const handleSubmit = vi.fn();
@@ -100,6 +166,29 @@ describe("Dialog", () => {
 
     expect(handleSubmit).toHaveBeenCalledTimes(1);
     expect(handleSubmit.mock.calls[0]?.[0].defaultPrevented).toBe(true);
+  });
+
+  it("forwards class hooks for higher-level dialog wrappers", () => {
+    render(
+      <Dialog
+        title="Wrapped dialog"
+        open
+        onClose={vi.fn()}
+        headerClassName="wrapper-header"
+        titleClassName="wrapper-title"
+        closeButtonClassName="wrapper-close"
+      >
+        Dialog content
+      </Dialog>,
+    );
+
+    expect(screen.getByText("Wrapped dialog").parentElement).toHaveClass(
+      "wrapper-header",
+    );
+    expect(screen.getByText("Wrapped dialog")).toHaveClass("wrapper-title");
+    expect(screen.getByRole("button", { name: "Close dialog" })).toHaveClass(
+      "wrapper-close",
+    );
   });
 
   it("moves focus to the requested initial target and restores previous focus", () => {

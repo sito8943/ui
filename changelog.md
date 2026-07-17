@@ -1,5 +1,22 @@
 # Changelog
 
+## 0.3.3 - 2026-07-17
+
+### Added
+
+- Added `headerClassName`, `titleClassName`, and `closeButtonClassName` to
+  `Dialog` so higher-level wrappers can customize its header, title, and close
+  button styles.
+- Added test coverage for the new `Dialog` class hooks and stacked-dialog
+  dismissal behavior.
+
+### Fixed
+
+- Updated stacked dialogs so only the topmost dialog handles Escape and
+  backdrop dismissal.
+- Prevented a background dialog from restoring focus while a dialog above it
+  is still active.
+
 ## 0.3.1 - 2026-07-15
 
 ### Added
