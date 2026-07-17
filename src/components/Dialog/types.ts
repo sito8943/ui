@@ -40,6 +40,9 @@ type DialogBaseProps = {
   mobileFullScreen?: boolean;
   containerClassName?: string;
   className?: string;
+  headerClassName?: string;
+  titleClassName?: string;
+  closeButtonClassName?: string;
   closeLabel?: string;
   closeIcon?: ReactNode;
   showCloseButton?: boolean;

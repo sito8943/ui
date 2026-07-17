@@ -18,7 +18,10 @@ import type { DialogProps } from "./types";
 import {
   getActiveElement,
   getFocusableElements,
+  isTopmostDialog,
   lockBodyScroll,
+  registerDialog,
+  unregisterDialog,
   unlockBodyScroll,
 } from "./utils";
 
@@ -32,6 +35,7 @@ const useClientLayoutEffect =
  */
 export const Dialog = (props: DialogProps) => {
   const generatedTitleId = useId();
+  const dialogStackIdRef = useRef(Symbol("sito-ui-dialog"));
   const dialogRef = useRef<HTMLDivElement | null>(null);
   const previousFocusedElementRef = useRef<HTMLElement | null>(null);
   const exitTimeoutRef = useRef<number | null>(null);
@@ -51,6 +55,9 @@ export const Dialog = (props: DialogProps) => {
     mobileFullScreen = false,
     containerClassName,
     className,
+    headerClassName,
+    titleClassName,
+    closeButtonClassName,
     closeLabel = "Close dialog",
     closeIcon = "x",
     showCloseButton = true,
@@ -64,6 +71,7 @@ export const Dialog = (props: DialogProps) => {
   const titleId = title ? `${dialogId ?? generatedTitleId}-title` : undefined;
   const dialogState = isClosing ? "closing" : "open";
   const isInteractive = open && !isClosing;
+  const dialogStackId = dialogStackIdRef.current;
 
   useEffect(() => {
     onExitCompleteRef.current = onExitComplete;
@@ -117,6 +125,8 @@ export const Dialog = (props: DialogProps) => {
 
   const handleKeyDown = useCallback(
     (event: KeyboardEvent) => {
+      if (!isTopmostDialog(dialogStackId)) return;
+
       if (event.key === "Escape" && isInteractive && closeOnEscape) {
         onClose();
         return;
@@ -159,7 +169,7 @@ export const Dialog = (props: DialogProps) => {
         firstFocusableElement.focus();
       }
     },
-    [closeOnEscape, isInteractive, onClose],
+    [closeOnEscape, dialogStackId, isInteractive, onClose],
   );
 
   useEffect(() => {
@@ -175,14 +185,21 @@ export const Dialog = (props: DialogProps) => {
     if (!open) return;
 
     previousFocusedElementRef.current = getActiveElement();
+    registerDialog(dialogStackId);
 
     return () => {
-      if (previousFocusedElementRef.current?.isConnected) {
+      const shouldRestoreFocus = isTopmostDialog(dialogStackId);
+      unregisterDialog(dialogStackId);
+
+      if (
+        shouldRestoreFocus &&
+        previousFocusedElementRef.current?.isConnected
+      ) {
         previousFocusedElementRef.current.focus();
       }
       previousFocusedElementRef.current = null;
     };
-  }, [open]);
+  }, [dialogStackId, open]);
 
   useClientLayoutEffect(() => {
     if (!open) return;
@@ -223,6 +240,7 @@ export const Dialog = (props: DialogProps) => {
   const handleBackdropClick = useCallback(
     (event: MouseEvent<HTMLDivElement>) => {
       if (
+        isTopmostDialog(dialogStackId) &&
         isInteractive &&
         closeOnBackdropClick &&
         event.target === event.currentTarget
@@ -230,7 +248,7 @@ export const Dialog = (props: DialogProps) => {
         onClose();
       }
     },
-    [closeOnBackdropClick, isInteractive, onClose],
+    [closeOnBackdropClick, dialogStackId, isInteractive, onClose],
   );
 
   const handleFormSubmit = useCallback(
@@ -285,9 +303,14 @@ export const Dialog = (props: DialogProps) => {
           className,
         )}
       >
-        <div className="sito-ui-dialog__header">
+        <div
+          className={classNames("sito-ui-dialog__header", headerClassName)}
+        >
           {title ? (
-            <h3 id={titleId} className="sito-ui-dialog__title">
+            <h3
+              id={titleId}
+              className={classNames("sito-ui-dialog__title", titleClassName)}
+            >
               {title}
             </h3>
           ) : null}
@@ -299,7 +322,10 @@ export const Dialog = (props: DialogProps) => {
               onClick={onClose}
               variant="text"
               color="error"
-              className="sito-ui-dialog__close"
+              className={classNames(
+                "sito-ui-dialog__close",
+                closeButtonClassName,
+              )}
               aria-label={closeLabel}
             />
           ) : null}
