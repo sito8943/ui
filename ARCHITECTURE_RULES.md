@@ -18,6 +18,10 @@ packages.
   IconButton
   Dialog
   DialogActions
+  ContextMenu
+  ContextMenuItem
+  ContextMenuSeparator
+  useContextMenu
   useDialog
   Tooltip/Popover later
   styles.css / theme.css optional and overrideable
@@ -58,7 +62,8 @@ Before editing:
 
 Allowed here:
 
-- Reusable primitives: `Button`, `IconButton`, `Dialog`, `DialogActions`.
+- Reusable primitives: `Button`, `IconButton`, `Dialog`, `DialogActions`,
+  `ContextMenu`, `ContextMenuItem`, `ContextMenuSeparator`.
 - Generic hooks that only manage primitive UI state, such as `useDialog`.
 - Generic styling entrypoints, such as `styles.css` and optional `theme.css`.
 - Accessibility behavior that every consumer should get consistently.
@@ -218,9 +223,21 @@ src/
       types.ts
       utils.ts
       index.ts
+    ContextMenu/
+      ContextMenu.tsx
+      ContextMenuItem.tsx
+      ContextMenuSeparator.tsx
+      styles.css
+      types.ts
+      constants.ts
+      index.ts
   hooks/
     useDialog/
       useDialog.ts
+      types.ts
+      index.ts
+    useContextMenu/
+      useContextMenu.ts
       types.ts
       index.ts
   styles/
@@ -348,7 +365,11 @@ Keep or build:
 - `IconButton`
 - `Dialog`
 - `DialogActions`
+- `ContextMenu`
+- `ContextMenuItem`
+- `ContextMenuSeparator`
 - `useDialog`
+- `useContextMenu`
 - `Tooltip` / `Popover` later
 - `styles.css` / `theme.css` as optional overrideable styles
 - Tiny utilities needed by those primitives

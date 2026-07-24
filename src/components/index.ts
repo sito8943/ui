@@ -7,6 +7,17 @@ export type {
 } from "./Button";
 export { Button } from "./Button";
 export type {
+  ContextMenuItemProps,
+  ContextMenuPosition,
+  ContextMenuProps,
+  ContextMenuSeparatorProps,
+} from "./ContextMenu";
+export {
+  ContextMenu,
+  ContextMenuItem,
+  ContextMenuSeparator,
+} from "./ContextMenu";
+export type {
   DialogActionButtonProps,
   DialogActionsProps,
   DialogInitialFocus,

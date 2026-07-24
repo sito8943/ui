@@ -4,6 +4,10 @@ export type {
   ButtonProps,
   ButtonSize,
   ButtonVariant,
+  ContextMenuItemProps,
+  ContextMenuPosition,
+  ContextMenuProps,
+  ContextMenuSeparatorProps,
   DialogActionButtonProps,
   DialogActionsProps,
   DialogInitialFocus,
@@ -13,6 +17,14 @@ export type {
   IconButtonProps,
   IconButtonSize,
 } from "./components";
-export { Button, Dialog, DialogActions, IconButton } from "./components";
-export type { UseDialogReturn } from "./hooks";
-export { useDialog } from "./hooks";
+export {
+  Button,
+  ContextMenu,
+  ContextMenuItem,
+  ContextMenuSeparator,
+  Dialog,
+  DialogActions,
+  IconButton,
+} from "./components";
+export type { UseContextMenuReturn, UseDialogReturn } from "./hooks";
+export { useContextMenu, useDialog } from "./hooks";

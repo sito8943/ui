@@ -20,12 +20,53 @@ import "@sito/ui/theme.css";
 ## Public API
 
 ```ts
-import { Button, Dialog, DialogActions, IconButton, useDialog } from "@sito/ui";
+import {
+  Button,
+  ContextMenu,
+  ContextMenuItem,
+  ContextMenuSeparator,
+  Dialog,
+  DialogActions,
+  IconButton,
+  useContextMenu,
+  useDialog,
+} from "@sito/ui";
 ```
 
 Exported types include `ButtonProps`, `ButtonSize`, `IconButtonProps`,
 `DialogProps`, `DialogActionsProps`, `DialogState`, `IconButtonSize`, and
-`UseDialogReturn`.
+`UseDialogReturn`, plus the corresponding context-menu props and hook return
+types.
+
+## Context Menu
+
+`ContextMenu` owns viewport clamping, focus restoration, outside dismissal and
+keyboard navigation. Consumers own the menu's actions and wording:
+
+```tsx
+const menu = useContextMenu<string>();
+
+<button
+  type="button"
+  onContextMenu={(event) => {
+    event.preventDefault();
+    menu.openAt(event.clientX, event.clientY, "item-id");
+  }}
+>
+  Item
+</button>
+
+<ContextMenu
+  open={menu.open}
+  position={menu.position}
+  onClose={menu.close}
+  ariaLabel="Item actions"
+>
+  <ContextMenuItem onClick={menu.close}>Open</ContextMenuItem>
+  <ContextMenuSeparator />
+  <ContextMenuItem disabled>Delete</ContextMenuItem>
+</ContextMenu>;
+```
 
 ## Button Sizes
 
