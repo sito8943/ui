@@ -1,3 +1,4 @@
+import { createRef } from "react";
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { describe, expect, it, vi } from "vitest";
@@ -117,5 +118,63 @@ describe("ContextMenu", () => {
     await user.click(screen.getByRole("button", { name: "Outside" }));
 
     expect(handleClose).toHaveBeenCalledTimes(1);
+  });
+
+  it("exposes its element and allows consumers to own dismissal", async () => {
+    const user = userEvent.setup();
+    const handleClose = vi.fn();
+    const menuRef = createRef<HTMLDivElement>();
+
+    render(
+      <>
+        <button type="button">Outside</button>
+        <ContextMenu
+          ref={menuRef}
+          open
+          position={position}
+          onClose={handleClose}
+          ariaLabel="Actions"
+          closeOnEscape={false}
+          closeOnTab={false}
+          closeOnPointerDownOutside={false}
+        >
+          <ContextMenuItem>Open</ContextMenuItem>
+        </ContextMenu>
+      </>,
+    );
+
+    expect(menuRef.current).toBe(
+      screen.getByRole("menu", { name: "Actions" }),
+    );
+
+    await user.keyboard("{Escape}");
+    await user.click(screen.getByRole("button", { name: "Outside" }));
+
+    expect(handleClose).not.toHaveBeenCalled();
+  });
+
+  it("updates its element ref when a closed menu opens", () => {
+    const menuRef = createRef<HTMLDivElement>();
+    const handleClose = vi.fn();
+    const renderMenu = (open: boolean) => (
+      <ContextMenu
+        ref={menuRef}
+        open={open}
+        position={position}
+        onClose={handleClose}
+        ariaLabel="Actions"
+      >
+        <ContextMenuItem>Open</ContextMenuItem>
+      </ContextMenu>
+    );
+
+    const { rerender } = render(renderMenu(false));
+    expect(menuRef.current).toBeNull();
+
+    rerender(renderMenu(true));
+
+    expect(menuRef.current).toBe(
+      screen.getByRole("menu", { name: "Actions" }),
+    );
   });
 });

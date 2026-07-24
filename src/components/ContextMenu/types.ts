@@ -18,6 +18,10 @@ export type ContextMenuProps = {
   className?: string;
   portalContainer?: Element | DocumentFragment | null;
   viewportPadding?: number;
+  closeOnEscape?: boolean;
+  closeOnTab?: boolean;
+  closeOnPointerDownOutside?: boolean;
+  clampToViewport?: boolean;
 };
 
 export interface ContextMenuItemProps
