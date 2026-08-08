@@ -28,3 +28,5 @@ export type {
 export { Dialog, DialogActions } from "./Dialog";
 export type { IconButtonProps, IconButtonSize } from "./IconButton";
 export { IconButton } from "./IconButton";
+export type { SpinnerProps } from "./Spinner";
+export { Spinner } from "./Spinner";

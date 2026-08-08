@@ -16,6 +16,7 @@ export type {
   DialogSubmitHandler,
   IconButtonProps,
   IconButtonSize,
+  SpinnerProps,
 } from "./components";
 export {
   Button,
@@ -25,6 +26,7 @@ export {
   Dialog,
   DialogActions,
   IconButton,
+  Spinner,
 } from "./components";
 export type { UseContextMenuReturn, UseDialogReturn } from "./hooks";
 export { useContextMenu, useDialog } from "./hooks";

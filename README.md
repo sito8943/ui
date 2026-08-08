@@ -28,6 +28,7 @@ import {
   Dialog,
   DialogActions,
   IconButton,
+  Spinner,
   useContextMenu,
   useDialog,
 } from "@sito/ui";
@@ -35,8 +36,20 @@ import {
 
 Exported types include `ButtonProps`, `ButtonSize`, `IconButtonProps`,
 `DialogProps`, `DialogActionsProps`, `DialogState`, `IconButtonSize`, and
-`UseDialogReturn`, plus the corresponding context-menu props and hook return
+`SpinnerProps`, `UseDialogReturn`, plus the corresponding context-menu props and hook return
 types.
+
+## Spinner
+
+`Spinner` is the shared indeterminate-progress primitive used by `Button`
+loading states and standalone feedback. Provide `label` when the spinner owns
+the accessible loading announcement; omit it when surrounding content already
+provides that context.
+
+```tsx
+<Spinner label="Loading messages" />
+<Spinner />
+```
 
 ## Context Menu
 

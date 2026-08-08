@@ -1,6 +1,7 @@
 import { type ForwardedRef, forwardRef } from "react";
 
 import { classNames } from "../../utils";
+import { Spinner } from "../Spinner";
 // types
 import {
   BUTTON_COLOR_VARIANTS,
@@ -38,9 +39,8 @@ const Button = forwardRef(function (
 
   const renderedLoadingIndicator =
     loadingIndicator === undefined ? (
-      <span
+      <Spinner
         className="sito-ui-button__spinner"
-        aria-hidden="true"
         data-sito-ui="button-spinner"
       />
     ) : (

@@ -16,6 +16,7 @@ packages.
 @sito/ui
   Button
   IconButton
+  Spinner
   Dialog
   DialogActions
   ContextMenu
@@ -62,7 +63,7 @@ Before editing:
 
 Allowed here:
 
-- Reusable primitives: `Button`, `IconButton`, `Dialog`, `DialogActions`,
+- Reusable primitives: `Button`, `IconButton`, `Spinner`, `Dialog`, `DialogActions`,
   `ContextMenu`, `ContextMenuItem`, `ContextMenuSeparator`.
 - Generic hooks that only manage primitive UI state, such as `useDialog`.
 - Generic styling entrypoints, such as `styles.css` and optional `theme.css`.
@@ -141,6 +142,8 @@ Accessibility is part of the primitive contract.
 - Escape and backdrop close behavior must be configurable.
 - Loading and disabled states must be represented with appropriate HTML and ARIA
   attributes.
+- `Spinner` must expose a status and accessible name when it owns the loading
+  announcement, and remain decorative when its context already provides one.
 
 ---
 
@@ -216,6 +219,11 @@ src/
       styles.css
       types.ts
       index.ts
+    Spinner/
+      Spinner.tsx
+      styles.css
+      types.ts
+      index.ts
     Dialog/
       Dialog.tsx
       DialogActions.tsx
@@ -275,6 +283,8 @@ Button;
 ButtonProps;
 IconButton;
 IconButtonProps;
+Spinner;
+SpinnerProps;
 Dialog;
 DialogProps;
 DialogActions;
@@ -363,6 +373,7 @@ Keep or build:
 
 - `Button`
 - `IconButton`
+- `Spinner`
 - `Dialog`
 - `DialogActions`
 - `ContextMenu`
@@ -385,7 +396,7 @@ Remove or move out:
 - `Switch`
 - `Image`
 - `PrintAfter`
-- `Loading`, unless `Button` needs a tiny internal spinner
+- workflow-level `Loading` components; use `Spinner` for indeterminate progress
 - `SplashScreen`
 - legacy `assets/images/logo.svg`
 - legacy global animation/style files not used by the target primitives
