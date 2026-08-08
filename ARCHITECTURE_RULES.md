@@ -273,7 +273,8 @@ Rules:
 ## 9) Public API and Exports
 
 - Keep the public API small and intentional.
-- Export only primitives, hooks, and public types.
+- Export only primitives, hooks, public types, and constants that represent
+  public contract values.
 - Every exported prop type is a package contract. Avoid leaking implementation
   details from internal components.
 - Prefer stable names:

@@ -22,17 +22,26 @@ import "@sito/ui/theme.css";
 ```ts
 import {
   Button,
+  BUTTON_COLOR_VARIANTS,
+  BUTTON_SIZES,
+  BUTTON_VARIANTS,
   ContextMenu,
   ContextMenuItem,
   ContextMenuSeparator,
   Dialog,
   DialogActions,
+  DIALOG_INITIAL_FOCUS,
   IconButton,
+  ICON_BUTTON_SIZES,
   Spinner,
   useContextMenu,
   useDialog,
 } from "@sito/ui";
 ```
+
+The runtime constants `BUTTON_COLOR_VARIANTS`, `BUTTON_VARIANTS`,
+`BUTTON_SIZES`, `ICON_BUTTON_SIZES`, and `DIALOG_INITIAL_FOCUS` expose the
+supported values for public component contracts.
 
 Exported types include `ButtonProps`, `ButtonSize`, `IconButtonProps`,
 `DialogProps`, `DialogActionsProps`, `DialogState`, `IconButtonSize`, and

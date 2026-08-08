@@ -1,8 +1,8 @@
 import {
   forwardRef,
   type KeyboardEvent as ReactKeyboardEvent,
+  useCallback,
   useEffect,
-  useImperativeHandle,
   useLayoutEffect,
   useRef,
 } from "react";
@@ -40,10 +40,16 @@ export const ContextMenu = forwardRef<
 ) {
     const menuRef = useRef<HTMLDivElement>(null);
     const previousFocusedElementRef = useRef<HTMLElement | null>(null);
-    useImperativeHandle(
-      ref,
-      () => menuRef.current as HTMLDivElement,
-      [open],
+    const setMenuRef = useCallback(
+      (node: HTMLDivElement | null) => {
+        menuRef.current = node;
+        if (typeof ref === "function") {
+          ref(node);
+        } else if (ref) {
+          ref.current = node;
+        }
+      },
+      [ref],
     );
 
     useClientLayoutEffect(() => {
@@ -99,7 +105,10 @@ export const ContextMenu = forwardRef<
       if (!open || !closeOnPointerDownOutside) return;
 
       const handlePointerDown = (event: PointerEvent) => {
-        if (!menuRef.current?.contains(event.target as Node)) onClose();
+        const target = event.target;
+        if (!(target instanceof Node) || !menuRef.current?.contains(target)) {
+          onClose();
+        }
       };
 
       document.addEventListener("pointerdown", handlePointerDown);
@@ -128,9 +137,11 @@ export const ContextMenu = forwardRef<
       );
       if (items.length === 0) return;
 
-      const currentIndex = items.indexOf(
-        document.activeElement as HTMLElement,
-      );
+      const activeElement = document.activeElement;
+      const currentIndex =
+        activeElement instanceof HTMLElement
+          ? items.indexOf(activeElement)
+          : -1;
       let nextIndex: number | null = null;
 
       if (event.key === "ArrowDown") {
@@ -154,7 +165,7 @@ export const ContextMenu = forwardRef<
 
     return createPortal(
       <div
-        ref={menuRef}
+        ref={setMenuRef}
         role="menu"
         tabIndex={-1}
         aria-label={ariaLabel}

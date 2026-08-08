@@ -20,12 +20,17 @@ export type {
 } from "./components";
 export {
   Button,
+  BUTTON_COLOR_VARIANTS,
+  BUTTON_SIZES,
+  BUTTON_VARIANTS,
   ContextMenu,
   ContextMenuItem,
   ContextMenuSeparator,
   Dialog,
   DialogActions,
+  DIALOG_INITIAL_FOCUS,
   IconButton,
+  ICON_BUTTON_SIZES,
   Spinner,
 } from "./components";
 export type { UseContextMenuReturn, UseDialogReturn } from "./hooks";
