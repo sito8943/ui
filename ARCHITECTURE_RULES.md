@@ -16,8 +16,13 @@ packages.
 @sito/ui
   Button
   IconButton
+  Spinner
   Dialog
   DialogActions
+  ContextMenu
+  ContextMenuItem
+  ContextMenuSeparator
+  useContextMenu
   useDialog
   Tooltip/Popover later
   styles.css / theme.css optional and overrideable
@@ -58,7 +63,8 @@ Before editing:
 
 Allowed here:
 
-- Reusable primitives: `Button`, `IconButton`, `Dialog`, `DialogActions`.
+- Reusable primitives: `Button`, `IconButton`, `Spinner`, `Dialog`, `DialogActions`,
+  `ContextMenu`, `ContextMenuItem`, `ContextMenuSeparator`.
 - Generic hooks that only manage primitive UI state, such as `useDialog`.
 - Generic styling entrypoints, such as `styles.css` and optional `theme.css`.
 - Accessibility behavior that every consumer should get consistently.
@@ -136,6 +142,8 @@ Accessibility is part of the primitive contract.
 - Escape and backdrop close behavior must be configurable.
 - Loading and disabled states must be represented with appropriate HTML and ARIA
   attributes.
+- `Spinner` must expose a status and accessible name when it owns the loading
+  announcement, and remain decorative when its context already provides one.
 
 ---
 
@@ -211,6 +219,11 @@ src/
       styles.css
       types.ts
       index.ts
+    Spinner/
+      Spinner.tsx
+      styles.css
+      types.ts
+      index.ts
     Dialog/
       Dialog.tsx
       DialogActions.tsx
@@ -218,9 +231,21 @@ src/
       types.ts
       utils.ts
       index.ts
+    ContextMenu/
+      ContextMenu.tsx
+      ContextMenuItem.tsx
+      ContextMenuSeparator.tsx
+      styles.css
+      types.ts
+      constants.ts
+      index.ts
   hooks/
     useDialog/
       useDialog.ts
+      types.ts
+      index.ts
+    useContextMenu/
+      useContextMenu.ts
       types.ts
       index.ts
   styles/
@@ -248,7 +273,8 @@ Rules:
 ## 9) Public API and Exports
 
 - Keep the public API small and intentional.
-- Export only primitives, hooks, and public types.
+- Export only primitives, hooks, public types, and constants that represent
+  public contract values.
 - Every exported prop type is a package contract. Avoid leaking implementation
   details from internal components.
 - Prefer stable names:
@@ -258,6 +284,8 @@ Button;
 ButtonProps;
 IconButton;
 IconButtonProps;
+Spinner;
+SpinnerProps;
 Dialog;
 DialogProps;
 DialogActions;
@@ -346,9 +374,14 @@ Keep or build:
 
 - `Button`
 - `IconButton`
+- `Spinner`
 - `Dialog`
 - `DialogActions`
+- `ContextMenu`
+- `ContextMenuItem`
+- `ContextMenuSeparator`
 - `useDialog`
+- `useContextMenu`
 - `Tooltip` / `Popover` later
 - `styles.css` / `theme.css` as optional overrideable styles
 - Tiny utilities needed by those primitives
@@ -364,7 +397,7 @@ Remove or move out:
 - `Switch`
 - `Image`
 - `PrintAfter`
-- `Loading`, unless `Button` needs a tiny internal spinner
+- workflow-level `Loading` components; use `Spinner` for indeterminate progress
 - `SplashScreen`
 - legacy `assets/images/logo.svg`
 - legacy global animation/style files not used by the target primitives

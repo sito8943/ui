@@ -1,0 +1,23 @@
+.sito-ui-spinner {
+  display: inline-block;
+  width: var(--sito-ui-size-spinner);
+  height: var(--sito-ui-size-spinner);
+  flex: 0 0 auto;
+  border: var(--sito-ui-spinner-border-width) solid currentColor;
+  border-right-color: transparent;
+  border-radius: var(--sito-ui-radius-round);
+  animation: sito-ui-spinner-spin var(--sito-ui-motion-duration-spinner) linear
+    infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sito-ui-spinner {
+    animation-duration: var(--sito-ui-motion-duration-spinner-reduced);
+  }
+}
+
+@keyframes sito-ui-spinner-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

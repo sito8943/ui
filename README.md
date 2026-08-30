@@ -20,12 +20,82 @@ import "@sito/ui/theme.css";
 ## Public API
 
 ```ts
-import { Button, Dialog, DialogActions, IconButton, useDialog } from "@sito/ui";
+import {
+  Button,
+  BUTTON_COLOR_VARIANTS,
+  BUTTON_SIZES,
+  BUTTON_VARIANTS,
+  ContextMenu,
+  ContextMenuItem,
+  ContextMenuSeparator,
+  Dialog,
+  DialogActions,
+  DIALOG_INITIAL_FOCUS,
+  IconButton,
+  ICON_BUTTON_SIZES,
+  Spinner,
+  useContextMenu,
+  useDialog,
+} from "@sito/ui";
 ```
+
+The runtime constants `BUTTON_COLOR_VARIANTS`, `BUTTON_VARIANTS`,
+`BUTTON_SIZES`, `ICON_BUTTON_SIZES`, and `DIALOG_INITIAL_FOCUS` expose the
+supported values for public component contracts.
 
 Exported types include `ButtonProps`, `ButtonSize`, `IconButtonProps`,
 `DialogProps`, `DialogActionsProps`, `DialogState`, `IconButtonSize`, and
-`UseDialogReturn`.
+`SpinnerProps`, `UseDialogReturn`, plus the corresponding context-menu props and hook return
+types.
+
+## Spinner
+
+`Spinner` is the shared indeterminate-progress primitive used by `Button`
+loading states and standalone feedback. Provide `label` when the spinner owns
+the accessible loading announcement; omit it when surrounding content already
+provides that context.
+
+```tsx
+<Spinner label="Loading messages" />
+<Spinner />
+```
+
+## Context Menu
+
+`ContextMenu` owns viewport clamping, focus restoration, outside dismissal and
+keyboard navigation. Consumers own the menu's actions and wording:
+
+```tsx
+const menu = useContextMenu<string>();
+
+<button
+  type="button"
+  onContextMenu={(event) => {
+    event.preventDefault();
+    menu.openAt(event.clientX, event.clientY, "item-id");
+  }}
+>
+  Item
+</button>
+
+<ContextMenu
+  open={menu.open}
+  position={menu.position}
+  onClose={menu.close}
+  ariaLabel="Item actions"
+>
+  <ContextMenuItem onClick={menu.close}>Open</ContextMenuItem>
+  <ContextMenuSeparator />
+  <ContextMenuItem disabled>Delete</ContextMenuItem>
+</ContextMenu>;
+```
+
+Apps with an existing overlay or hotkey scope can keep dismissal in that layer
+with `closeOnEscape={false}`, `closeOnTab={false}` and
+`closeOnPointerDownOutside={false}`. The component forwards its menu element ref
+for adapters that need compatible positioning or containment checks. Those
+adapters may also use `clampToViewport={false}` when their existing state layer
+already owns clamping.
 
 ## Button Sizes
 

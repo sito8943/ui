@@ -4,6 +4,10 @@ export type {
   ButtonProps,
   ButtonSize,
   ButtonVariant,
+  ContextMenuItemProps,
+  ContextMenuPosition,
+  ContextMenuProps,
+  ContextMenuSeparatorProps,
   DialogActionButtonProps,
   DialogActionsProps,
   DialogInitialFocus,
@@ -12,7 +16,22 @@ export type {
   DialogSubmitHandler,
   IconButtonProps,
   IconButtonSize,
+  SpinnerProps,
 } from "./components";
-export { Button, Dialog, DialogActions, IconButton } from "./components";
-export type { UseDialogReturn } from "./hooks";
-export { useDialog } from "./hooks";
+export {
+  Button,
+  BUTTON_COLOR_VARIANTS,
+  BUTTON_SIZES,
+  BUTTON_VARIANTS,
+  ContextMenu,
+  ContextMenuItem,
+  ContextMenuSeparator,
+  Dialog,
+  DialogActions,
+  DIALOG_INITIAL_FOCUS,
+  IconButton,
+  ICON_BUTTON_SIZES,
+  Spinner,
+} from "./components";
+export type { UseContextMenuReturn, UseDialogReturn } from "./hooks";
+export { useContextMenu, useDialog } from "./hooks";

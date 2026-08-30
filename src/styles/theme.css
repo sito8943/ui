@@ -1,5 +1,6 @@
 :root {
   --sito-ui-color-text: #101010;
+  --sito-ui-color-text-muted: #667085;
   --sito-ui-color-surface: #ffffff;
   --sito-ui-color-border: #d9dde4;
 
@@ -56,30 +57,46 @@
   --sito-ui-size-icon-button-icon-md: 1.25rem;
   --sito-ui-size-icon-button-icon-lg: 1.5rem;
   --sito-ui-size-icon-button-icon: var(--sito-ui-size-icon-button-icon-md);
-  --sito-ui-size-button-spinner: 1em;
+  --sito-ui-size-spinner: 1em;
+  --sito-ui-size-button-spinner: var(--sito-ui-size-spinner);
+  --sito-ui-size-context-menu-min-width: 12rem;
+  --sito-ui-size-context-menu-max-width: 20rem;
+  --sito-ui-size-context-menu-item: 2rem;
+  --sito-ui-size-context-menu-leading: 1rem;
 
   --sito-ui-radius-pill: 1.5rem;
   --sito-ui-radius-round: 100%;
   --sito-ui-radius-dialog: 1rem;
+  --sito-ui-radius-context-menu: 0.5rem;
+  --sito-ui-radius-context-menu-item: 0.25rem;
 
   --sito-ui-border-width-thin: 1px;
-  --sito-ui-button-spinner-border-width: 2px;
+  --sito-ui-spinner-border-width: 2px;
+  --sito-ui-button-spinner-border-width: var(--sito-ui-spinner-border-width);
 
   --sito-ui-font-weight-semibold: 600;
   --sito-ui-font-size-button: 0.875rem;
   --sito-ui-font-size-dialog-title: 1.25rem;
+  --sito-ui-font-size-context-menu-shortcut: 0.75rem;
   --sito-ui-line-height-button: 1.25rem;
   --sito-ui-line-height-dialog-title: 1.75rem;
 
   --sito-ui-motion-duration-normal: 300ms;
-  --sito-ui-motion-duration-spin: 600ms;
-  --sito-ui-motion-duration-spin-reduced: 1500ms;
+  --sito-ui-motion-duration-spinner: 600ms;
+  --sito-ui-motion-duration-spinner-reduced: 1500ms;
+  --sito-ui-motion-duration-spin: var(--sito-ui-motion-duration-spinner);
+  --sito-ui-motion-duration-spin-reduced: var(
+    --sito-ui-motion-duration-spinner-reduced
+  );
   --sito-ui-motion-easing-standard: cubic-bezier(0.4, 0, 0.2, 1);
 
   --sito-ui-shadow-dialog: 0 1rem 3rem rgb(16 24 40 / 18%);
+  --sito-ui-shadow-context-menu: 0 0.75rem 2rem rgb(16 24 40 / 24%);
   --sito-ui-z-index-dialog: 50;
+  --sito-ui-z-index-context-menu: 60;
 
   --sito-ui-button-disabled-opacity: 0.6;
+  --sito-ui-context-menu-disabled-opacity: 0.5;
   --sito-ui-button-active-scale: 0.97;
   --sito-ui-dialog-backdrop-background: rgb(16 24 40 / 20%);
   --sito-ui-dialog-backdrop-filter: blur(1rem);
