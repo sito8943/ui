@@ -1,5 +1,49 @@
 # Changelog
 
+## 0.4.0 - 2026-08-30
+
+### Added
+
+- Added `ContextMenu`, `ContextMenuItem`, and `ContextMenuSeparator` primitives
+  with portal rendering, viewport clamping (`clampToViewport`,
+  `viewportPadding`), configurable dismissal (`closeOnEscape`, `closeOnTab`,
+  `closeOnPointerDownOutside`), focus restore on close, and roving keyboard
+  navigation (`ArrowUp`, `ArrowDown`, `Home`, `End`).
+- Added `ContextMenuItem` `leading` and `shortcut` slots, plus exported
+  `ContextMenuProps`, `ContextMenuItemProps`, `ContextMenuSeparatorProps`, and
+  `ContextMenuPosition` types.
+- Added `useContextMenu` hook (`open`, `position`, `payload`, `openAt`,
+  `close`) with the exported `UseContextMenuReturn` type.
+- Added `Spinner` primitive for indeterminate progress. It is decorative by
+  default (`aria-hidden`) and becomes `role="status"` with an accessible name
+  when `label` is provided. Exported `SpinnerProps`.
+- Added public constants `BUTTON_VARIANTS`, `BUTTON_COLOR_VARIANTS`,
+  `BUTTON_SIZES`, `ICON_BUTTON_SIZES`, and `DIALOG_INITIAL_FOCUS`.
+- Added CSS tokens for the context menu (`--sito-ui-size-context-menu-*`,
+  `--sito-ui-radius-context-menu*`, `--sito-ui-shadow-context-menu`,
+  `--sito-ui-z-index-context-menu`, `--sito-ui-context-menu-disabled-opacity`,
+  `--sito-ui-font-size-context-menu-shortcut`) and `--sito-ui-color-text-muted`.
+- Added generic spinner tokens `--sito-ui-size-spinner`,
+  `--sito-ui-spinner-border-width`, `--sito-ui-motion-duration-spinner`, and
+  `--sito-ui-motion-duration-spinner-reduced`.
+- Added tests for `ContextMenu`, `Spinner`, and `useContextMenu`, and a
+  `Spinner` Storybook story.
+- Added `pnpm-workspace.yaml` mirroring the `package.json` `pnpm` overrides in
+  preparation for pnpm 11.
+
+### Changed
+
+- Updated `Button` to render its loading indicator with `Spinner`; the
+  `sito-ui-button__spinner` class and `data-sito-ui="button-spinner"` hook are
+  preserved.
+- Updated `--sito-ui-size-button-spinner`,
+  `--sito-ui-button-spinner-border-width`, `--sito-ui-motion-duration-spin`,
+  and `--sito-ui-motion-duration-spin-reduced` to alias the new spinner tokens
+  (existing overrides keep working).
+- Updated `ARCHITECTURE_RULES.md` and the README with the new primitives, hook,
+  constants, and token docs.
+- Marked `esbuild` as an ignored built dependency in the pnpm config.
+
 ## 0.3.3 - 2026-07-17
 
 ### Added
