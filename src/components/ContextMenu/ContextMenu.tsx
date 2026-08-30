@@ -18,26 +18,24 @@ import type { ContextMenuProps } from "./types";
 const useClientLayoutEffect =
   typeof window === "undefined" ? useEffect : useLayoutEffect;
 
-export const ContextMenu = forwardRef<
-  HTMLDivElement,
-  ContextMenuProps
->(function ContextMenu(
-  {
-    open,
-    position,
-    onClose,
-    ariaLabel,
-    children,
-    className,
-    portalContainer,
-    viewportPadding = CONTEXT_MENU_VIEWPORT_PADDING,
-    closeOnEscape = true,
-    closeOnTab = true,
-    closeOnPointerDownOutside = true,
-    clampToViewport = true,
-  },
-  ref,
-) {
+export const ContextMenu = forwardRef<HTMLDivElement, ContextMenuProps>(
+  function ContextMenu(
+    {
+      open,
+      position,
+      onClose,
+      ariaLabel,
+      children,
+      className,
+      portalContainer,
+      viewportPadding = CONTEXT_MENU_VIEWPORT_PADDING,
+      closeOnEscape = true,
+      closeOnTab = true,
+      closeOnPointerDownOutside = true,
+      clampToViewport = true,
+    },
+    ref,
+  ) {
     const menuRef = useRef<HTMLDivElement>(null);
     const previousFocusedElementRef = useRef<HTMLElement | null>(null);
     const setMenuRef = useCallback(
@@ -60,10 +58,9 @@ export const ContextMenu = forwardRef<
           ? document.activeElement
           : null;
 
-      const firstItem =
-        menuRef.current?.querySelector<HTMLElement>(
-          CONTEXT_MENU_ITEM_SELECTOR,
-        );
+      const firstItem = menuRef.current?.querySelector<HTMLElement>(
+        CONTEXT_MENU_ITEM_SELECTOR,
+      );
       (firstItem ?? menuRef.current)?.focus();
 
       return () => {
@@ -78,28 +75,14 @@ export const ContextMenu = forwardRef<
       const menu = menuRef.current;
       if (!open || !menu || !clampToViewport) return;
 
-      const maxX =
-        window.innerWidth - menu.offsetWidth - viewportPadding;
-      const maxY =
-        window.innerHeight - menu.offsetHeight - viewportPadding;
-      const clampedX = Math.max(
-        viewportPadding,
-        Math.min(position.x, maxX),
-      );
-      const clampedY = Math.max(
-        viewportPadding,
-        Math.min(position.y, maxY),
-      );
+      const maxX = window.innerWidth - menu.offsetWidth - viewportPadding;
+      const maxY = window.innerHeight - menu.offsetHeight - viewportPadding;
+      const clampedX = Math.max(viewportPadding, Math.min(position.x, maxX));
+      const clampedY = Math.max(viewportPadding, Math.min(position.y, maxY));
 
       menu.style.left = `${clampedX}px`;
       menu.style.top = `${clampedY}px`;
-    }, [
-      clampToViewport,
-      open,
-      position.x,
-      position.y,
-      viewportPadding,
-    ]);
+    }, [clampToViewport, open, position.x, position.y, viewportPadding]);
 
     useEffect(() => {
       if (!open || !closeOnPointerDownOutside) return;
@@ -117,11 +100,8 @@ export const ContextMenu = forwardRef<
       };
     }, [closeOnPointerDownOutside, onClose, open]);
 
-    const handleKeyDown = (
-      event: ReactKeyboardEvent<HTMLDivElement>,
-    ) => {
-      const shouldCloseOnEscape =
-        event.key === "Escape" && closeOnEscape;
+    const handleKeyDown = (event: ReactKeyboardEvent<HTMLDivElement>) => {
+      const shouldCloseOnEscape = event.key === "Escape" && closeOnEscape;
       const shouldCloseOnTab = event.key === "Tab" && closeOnTab;
       if (shouldCloseOnEscape || shouldCloseOnTab) {
         event.preventDefault();
@@ -145,11 +125,9 @@ export const ContextMenu = forwardRef<
       let nextIndex: number | null = null;
 
       if (event.key === "ArrowDown") {
-        nextIndex =
-          (currentIndex + 1 + items.length) % items.length;
+        nextIndex = (currentIndex + 1 + items.length) % items.length;
       } else if (event.key === "ArrowUp") {
-        nextIndex =
-          (currentIndex - 1 + items.length) % items.length;
+        nextIndex = (currentIndex - 1 + items.length) % items.length;
       } else if (event.key === "Home") {
         nextIndex = 0;
       } else if (event.key === "End") {

@@ -9,9 +9,6 @@ export const ContextMenuSeparator = ({
     {...rest}
     role="separator"
     data-sito-ui="context-menu-separator"
-    className={classNames(
-      "sito-ui-context-menu__separator",
-      className,
-    )}
+    className={classNames("sito-ui-context-menu__separator", className)}
   />
 );

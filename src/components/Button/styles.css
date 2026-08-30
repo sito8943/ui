@@ -150,9 +150,7 @@
 
 .sito-ui-button__spinner {
   --sito-ui-size-spinner: var(--sito-ui-size-button-spinner);
-  --sito-ui-spinner-border-width: var(
-    --sito-ui-button-spinner-border-width
-  );
+  --sito-ui-spinner-border-width: var(--sito-ui-button-spinner-border-width);
   --sito-ui-motion-duration-spinner: var(--sito-ui-motion-duration-spin);
   --sito-ui-motion-duration-spinner-reduced: var(
     --sito-ui-motion-duration-spin-reduced

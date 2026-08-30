@@ -143,9 +143,7 @@ describe("ContextMenu", () => {
       </>,
     );
 
-    expect(menuRef.current).toBe(
-      screen.getByRole("menu", { name: "Actions" }),
-    );
+    expect(menuRef.current).toBe(screen.getByRole("menu", { name: "Actions" }));
 
     await user.keyboard("{Escape}");
     await user.click(screen.getByRole("button", { name: "Outside" }));
@@ -173,8 +171,6 @@ describe("ContextMenu", () => {
 
     rerender(renderMenu(true));
 
-    expect(menuRef.current).toBe(
-      screen.getByRole("menu", { name: "Actions" }),
-    );
+    expect(menuRef.current).toBe(screen.getByRole("menu", { name: "Actions" }));
   });
 });

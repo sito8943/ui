@@ -7,14 +7,7 @@ export const ContextMenuItem = forwardRef<
   HTMLButtonElement,
   ContextMenuItemProps
 >(function ContextMenuItem(
-  {
-    leading,
-    shortcut,
-    children,
-    className,
-    disabled,
-    ...rest
-  },
+  { leading, shortcut, children, className, disabled, ...rest },
   ref,
 ) {
   return (
@@ -28,18 +21,12 @@ export const ContextMenuItem = forwardRef<
       data-sito-ui="context-menu-item"
       className={classNames("sito-ui-context-menu__item", className)}
     >
-      <span
-        className="sito-ui-context-menu__leading"
-        aria-hidden="true"
-      >
+      <span className="sito-ui-context-menu__leading" aria-hidden="true">
         {leading}
       </span>
       <span className="sito-ui-context-menu__label">{children}</span>
       {shortcut ? (
-        <span
-          className="sito-ui-context-menu__shortcut"
-          aria-hidden="true"
-        >
+        <span className="sito-ui-context-menu__shortcut" aria-hidden="true">
           {shortcut}
         </span>
       ) : null}

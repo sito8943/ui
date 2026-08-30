@@ -1,8 +1,4 @@
-import type {
-  ButtonHTMLAttributes,
-  HTMLAttributes,
-  ReactNode,
-} from "react";
+import type { ButtonHTMLAttributes, HTMLAttributes, ReactNode } from "react";
 
 export type ContextMenuPosition = {
   x: number;
@@ -24,8 +20,10 @@ export type ContextMenuProps = {
   clampToViewport?: boolean;
 };
 
-export interface ContextMenuItemProps
-  extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, "type"> {
+export interface ContextMenuItemProps extends Omit<
+  ButtonHTMLAttributes<HTMLButtonElement>,
+  "type"
+> {
   leading?: ReactNode;
   shortcut?: ReactNode;
 }

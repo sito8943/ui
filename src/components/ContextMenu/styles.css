@@ -7,8 +7,7 @@
   max-height: calc(100vh - var(--sito-ui-space-4));
   overflow: auto;
   padding: var(--sito-ui-space-1);
-  border: var(--sito-ui-border-width-thin) solid
-    var(--sito-ui-color-border);
+  border: var(--sito-ui-border-width-thin) solid var(--sito-ui-color-border);
   border-radius: var(--sito-ui-radius-context-menu);
   color: var(--sito-ui-color-text);
   background: var(--sito-ui-color-surface);

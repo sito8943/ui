@@ -11,14 +11,11 @@ export const useContextMenu = <T>(): UseContextMenuReturn<T> => {
   const [position, setPosition] =
     useState<ContextMenuPosition>(INITIAL_POSITION);
 
-  const openAt = useCallback(
-    (x: number, y: number, nextPayload: T) => {
-      setPayload(nextPayload);
-      setPosition({ x, y });
-      setOpen(true);
-    },
-    [],
-  );
+  const openAt = useCallback((x: number, y: number, nextPayload: T) => {
+    setPayload(nextPayload);
+    setPosition({ x, y });
+    setOpen(true);
+  }, []);
 
   const close = useCallback(() => setOpen(false), []);
 

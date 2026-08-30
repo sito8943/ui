@@ -72,9 +72,7 @@
 
   --sito-ui-border-width-thin: 1px;
   --sito-ui-spinner-border-width: 2px;
-  --sito-ui-button-spinner-border-width: var(
-    --sito-ui-spinner-border-width
-  );
+  --sito-ui-button-spinner-border-width: var(--sito-ui-spinner-border-width);
 
   --sito-ui-font-weight-semibold: 600;
   --sito-ui-font-size-button: 0.875rem;
