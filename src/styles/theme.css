@@ -3,6 +3,7 @@
   --sito-ui-color-text-muted: #667085;
   --sito-ui-color-surface: #ffffff;
   --sito-ui-color-border: #d9dde4;
+  --sito-ui-color-scheme: light;
 
   --sito-ui-color-default-text: #101010;
   --sito-ui-color-default-light: #f4f6f8;
@@ -100,4 +101,10 @@
   --sito-ui-button-active-scale: 0.97;
   --sito-ui-dialog-backdrop-background: rgb(16 24 40 / 20%);
   --sito-ui-dialog-backdrop-filter: blur(1rem);
+}
+
+/* Lets native controls (select options, scrollbars, inputs) follow the theme. */
+:root,
+select {
+  color-scheme: var(--sito-ui-color-scheme);
 }
