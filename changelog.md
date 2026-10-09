@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.4.1 - 2026-10-09
+
+### Fixed
+
+- Fixed native `<select>` options rendering with unreadable colors in dark
+  themes (#1). Added the `--sito-ui-color-scheme` token (default `light`),
+  applied as `color-scheme` on `:root` and `select`. Dark themes should set
+  `--sito-ui-color-scheme: dark`.
+
 ## 0.4.0 - 2026-08-30
 
 ### Added
