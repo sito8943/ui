@@ -1,7 +1,9 @@
 export type {
   ButtonBaseProps,
   ButtonColor,
+  ButtonOwnProps,
   ButtonProps,
+  ButtonRef,
   ButtonSize,
   ButtonVariant,
 } from "./Button";
@@ -31,7 +33,11 @@ export type {
   DialogSubmitHandler,
 } from "./Dialog";
 export { Dialog, DialogActions, DIALOG_INITIAL_FOCUS } from "./Dialog";
-export type { IconButtonProps, IconButtonSize } from "./IconButton";
+export type {
+  IconButtonOwnProps,
+  IconButtonProps,
+  IconButtonSize,
+} from "./IconButton";
 export { IconButton, ICON_BUTTON_SIZES } from "./IconButton";
 export type { SpinnerProps } from "./Spinner";
 export { Spinner } from "./Spinner";

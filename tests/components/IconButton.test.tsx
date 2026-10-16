@@ -55,4 +55,40 @@ describe("IconButton", () => {
     expect(screen.getByText("Loading")).toBeInTheDocument();
     expect(screen.queryByText("s")).not.toBeInTheDocument();
   });
+
+  it("renders as a link with icon button classes", () => {
+    render(<IconButton as="a" href="/" aria-label="Exit" icon="x" size="sm" />);
+
+    const link = screen.getByRole("link", { name: "Exit" });
+
+    expect(link).toHaveAttribute("href", "/");
+    expect(link).toHaveAttribute("data-sito-ui", "icon-button");
+    expect(link).not.toHaveAttribute("type");
+    expect(link).toHaveClass(
+      "sito-ui-button",
+      "sito-ui-button--sm",
+      "sito-ui-icon-button",
+      "sito-ui-icon-button--sm",
+    );
+  });
+
+  it("disables an icon link without a native disabled attribute", () => {
+    render(
+      <IconButton
+        as="a"
+        href="/report.pdf"
+        download
+        aria-label="Download"
+        icon="d"
+        disabled
+      />,
+    );
+
+    const link = screen.getByRole("link", { name: "Download" });
+
+    expect(link).toHaveAttribute("download");
+    expect(link).toHaveAttribute("aria-disabled", "true");
+    expect(link).toHaveAttribute("tabindex", "-1");
+    expect(link).not.toHaveAttribute("disabled");
+  });
 });

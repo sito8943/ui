@@ -133,7 +133,9 @@ Examples:
 Accessibility is part of the primitive contract.
 
 - `Button` and `IconButton` must render real `<button>` elements unless there is
-  a documented accessibility reason not to.
+  a documented accessibility reason not to. Navigation and downloads are that
+  reason: `as="a"` / `as={Link}` renders a link, and disabled links use
+  `aria-disabled`, `tabIndex={-1}` and blocked activation.
 - `IconButton` must require an accessible label when it has no visible text.
 - `Dialog` must expose correct dialog semantics and a clear close contract.
 - Focus behavior must be explicit and testable. Dialog focus targets should be

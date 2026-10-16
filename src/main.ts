@@ -1,7 +1,9 @@
 export type {
   ButtonBaseProps,
   ButtonColor,
+  ButtonOwnProps,
   ButtonProps,
+  ButtonRef,
   ButtonSize,
   ButtonVariant,
   ContextMenuItemProps,
@@ -14,6 +16,7 @@ export type {
   DialogProps,
   DialogState,
   DialogSubmitHandler,
+  IconButtonOwnProps,
   IconButtonProps,
   IconButtonSize,
   SpinnerProps,

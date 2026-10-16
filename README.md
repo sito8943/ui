@@ -124,6 +124,29 @@ are `16px`, `20px`, and `24px`. Override a specific token
 (`--sito-ui-size-icon-button-icon-sm`, `-md`, or `-lg`) for theme-wide changes,
 or use `iconSize` / `--sito-ui-icon-button-icon-size` for one button.
 
+## Buttons as Links
+
+`Button` and `IconButton` render a native `<button>` by default. Use `as` to
+render a link with the same classes, sizes, variants and colors:
+
+```tsx
+import { Link } from "react-router";
+
+<Button as="a" href="/report.pdf" download>Download PDF</Button>
+<IconButton as="a" href="/docs" target="_blank" rel="noreferrer" aria-label="Docs" icon={<DocsIcon />} />
+<IconButton as={Link} to="/" aria-label="Exit" icon={<ExitIcon />} />
+```
+
+Props follow the rendered element: anchor attributes with `as="a"`, the
+component's props with `as={Link}`. Use links for navigation and downloads so
+users keep new-tab, copy-link and the URL preview; keep `<button>` for actions.
+
+- `type` defaults to `"button"` only for `<button>`.
+- `disabled` (and `loading`) on a link sets `aria-disabled="true"`,
+  `tabIndex={-1}` and blocks click and middle-click navigation. Router links
+  that skip navigation on `event.defaultPrevented` (React Router does) stay put.
+- `ref` points to the rendered element.
+
 ## Development
 
 Run the component test suite with:
