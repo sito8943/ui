@@ -1,5 +1,26 @@
 # Changelog
 
+## 0.5.0 - 2026-10-16
+
+### Added
+
+- `Button` and `IconButton` accept a polymorphic `as` prop to render an anchor
+  (`as="a"`) or a router link (`as={Link}`) with the same classes, sizes,
+  variants and colors (#37). Props and `ref` follow the rendered element.
+  Disabled or loading links get `aria-disabled="true"`, leave the tab order
+  and block navigation. `type` only defaults on `<button>`.
+- Exported `ButtonOwnProps`, `ButtonRef` and `IconButtonOwnProps` types.
+  `ButtonProps` and `IconButtonProps` take an optional element type parameter
+  (default `"button"`).
+
+### Changed
+
+- Button hover, active and pointer styles use
+  `:not(:disabled):not([aria-disabled="true"])` instead of `:enabled`, so they
+  also apply to links. Buttons drop `text-decoration`.
+- `Button` and `IconButton` take `ref` as a regular prop (React 19) instead of
+  `forwardRef`. Usage is unchanged; `ref` points to the rendered element.
+
 ## 0.4.2 - 2026-10-09
 
 ### Fixed

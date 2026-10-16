@@ -1,4 +1,4 @@
-import type { ReactNode } from "react";
+import type { ElementType, ReactNode } from "react";
 
 // types
 import type { ButtonProps } from "../Button";
@@ -22,13 +22,20 @@ type IconButtonAccessibleLabelProps =
       children: ReactNode;
     };
 
-export type IconButtonProps = Omit<
-  ButtonProps,
+export type IconButtonOwnProps = {
+  icon: ReactNode;
+  iconClassName?: string;
+  iconSize?: number | string;
+  size?: IconButtonSize;
+};
+
+/**
+ * `IconButton` props for the rendered element `E` (`<button>` by default; see
+ * `ButtonProps` for `as`).
+ */
+export type IconButtonProps<E extends ElementType = "button"> = Omit<
+  ButtonProps<E>,
   "aria-label" | "children" | "size"
 > &
-  IconButtonAccessibleLabelProps & {
-    icon: ReactNode;
-    iconClassName?: string;
-    iconSize?: number | string;
-    size?: IconButtonSize;
-  };
+  IconButtonAccessibleLabelProps &
+  IconButtonOwnProps;

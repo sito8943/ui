@@ -1,6 +1,15 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
+import { type ComponentPropsWithoutRef, forwardRef } from "react";
 
 import { IconButton } from "../src/main";
+
+// Stand-in for a router `Link` (React Router, TanStack Router, ...).
+const RouterLink = forwardRef<
+  HTMLAnchorElement,
+  Omit<ComponentPropsWithoutRef<"a">, "href"> & { to: string }
+>(function RouterLink({ to, ...rest }, ref) {
+  return <a ref={ref} href={to} {...rest} />;
+});
 
 const sizeOptions = ["sm", "md", "lg"] as const;
 
@@ -49,5 +58,46 @@ export const Sizes: Story = {
       <IconButton aria-label="Medium" icon="+" size="md" variant="outlined" />
       <IconButton aria-label="Large" icon="+" size="lg" variant="outlined" />
     </div>
+  ),
+};
+
+export const AsButton: Story = {
+  render: () => (
+    <IconButton as="button" aria-label="Add" icon="+" variant="outlined" />
+  ),
+};
+
+export const AsAnchor: Story = {
+  render: () => (
+    <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+      <IconButton
+        as="a"
+        href="data:text/plain,Hello"
+        download="hello.txt"
+        aria-label="Download"
+        icon="↓"
+        variant="outlined"
+      />
+      <IconButton
+        as="a"
+        href="#top"
+        aria-label="Disabled link"
+        icon="↑"
+        variant="outlined"
+        disabled
+      />
+    </div>
+  ),
+};
+
+export const AsRouterLink: Story = {
+  render: () => (
+    <IconButton
+      as={RouterLink}
+      to="#top"
+      aria-label="Exit"
+      icon="×"
+      variant="outlined"
+    />
   ),
 };

@@ -1,29 +1,49 @@
-import { type CSSProperties, type ForwardedRef, forwardRef } from "react";
+import {
+  type CSSProperties,
+  type ElementType,
+  type ReactElement,
+  type ReactNode,
+  type Ref,
+} from "react";
 
 import { classNames } from "../../utils";
-import { Button } from "../Button";
+import { type ButtonBaseProps, type ButtonRef } from "../Button";
+import { ButtonBase } from "../Button/Button";
 // types
-import { ICON_BUTTON_SIZES, type IconButtonProps } from "./types";
+import {
+  ICON_BUTTON_SIZES,
+  type IconButtonOwnProps,
+  type IconButtonProps,
+} from "./types";
 
 type IconButtonStyle = CSSProperties & {
   "--sito-ui-icon-button-icon-size"?: string;
 };
 
-const getIconSizeValue = (iconSize: IconButtonProps["iconSize"]) => {
+type IconButtonImplProps = Pick<
+  ButtonBaseProps,
+  "color" | "variant" | "loading"
+> &
+  IconButtonOwnProps & {
+    as?: ElementType;
+    className?: string | undefined;
+    style?: CSSProperties | undefined;
+    children?: ReactNode;
+    ref?: Ref<Element> | undefined;
+    [key: string]: unknown;
+  };
+
+const getIconSizeValue = (iconSize: IconButtonOwnProps["iconSize"]) => {
   if (iconSize === undefined) return undefined;
 
   return typeof iconSize === "number" ? `${iconSize}px` : iconSize;
 };
 
-const IconButton = forwardRef(function (
-  props: IconButtonProps,
-  ref: ForwardedRef<HTMLButtonElement>,
-) {
+function IconButtonBase(props: IconButtonImplProps) {
   const {
     children,
     icon,
     iconClassName,
-    type = "button",
     variant = "text",
     color = "default",
     loading = false,
@@ -53,10 +73,8 @@ const IconButton = forwardRef(function (
   );
 
   return (
-    <Button
+    <ButtonBase
       {...rest}
-      ref={ref}
-      type={type}
       variant={variant}
       color={color}
       size={size}
@@ -74,8 +92,15 @@ const IconButton = forwardRef(function (
         </span>
       )}
       {children}
-    </Button>
+    </ButtonBase>
   );
-});
+}
+
+function IconButton<E extends ElementType = "button">(
+  props: IconButtonProps<E> & { ref?: ButtonRef<E> },
+): ReactElement | null;
+function IconButton(props: IconButtonImplProps) {
+  return <IconButtonBase {...props} />;
+}
 
 export default IconButton;

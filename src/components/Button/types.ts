@@ -1,4 +1,9 @@
-import type { ButtonHTMLAttributes, ReactNode } from "react";
+import type {
+  ComponentPropsWithoutRef,
+  ComponentPropsWithRef,
+  ElementType,
+  ReactNode,
+} from "react";
 
 export const BUTTON_COLOR_VARIANTS = {
   DEFAULT: "default",
@@ -40,9 +45,24 @@ export type ButtonBaseProps = {
   [key: `data-${string}`]: string | number | boolean | undefined;
 };
 
-export interface ButtonProps
-  extends
-    Omit<ButtonHTMLAttributes<HTMLButtonElement>, "color" | "type">,
-    ButtonBaseProps {
-  type?: "button" | "submit" | "reset" | undefined;
-}
+/**
+ * Props owned by `Button` for a given rendered element `E`. `as` picks the
+ * element: a native `<button>` (default), `"a"`, or a component such as a
+ * router `Link`.
+ */
+export type ButtonOwnProps<E extends ElementType = "button"> =
+  ButtonBaseProps & {
+    as?: E;
+    disabled?: boolean | undefined;
+  };
+
+/**
+ * `Button` props for the rendered element `E`: `Button`'s own props plus the
+ * element's props (`<button>` attributes by default, anchor attributes with
+ * `as="a"`, the component's props with `as={Link}`).
+ */
+export type ButtonProps<E extends ElementType = "button"> = ButtonOwnProps<E> &
+  Omit<ComponentPropsWithoutRef<E>, keyof ButtonOwnProps<E>>;
+
+export type ButtonRef<E extends ElementType = "button"> =
+  ComponentPropsWithRef<E>["ref"];

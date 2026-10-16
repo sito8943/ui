@@ -28,6 +28,7 @@
     color, background-color, border-color, text-decoration-color, fill, stroke,
     opacity, box-shadow, transform, filter, backdrop-filter;
   transition-timing-function: var(--sito-ui-motion-easing-standard);
+  text-decoration: none;
 }
 
 .sito-ui-button--sm {
@@ -48,7 +49,7 @@
   --sito-ui-button-padding-inline: var(--sito-ui-space-5);
 }
 
-.sito-ui-button:enabled:not([aria-disabled="true"]) {
+.sito-ui-button:not(:disabled):not([aria-disabled="true"]) {
   cursor: pointer;
 }
 
@@ -114,7 +115,7 @@
   color: var(--sito-ui-button-default);
 }
 
-.sito-ui-button--text:enabled:not([aria-disabled="true"]):hover {
+.sito-ui-button--text:not(:disabled):not([aria-disabled="true"]):hover {
   background-color: var(--sito-ui-button-light);
 }
 
@@ -123,7 +124,7 @@
   background-color: var(--sito-ui-button-default);
 }
 
-.sito-ui-button--submit:enabled:not([aria-disabled="true"]):hover {
+.sito-ui-button--submit:not(:disabled):not([aria-disabled="true"]):hover {
   background-color: var(--sito-ui-button-hover);
 }
 
@@ -138,13 +139,13 @@
   border-color: var(--sito-ui-color-border);
 }
 
-.sito-ui-button--outlined:enabled:not([aria-disabled="true"]):hover {
+.sito-ui-button--outlined:not(:disabled):not([aria-disabled="true"]):hover {
   color: var(--sito-ui-button-text);
   border-color: var(--sito-ui-button-hover);
   background-color: var(--sito-ui-button-hover);
 }
 
-.sito-ui-button:enabled:not([aria-disabled="true"]):active {
+.sito-ui-button:not(:disabled):not([aria-disabled="true"]):active {
   transform: scale(var(--sito-ui-button-active-scale));
 }
 
