@@ -1,4 +1,5 @@
 .sito-ui-icon-button {
+  --sito-ui-button-active-scale: var(--sito-ui-icon-button-active-scale, 0.9);
   --sito-ui-icon-button-container-size: var(--sito-ui-size-icon-button-md);
   --sito-ui-icon-button-icon-size: var(--sito-ui-size-icon-button-icon);
   --sito-ui-size-button-spinner: var(--sito-ui-icon-button-icon-size);

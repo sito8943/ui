@@ -28,6 +28,14 @@ const meta = {
   title: "Primitives/Button",
   component: Button,
   tags: ["autodocs"],
+  parameters: {
+    docs: {
+      description: {
+        component:
+          "Hold the button to see its press scale. Press motion uses a dedicated 100ms transition; reduced-motion preferences disable the scale.",
+      },
+    },
+  },
   args: {
     children: "Save",
     color: "primary",

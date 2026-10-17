@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.5.1 - Unreleased
+
+### Changed
+
+- Made button press feedback faster with dedicated motion tokens and a stronger
+  scale for `IconButton` (#41).
+
 ## 0.5.0 - 2026-10-16
 
 ### Added
