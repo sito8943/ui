@@ -83,6 +83,7 @@
   --sito-ui-line-height-dialog-title: 1.75rem;
 
   --sito-ui-motion-duration-normal: 300ms;
+  --sito-ui-motion-duration-press: 100ms;
   --sito-ui-motion-duration-spinner: 600ms;
   --sito-ui-motion-duration-spinner-reduced: 1500ms;
   --sito-ui-motion-duration-spin: var(--sito-ui-motion-duration-spinner);
@@ -90,6 +91,7 @@
     --sito-ui-motion-duration-spinner-reduced
   );
   --sito-ui-motion-easing-standard: cubic-bezier(0.4, 0, 0.2, 1);
+  --sito-ui-motion-easing-press: cubic-bezier(0.2, 0, 0, 1);
 
   --sito-ui-shadow-dialog: 0 1rem 3rem rgb(16 24 40 / 18%);
   --sito-ui-shadow-context-menu: 0 0.75rem 2rem rgb(16 24 40 / 24%);
@@ -99,6 +101,7 @@
   --sito-ui-button-disabled-opacity: 0.6;
   --sito-ui-context-menu-disabled-opacity: 0.5;
   --sito-ui-button-active-scale: 0.97;
+  --sito-ui-icon-button-active-scale: 0.9;
   --sito-ui-dialog-backdrop-background: rgb(16 24 40 / 20%);
   --sito-ui-dialog-backdrop-filter: blur(1rem);
 }

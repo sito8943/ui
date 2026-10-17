@@ -17,6 +17,14 @@ const meta = {
   title: "Primitives/IconButton",
   component: IconButton,
   tags: ["autodocs"],
+  parameters: {
+    docs: {
+      description: {
+        component:
+          "Hold the icon button to see its stronger press scale. Press motion uses a dedicated 100ms transition; reduced-motion preferences disable the scale.",
+      },
+    },
+  },
   args: {
     "aria-label": "Add item",
     icon: "+",

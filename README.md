@@ -124,6 +124,17 @@ are `16px`, `20px`, and `24px`. Override a specific token
 (`--sito-ui-size-icon-button-icon-sm`, `-md`, or `-lg`) for theme-wide changes,
 or use `iconSize` / `--sito-ui-icon-button-icon-size` for one button.
 
+## Motion
+
+Buttons shrink while pressed and return to their normal size on release. The
+press transition uses `--sito-ui-motion-duration-press` (`100ms`) and
+`--sito-ui-motion-easing-press`; `Button` uses
+`--sito-ui-button-active-scale` (`0.97`), while `IconButton` uses
+`--sito-ui-icon-button-active-scale` (`0.9`). Override these tokens to tune the
+feedback. With `prefers-reduced-motion: reduce`, the press scale and its
+transition are disabled. The spinner keeps spinning at its reduced-motion
+duration.
+
 ## Buttons as Links
 
 `Button` and `IconButton` render a native `<button>` by default. Use `as` to
