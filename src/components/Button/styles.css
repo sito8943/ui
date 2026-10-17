@@ -167,6 +167,18 @@
   transform: scale(var(--sito-ui-button-active-scale));
 }
 
+@media (prefers-reduced-motion: reduce) {
+  .sito-ui-button {
+    transition-property:
+      color, background-color, border-color, text-decoration-color, fill, stroke,
+      opacity, box-shadow, filter, backdrop-filter;
+  }
+
+  .sito-ui-button:not(:disabled):not([aria-disabled="true"]):active {
+    transform: none;
+  }
+}
+
 .sito-ui-button__spinner {
   --sito-ui-size-spinner: var(--sito-ui-size-button-spinner);
   --sito-ui-spinner-border-width: var(--sito-ui-button-spinner-border-width);

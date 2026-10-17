@@ -131,7 +131,9 @@ press transition uses `--sito-ui-motion-duration-press` (`100ms`) and
 `--sito-ui-motion-easing-press`; `Button` uses
 `--sito-ui-button-active-scale` (`0.97`), while `IconButton` uses
 `--sito-ui-icon-button-active-scale` (`0.9`). Override these tokens to tune the
-feedback.
+feedback. With `prefers-reduced-motion: reduce`, the press scale and its
+transition are disabled. The spinner keeps spinning at its reduced-motion
+duration.
 
 ## Buttons as Links
 

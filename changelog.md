@@ -7,6 +7,11 @@
 - Made button press feedback faster with dedicated motion tokens and a stronger
   scale for `IconButton` (#41).
 
+### Fixed
+
+- Disabled button press scaling and its transform transition when the user
+  prefers reduced motion (#40).
+
 ## 0.5.0 - 2026-10-16
 
 ### Added
