@@ -170,8 +170,8 @@
 @media (prefers-reduced-motion: reduce) {
   .sito-ui-button {
     transition-property:
-      color, background-color, border-color, text-decoration-color, fill, stroke,
-      opacity, box-shadow, filter, backdrop-filter;
+      color, background-color, border-color, text-decoration-color, fill,
+      stroke, opacity, box-shadow, filter, backdrop-filter;
   }
 
   .sito-ui-button:not(:disabled):not([aria-disabled="true"]):active {
