@@ -5,6 +5,19 @@
 ### Added
 
 - Added `Tooltip` with viewport-aware positioning and configurable theme tokens.
+- Added built-in `Dialog` enter and exit transitions, with configurable motion
+  tokens and delayed unmounting through `exitDurationMs` and
+  `onExitComplete`.
+
+### Changed
+
+- `Dialog`'s `exitDurationMs` now defaults to the
+  `--sito-ui-dialog-exit-duration` token (`180ms`), instead of `0` (immediate
+  unmount). Dialogs now animate on close and unmount and call `onExitComplete`
+  after 180ms. Pass `exitDurationMs={0}` for the previous immediate behavior.
+- The built-in dialog animation uses unlayered CSS and overrides consumer
+  animation utilities on the dialog and backdrop. Consumers with their own
+  dialog animation should remove it or set the dialog duration tokens to `0ms`.
 
 ## 0.5.1 - 2026-10-17
 

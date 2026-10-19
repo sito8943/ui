@@ -193,8 +193,10 @@ pnpm storybook
 
 ## Dialog Exit Transitions
 
-`Dialog` unmounts immediately by default. Pass `exitDurationMs` when a consumer
-needs to keep the portal mounted long enough for a CSS exit animation:
+`Dialog` fades in with a small rise and scale, then fades out when closed. It
+stays mounted for the exit animation before restoring focus and releasing body
+scroll. Set `exitDurationMs` to override the default 180 ms exit duration; `0`
+unmounts immediately:
 
 ```tsx
 <Dialog open={open} onClose={close} exitDurationMs={220}>
@@ -202,9 +204,16 @@ needs to keep the portal mounted long enough for a CSS exit animation:
 </Dialog>
 ```
 
-During that delay, the backdrop and dialog expose `data-state="closing"` plus
-`sito-ui-dialog-backdrop--closing` and `sito-ui-dialog--closing` classes.
-Use those hooks from consumer CSS to define the actual animation.
+The `--sito-ui-dialog-enter-duration`, `--sito-ui-dialog-exit-duration`, and
+`--sito-ui-dialog-enter-transform` theme tokens tune the built-in animation.
+Setting both durations to `0ms` disables it. Reduced-motion preferences disable
+the animation and exit delay automatically.
+
+The built-in animation uses unlayered CSS, so it overrides consumer animation
+utilities on the dialog and backdrop. If you provide your own dialog animation,
+remove those utilities or set both dialog duration tokens to `0ms`. Focus is
+restored after the exit animation only when focus remains in the closing dialog
+or has fallen back to the document body.
 
 The close button uses the neutral text color by default. Set
 `closeButtonColor="error"` on `Dialog` when a red close button is preferred.
