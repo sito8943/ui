@@ -58,11 +58,16 @@ export type DialogActionButtonProps = ButtonProps & {
   id: string;
 };
 
+type DialogActionButtonOverrides = Partial<ButtonProps> &
+  Record<string, unknown>;
+
 export type DialogActionsProps = {
   primaryText: ReactNode;
-  cancelText: ReactNode;
+  cancelText?: ReactNode;
   onPrimaryClick?: () => void;
-  onCancel: () => void;
+  onCancel?: () => void;
+  primaryProps?: DialogActionButtonOverrides;
+  cancelProps?: DialogActionButtonOverrides;
   isLoading?: boolean;
   loadingIndicator?: ReactNode;
   disabled?: boolean;

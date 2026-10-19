@@ -209,6 +209,17 @@ Use those hooks from consumer CSS to define the actual animation.
 The close button uses the neutral text color by default. Set
 `closeButtonColor="error"` on `Dialog` when a red close button is preferred.
 
+`DialogActions` accepts `primaryProps` and `cancelProps` to pass button props,
+including `as` and link attributes. Omit `cancelText` to leave out the cancel
+action:
+
+```tsx
+<DialogActions
+  primaryText="Sign in"
+  primaryProps={{ as: Link, to: "/sign-in/" }}
+/>
+```
+
 ## Scope
 
 This package only exposes generic primitives. It does not include dashboard

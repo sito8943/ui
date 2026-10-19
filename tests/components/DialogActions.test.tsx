@@ -43,17 +43,86 @@ describe("DialogActions", () => {
     expect(handleCancel).toHaveBeenCalledTimes(1);
   });
 
-  it("disables primary and cancel actions while loading", () => {
+  it("disables all actions while loading", async () => {
+    const user = userEvent.setup();
+    const handleExtra = vi.fn();
+
     render(
       <DialogActions
         primaryText="Save"
         cancelText="Cancel"
         onCancel={vi.fn()}
+        extraActions={[
+          {
+            id: "help",
+            as: "a",
+            href: "/help/",
+            children: "Help",
+            onClick: handleExtra,
+          },
+        ]}
         isLoading
       />,
     );
 
     expect(screen.getByRole("button", { name: "LoadingSave" })).toBeDisabled();
     expect(screen.getByRole("button", { name: "Cancel" })).toBeDisabled();
+    expect(screen.getByRole("link", { name: "Help" })).toHaveAttribute(
+      "aria-disabled",
+      "true",
+    );
+    expect(screen.getByRole("link", { name: "Help" })).toHaveAttribute(
+      "tabindex",
+      "-1",
+    );
+
+    await user.click(screen.getByRole("link", { name: "Help" }));
+
+    expect(handleExtra).not.toHaveBeenCalled();
+  });
+
+  it("supports link actions and omits the cancel action when not provided", async () => {
+    const user = userEvent.setup();
+    const handleNavigation = vi.fn();
+
+    render(
+      <DialogActions
+        primaryText="Sign in"
+        primaryAriaLabel="Sign in"
+        isLoading
+        primaryProps={{
+          as: "a",
+          href: "/sign-in/",
+          onClick: handleNavigation,
+        }}
+      />,
+    );
+
+    const primaryLink = screen.getByRole("link", { name: "Sign in" });
+    expect(primaryLink).toHaveAttribute("href", "/sign-in/");
+    expect(primaryLink).toHaveAttribute("aria-disabled", "true");
+    expect(primaryLink).toHaveAttribute("tabindex", "-1");
+    expect(
+      screen.queryByRole("button", { name: "Cancel" }),
+    ).not.toBeInTheDocument();
+
+    await user.click(primaryLink);
+
+    expect(handleNavigation).not.toHaveBeenCalled();
+  });
+
+  it("supports a link as the optional cancel action", () => {
+    render(
+      <DialogActions
+        primaryText="Sign up"
+        cancelText="Sign in"
+        cancelProps={{ as: "a", href: "/sign-in/" }}
+      />,
+    );
+
+    expect(screen.getByRole("link", { name: "Sign in" })).toHaveAttribute(
+      "href",
+      "/sign-in/",
+    );
   });
 });
