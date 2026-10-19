@@ -1,4 +1,4 @@
-import type { FormEvent, ReactNode } from "react";
+import type { ElementType, FormEvent, ReactNode } from "react";
 
 import type { ButtonColor, ButtonProps } from "../Button";
 
@@ -54,11 +54,11 @@ type DialogBaseProps = {
 
 export type DialogProps = DialogBaseProps & DialogAccessibleNameProps;
 
-export type DialogActionButtonProps = ButtonProps & {
+export type DialogActionButtonProps = ButtonProps<ElementType> & {
   id: string;
 };
 
-type DialogActionButtonOverrides = Partial<ButtonProps> &
+type DialogActionButtonOverrides = Partial<ButtonProps<ElementType>> &
   Record<string, unknown>;
 
 export type DialogActionsProps = {
