@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.6.0 - 2026-10-19
+
+### Added
+
+- Added `Tooltip` with viewport-aware positioning and configurable theme tokens.
+
 ## 0.5.1 - 2026-10-17
 
 ### Changed

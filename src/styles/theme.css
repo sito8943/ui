@@ -97,6 +97,7 @@
   --sito-ui-shadow-context-menu: 0 0.75rem 2rem rgb(16 24 40 / 24%);
   --sito-ui-z-index-dialog: 50;
   --sito-ui-z-index-context-menu: 60;
+  --sito-ui-z-index-tooltip: 70;
 
   --sito-ui-button-disabled-opacity: 0.6;
   --sito-ui-context-menu-disabled-opacity: 0.5;

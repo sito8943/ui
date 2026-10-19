@@ -34,6 +34,7 @@ import {
   IconButton,
   ICON_BUTTON_SIZES,
   Spinner,
+  Tooltip,
   useContextMenu,
   useDialog,
 } from "@sito/ui";
@@ -123,6 +124,24 @@ The container sizes are `28px`, `40px`, and `48px`; their default icon sizes
 are `16px`, `20px`, and `24px`. Override a specific token
 (`--sito-ui-size-icon-button-icon-sm`, `-md`, or `-lg`) for theme-wide changes,
 or use `iconSize` / `--sito-ui-icon-button-icon-size` for one button.
+
+## Tooltip
+
+Wrap a single trigger to show its visible label on pointer hover or keyboard
+focus. The tooltip is decorative and hidden from assistive technology, so keep
+an accessible name on icon-only controls:
+
+```tsx
+<Tooltip label="Next slide" side="top" align="center">
+  <IconButton aria-label="Next slide" icon={<NextIcon />} />
+</Tooltip>
+```
+
+`side` supports `top` and `bottom`; `align` supports `start`, `center`, and
+`end`. Hover is enabled only on devices that support hover. Press Escape to
+dismiss it while the trigger is focused. Tooltip surface, text, radius, shadow,
+font size, and motion can be customized with `--sito-ui-tooltip-*` tokens.
+The tooltip stacks above context menus using `--sito-ui-z-index-tooltip`.
 
 ## Motion
 
