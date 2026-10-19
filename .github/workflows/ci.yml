@@ -36,6 +36,12 @@ jobs:
       - name: Lint
         run: pnpm lint
 
+      - name: Typecheck
+        run: pnpm typecheck
+
+      - name: Test
+        run: pnpm test:run
+
       - name: Check format
         run: pnpm exec prettier . --check
 

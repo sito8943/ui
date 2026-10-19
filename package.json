@@ -30,6 +30,7 @@
     "dev": "vite",
     "build": "tsc && vite build --base=./",
     "lint": "oxlint --type-aware --max-warnings 0",
+    "typecheck": "tsc --noEmit -p tsconfig.json && tsc -p tsconfig.test.json",
     "lint:fix": "oxlint --type-aware --fix --max-warnings 0",
     "format": "prettier . --write",
     "preview": "vite preview",
