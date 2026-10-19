@@ -55,11 +55,7 @@ export const DialogActions = (props: DialogActionsProps) => {
         {primaryProps?.children ?? primaryText}
       </Button>
       {extraActions.map(({ id, ...action }) => (
-        <Button
-          key={id}
-          {...action}
-          disabled={isLoading || action.disabled}
-        />
+        <Button key={id} {...action} disabled={isLoading || action.disabled} />
       ))}
       {cancelText !== undefined || cancelProps?.children !== undefined ? (
         <Button

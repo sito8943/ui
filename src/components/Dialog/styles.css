@@ -41,14 +41,12 @@
 }
 
 .sito-ui-dialog[data-state="open"] {
-  animation: sito-ui-dialog-enter
-    var(--sito-ui-dialog-enter-duration, 180ms)
+  animation: sito-ui-dialog-enter var(--sito-ui-dialog-enter-duration, 180ms)
     var(--sito-ui-motion-easing-standard, ease) both;
 }
 
 .sito-ui-dialog--closing {
-  animation: sito-ui-dialog-exit
-    var(--sito-ui-dialog-exit-duration, 180ms)
+  animation: sito-ui-dialog-exit var(--sito-ui-dialog-exit-duration, 180ms)
     var(--sito-ui-motion-easing-standard, ease) both;
 }
 

@@ -23,7 +23,9 @@ export const TopStart: Story = { args: { side: "top", align: "start" } };
 export const TopCenter: Story = { args: { side: "top", align: "center" } };
 export const TopEnd: Story = { args: { side: "top", align: "end" } };
 export const BottomStart: Story = { args: { side: "bottom", align: "start" } };
-export const BottomCenter: Story = { args: { side: "bottom", align: "center" } };
+export const BottomCenter: Story = {
+  args: { side: "bottom", align: "center" },
+};
 export const BottomEnd: Story = { args: { side: "bottom", align: "end" } };
 
 export const DisabledTrigger: Story = {
