@@ -4,20 +4,31 @@
 
 ### Added
 
-- Added `Tooltip` with viewport-aware positioning and configurable theme tokens.
+- Added `Tooltip`: shows a label on pointer hover or keyboard focus, stays
+  inside the viewport, dismisses with Escape and is themed with
+  `--sito-ui-tooltip-*` tokens (#43).
 - Added built-in `Dialog` enter and exit transitions, with configurable motion
   tokens and delayed unmounting through `exitDurationMs` and
-  `onExitComplete`.
+  `onExitComplete` (#46).
+- `DialogActions` accepts `primaryProps` and `cancelProps` (including `as` and
+  link attributes), so either action can render as a link (#45).
+- `Dialog` accepts `closeButtonColor` to set the close button color (#44).
 
 ### Changed
 
+- `Dialog`'s close button now uses the neutral text color instead of always
+  `error`. Pass `closeButtonColor="error"` for the previous red button (#44).
+- `DialogActions`' `cancelText` and `onCancel` are optional; omit `cancelText`
+  to leave out the cancel action (#45).
 - `Dialog`'s `exitDurationMs` now defaults to the
   `--sito-ui-dialog-exit-duration` token (`180ms`), instead of `0` (immediate
   unmount). Dialogs now animate on close and unmount and call `onExitComplete`
-  after 180ms. Pass `exitDurationMs={0}` for the previous immediate behavior.
+  after 180ms. Pass `exitDurationMs={0}` for the previous immediate behavior
+  (#46).
 - The built-in dialog animation uses unlayered CSS and overrides consumer
   animation utilities on the dialog and backdrop. Consumers with their own
-  dialog animation should remove it or set the dialog duration tokens to `0ms`.
+  dialog animation should remove it or set the dialog duration tokens to `0ms`
+  (#46).
 
 ## 0.5.1 - 2026-10-17
 
