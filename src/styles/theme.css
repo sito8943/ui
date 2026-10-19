@@ -83,6 +83,9 @@
   --sito-ui-line-height-dialog-title: 1.75rem;
 
   --sito-ui-motion-duration-normal: 300ms;
+  --sito-ui-dialog-enter-duration: 180ms;
+  --sito-ui-dialog-exit-duration: 180ms;
+  --sito-ui-dialog-enter-transform: translateY(8px) scale(0.98);
   --sito-ui-motion-duration-press: 100ms;
   --sito-ui-motion-duration-spinner: 600ms;
   --sito-ui-motion-duration-spinner-reduced: 1500ms;

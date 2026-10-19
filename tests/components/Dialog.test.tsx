@@ -65,12 +65,7 @@ describe("Dialog", () => {
     );
 
     rerender(
-      <Dialog
-        title="Settings"
-        open
-        onClose={vi.fn()}
-        closeButtonColor="error"
-      >
+      <Dialog title="Settings" open onClose={vi.fn()} closeButtonColor="error">
         Settings content
       </Dialog>,
     );
@@ -249,6 +244,10 @@ describe("Dialog", () => {
 
     const handleExitComplete = vi.fn();
     const handleClose = vi.fn();
+    render(<button type="button">Open profile</button>);
+    const launcher = screen.getByRole("button", { name: "Open profile" });
+    launcher.focus();
+
     const { rerender } = render(
       <Dialog
         title="Profile"
@@ -277,6 +276,8 @@ describe("Dialog", () => {
       "data-state",
       "closing",
     );
+    expect(document.body).toHaveStyle({ overflow: "hidden" });
+    expect(launcher).not.toHaveFocus();
 
     act(() => {
       vi.advanceTimersByTime(50);
@@ -286,5 +287,116 @@ describe("Dialog", () => {
       screen.queryByRole("dialog", { name: "Profile" }),
     ).not.toBeInTheDocument();
     expect(handleExitComplete).toHaveBeenCalledTimes(1);
+    expect(launcher).toHaveFocus();
+    expect(document.body).not.toHaveStyle({ overflow: "hidden" });
+  });
+
+  it("does not restore focus if focus moved outside during the exit animation", () => {
+    vi.useFakeTimers();
+
+    render(
+      <>
+        <button type="button">Open profile</button>
+        <button type="button">Other action</button>
+      </>,
+    );
+    const launcher = screen.getByRole("button", { name: "Open profile" });
+    const otherAction = screen.getByRole("button", { name: "Other action" });
+    launcher.focus();
+
+    const { rerender } = render(
+      <Dialog title="Profile" open onClose={vi.fn()} exitDurationMs={50}>
+        Profile content
+      </Dialog>,
+    );
+
+    rerender(
+      <Dialog
+        title="Profile"
+        open={false}
+        onClose={vi.fn()}
+        exitDurationMs={50}
+      >
+        Profile content
+      </Dialog>,
+    );
+
+    otherAction.focus();
+    act(() => {
+      vi.advanceTimersByTime(50);
+    });
+
+    expect(otherAction).toHaveFocus();
+  });
+
+  it("uses the built-in exit duration when no duration is provided", () => {
+    vi.useFakeTimers();
+
+    const { rerender } = render(
+      <Dialog title="Profile" open onClose={vi.fn()}>
+        Profile content
+      </Dialog>,
+    );
+
+    rerender(
+      <Dialog title="Profile" open={false} onClose={vi.fn()}>
+        Profile content
+      </Dialog>,
+    );
+
+    act(() => {
+      vi.advanceTimersByTime(179);
+    });
+    expect(screen.getByRole("dialog", { name: "Profile" })).toBeInTheDocument();
+
+    act(() => {
+      vi.advanceTimersByTime(1);
+    });
+    expect(
+      screen.queryByRole("dialog", { name: "Profile" }),
+    ).not.toBeInTheDocument();
+  });
+
+  it("skips the exit delay when reduced motion is preferred", () => {
+    vi.stubGlobal(
+      "matchMedia",
+      vi.fn(() => ({ matches: true })),
+    );
+
+    const { rerender } = render(
+      <Dialog title="Profile" open onClose={vi.fn()}>
+        Profile content
+      </Dialog>,
+    );
+
+    rerender(
+      <Dialog title="Profile" open={false} onClose={vi.fn()}>
+        Profile content
+      </Dialog>,
+    );
+
+    expect(
+      screen.queryByRole("dialog", { name: "Profile" }),
+    ).not.toBeInTheDocument();
+
+    vi.unstubAllGlobals();
+  });
+
+  it("unmounts immediately when exitDurationMs is zero", () => {
+    const { rerender } = render(
+      <Dialog title="Profile" open onClose={vi.fn()} exitDurationMs={0}>
+        Profile content
+      </Dialog>,
+    );
+
+    rerender(
+      <Dialog title="Profile" open={false} onClose={vi.fn()} exitDurationMs={0}>
+        Profile content
+      </Dialog>,
+    );
+
+    expect(
+      screen.queryByRole("dialog", { name: "Profile" }),
+    ).not.toBeInTheDocument();
   });
 });

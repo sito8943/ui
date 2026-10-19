@@ -12,8 +12,17 @@
   backdrop-filter: var(--sito-ui-dialog-backdrop-filter);
 }
 
+.sito-ui-dialog-backdrop[data-state="open"] {
+  animation: sito-ui-dialog-backdrop-enter
+    var(--sito-ui-dialog-enter-duration, 180ms)
+    var(--sito-ui-motion-easing-standard, ease) both;
+}
+
 .sito-ui-dialog-backdrop--closing {
   pointer-events: none;
+  animation: sito-ui-dialog-backdrop-exit
+    var(--sito-ui-dialog-exit-duration, 180ms)
+    var(--sito-ui-motion-easing-standard, ease) both;
 }
 
 .sito-ui-dialog {
@@ -29,6 +38,18 @@
   background-color: var(--sito-ui-color-surface);
   color: var(--sito-ui-color-text);
   box-shadow: var(--sito-ui-shadow-dialog);
+}
+
+.sito-ui-dialog[data-state="open"] {
+  animation: sito-ui-dialog-enter
+    var(--sito-ui-dialog-enter-duration, 180ms)
+    var(--sito-ui-motion-easing-standard, ease) both;
+}
+
+.sito-ui-dialog--closing {
+  animation: sito-ui-dialog-exit
+    var(--sito-ui-dialog-exit-duration, 180ms)
+    var(--sito-ui-motion-easing-standard, ease) both;
 }
 
 .sito-ui-dialog--mobile-full-screen {
@@ -65,6 +86,60 @@
 
 .sito-ui-dialog-actions--end {
   justify-content: flex-end;
+}
+
+@keyframes sito-ui-dialog-backdrop-enter {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes sito-ui-dialog-backdrop-exit {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes sito-ui-dialog-enter {
+  from {
+    opacity: 0;
+    transform: var(
+      --sito-ui-dialog-enter-transform,
+      translateY(8px) scale(0.98)
+    );
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes sito-ui-dialog-exit {
+  from {
+    opacity: 1;
+    transform: none;
+  }
+
+  to {
+    opacity: 0;
+    transform: translateY(4px) scale(0.99);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sito-ui-dialog-backdrop,
+  .sito-ui-dialog {
+    animation: none !important;
+  }
 }
 
 @media (max-width: 40rem) {
