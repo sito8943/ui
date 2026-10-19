@@ -58,6 +58,7 @@ export const Dialog = (props: DialogProps) => {
     headerClassName,
     titleClassName,
     closeButtonClassName,
+    closeButtonColor = "default",
     closeLabel = "Close dialog",
     closeIcon = "x",
     showCloseButton = true,
@@ -319,7 +320,7 @@ export const Dialog = (props: DialogProps) => {
               aria-disabled={!isInteractive}
               onClick={onClose}
               variant="text"
-              color="error"
+              color={closeButtonColor}
               className={classNames(
                 "sito-ui-dialog__close",
                 closeButtonClassName,

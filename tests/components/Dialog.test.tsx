@@ -53,6 +53,33 @@ describe("Dialog", () => {
     expect(handleClose).toHaveBeenCalledTimes(3);
   });
 
+  it("uses a neutral close button by default and supports an explicit color", () => {
+    const { rerender } = render(
+      <Dialog title="Settings" open onClose={vi.fn()}>
+        Settings content
+      </Dialog>,
+    );
+
+    expect(screen.getByRole("button", { name: "Close dialog" })).toHaveClass(
+      "sito-ui-button--default",
+    );
+
+    rerender(
+      <Dialog
+        title="Settings"
+        open
+        onClose={vi.fn()}
+        closeButtonColor="error"
+      >
+        Settings content
+      </Dialog>,
+    );
+
+    expect(screen.getByRole("button", { name: "Close dialog" })).toHaveClass(
+      "sito-ui-button--error",
+    );
+  });
+
   it("keeps Escape and backdrop close behavior configurable", async () => {
     const user = userEvent.setup();
     const handleClose = vi.fn();

@@ -1,6 +1,6 @@
 import type { FormEvent, ReactNode } from "react";
 
-import type { ButtonProps } from "../Button";
+import type { ButtonColor, ButtonProps } from "../Button";
 
 export const DIALOG_INITIAL_FOCUS = {
   NONE: "none",
@@ -43,6 +43,7 @@ type DialogBaseProps = {
   headerClassName?: string;
   titleClassName?: string;
   closeButtonClassName?: string;
+  closeButtonColor?: ButtonColor;
   closeLabel?: string;
   closeIcon?: ReactNode;
   showCloseButton?: boolean;

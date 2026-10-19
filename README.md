@@ -206,6 +206,9 @@ During that delay, the backdrop and dialog expose `data-state="closing"` plus
 `sito-ui-dialog-backdrop--closing` and `sito-ui-dialog--closing` classes.
 Use those hooks from consumer CSS to define the actual animation.
 
+The close button uses the neutral text color by default. Set
+`closeButtonColor="error"` on `Dialog` when a red close button is preferred.
+
 ## Scope
 
 This package only exposes generic primitives. It does not include dashboard
