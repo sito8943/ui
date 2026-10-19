@@ -2,7 +2,28 @@ import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { describe, expect, it, vi } from "vitest";
 
-import { DialogActions } from "../../src/main";
+import { DialogActions, type DialogActionsProps } from "../../src/main";
+
+const RouterLink = (_props: { to: string }) => null;
+
+const polymorphicTypeExamples: DialogActionsProps[] = [
+  {
+    primaryText: "Sign in",
+    primaryProps: { as: "a", href: "/sign-in/" },
+  },
+  {
+    primaryText: "Sign in",
+    primaryProps: { as: RouterLink, to: "/sign-in/" },
+  },
+  {
+    primaryText: "Continue",
+    primaryProps: { color: "primary", variant: "outlined", disabled: true },
+    cancelText: "Back",
+    cancelProps: { as: RouterLink, to: "/back/" },
+  },
+];
+
+void polymorphicTypeExamples;
 
 describe("DialogActions", () => {
   it("renders primary, extra, and cancel actions with stable button behavior", async () => {
