@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.6.1 - 2026-10-19
+
+### Fixed
+
+- Fixed `DialogActions` types so `primaryProps`, `cancelProps`, and
+  `extraActions` accept polymorphic `as` values such as anchors and router
+  links (#48).
+- Added TypeScript checks for tests to CI.
+
 ## 0.6.0 - 2026-10-19
 
 ### Added
