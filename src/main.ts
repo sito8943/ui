@@ -20,6 +20,9 @@ export type {
   IconButtonProps,
   IconButtonSize,
   SpinnerProps,
+  TooltipAlign,
+  TooltipProps,
+  TooltipSide,
 } from "./components";
 export {
   Button,
@@ -35,6 +38,7 @@ export {
   IconButton,
   ICON_BUTTON_SIZES,
   Spinner,
+  Tooltip,
 } from "./components";
 export type { UseContextMenuReturn, UseDialogReturn } from "./hooks";
 export { useContextMenu, useDialog } from "./hooks";

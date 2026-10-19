@@ -83,6 +83,9 @@
   --sito-ui-line-height-dialog-title: 1.75rem;
 
   --sito-ui-motion-duration-normal: 300ms;
+  --sito-ui-dialog-enter-duration: 180ms;
+  --sito-ui-dialog-exit-duration: 180ms;
+  --sito-ui-dialog-enter-transform: translateY(8px) scale(0.98);
   --sito-ui-motion-duration-press: 100ms;
   --sito-ui-motion-duration-spinner: 600ms;
   --sito-ui-motion-duration-spinner-reduced: 1500ms;
@@ -97,6 +100,7 @@
   --sito-ui-shadow-context-menu: 0 0.75rem 2rem rgb(16 24 40 / 24%);
   --sito-ui-z-index-dialog: 50;
   --sito-ui-z-index-context-menu: 60;
+  --sito-ui-z-index-tooltip: 70;
 
   --sito-ui-button-disabled-opacity: 0.6;
   --sito-ui-context-menu-disabled-opacity: 0.5;

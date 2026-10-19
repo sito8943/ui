@@ -1,4 +1,5 @@
 import {
+  type CSSProperties,
   type FormEvent,
   type MouseEvent,
   type ReactNode,
@@ -27,6 +28,19 @@ import {
 
 const useClientLayoutEffect =
   typeof window === "undefined" ? useEffect : useLayoutEffect;
+const DEFAULT_DIALOG_EXIT_DURATION_MS = 180;
+type DialogExitStyle = CSSProperties & Record<`--${string}`, string>;
+
+const getCssDurationMs = (element: HTMLElement, property: string) => {
+  const duration = window
+    .getComputedStyle(element)
+    .getPropertyValue(property)
+    .trim();
+  const value = Number.parseFloat(duration);
+
+  if (!Number.isFinite(value)) return DEFAULT_DIALOG_EXIT_DURATION_MS;
+  return duration.endsWith("ms") ? value : value * 1000;
+};
 
 /**
  * Renders an accessible modal dialog in a portal.
@@ -38,6 +52,7 @@ export const Dialog = (props: DialogProps) => {
   const dialogStackIdRef = useRef(Symbol("sito-ui-dialog"));
   const dialogRef = useRef<HTMLDivElement | null>(null);
   const previousFocusedElementRef = useRef<HTMLElement | null>(null);
+  const shouldRestoreFocusRef = useRef(false);
   const exitTimeoutRef = useRef<number | null>(null);
   const onExitCompleteRef = useRef<DialogProps["onExitComplete"]>(undefined);
   const {
@@ -58,11 +73,12 @@ export const Dialog = (props: DialogProps) => {
     headerClassName,
     titleClassName,
     closeButtonClassName,
+    closeButtonColor = "default",
     closeLabel = "Close dialog",
     closeIcon = "x",
     showCloseButton = true,
     portalContainer,
-    exitDurationMs = 0,
+    exitDurationMs,
     onExitComplete,
   } = props;
   const [shouldRender, setShouldRender] = useState(open);
@@ -101,7 +117,14 @@ export const Dialog = (props: DialogProps) => {
 
     if (!shouldRender) return;
 
-    const normalizedExitDuration = Math.max(0, exitDurationMs);
+    const prefersReducedMotion =
+      window.matchMedia?.("(prefers-reduced-motion: reduce)").matches ?? false;
+    const cssExitDuration = dialogRef.current
+      ? getCssDurationMs(dialogRef.current, "--sito-ui-dialog-exit-duration")
+      : DEFAULT_DIALOG_EXIT_DURATION_MS;
+    const normalizedExitDuration = prefersReducedMotion
+      ? 0
+      : Math.max(0, exitDurationMs ?? cssExitDuration);
 
     if (normalizedExitDuration === 0) {
       clearExitTimeout();
@@ -184,22 +207,37 @@ export const Dialog = (props: DialogProps) => {
   useClientLayoutEffect(() => {
     if (!open) return;
 
-    previousFocusedElementRef.current = getActiveElement();
+    shouldRestoreFocusRef.current = false;
     registerDialog(dialogStackId);
 
     return () => {
-      const shouldRestoreFocus = isTopmostDialog(dialogStackId);
+      shouldRestoreFocusRef.current = isTopmostDialog(dialogStackId);
       unregisterDialog(dialogStackId);
-
-      if (
-        shouldRestoreFocus &&
-        previousFocusedElementRef.current?.isConnected
-      ) {
-        previousFocusedElementRef.current.focus();
-      }
-      previousFocusedElementRef.current = null;
     };
   }, [dialogStackId, open]);
+
+  useClientLayoutEffect(() => {
+    if (!shouldRender) return;
+
+    previousFocusedElementRef.current = getActiveElement();
+
+    return () => {
+      const previousFocusedElement = previousFocusedElementRef.current;
+      const dialog = dialogRef.current;
+      const activeElement = getActiveElement();
+      if (
+        shouldRestoreFocusRef.current &&
+        previousFocusedElement?.isConnected &&
+        (!activeElement ||
+          activeElement === document.body ||
+          (dialog !== null && dialog.contains(activeElement)))
+      ) {
+        previousFocusedElement.focus();
+      }
+      previousFocusedElementRef.current = null;
+      shouldRestoreFocusRef.current = false;
+    };
+  }, [shouldRender]);
 
   useClientLayoutEffect(() => {
     if (!open) return;
@@ -273,12 +311,19 @@ export const Dialog = (props: DialogProps) => {
     ) : (
       closeIcon
     );
+  const dialogExitStyle: DialogExitStyle | undefined =
+    exitDurationMs === undefined
+      ? undefined
+      : {
+          "--sito-ui-dialog-exit-duration": `${Math.max(0, exitDurationMs)}ms`,
+        };
 
   return createPortal(
     <div
       id={dialogId ? `backdrop-${dialogId}` : undefined}
       data-sito-ui="dialog-backdrop"
       data-state={dialogState}
+      style={dialogExitStyle}
       onClick={handleBackdropClick}
       className={classNames(
         "sito-ui-dialog-backdrop",
@@ -319,7 +364,7 @@ export const Dialog = (props: DialogProps) => {
               aria-disabled={!isInteractive}
               onClick={onClose}
               variant="text"
-              color="error"
+              color={closeButtonColor}
               className={classNames(
                 "sito-ui-dialog__close",
                 closeButtonClassName,

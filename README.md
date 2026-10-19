@@ -34,6 +34,7 @@ import {
   IconButton,
   ICON_BUTTON_SIZES,
   Spinner,
+  Tooltip,
   useContextMenu,
   useDialog,
 } from "@sito/ui";
@@ -124,6 +125,24 @@ are `16px`, `20px`, and `24px`. Override a specific token
 (`--sito-ui-size-icon-button-icon-sm`, `-md`, or `-lg`) for theme-wide changes,
 or use `iconSize` / `--sito-ui-icon-button-icon-size` for one button.
 
+## Tooltip
+
+Wrap a single trigger to show its visible label on pointer hover or keyboard
+focus. The tooltip is decorative and hidden from assistive technology, so keep
+an accessible name on icon-only controls:
+
+```tsx
+<Tooltip label="Next slide" side="top" align="center">
+  <IconButton aria-label="Next slide" icon={<NextIcon />} />
+</Tooltip>
+```
+
+`side` supports `top` and `bottom`; `align` supports `start`, `center`, and
+`end`. Hover is enabled only on devices that support hover. Press Escape to
+dismiss it while the trigger is focused. Tooltip surface, text, radius, shadow,
+font size, and motion can be customized with `--sito-ui-tooltip-*` tokens.
+The tooltip stacks above context menus using `--sito-ui-z-index-tooltip`.
+
 ## Motion
 
 Buttons shrink while pressed and return to their normal size on release. The
@@ -174,8 +193,10 @@ pnpm storybook
 
 ## Dialog Exit Transitions
 
-`Dialog` unmounts immediately by default. Pass `exitDurationMs` when a consumer
-needs to keep the portal mounted long enough for a CSS exit animation:
+`Dialog` fades in with a small rise and scale, then fades out when closed. It
+stays mounted for the exit animation before restoring focus and releasing body
+scroll. Set `exitDurationMs` to override the default 180 ms exit duration; `0`
+unmounts immediately:
 
 ```tsx
 <Dialog open={open} onClose={close} exitDurationMs={220}>
@@ -183,9 +204,30 @@ needs to keep the portal mounted long enough for a CSS exit animation:
 </Dialog>
 ```
 
-During that delay, the backdrop and dialog expose `data-state="closing"` plus
-`sito-ui-dialog-backdrop--closing` and `sito-ui-dialog--closing` classes.
-Use those hooks from consumer CSS to define the actual animation.
+The `--sito-ui-dialog-enter-duration`, `--sito-ui-dialog-exit-duration`, and
+`--sito-ui-dialog-enter-transform` theme tokens tune the built-in animation.
+Setting both durations to `0ms` disables it. Reduced-motion preferences disable
+the animation and exit delay automatically.
+
+The built-in animation uses unlayered CSS, so it overrides consumer animation
+utilities on the dialog and backdrop. If you provide your own dialog animation,
+remove those utilities or set both dialog duration tokens to `0ms`. Focus is
+restored after the exit animation only when focus remains in the closing dialog
+or has fallen back to the document body.
+
+The close button uses the neutral text color by default. Set
+`closeButtonColor="error"` on `Dialog` when a red close button is preferred.
+
+`DialogActions` accepts `primaryProps` and `cancelProps` to pass button props,
+including `as` and link attributes. Omit `cancelText` to leave out the cancel
+action:
+
+```tsx
+<DialogActions
+  primaryText="Sign in"
+  primaryProps={{ as: Link, to: "/sign-in/" }}
+/>
+```
 
 ## Scope
 

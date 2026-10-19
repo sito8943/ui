@@ -39,5 +39,7 @@ export type {
   IconButtonSize,
 } from "./IconButton";
 export { IconButton, ICON_BUTTON_SIZES } from "./IconButton";
+export type { TooltipAlign, TooltipProps, TooltipSide } from "./Tooltip";
+export { Tooltip } from "./Tooltip";
 export type { SpinnerProps } from "./Spinner";
 export { Spinner } from "./Spinner";

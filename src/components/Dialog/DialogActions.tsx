@@ -13,6 +13,8 @@ export const DialogActions = (props: DialogActionsProps) => {
     cancelText,
     onPrimaryClick,
     onCancel,
+    primaryProps,
+    cancelProps,
     isLoading = false,
     loadingIndicator,
     disabled = false,
@@ -38,33 +40,37 @@ export const DialogActions = (props: DialogActionsProps) => {
       )}
     >
       <Button
-        type={primaryType}
-        color="primary"
-        variant="submit"
-        className={primaryClassName}
+        {...primaryProps}
+        type={primaryProps?.type ?? primaryType}
+        color={primaryProps?.color ?? "primary"}
+        variant={primaryProps?.variant ?? "submit"}
+        className={classNames(primaryClassName, primaryProps?.className)}
         disabled={disabled}
         loading={isLoading}
         loadingIndicator={loadingIndicator}
-        onClick={onPrimaryClick}
-        name={primaryName}
-        aria-label={primaryAriaLabel}
+        onClick={primaryProps?.onClick ?? onPrimaryClick}
+        name={primaryProps?.name ?? primaryName}
+        aria-label={primaryProps?.["aria-label"] ?? primaryAriaLabel}
       >
-        {primaryText}
+        {primaryProps?.children ?? primaryText}
       </Button>
       {extraActions.map(({ id, ...action }) => (
-        <Button key={id} {...action} />
+        <Button key={id} {...action} disabled={isLoading || action.disabled} />
       ))}
-      <Button
-        type="button"
-        variant="outlined"
-        className={cancelClassName}
-        disabled={disabled || isLoading}
-        onClick={onCancel}
-        name={cancelName}
-        aria-label={cancelAriaLabel}
-      >
-        {cancelText}
-      </Button>
+      {cancelText !== undefined || cancelProps?.children !== undefined ? (
+        <Button
+          {...cancelProps}
+          type={cancelProps?.type ?? "button"}
+          variant={cancelProps?.variant ?? "outlined"}
+          className={classNames(cancelClassName, cancelProps?.className)}
+          disabled={disabled || isLoading}
+          onClick={cancelProps?.onClick ?? onCancel}
+          name={cancelProps?.name ?? cancelName}
+          aria-label={cancelProps?.["aria-label"] ?? cancelAriaLabel}
+        >
+          {cancelText ?? cancelProps?.children}
+        </Button>
+      ) : null}
     </div>
   );
 };

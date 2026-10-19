@@ -1,0 +1,93 @@
+.sito-ui-tooltip {
+  --sito-ui-tooltip-shift-x: 0px;
+
+  position: relative;
+  display: inline-flex;
+  vertical-align: middle;
+}
+
+.sito-ui-tooltip__content {
+  --sito-ui-tooltip-offset: var(--sito-ui-space-2);
+
+  position: absolute;
+  z-index: var(--sito-ui-z-index-tooltip);
+  width: max-content;
+  max-width: min(20rem, calc(100vw - 2rem));
+  box-sizing: border-box;
+  padding: var(--sito-ui-space-1) var(--sito-ui-space-2);
+  border-radius: var(
+    --sito-ui-radius-tooltip,
+    var(--sito-ui-radius-context-menu)
+  );
+  background: var(--sito-ui-tooltip-surface, var(--sito-ui-color-text));
+  box-shadow: var(--sito-ui-shadow-tooltip, var(--sito-ui-shadow-context-menu));
+  color: var(--sito-ui-tooltip-text, var(--sito-ui-color-surface));
+  font-size: var(--sito-ui-font-size-tooltip, 0.75rem);
+  font-weight: 500;
+  line-height: 1.25;
+  text-align: center;
+  white-space: normal;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition:
+    opacity var(--sito-ui-motion-duration-tooltip, 120ms)
+      var(--sito-ui-motion-easing-standard),
+    visibility 0s linear var(--sito-ui-motion-duration-tooltip-hide, 80ms);
+}
+
+.sito-ui-tooltip[data-side="top"] .sito-ui-tooltip__content {
+  bottom: calc(100% + var(--sito-ui-tooltip-offset));
+}
+
+.sito-ui-tooltip[data-side="bottom"] .sito-ui-tooltip__content {
+  top: calc(100% + var(--sito-ui-tooltip-offset));
+}
+
+.sito-ui-tooltip[data-align="start"] .sito-ui-tooltip__content {
+  left: 0;
+  transform: translateX(var(--sito-ui-tooltip-shift-x));
+}
+
+.sito-ui-tooltip[data-align="center"] .sito-ui-tooltip__content {
+  left: 50%;
+  transform: translateX(calc(-50% + var(--sito-ui-tooltip-shift-x)));
+}
+
+.sito-ui-tooltip[data-align="end"] .sito-ui-tooltip__content {
+  right: 0;
+  transform: translateX(var(--sito-ui-tooltip-shift-x));
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .sito-ui-tooltip:hover:not([data-dismissed]) .sito-ui-tooltip__content {
+    opacity: 1;
+    visibility: visible;
+    transition-delay: var(--sito-ui-motion-duration-tooltip-delay, 350ms), 0s;
+  }
+}
+
+.sito-ui-tooltip:has(:focus-visible):not([data-dismissed])
+  .sito-ui-tooltip__content {
+  opacity: 1;
+  visibility: visible;
+  transition-delay: 0s;
+}
+
+.sito-ui-tooltip[data-dismissed] .sito-ui-tooltip__content {
+  opacity: 0;
+  visibility: hidden;
+  transition-delay: 0s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sito-ui-tooltip__content {
+    transition: none;
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    .sito-ui-tooltip:hover:not([data-dismissed]) .sito-ui-tooltip__content {
+      transition-delay: 0s;
+    }
+  }
+}
