@@ -64,12 +64,15 @@
   --sito-ui-size-context-menu-max-width: 20rem;
   --sito-ui-size-context-menu-item: 2rem;
   --sito-ui-size-context-menu-leading: 1rem;
+  --sito-ui-dialog-max-width: 32rem;
+  --sito-ui-size-toast-width: 22rem;
 
   --sito-ui-radius-pill: 1.5rem;
   --sito-ui-radius-round: 100%;
   --sito-ui-radius-dialog: 1rem;
   --sito-ui-radius-context-menu: 0.5rem;
   --sito-ui-radius-context-menu-item: 0.25rem;
+  --sito-ui-radius-toast: 0.75rem;
 
   --sito-ui-border-width-thin: 1px;
   --sito-ui-spinner-border-width: 2px;
@@ -86,6 +89,8 @@
   --sito-ui-dialog-enter-duration: 180ms;
   --sito-ui-dialog-exit-duration: 180ms;
   --sito-ui-dialog-enter-transform: translateY(8px) scale(0.98);
+  --sito-ui-toast-enter-duration: 180ms;
+  --sito-ui-toast-exit-duration: 180ms;
   --sito-ui-motion-duration-press: 100ms;
   --sito-ui-motion-duration-spinner: 600ms;
   --sito-ui-motion-duration-spinner-reduced: 1500ms;
@@ -98,9 +103,11 @@
 
   --sito-ui-shadow-dialog: 0 1rem 3rem rgb(16 24 40 / 18%);
   --sito-ui-shadow-context-menu: 0 0.75rem 2rem rgb(16 24 40 / 24%);
+  --sito-ui-shadow-toast: 0 0.75rem 2rem rgb(16 24 40 / 18%);
   --sito-ui-z-index-dialog: 50;
   --sito-ui-z-index-context-menu: 60;
   --sito-ui-z-index-tooltip: 70;
+  --sito-ui-z-index-toast: 80;
 
   --sito-ui-button-disabled-opacity: 0.6;
   --sito-ui-context-menu-disabled-opacity: 0.5;

@@ -71,6 +71,38 @@ const ExitTransitionDemo = () => {
   );
 };
 
+const ScrollingDialogDemo = () => {
+  const dialog = useDialog(false);
+
+  return (
+    <div style={{ padding: 24 }}>
+      <Button variant="submit" color="primary" onClick={dialog.handleOpen}>
+        Open tall dialog
+      </Button>
+      <Dialog
+        title="Terms of use"
+        open={dialog.open}
+        onClose={dialog.handleClose}
+      >
+        {Array.from({ length: 12 }, (_, index) => (
+          <p key={index} style={{ margin: "0 0 16px" }}>
+            Section {index + 1}. The header and the actions stay visible while
+            this content scrolls under them.
+          </p>
+        ))}
+        <DialogActions
+          primaryText="Accept"
+          cancelText="Cancel"
+          onPrimaryClick={dialog.handleClose}
+          onCancel={dialog.handleClose}
+          primaryType="button"
+          alignEnd
+        />
+      </Dialog>
+    </div>
+  );
+};
+
 const meta = {
   title: "Primitives/Dialog",
   component: Dialog,
@@ -90,4 +122,8 @@ export const Default: Story = {
 
 export const ExitTransition: Story = {
   render: () => <ExitTransitionDemo />,
+};
+
+export const Scrolling: Story = {
+  render: () => <ScrollingDialogDemo />,
 };

@@ -1,0 +1,3 @@
+export const DEFAULT_TOAST_DURATION_MS = 5000;
+export const DEFAULT_TOAST_EXIT_DURATION_MS = 180;
+export const DEFAULT_TOAST_MAX = 3;

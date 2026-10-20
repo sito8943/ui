@@ -24,7 +24,11 @@ packages.
   ContextMenuSeparator
   useContextMenu
   useDialog
-  Tooltip/Popover later
+  Tooltip
+  Toast
+  ToastProvider
+  useToast
+  Popover later
   styles.css / theme.css optional and overrideable
 ```
 
@@ -74,8 +78,8 @@ Not allowed here:
 
 - Dashboard-specific workflows (`FormDialog`, `ConfirmationDialog`,
   `ImportDialog`, `ExportDialog`, `Page`, `Actions`, tables, filters).
-- App providers for mode, notifications, storage, routing, backend clients, or
-  translations.
+- App providers for mode, storage, routing, backend clients, or translations.
+  Exception: `ToastProvider` (see below).
 - Domain models, service managers, API clients, localStorage wrappers, or data
   fetching.
 - Consumer-specific visual themes that cannot be overridden.
@@ -123,6 +127,10 @@ Examples:
 - `useDialog` should manage generic open/close state and return explicit handlers.
 - Do not add package-wide context unless multiple primitives truly require shared
   runtime state. Prefer props and composition first.
+- Exception: `ToastProvider` owns the toast queue so any component can call
+  `useToast()` (#53). It holds only generic UI state (message, color, timer),
+  no app copy or domain workflow, and no other primitive depends on it. The
+  legacy `NotificationProvider` stays removed.
 - Do not read or write `localStorage`, `sessionStorage`, cookies, URL state, or
   external stores from this package.
 

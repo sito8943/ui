@@ -34,19 +34,26 @@ import {
   IconButton,
   ICON_BUTTON_SIZES,
   Spinner,
+  Toast,
+  TOAST_COLORS,
+  TOAST_PLACEMENTS,
+  ToastProvider,
   Tooltip,
   useContextMenu,
   useDialog,
+  useToast,
 } from "@sito/ui";
 ```
 
 The runtime constants `BUTTON_COLOR_VARIANTS`, `BUTTON_VARIANTS`,
-`BUTTON_SIZES`, `ICON_BUTTON_SIZES`, and `DIALOG_INITIAL_FOCUS` expose the
+`BUTTON_SIZES`, `ICON_BUTTON_SIZES`, `DIALOG_INITIAL_FOCUS`, `TOAST_COLORS`,
+and `TOAST_PLACEMENTS` expose the
 supported values for public component contracts.
 
 Exported types include `ButtonProps`, `ButtonSize`, `IconButtonProps`,
 `DialogProps`, `DialogActionsProps`, `DialogState`, `IconButtonSize`, and
-`SpinnerProps`, `UseDialogReturn`, plus the corresponding context-menu props and hook return
+`SpinnerProps`, `UseDialogReturn`, `ToastOptions`, `ToastFunction`,
+`ToastProviderProps`, plus the corresponding context-menu props and hook return
 types.
 
 ## Spinner
@@ -143,6 +150,50 @@ dismiss it while the trigger is focused. Tooltip surface, text, radius, shadow,
 font size, and motion can be customized with `--sito-ui-tooltip-*` tokens.
 The tooltip stacks above context menus using `--sito-ui-z-index-tooltip`.
 
+## Toast
+
+Wrap the app in `ToastProvider` once, then call `useToast()` anywhere below it:
+
+```tsx
+<ToastProvider placement="bottom-right">
+  <App />
+</ToastProvider>;
+
+const toast = useToast();
+
+const id = toast({ message: "Saving…", duration: 0, dismissible: false });
+toast.update(id, { message: "Saved", color: "success", duration: 3000 });
+toast({ message: "Not saved", color: "error" });
+toast({
+  message: "Slide deleted",
+  action: { label: "Undo", onClick: restore },
+});
+toast.dismiss(id);
+```
+
+- `color`: `default`, `success`, `error`, or `warning`. `icon` adds a leading
+  icon.
+- `duration` in ms; `0` or `Infinity` keeps the toast until it is dismissed.
+  Defaults to the provider's `duration` (`5000`), or `Infinity` for errors.
+- `toast.update(id, …)` (or `toast({ id, … })` with an existing id) replaces
+  the toast in place and restarts its timer.
+- `action` renders a text button; it dismisses the toast after `onClick` unless
+  `dismiss: false`. `dismissible: false` hides the close button.
+- Provider props: `placement` (`top-left`, `top-center`, `top-right`,
+  `bottom-left`, `bottom-center`, `bottom-right`), `duration`, `max` (default
+  `3`, the oldest leaves first), `label` (region name, default
+  `"Notifications"`), `closeLabel`, `closeIcon`, `viewportClassName`,
+  `toastClassName`, and `portalContainer`.
+
+The viewport is a polite live region. Default, success and warning toasts use
+`role="status"`; errors use `role="alert"`. Hovering or focusing a toast pauses
+its timer, and Escape dismisses the focused toast. Toasts animate in and out
+and skip the animation with `prefers-reduced-motion`. Tune them with
+`--sito-ui-size-toast-width`, `--sito-ui-radius-toast`,
+`--sito-ui-shadow-toast`, `--sito-ui-z-index-toast`,
+`--sito-ui-toast-enter-duration`, and `--sito-ui-toast-exit-duration`; the
+accent color follows the `--sito-ui-color-*-default` tokens.
+
 ## Motion
 
 Buttons shrink while pressed and return to their normal size on release. The
@@ -191,6 +242,16 @@ Start Storybook with:
 pnpm storybook
 ```
 
+## Dialog Layout
+
+Dialogs are `min(100%, var(--sito-ui-dialog-max-width))` wide, whatever their
+content. The token defaults to `32rem`; override it at `:root` or any theme
+scope. `mobileFullScreen` still takes the full viewport on small screens.
+
+When a dialog is taller than the viewport, it scrolls itself while the header
+(title and close button) stays at the top and `DialogActions` stays at the
+bottom. Keep `DialogActions` as the dialog's last content so it can stick.
+
 ## Dialog Exit Transitions
 
 `Dialog` fades in with a small rise and scale, then fades out when closed. It
@@ -232,5 +293,6 @@ action:
 ## Scope
 
 This package only exposes generic primitives. It does not include dashboard
-workflows, forms, translations, icon packs, routing, storage, providers, or data
-fetching.
+workflows, forms, translations, icon packs, routing, storage, app providers,
+or data fetching. `ToastProvider` is the one provider, and it only holds the
+toast queue.

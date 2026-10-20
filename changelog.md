@@ -1,5 +1,25 @@
 # Changelog
 
+## 0.7.0 - 2026-10-20
+
+### Added
+
+- Added `Toast`, `ToastProvider`, and `useToast`: generic notifications with
+  `default`, `success`, `error`, and `warning` colors, optional icon and
+  action, auto-dismiss that pauses on hover and focus, update in place,
+  Escape to dismiss, a stack limit, six placements, and enter and exit
+  transitions themed with `--sito-ui-toast-*` tokens (#53).
+- `Dialog`'s header (title and close button) stays visible while a tall dialog
+  scrolls (#51).
+- `DialogActions` stays visible at the bottom while a tall dialog scrolls
+  (#52).
+
+### Fixed
+
+- Defined `--sito-ui-dialog-max-width` (`32rem`) in `theme.css`, with the same
+  fallback in the dialog styles, so dialogs no longer shrink or grow to fit
+  their content (#50).
+
 ## 0.6.1 - 2026-10-19
 
 ### Fixed
