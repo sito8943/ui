@@ -21,6 +21,30 @@ describe("Tooltip", () => {
     );
   });
 
+  it("shows a hotkey after the label, hidden from assistive technology", () => {
+    render(
+      <Tooltip label="Next slide" hotkey="→">
+        <IconButton aria-label="Next slide" icon=">" />
+      </Tooltip>,
+    );
+
+    const hotkey = screen.getByText("→");
+    expect(hotkey.tagName).toBe("KBD");
+    expect(hotkey.closest("[aria-hidden='true']")).toHaveTextContent(
+      "Next slide→",
+    );
+  });
+
+  it("renders no hotkey when none is given", () => {
+    const { container } = render(
+      <Tooltip label="Help">
+        <Button>Help</Button>
+      </Tooltip>,
+    );
+
+    expect(container.querySelector("kbd")).toBeNull();
+  });
+
   it("supports side and alignment options", () => {
     render(
       <Tooltip label="Help" side="bottom" align="end">

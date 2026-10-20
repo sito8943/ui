@@ -144,10 +144,18 @@ an accessible name on icon-only controls:
 </Tooltip>
 ```
 
+`hotkey` shows the control's keyboard shortcut after the label in a `<kbd>`
+(`<Tooltip label="Next slide" hotkey="→">`). Like the label, it is hidden from
+assistive technology: announce the shortcut with `aria-keyshortcuts` on the
+trigger.
+
 `side` supports `top` and `bottom`; `align` supports `start`, `center`, and
 `end`. Hover is enabled only on devices that support hover. Press Escape to
 dismiss it while the trigger is focused. Tooltip surface, text, radius, shadow,
-font size, and motion can be customized with `--sito-ui-tooltip-*` tokens.
+font size, motion, and the hotkey's surface, border, and radius
+(`--sito-ui-tooltip-hotkey-surface`, `--sito-ui-tooltip-hotkey-border`,
+`--sito-ui-radius-tooltip-hotkey`) can be customized with `--sito-ui-tooltip-*`
+tokens.
 The tooltip stacks above context menus using `--sito-ui-z-index-tooltip`.
 
 ## Toast
