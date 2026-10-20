@@ -28,6 +28,10 @@ export const BottomCenter: Story = {
 };
 export const BottomEnd: Story = { args: { side: "bottom", align: "end" } };
 
+export const WithHotkey: Story = {
+  args: { label: "Next slide", hotkey: "→", side: "bottom" },
+};
+
 export const DisabledTrigger: Story = {
   args: {
     label: "This action is unavailable",

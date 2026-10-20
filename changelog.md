@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.8.0 - 2026-10-20
+
+### Added
+
+- `Tooltip` takes an optional `hotkey`: the control's keyboard shortcut, shown
+  after the label in a `<kbd>` themed with `--sito-ui-tooltip-hotkey-*` tokens.
+
 ## 0.7.0 - 2026-10-20
 
 ### Added

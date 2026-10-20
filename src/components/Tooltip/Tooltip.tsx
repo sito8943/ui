@@ -5,6 +5,7 @@ import type { TooltipProps } from "./types";
 
 export function Tooltip({
   label,
+  hotkey,
   side = "top",
   align = "center",
   children,
@@ -86,6 +87,7 @@ export function Tooltip({
         aria-hidden="true"
       >
         {label}
+        {hotkey && <kbd className="sito-ui-tooltip__hotkey">{hotkey}</kbd>}
       </span>
     </span>
   );

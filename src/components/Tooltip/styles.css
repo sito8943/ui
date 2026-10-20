@@ -36,6 +36,27 @@
     visibility 0s linear var(--sito-ui-motion-duration-tooltip-hide, 80ms);
 }
 
+.sito-ui-tooltip__hotkey {
+  display: inline-block;
+  margin-inline-start: var(--sito-ui-space-2);
+  padding: 0 var(--sito-ui-space-1);
+  border: 1px solid
+    var(
+      --sito-ui-tooltip-hotkey-border,
+      color-mix(in srgb, currentColor 35%, transparent)
+    );
+  border-radius: var(--sito-ui-radius-tooltip-hotkey, 0.25rem);
+  background: var(
+    --sito-ui-tooltip-hotkey-surface,
+    color-mix(in srgb, currentColor 12%, transparent)
+  );
+  color: inherit;
+  font: inherit;
+  font-weight: 600;
+  line-height: 1.4;
+  white-space: nowrap;
+}
+
 .sito-ui-tooltip[data-side="top"] .sito-ui-tooltip__content {
   bottom: calc(100% + var(--sito-ui-tooltip-offset));
 }
