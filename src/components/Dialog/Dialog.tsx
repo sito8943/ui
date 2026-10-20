@@ -12,7 +12,11 @@ import {
 } from "react";
 import { createPortal } from "react-dom";
 
-import { classNames } from "../../utils";
+import {
+  classNames,
+  getCssDurationMs,
+  prefersReducedMotion,
+} from "../../utils";
 import { IconButton } from "../IconButton";
 import { focusableInputSelector, submitSelector } from "./constants";
 import type { DialogProps } from "./types";
@@ -30,17 +34,6 @@ const useClientLayoutEffect =
   typeof window === "undefined" ? useEffect : useLayoutEffect;
 const DEFAULT_DIALOG_EXIT_DURATION_MS = 180;
 type DialogExitStyle = CSSProperties & Record<`--${string}`, string>;
-
-const getCssDurationMs = (element: HTMLElement, property: string) => {
-  const duration = window
-    .getComputedStyle(element)
-    .getPropertyValue(property)
-    .trim();
-  const value = Number.parseFloat(duration);
-
-  if (!Number.isFinite(value)) return DEFAULT_DIALOG_EXIT_DURATION_MS;
-  return duration.endsWith("ms") ? value : value * 1000;
-};
 
 /**
  * Renders an accessible modal dialog in a portal.
@@ -117,12 +110,14 @@ export const Dialog = (props: DialogProps) => {
 
     if (!shouldRender) return;
 
-    const prefersReducedMotion =
-      window.matchMedia?.("(prefers-reduced-motion: reduce)").matches ?? false;
     const cssExitDuration = dialogRef.current
-      ? getCssDurationMs(dialogRef.current, "--sito-ui-dialog-exit-duration")
+      ? getCssDurationMs(
+          dialogRef.current,
+          "--sito-ui-dialog-exit-duration",
+          DEFAULT_DIALOG_EXIT_DURATION_MS,
+        )
       : DEFAULT_DIALOG_EXIT_DURATION_MS;
-    const normalizedExitDuration = prefersReducedMotion
+    const normalizedExitDuration = prefersReducedMotion()
       ? 0
       : Math.max(0, exitDurationMs ?? cssExitDuration);
 
