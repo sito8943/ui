@@ -50,8 +50,15 @@ export type {
   ToastProps,
   ToastProviderProps,
   ToastState,
+  ToastVariant,
   ToastUpdate,
 } from "./Toast";
-export { Toast, TOAST_COLORS, TOAST_PLACEMENTS, ToastProvider } from "./Toast";
+export {
+  Toast,
+  TOAST_COLORS,
+  TOAST_PLACEMENTS,
+  TOAST_VARIANTS,
+  ToastProvider,
+} from "./Toast";
 export type { SpinnerProps } from "./Spinner";
 export { Spinner } from "./Spinner";

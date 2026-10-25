@@ -183,14 +183,18 @@ toast.dismiss(id);
 ```
 
 - `color`: `default`, `success`, `error`, or `warning`. `icon` adds a leading
-  icon.
+  icon. `variant` can be `accent` (default) or `filled`; filled success, error
+  and warning toasts use the matching `--sito-ui-color-*-default` background
+  and `--sito-ui-color-*-text` foreground tokens. Toasts with
+  `color: "default"` keep their surface appearance with either variant.
 - `duration` in ms; `0` or `Infinity` keeps the toast until it is dismissed.
   Defaults to the provider's `duration` (`5000`), or `Infinity` for errors.
 - `toast.update(id, …)` (or `toast({ id, … })` with an existing id) replaces
   the toast in place and restarts its timer.
 - `action` renders a text button; it dismisses the toast after `onClick` unless
   `dismiss: false`. `dismissible: false` hides the close button.
-- Provider props: `placement` (`top-left`, `top-center`, `top-right`,
+- Provider props: `variant` (`accent` by default or `filled`),
+  `placement` (`top-left`, `top-center`, `top-right`,
   `bottom-left`, `bottom-center`, `bottom-right`), `duration`, `max` (default
   `3`, the oldest leaves first), `label` (region name, default
   `"Notifications"`), `closeLabel`, `closeIcon`, `viewportClassName`,

@@ -1,6 +1,6 @@
 export { Toast } from "./Toast";
 export { ToastProvider } from "./ToastProvider";
-export { TOAST_COLORS, TOAST_PLACEMENTS } from "./types";
+export { TOAST_COLORS, TOAST_PLACEMENTS, TOAST_VARIANTS } from "./types";
 export type {
   ToastAction,
   ToastColor,
@@ -10,5 +10,6 @@ export type {
   ToastProps,
   ToastProviderProps,
   ToastState,
+  ToastVariant,
   ToastUpdate,
 } from "./types";

@@ -28,6 +28,7 @@ export type {
   ToastProps,
   ToastProviderProps,
   ToastState,
+  ToastVariant,
   ToastUpdate,
   TooltipAlign,
   TooltipProps,
@@ -50,6 +51,7 @@ export {
   Toast,
   TOAST_COLORS,
   TOAST_PLACEMENTS,
+  TOAST_VARIANTS,
   ToastProvider,
   Tooltip,
 } from "./components";

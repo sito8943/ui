@@ -73,6 +73,52 @@
   --sito-ui-toast-accent: var(--sito-ui-color-warning-default);
 }
 
+.sito-ui-toast--filled.sito-ui-toast--success,
+.sito-ui-toast--filled.sito-ui-toast--error,
+.sito-ui-toast--filled.sito-ui-toast--warning {
+  background-color: var(--sito-ui-toast-filled-background);
+  border-color: var(--sito-ui-toast-filled-background);
+  color: var(--sito-ui-toast-filled-foreground);
+}
+
+.sito-ui-toast--filled.sito-ui-toast--success {
+  --sito-ui-toast-filled-background: var(--sito-ui-color-success-default);
+  --sito-ui-toast-filled-foreground: var(--sito-ui-color-success-text);
+}
+
+.sito-ui-toast--filled.sito-ui-toast--error {
+  --sito-ui-toast-filled-background: var(--sito-ui-color-error-default);
+  --sito-ui-toast-filled-foreground: var(--sito-ui-color-error-text);
+}
+
+.sito-ui-toast--filled.sito-ui-toast--warning {
+  --sito-ui-toast-filled-background: var(--sito-ui-color-warning-default);
+  --sito-ui-toast-filled-foreground: var(--sito-ui-color-warning-text);
+}
+
+/* Only colors with a fill: `default` keeps its accent icon and action. */
+.sito-ui-toast--filled:is(
+    .sito-ui-toast--success,
+    .sito-ui-toast--error,
+    .sito-ui-toast--warning
+  )
+  :is(.sito-ui-toast__icon, .sito-ui-toast__action, .sito-ui-toast__close) {
+  color: var(--sito-ui-toast-filled-foreground);
+}
+
+.sito-ui-toast--filled:is(
+    .sito-ui-toast--success,
+    .sito-ui-toast--error,
+    .sito-ui-toast--warning
+  )
+  :is(.sito-ui-toast__action, .sito-ui-toast__close):not(:disabled):hover {
+  background-color: color-mix(
+    in srgb,
+    var(--sito-ui-toast-filled-foreground) 16%,
+    transparent
+  );
+}
+
 .sito-ui-toast[data-state="open"] {
   animation: sito-ui-toast-enter var(--sito-ui-toast-enter-duration, 180ms)
     var(--sito-ui-motion-easing-standard, ease) both;
