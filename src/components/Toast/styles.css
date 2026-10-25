@@ -52,8 +52,8 @@
   padding: var(--sito-ui-space-2) var(--sito-ui-space-2) var(--sito-ui-space-2)
     var(--sito-ui-space-4);
   border: var(--sito-ui-border-width-thin) solid var(--sito-ui-color-border);
-  border-left: calc(var(--sito-ui-border-width-thin) * 4) solid
-    var(--sito-ui-toast-accent);
+  border-left: var(--sito-ui-toast-accent-width) solid
+    var(--sito-ui-toast-accent-border, var(--sito-ui-toast-accent));
   border-radius: var(--sito-ui-radius-toast);
   background-color: var(--sito-ui-color-surface);
   color: var(--sito-ui-color-text);
