@@ -1,5 +1,5 @@
 import { createRef } from "react";
-import { render, screen } from "@testing-library/react";
+import { act, fireEvent, render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { describe, expect, it, vi } from "vitest";
 
@@ -10,6 +10,17 @@ import {
 } from "../../src/main";
 
 const position = { x: 24, y: 32 };
+
+const renderPlainMenu = (open: boolean) => (
+  <ContextMenu
+    open={open}
+    position={position}
+    onClose={vi.fn()}
+    ariaLabel="Actions"
+  >
+    <ContextMenuItem>Open</ContextMenuItem>
+  </ContextMenu>
+);
 
 describe("ContextMenu", () => {
   it("does not render while closed", () => {
@@ -172,5 +183,68 @@ describe("ContextMenu", () => {
     rerender(renderMenu(true));
 
     expect(menuRef.current).toBe(screen.getByRole("menu", { name: "Actions" }));
+  });
+  it("stays mounted while it closes, ignores input, then unmounts", () => {
+    vi.useFakeTimers();
+    const handleClose = vi.fn();
+    const renderMenu = (open: boolean) => (
+      <ContextMenu
+        open={open}
+        position={position}
+        onClose={handleClose}
+        ariaLabel="Actions"
+      >
+        <ContextMenuItem>Open</ContextMenuItem>
+      </ContextMenu>
+    );
+
+    const { rerender } = render(renderMenu(true));
+    const menu = screen.getByRole("menu", { name: "Actions" });
+    expect(menu).toHaveAttribute("data-state", "open");
+
+    rerender(renderMenu(false));
+
+    expect(menu).toBeInTheDocument();
+    expect(menu).toHaveAttribute("data-state", "closed");
+    expect(menu).toHaveAttribute("inert");
+
+    fireEvent.keyDown(menu, { key: "Escape" });
+    fireEvent.pointerDown(document.body);
+    expect(handleClose).not.toHaveBeenCalled();
+
+    act(() => {
+      vi.advanceTimersByTime(300);
+    });
+
+    expect(menu).not.toBeInTheDocument();
+    vi.useRealTimers();
+  });
+
+  it("opens again while it closes", () => {
+    vi.useFakeTimers();
+
+    const { rerender } = render(renderPlainMenu(true));
+    rerender(renderPlainMenu(false));
+    rerender(renderPlainMenu(true));
+
+    act(() => {
+      vi.advanceTimersByTime(300);
+    });
+
+    const menu = screen.getByRole("menu", { name: "Actions" });
+    expect(menu).toHaveAttribute("data-state", "open");
+    expect(screen.getByRole("menuitem", { name: "Open" })).toHaveFocus();
+    vi.useRealTimers();
+  });
+
+  it("unmounts at once when reduced motion is preferred", () => {
+    const matchMedia = window.matchMedia;
+    window.matchMedia = vi.fn().mockReturnValue({ matches: true });
+
+    const { rerender } = render(renderPlainMenu(true));
+    rerender(renderPlainMenu(false));
+
+    expect(screen.queryByRole("menu")).not.toBeInTheDocument();
+    window.matchMedia = matchMedia;
   });
 });

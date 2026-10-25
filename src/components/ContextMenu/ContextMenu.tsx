@@ -5,11 +5,17 @@ import {
   useEffect,
   useLayoutEffect,
   useRef,
+  useState,
 } from "react";
 import { createPortal } from "react-dom";
 
-import { classNames } from "../../utils";
 import {
+  classNames,
+  getCssDurationMs,
+  prefersReducedMotion,
+} from "../../utils";
+import {
+  CONTEXT_MENU_EXIT_DURATION_MS,
   CONTEXT_MENU_ITEM_SELECTOR,
   CONTEXT_MENU_VIEWPORT_PADDING,
 } from "./constants";
@@ -38,6 +44,58 @@ export const ContextMenu = forwardRef<HTMLDivElement, ContextMenuProps>(
   ) {
     const menuRef = useRef<HTMLDivElement>(null);
     const previousFocusedElementRef = useRef<HTMLElement | null>(null);
+    const exitTimeoutRef = useRef<number | null>(null);
+    const [shouldRender, setShouldRender] = useState(open);
+    const [isClosing, setIsClosing] = useState(false);
+    const isInteractive = open && !isClosing;
+
+    const clearExitTimeout = useCallback(() => {
+      if (exitTimeoutRef.current === null) return;
+
+      window.clearTimeout(exitTimeoutRef.current);
+      exitTimeoutRef.current = null;
+    }, []);
+
+    useClientLayoutEffect(() => {
+      if (open) {
+        clearExitTimeout();
+        setShouldRender(true);
+        setIsClosing(false);
+        return;
+      }
+
+      if (!shouldRender) return;
+
+      const exitDuration = menuRef.current
+        ? getCssDurationMs(
+            menuRef.current,
+            "--sito-ui-motion-duration-normal",
+            CONTEXT_MENU_EXIT_DURATION_MS,
+          )
+        : CONTEXT_MENU_EXIT_DURATION_MS;
+
+      if (prefersReducedMotion() || exitDuration <= 0) {
+        clearExitTimeout();
+        setShouldRender(false);
+        setIsClosing(false);
+        return;
+      }
+
+      setIsClosing(true);
+      clearExitTimeout();
+      exitTimeoutRef.current = window.setTimeout(() => {
+        setShouldRender(false);
+        setIsClosing(false);
+        exitTimeoutRef.current = null;
+      }, exitDuration);
+    }, [clearExitTimeout, open, shouldRender]);
+
+    useEffect(
+      () => () => {
+        clearExitTimeout();
+      },
+      [clearExitTimeout],
+    );
     const setMenuRef = useCallback(
       (node: HTMLDivElement | null) => {
         menuRef.current = node;
@@ -50,8 +108,20 @@ export const ContextMenu = forwardRef<HTMLDivElement, ContextMenuProps>(
       [ref],
     );
 
+    const restoreFocus = useCallback(() => {
+      if (previousFocusedElementRef.current?.isConnected) {
+        previousFocusedElementRef.current.focus();
+      }
+      previousFocusedElementRef.current = null;
+    }, []);
+
     useClientLayoutEffect(() => {
-      if (!open) return;
+      if (!open) {
+        // Restored in the effect body, not a cleanup: React runs cleanups
+        // before it puts focus back on the still-mounted closing menu.
+        restoreFocus();
+        return;
+      }
 
       previousFocusedElementRef.current =
         document.activeElement instanceof HTMLElement
@@ -62,14 +132,9 @@ export const ContextMenu = forwardRef<HTMLDivElement, ContextMenuProps>(
         CONTEXT_MENU_ITEM_SELECTOR,
       );
       (firstItem ?? menuRef.current)?.focus();
+    }, [open, restoreFocus]);
 
-      return () => {
-        if (previousFocusedElementRef.current?.isConnected) {
-          previousFocusedElementRef.current.focus();
-        }
-        previousFocusedElementRef.current = null;
-      };
-    }, [open]);
+    useClientLayoutEffect(() => restoreFocus, [restoreFocus]);
 
     useClientLayoutEffect(() => {
       const menu = menuRef.current;
@@ -85,7 +150,7 @@ export const ContextMenu = forwardRef<HTMLDivElement, ContextMenuProps>(
     }, [clampToViewport, open, position.x, position.y, viewportPadding]);
 
     useEffect(() => {
-      if (!open || !closeOnPointerDownOutside) return;
+      if (!isInteractive || !closeOnPointerDownOutside) return;
 
       const handlePointerDown = (event: PointerEvent) => {
         const target = event.target;
@@ -98,9 +163,10 @@ export const ContextMenu = forwardRef<HTMLDivElement, ContextMenuProps>(
       return () => {
         document.removeEventListener("pointerdown", handlePointerDown);
       };
-    }, [closeOnPointerDownOutside, onClose, open]);
+    }, [closeOnPointerDownOutside, isInteractive, onClose]);
 
     const handleKeyDown = (event: ReactKeyboardEvent<HTMLDivElement>) => {
+      if (!isInteractive) return;
       const shouldCloseOnEscape = event.key === "Escape" && closeOnEscape;
       const shouldCloseOnTab = event.key === "Tab" && closeOnTab;
       if (shouldCloseOnEscape || shouldCloseOnTab) {
@@ -139,7 +205,8 @@ export const ContextMenu = forwardRef<HTMLDivElement, ContextMenuProps>(
       items[nextIndex]?.focus();
     };
 
-    if (!open || typeof document === "undefined") return null;
+    if ((!open && !shouldRender) || typeof document === "undefined")
+      return null;
 
     return createPortal(
       <div
@@ -149,11 +216,13 @@ export const ContextMenu = forwardRef<HTMLDivElement, ContextMenuProps>(
         aria-label={ariaLabel}
         aria-orientation="vertical"
         data-sito-ui="context-menu"
-        data-state="open"
+        data-state={isClosing ? "closed" : "open"}
         className={classNames("sito-ui-context-menu", className)}
         style={{ left: position.x, top: position.y }}
+        aria-hidden={isInteractive ? undefined : true}
+        inert={!isInteractive}
         onContextMenu={(event) => event.preventDefault()}
-        onKeyDown={handleKeyDown}
+        onKeyDown={isInteractive ? handleKeyDown : undefined}
       >
         {children}
       </div>,

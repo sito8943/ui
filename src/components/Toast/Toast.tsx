@@ -18,7 +18,7 @@ import {
   DEFAULT_TOAST_DURATION_MS,
   DEFAULT_TOAST_EXIT_DURATION_MS,
 } from "./constants";
-import { TOAST_COLORS, type ToastProps } from "./types";
+import { TOAST_COLORS, TOAST_VARIANTS, type ToastProps } from "./types";
 
 /**
  * Renders a single notification. Usually rendered by `ToastProvider`.
@@ -30,6 +30,7 @@ export const Toast = (props: ToastProps) => {
     id,
     message,
     color = TOAST_COLORS.DEFAULT,
+    variant = TOAST_VARIANTS.ACCENT,
     icon,
     duration,
     action,
@@ -131,6 +132,7 @@ export const Toast = (props: ToastProps) => {
       className={classNames(
         "sito-ui-toast",
         `sito-ui-toast--${color}`,
+        `sito-ui-toast--${variant}`,
         `sito-ui-toast--${state}`,
         className,
       )}

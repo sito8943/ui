@@ -103,7 +103,10 @@ with `closeOnEscape={false}`, `closeOnTab={false}` and
 `closeOnPointerDownOutside={false}`. The component forwards its menu element ref
 for adapters that need compatible positioning or containment checks. Those
 adapters may also use `clampToViewport={false}` when their existing state layer
-already owns clamping.
+already owns clamping. Closing menus remain mounted for
+`--sito-ui-motion-duration-normal`, restore focus to the trigger when closing
+starts, and ignore pointer and keyboard input during the exit. The built-in
+fade and scale motion is disabled when reduced motion is preferred.
 
 ## Button Sizes
 
@@ -180,14 +183,18 @@ toast.dismiss(id);
 ```
 
 - `color`: `default`, `success`, `error`, or `warning`. `icon` adds a leading
-  icon.
+  icon. `variant` can be `accent` (default) or `filled`; filled success, error
+  and warning toasts use the matching `--sito-ui-color-*-default` background
+  and `--sito-ui-color-*-text` foreground tokens. Toasts with
+  `color: "default"` keep their surface appearance with either variant.
 - `duration` in ms; `0` or `Infinity` keeps the toast until it is dismissed.
   Defaults to the provider's `duration` (`5000`), or `Infinity` for errors.
 - `toast.update(id, …)` (or `toast({ id, … })` with an existing id) replaces
   the toast in place and restarts its timer.
 - `action` renders a text button; it dismisses the toast after `onClick` unless
   `dismiss: false`. `dismissible: false` hides the close button.
-- Provider props: `placement` (`top-left`, `top-center`, `top-right`,
+- Provider props: `variant` (`accent` by default or `filled`),
+  `placement` (`top-left`, `top-center`, `top-right`,
   `bottom-left`, `bottom-center`, `bottom-right`), `duration`, `max` (default
   `3`, the oldest leaves first), `label` (region name, default
   `"Notifications"`), `closeLabel`, `closeIcon`, `viewportClassName`,
@@ -199,8 +206,12 @@ its timer, and Escape dismisses the focused toast. Toasts animate in and out
 and skip the animation with `prefers-reduced-motion`. Tune them with
 `--sito-ui-size-toast-width`, `--sito-ui-radius-toast`,
 `--sito-ui-shadow-toast`, `--sito-ui-z-index-toast`,
-`--sito-ui-toast-enter-duration`, and `--sito-ui-toast-exit-duration`; the
-accent color follows the `--sito-ui-color-*-default` tokens.
+`--sito-ui-toast-enter-duration`, `--sito-ui-toast-exit-duration`, and
+`--sito-ui-toast-accent-width` (defaults to four thin borders). To remove the
+accent stripe with tokens, set its width to
+`var(--sito-ui-border-width-thin)` and
+`--sito-ui-toast-accent-border: var(--sito-ui-color-border)`. The accent color
+follows the `--sito-ui-color-*-default` tokens.
 
 ## Motion
 

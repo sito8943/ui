@@ -66,6 +66,7 @@
   --sito-ui-size-context-menu-leading: 1rem;
   --sito-ui-dialog-max-width: 32rem;
   --sito-ui-size-toast-width: 22rem;
+  --sito-ui-toast-accent-width: calc(var(--sito-ui-border-width-thin) * 4);
 
   --sito-ui-radius-pill: 1.5rem;
   --sito-ui-radius-round: 100%;

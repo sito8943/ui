@@ -9,6 +9,13 @@ export const TOAST_COLORS = {
 
 export type ToastColor = (typeof TOAST_COLORS)[keyof typeof TOAST_COLORS];
 
+export const TOAST_VARIANTS = {
+  ACCENT: "accent",
+  FILLED: "filled",
+} as const;
+
+export type ToastVariant = (typeof TOAST_VARIANTS)[keyof typeof TOAST_VARIANTS];
+
 export const TOAST_PLACEMENTS = {
   TOP_LEFT: "top-left",
   TOP_CENTER: "top-center",
@@ -35,6 +42,7 @@ export type ToastOptions = {
   id?: string;
   message: ReactNode;
   color?: ToastColor;
+  variant?: ToastVariant;
   icon?: ReactNode;
   /**
    * Time in ms before the toast leaves. `0` or `Infinity` keeps it until it is
@@ -68,6 +76,8 @@ export type ToastProps = Omit<ToastOptions, "id"> & {
 
 export type ToastProviderProps = {
   children?: ReactNode;
+  /** Default visual variant for toasts. Defaults to `accent`. */
+  variant?: ToastVariant;
   placement?: ToastPlacement;
   /** Default duration in ms for non-error toasts. */
   duration?: number;

@@ -1,5 +1,21 @@
 # Changelog
 
+## 0.9.0 - 2026-10-25
+
+### Added
+
+- `Toast` takes `variant`: `accent` (default) or `filled`, per toast or as
+  `ToastProvider`'s default. Filled success, error and warning toasts use the
+  color's `-default` token as background and its `-text` token for text,
+  icon, action and close; `default` toasts keep the surface (#58).
+- `--sito-ui-toast-accent-width` and `--sito-ui-toast-accent-border` size and
+  color the toast's left stripe, so it can become a plain border with tokens
+  only (#56).
+- `ContextMenu` animates its exit: it stays mounted with
+  `data-state="closed"` for `--sito-ui-motion-duration-normal` (fade and
+  scale), takes no pointer or keys meanwhile, and gives focus back to the
+  trigger when closing starts. Reduced motion skips the animation (#59).
+
 ## 0.8.0 - 2026-10-20
 
 ### Added

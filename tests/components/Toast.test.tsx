@@ -219,4 +219,23 @@ describe("ToastProvider", () => {
       "useToast must be used inside a ToastProvider.",
     );
   });
+  it("uses the accent variant unless a toast or the provider asks for filled", () => {
+    renderProvider();
+
+    show({ message: "Saved", color: "success" });
+    show({ message: "Not saved", color: "error", variant: "filled" });
+
+    expect(screen.getByRole("status")).toHaveClass("sito-ui-toast--accent");
+    expect(screen.getByRole("alert")).toHaveClass("sito-ui-toast--filled");
+  });
+
+  it("applies the provider variant to toasts that don't set their own", () => {
+    renderProvider({ variant: "filled" });
+
+    show({ message: "Saved", color: "success" });
+    show({ message: "Not saved", color: "error", variant: "accent" });
+
+    expect(screen.getByRole("status")).toHaveClass("sito-ui-toast--filled");
+    expect(screen.getByRole("alert")).toHaveClass("sito-ui-toast--accent");
+  });
 });

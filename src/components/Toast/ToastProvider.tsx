@@ -8,6 +8,7 @@ import { ToastContext } from "./ToastContext";
 import {
   TOAST_COLORS,
   TOAST_PLACEMENTS,
+  TOAST_VARIANTS,
   type ToastFunction,
   type ToastOptions,
   type ToastProviderProps,
@@ -30,6 +31,7 @@ export const ToastProvider = (props: ToastProviderProps) => {
   const {
     children,
     placement = TOAST_PLACEMENTS.BOTTOM_RIGHT,
+    variant = TOAST_VARIANTS.ACCENT,
     duration = DEFAULT_TOAST_DURATION_MS,
     max = DEFAULT_TOAST_MAX,
     label = "Notifications",
@@ -121,6 +123,7 @@ export const ToastProvider = (props: ToastProviderProps) => {
               <Toast
                 key={item.id}
                 {...item}
+                variant={item.variant ?? variant}
                 version={version}
                 duration={
                   toastDuration ??
