@@ -103,7 +103,10 @@ with `closeOnEscape={false}`, `closeOnTab={false}` and
 `closeOnPointerDownOutside={false}`. The component forwards its menu element ref
 for adapters that need compatible positioning or containment checks. Those
 adapters may also use `clampToViewport={false}` when their existing state layer
-already owns clamping.
+already owns clamping. Closing menus remain mounted for
+`--sito-ui-motion-duration-normal`, restore focus to the trigger when closing
+starts, and ignore pointer and keyboard input during the exit. The built-in
+fade and scale motion is disabled when reduced motion is preferred.
 
 ## Button Sizes
 

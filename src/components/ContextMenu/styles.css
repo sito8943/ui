@@ -12,6 +12,50 @@
   color: var(--sito-ui-color-text);
   background: var(--sito-ui-color-surface);
   box-shadow: var(--sito-ui-shadow-context-menu);
+  transform-origin: top left;
+}
+
+.sito-ui-context-menu[data-state="open"] {
+  animation: sito-ui-context-menu-enter
+    var(--sito-ui-motion-duration-normal, 300ms)
+    var(--sito-ui-motion-easing-standard, ease) both;
+}
+
+.sito-ui-context-menu[data-state="closed"] {
+  pointer-events: none;
+  animation: sito-ui-context-menu-exit
+    var(--sito-ui-motion-duration-normal, 300ms)
+    var(--sito-ui-motion-easing-standard, ease) both;
+}
+
+@keyframes sito-ui-context-menu-enter {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes sito-ui-context-menu-exit {
+  from {
+    opacity: 1;
+    transform: none;
+  }
+
+  to {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sito-ui-context-menu {
+    animation: none !important;
+  }
 }
 
 .sito-ui-context-menu__item {
