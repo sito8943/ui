@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.9.1 - 2026-10-27
+
+### Fixed
+
+- `Dialog` and `ContextMenu` size with `100dvh` (keeping `100vh` as fallback),
+  so mobile browser toolbars no longer hide the bottom of the dialog and its
+  `DialogActions` (#61).
+
 ## 0.9.0 - 2026-10-25
 
 ### Added
