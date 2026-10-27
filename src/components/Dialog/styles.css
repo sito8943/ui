@@ -7,6 +7,7 @@
   justify-content: center;
   width: 100%;
   min-height: 100vh;
+  min-height: 100dvh;
   padding: var(--sito-ui-space-4);
   background-color: var(--sito-ui-dialog-backdrop-background);
   backdrop-filter: var(--sito-ui-dialog-backdrop-filter);
@@ -31,6 +32,7 @@
   flex-direction: column;
   width: min(100%, var(--sito-ui-dialog-max-width, 32rem));
   max-height: calc(100vh - (var(--sito-ui-space-4) * 2));
+  max-height: calc(100dvh - (var(--sito-ui-space-4) * 2));
   overflow: auto;
   padding: var(--sito-ui-space-5);
   border: var(--sito-ui-border-width-thin) solid var(--sito-ui-color-border);
@@ -157,7 +159,9 @@
   .sito-ui-dialog--mobile-full-screen {
     width: 100vw;
     height: 100vh;
+    height: 100dvh;
     max-height: 100vh;
+    max-height: 100dvh;
     border: 0;
     border-radius: 0;
   }
