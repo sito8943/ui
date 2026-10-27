@@ -1,7 +1,7 @@
 {
   "name": "@sito/ui",
   "private": false,
-  "version": "0.9.0",
+  "version": "0.9.1",
   "type": "module",
   "packageManager": "pnpm@10.34.4",
   "files": [
@@ -49,7 +49,7 @@
   "overrides": {
     "@microsoft/api-extractor": "7.58.9",
     "ajv": "6.15.0",
-    "brace-expansion": "1.1.16",
+    "brace-expansion": "1.1.21",
     "cross-spawn": "7.0.6",
     "flatted": "3.4.2",
     "lodash": "4.18.1",
@@ -60,7 +60,7 @@
     "overrides": {
       "@microsoft/api-extractor": "7.58.9",
       "ajv": "6.15.0",
-      "brace-expansion": "1.1.16",
+      "brace-expansion": "1.1.21",
       "cross-spawn": "7.0.6",
       "flatted": "3.4.2",
       "lodash": "4.18.1",

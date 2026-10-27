@@ -5,6 +5,7 @@
   min-width: var(--sito-ui-size-context-menu-min-width);
   max-width: var(--sito-ui-size-context-menu-max-width);
   max-height: calc(100vh - var(--sito-ui-space-4));
+  max-height: calc(100dvh - var(--sito-ui-space-4));
   overflow: auto;
   padding: var(--sito-ui-space-1);
   border: var(--sito-ui-border-width-thin) solid var(--sito-ui-color-border);
