@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.10.1 - 2026-10-28
+
+### Fixed
+
+- Type declarations work with `moduleResolution: "node16"` / `"nodenext"`:
+  relative specifiers in `dist/**/*.d.ts` now end in `.js` or `/index.js`
+  (TS2834 before). Bundler resolution is unaffected (#64).
+
 ## 0.10.0 - 2026-10-28
 
 ### Added
