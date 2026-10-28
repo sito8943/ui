@@ -8,6 +8,12 @@
   relative specifiers in `dist/**/*.d.ts` now end in `.js` or `/index.js`
   (TS2834 before). Bundler resolution is unaffected (#64).
 
+### Added
+
+- `pnpm dist:check` (`scripts/check-dist.mjs`), run in CI after the build:
+  package.json entry paths exist, `dist/*.cjs` parses as CommonJS, and no
+  `.d.ts` relative specifier lacks an extension (#64).
+
 ## 0.10.0 - 2026-10-28
 
 ### Added

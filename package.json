@@ -29,6 +29,7 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build --base=./",
+    "dist:check": "node ./scripts/check-dist.mjs",
     "lint": "oxlint --type-aware --max-warnings 0",
     "typecheck": "tsc --noEmit -p tsconfig.json && tsc -p tsconfig.test.json",
     "lint:fix": "oxlint --type-aware --fix --max-warnings 0",
