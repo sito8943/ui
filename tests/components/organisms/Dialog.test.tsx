@@ -2,7 +2,7 @@ import { act, render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { describe, expect, it, vi } from "vitest";
 
-import { Dialog } from "../../../src/main";
+import { Dialog } from "@/main";
 
 const getDialogBackdrop = () => {
   const backdrop = document.querySelector<HTMLElement>(

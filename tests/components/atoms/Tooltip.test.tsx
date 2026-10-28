@@ -2,7 +2,7 @@ import { fireEvent, render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { describe, expect, it, vi } from "vitest";
 
-import { Button, IconButton, Tooltip } from "../../../src/main";
+import { Button, IconButton, Tooltip } from "@/main";
 
 describe("Tooltip", () => {
   it("renders its label as decorative content around a trigger", () => {

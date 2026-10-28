@@ -9,11 +9,7 @@ import {
 } from "react";
 import { createPortal } from "react-dom";
 
-import {
-  classNames,
-  getCssDurationMs,
-  prefersReducedMotion,
-} from "../../../utils";
+import { classNames, getCssDurationMs, prefersReducedMotion } from "@/utils";
 import {
   CONTEXT_MENU_EXIT_DURATION_MS,
   CONTEXT_MENU_ITEM_SELECTOR,

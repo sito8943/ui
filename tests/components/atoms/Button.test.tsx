@@ -3,7 +3,7 @@ import userEvent from "@testing-library/user-event";
 import { type ComponentPropsWithoutRef, createRef, forwardRef } from "react";
 import { describe, expect, it, vi } from "vitest";
 
-import { Button } from "../../../src/main";
+import { Button } from "@/main";
 
 // Minimal stand-in for a router link: takes `to`, renders an anchor.
 const RouterLink = forwardRef<

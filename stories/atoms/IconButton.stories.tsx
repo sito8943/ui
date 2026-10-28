@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { type ComponentPropsWithoutRef, forwardRef } from "react";
 
-import { IconButton } from "../../src/main";
+import { IconButton } from "@/main";
 
 // Stand-in for a router `Link` (React Router, TanStack Router, ...).
 const RouterLink = forwardRef<

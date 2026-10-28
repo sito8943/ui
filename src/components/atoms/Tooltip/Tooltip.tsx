@@ -1,6 +1,6 @@
 import { useCallback, useRef, useState, type KeyboardEvent } from "react";
 
-import { classNames } from "../../../utils";
+import { classNames } from "@/utils";
 import type { TooltipProps } from "./types";
 
 export function Tooltip({

@@ -1,7 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
 
-import { Spinner } from "../../../src/main";
+import { Spinner } from "@/main";
 
 describe("Spinner", () => {
   it("exposes an accessible status when a label is provided", () => {

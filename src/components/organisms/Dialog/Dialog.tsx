@@ -12,12 +12,8 @@ import {
 } from "react";
 import { createPortal } from "react-dom";
 
-import {
-  classNames,
-  getCssDurationMs,
-  prefersReducedMotion,
-} from "../../../utils";
-import { IconButton } from "../../atoms/IconButton";
+import { classNames, getCssDurationMs, prefersReducedMotion } from "@/utils";
+import { IconButton } from "@/components/atoms/IconButton";
 import { focusableInputSelector, submitSelector } from "./constants";
 import type { DialogProps } from "./types";
 import {

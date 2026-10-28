@@ -7,8 +7,8 @@ import {
   type Ref,
 } from "react";
 
-import { classNames } from "../../../utils";
-import { Spinner } from "../Spinner";
+import { classNames } from "@/utils";
+import { Spinner } from "@/components/atoms/Spinner";
 // types
 import {
   BUTTON_COLOR_VARIANTS,

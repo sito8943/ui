@@ -1,4 +1,4 @@
-import { classNames } from "../../../utils";
+import { classNames } from "@/utils";
 import type { ContextMenuSeparatorProps } from "./types";
 
 export const ContextMenuSeparator = ({

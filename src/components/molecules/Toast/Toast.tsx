@@ -7,13 +7,9 @@ import {
   useState,
 } from "react";
 
-import {
-  classNames,
-  getCssDurationMs,
-  prefersReducedMotion,
-} from "../../../utils";
-import { Button } from "../../atoms/Button";
-import { IconButton } from "../../atoms/IconButton";
+import { classNames, getCssDurationMs, prefersReducedMotion } from "@/utils";
+import { Button } from "@/components/atoms/Button";
+import { IconButton } from "@/components/atoms/IconButton";
 import {
   DEFAULT_TOAST_DURATION_MS,
   DEFAULT_TOAST_EXIT_DURATION_MS,

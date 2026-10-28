@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 
-import { DialogActions } from "../../src/main";
+import { DialogActions } from "@/main";
 
 const meta = {
   title: "Molecules/DialogActions",

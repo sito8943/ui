@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { useState } from "react";
 
-import { Button, Dialog, DialogActions, useDialog } from "../../src/main";
+import { Button, Dialog, DialogActions, useDialog } from "@/main";
 
 const DialogDemo = () => {
   const dialog = useDialog(false);

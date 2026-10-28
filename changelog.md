@@ -27,6 +27,8 @@
   their own folders and stylesheets. Story titles move from `Primitives/…` to
   `Atoms/…`, `Molecules/…` and `Organisms/…`. Public exports, class names and
   the built `styles.css` rules are unchanged.
+- Cross-folder imports in source, tests and stories use the `@/` alias for
+  `src/` instead of `../` paths. Published files keep relative paths.
 
 ## 0.9.1 - 2026-10-27
 

@@ -1,7 +1,7 @@
 import type { ElementType, ReactNode } from "react";
 
 // types
-import type { ButtonProps } from "../Button";
+import type { ButtonProps } from "@/components/atoms/Button";
 
 export const ICON_BUTTON_SIZES = {
   SM: "sm",

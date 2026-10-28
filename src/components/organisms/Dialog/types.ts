@@ -1,6 +1,6 @@
 import type { FormEvent, ReactNode } from "react";
 
-import type { ButtonColor } from "../../atoms/Button";
+import type { ButtonColor } from "@/components/atoms/Button";
 
 export const DIALOG_INITIAL_FOCUS = {
   NONE: "none",

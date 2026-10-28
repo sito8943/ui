@@ -1,7 +1,7 @@
 import { act, render, screen } from "@testing-library/react";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
-import { Icon, IconButton } from "../../../src/main";
+import { Icon, IconButton } from "@/main";
 
 const Glyph = (props: { name: string }) => <svg data-name={props.name} />;
 

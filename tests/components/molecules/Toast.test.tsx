@@ -6,7 +6,7 @@ import {
   type ToastProviderProps,
   ToastProvider,
   useToast,
-} from "../../../src/main";
+} from "@/main";
 
 let toast: ToastFunction;
 

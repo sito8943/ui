@@ -297,6 +297,12 @@ Rules:
 - One component per file, except tightly coupled subcomponents such as
   `ContextMenuItem` may live in the same component folder.
 - A new component goes in the lowest level that fits what it composes.
+- Imports that leave the current folder use the `@/` alias for `src/`
+  (`@/utils`, `@/components/atoms/Button`); same-folder imports stay `./`.
+  Tests and stories import the package from `@/main`. CSS `@import`s stay
+  relative, because the `styles.css` build step only follows relative paths.
+  The alias is set in `tsconfig.json`, `vite.config.ts` and
+  `vitest.config.ts`; the emitted `.d.ts` files get relative paths.
 - One hook per file.
 - Reusable helpers go in `utils.ts` or `src/utils/`.
 - Constants go in `constants.ts`.

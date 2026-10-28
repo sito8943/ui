@@ -1,7 +1,7 @@
 import { useCallback, useId, useMemo, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 
-import { classNames } from "../../../utils";
+import { classNames } from "@/utils";
 import {
   DEFAULT_TOAST_DURATION_MS,
   Toast,
@@ -11,7 +11,7 @@ import {
   type ToastOptions,
   type ToastState,
   type ToastUpdate,
-} from "../../molecules/Toast";
+} from "@/components/molecules/Toast";
 import { DEFAULT_TOAST_MAX } from "./constants";
 import { ToastContext } from "./ToastContext";
 import type { ToastFunction, ToastProviderProps } from "./types";

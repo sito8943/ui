@@ -1,6 +1,6 @@
 import { type ForwardedRef, forwardRef } from "react";
 
-import { classNames } from "../../../utils";
+import { classNames } from "@/utils";
 import type { SpinnerProps } from "./types";
 
 const Spinner = forwardRef(function (

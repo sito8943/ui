@@ -1,6 +1,6 @@
 import { forwardRef } from "react";
 
-import { classNames } from "../../../utils";
+import { classNames } from "@/utils";
 import type { ContextMenuItemProps } from "./types";
 
 export const ContextMenuItem = forwardRef<

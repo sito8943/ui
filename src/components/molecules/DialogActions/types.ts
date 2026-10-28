@@ -1,6 +1,6 @@
 import type { ElementType, ReactNode } from "react";
 
-import type { ButtonProps } from "../../atoms/Button";
+import type { ButtonProps } from "@/components/atoms/Button";
 
 export type DialogActionButtonProps = ButtonProps<ElementType> & {
   id: string;

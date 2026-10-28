@@ -2,7 +2,7 @@ import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { describe, expect, it, vi } from "vitest";
 
-import { DialogActions, type DialogActionsProps } from "../../../src/main";
+import { DialogActions, type DialogActionsProps } from "@/main";
 
 const RouterLink = (_props: { to: string }) => null;
 

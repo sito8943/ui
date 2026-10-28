@@ -3,11 +3,7 @@ import { act, fireEvent, render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { describe, expect, it, vi } from "vitest";
 
-import {
-  ContextMenu,
-  ContextMenuItem,
-  ContextMenuSeparator,
-} from "../../../src/main";
+import { ContextMenu, ContextMenuItem, ContextMenuSeparator } from "@/main";
 
 const position = { x: 24, y: 32 };
 

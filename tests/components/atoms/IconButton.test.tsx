@@ -2,7 +2,7 @@ import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { describe, expect, it, vi } from "vitest";
 
-import { IconButton } from "../../../src/main";
+import { IconButton } from "@/main";
 
 describe("IconButton", () => {
   it("requires and forwards an accessible label for icon-only buttons", () => {

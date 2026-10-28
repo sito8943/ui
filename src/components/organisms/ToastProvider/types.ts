@@ -5,7 +5,7 @@ import type {
   ToastPlacement,
   ToastUpdate,
   ToastVariant,
-} from "../../molecules/Toast";
+} from "@/components/molecules/Toast";
 
 export type ToastFunction = {
   (options: ToastOptions): string;

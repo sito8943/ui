@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { useState } from "react";
 
-import { Button, Icon, IconButton } from "../../src/main";
+import { Button, Icon, IconButton } from "@/main";
 
 const Star = (props: { filled: boolean }) => (
   <svg viewBox="0 0 24 24" width="1em" height="1em" aria-hidden="true">

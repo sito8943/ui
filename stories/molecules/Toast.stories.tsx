@@ -6,7 +6,7 @@ import {
   type ToastPlacement,
   ToastProvider,
   useToast,
-} from "../../src/main";
+} from "@/main";
 
 const ColorDemo = ({ color }: { color: ToastColor }) => {
   const toast = useToast();

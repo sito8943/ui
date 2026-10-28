@@ -1,7 +1,7 @@
 import { act, renderHook } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
 
-import { useContextMenu } from "../../src/main";
+import { useContextMenu } from "@/main";
 
 describe("useContextMenu", () => {
   it("opens at a position with a payload and closes explicitly", () => {

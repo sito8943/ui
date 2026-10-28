@@ -6,11 +6,7 @@ import {
   useState,
 } from "react";
 
-import {
-  classNames,
-  getCssDurationMs,
-  prefersReducedMotion,
-} from "../../../utils";
+import { classNames, getCssDurationMs, prefersReducedMotion } from "@/utils";
 import { DEFAULT_ICON_SWAP_DURATION_MS } from "./constants";
 import type { IconProps } from "./types";
 import { isSameIcon } from "./utils";

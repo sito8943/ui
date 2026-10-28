@@ -6,10 +6,13 @@ import {
   type Ref,
 } from "react";
 
-import { classNames } from "../../../utils";
-import { type ButtonBaseProps, type ButtonRef } from "../Button";
-import { ButtonBase } from "../Button/Button";
-import { Icon } from "../Icon";
+import { classNames } from "@/utils";
+import {
+  type ButtonBaseProps,
+  type ButtonRef,
+} from "@/components/atoms/Button";
+import { ButtonBase } from "@/components/atoms/Button/Button";
+import { Icon } from "@/components/atoms/Icon";
 // types
 import {
   ICON_BUTTON_SIZES,

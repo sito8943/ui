@@ -1,5 +1,5 @@
-import { classNames } from "../../../utils";
-import { Button } from "../../atoms/Button";
+import { classNames } from "@/utils";
+import { Button } from "@/components/atoms/Button";
 import type { DialogActionsProps } from "./types";
 
 /**
