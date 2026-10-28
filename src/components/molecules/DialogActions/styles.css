@@ -1,0 +1,17 @@
+.sito-ui-dialog-actions {
+  position: sticky;
+  bottom: calc(var(--sito-ui-space-5) * -1);
+  z-index: 1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sito-ui-space-2);
+  margin-top: var(--sito-ui-space-2);
+  margin-bottom: calc(var(--sito-ui-space-5) * -1);
+  padding-top: var(--sito-ui-space-3);
+  padding-bottom: var(--sito-ui-space-5);
+  background-color: var(--sito-ui-color-surface);
+}
+
+.sito-ui-dialog-actions--end {
+  justify-content: flex-end;
+}

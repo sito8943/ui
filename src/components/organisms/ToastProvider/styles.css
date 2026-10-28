@@ -1,0 +1,41 @@
+.sito-ui-toast-viewport {
+  position: fixed;
+  z-index: var(--sito-ui-z-index-toast);
+  display: flex;
+  flex-direction: column;
+  gap: var(--sito-ui-space-2);
+  width: min(
+    var(--sito-ui-size-toast-width),
+    calc(100vw - (var(--sito-ui-space-4) * 2))
+  );
+  pointer-events: none;
+}
+
+.sito-ui-toast-viewport--top-left,
+.sito-ui-toast-viewport--top-center,
+.sito-ui-toast-viewport--top-right {
+  top: var(--sito-ui-space-4);
+  flex-direction: column-reverse;
+}
+
+.sito-ui-toast-viewport--bottom-left,
+.sito-ui-toast-viewport--bottom-center,
+.sito-ui-toast-viewport--bottom-right {
+  bottom: var(--sito-ui-space-4);
+}
+
+.sito-ui-toast-viewport--top-left,
+.sito-ui-toast-viewport--bottom-left {
+  left: var(--sito-ui-space-4);
+}
+
+.sito-ui-toast-viewport--top-right,
+.sito-ui-toast-viewport--bottom-right {
+  right: var(--sito-ui-space-4);
+}
+
+.sito-ui-toast-viewport--top-center,
+.sito-ui-toast-viewport--bottom-center {
+  left: 50%;
+  transform: translateX(-50%);
+}

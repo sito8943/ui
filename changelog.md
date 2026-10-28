@@ -10,6 +10,16 @@
   `--sito-ui-pressable-active-scale` (`0.97`). Uses the standalone `scale`
   property, so the element's own `transform` is kept.
 
+### Changed
+
+- Source, tests and stories follow atomic design: `components/atoms`
+  (`Spinner`, `Button`, `IconButton`, `Tooltip`), `components/molecules`
+  (`DialogActions`, `Toast`, `ContextMenu`) and `components/organisms`
+  (`Dialog`, `ToastProvider`). `DialogActions` and `ToastProvider` now have
+  their own folders and stylesheets. Story titles move from `Primitives/…` to
+  `Atoms/…`, `Molecules/…` and `Organisms/…`. Public exports, class names and
+  the built `styles.css` rules are unchanged.
+
 ## 0.9.1 - 2026-10-27
 
 ### Fixed

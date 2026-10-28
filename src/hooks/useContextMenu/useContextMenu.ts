@@ -1,6 +1,6 @@
 import { useCallback, useState } from "react";
 
-import type { ContextMenuPosition } from "../../components/ContextMenu";
+import type { ContextMenuPosition } from "../../components/molecules/ContextMenu";
 import type { UseContextMenuReturn } from "./types";
 
 const INITIAL_POSITION: ContextMenuPosition = { x: 0, y: 0 };

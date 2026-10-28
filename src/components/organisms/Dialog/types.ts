@@ -1,0 +1,55 @@
+import type { FormEvent, ReactNode } from "react";
+
+import type { ButtonColor } from "../../atoms/Button";
+
+export const DIALOG_INITIAL_FOCUS = {
+  NONE: "none",
+  FIRST_INPUT: "first-input",
+  SUBMIT: "submit",
+} as const;
+
+export type DialogInitialFocus =
+  (typeof DIALOG_INITIAL_FOCUS)[keyof typeof DIALOG_INITIAL_FOCUS];
+
+export type DialogState = "open" | "closing";
+
+export type DialogSubmitHandler = (
+  event: FormEvent<HTMLFormElement>,
+) => void | Promise<void>;
+
+type DialogAccessibleNameProps =
+  | {
+      title: ReactNode;
+      ariaLabel?: string;
+    }
+  | {
+      title?: undefined;
+      ariaLabel: string;
+    };
+
+type DialogBaseProps = {
+  dialogId?: string;
+  open?: boolean;
+  children?: ReactNode;
+  onClose: () => void;
+  initialFocus?: DialogInitialFocus;
+  closeOnBackdropClick?: boolean;
+  closeOnEscape?: boolean;
+  lockBodyScroll?: boolean;
+  onSubmit?: DialogSubmitHandler;
+  mobileFullScreen?: boolean;
+  containerClassName?: string;
+  className?: string;
+  headerClassName?: string;
+  titleClassName?: string;
+  closeButtonClassName?: string;
+  closeButtonColor?: ButtonColor;
+  closeLabel?: string;
+  closeIcon?: ReactNode;
+  showCloseButton?: boolean;
+  portalContainer?: Element | DocumentFragment | null;
+  exitDurationMs?: number;
+  onExitComplete?: () => void;
+};
+
+export type DialogProps = DialogBaseProps & DialogAccessibleNameProps;

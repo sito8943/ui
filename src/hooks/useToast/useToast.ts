@@ -1,7 +1,7 @@
 import { useContext } from "react";
 
-import { ToastContext } from "../../components/Toast/ToastContext";
-import type { ToastFunction } from "../../components/Toast/types";
+import { ToastContext } from "../../components/organisms/ToastProvider/ToastContext";
+import type { ToastFunction } from "../../components/organisms/ToastProvider/types";
 
 /**
  * Returns the `toast` function of the nearest `ToastProvider`.
