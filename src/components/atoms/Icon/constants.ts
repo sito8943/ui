@@ -1,0 +1,1 @@
+export const DEFAULT_ICON_SWAP_DURATION_MS = 200;

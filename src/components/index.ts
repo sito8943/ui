@@ -1,3 +1,4 @@
+// Atoms
 export type {
   ButtonBaseProps,
   ButtonColor,
@@ -6,59 +7,70 @@ export type {
   ButtonRef,
   ButtonSize,
   ButtonVariant,
-} from "./Button";
+} from "./atoms/Button";
 export {
   Button,
   BUTTON_COLOR_VARIANTS,
   BUTTON_SIZES,
   BUTTON_VARIANTS,
-} from "./Button";
+} from "./atoms/Button";
+export type {
+  IconButtonOwnProps,
+  IconButtonProps,
+  IconButtonSize,
+} from "./atoms/IconButton";
+export { IconButton, ICON_BUTTON_SIZES } from "./atoms/IconButton";
+export type { IconProps } from "./atoms/Icon";
+export { Icon } from "./atoms/Icon";
+export type { SpinnerProps } from "./atoms/Spinner";
+export { Spinner } from "./atoms/Spinner";
+export type { TooltipAlign, TooltipProps, TooltipSide } from "./atoms/Tooltip";
+export { Tooltip } from "./atoms/Tooltip";
+
+// Molecules
 export type {
   ContextMenuItemProps,
   ContextMenuPosition,
   ContextMenuProps,
   ContextMenuSeparatorProps,
-} from "./ContextMenu";
+} from "./molecules/ContextMenu";
 export {
   ContextMenu,
   ContextMenuItem,
   ContextMenuSeparator,
-} from "./ContextMenu";
+} from "./molecules/ContextMenu";
 export type {
   DialogActionButtonProps,
   DialogActionsProps,
-  DialogInitialFocus,
-  DialogProps,
-  DialogState,
-  DialogSubmitHandler,
-} from "./Dialog";
-export { Dialog, DialogActions, DIALOG_INITIAL_FOCUS } from "./Dialog";
-export type {
-  IconButtonOwnProps,
-  IconButtonProps,
-  IconButtonSize,
-} from "./IconButton";
-export { IconButton, ICON_BUTTON_SIZES } from "./IconButton";
-export type { TooltipAlign, TooltipProps, TooltipSide } from "./Tooltip";
-export { Tooltip } from "./Tooltip";
+} from "./molecules/DialogActions";
+export { DialogActions } from "./molecules/DialogActions";
 export type {
   ToastAction,
   ToastColor,
-  ToastFunction,
   ToastOptions,
   ToastPlacement,
   ToastProps,
-  ToastProviderProps,
   ToastState,
   ToastVariant,
   ToastUpdate,
-} from "./Toast";
+} from "./molecules/Toast";
 export {
   Toast,
   TOAST_COLORS,
   TOAST_PLACEMENTS,
   TOAST_VARIANTS,
-  ToastProvider,
-} from "./Toast";
-export type { SpinnerProps } from "./Spinner";
-export { Spinner } from "./Spinner";
+} from "./molecules/Toast";
+
+// Organisms
+export type {
+  DialogInitialFocus,
+  DialogProps,
+  DialogState,
+  DialogSubmitHandler,
+} from "./organisms/Dialog";
+export { Dialog, DIALOG_INITIAL_FOCUS } from "./organisms/Dialog";
+export type {
+  ToastFunction,
+  ToastProviderProps,
+} from "./organisms/ToastProvider";
+export { ToastProvider } from "./organisms/ToastProvider";

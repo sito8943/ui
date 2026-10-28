@@ -52,7 +52,7 @@ const styleEntrypoints = () => ({
 export default defineConfig({
   resolve: {
     alias: {
-      components: resolve(srcPath, "components"),
+      "@": srcPath,
     },
   },
   plugins: [react(), dts({ insertTypesEntry: true }), styleEntrypoints()],

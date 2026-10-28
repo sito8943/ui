@@ -1,5 +1,35 @@
 # Changelog
 
+## 0.10.0 - 2026-10-28
+
+### Added
+
+- `sito-ui-pressable` utility class: gives any clickable element the same
+  press feedback as `Button` (scale while `:active`, skipped when disabled or
+  `aria-disabled="true"`, off with reduced motion). Tuned with
+  `--sito-ui-pressable-active-scale` (`0.97`). Uses the standalone `scale`
+  property, so the element's own `transform` is kept.
+- `Icon` atom: renders any glyph and blurs between glyphs when it changes
+  (old glyph fades out with blur, new one fades in). Same glyph re-renders do
+  not animate; `iconKey` sets the identity explicitly. Tuned with
+  `--sito-ui-icon-swap-duration` (`200ms`), `--sito-ui-icon-swap-blur` (`4px`)
+  and `--sito-ui-icon-swap-scale` (`0.8`); reduced motion swaps at once.
+  Decorative unless it gets a `label`.
+- `IconButton` renders its `icon` through `Icon`, so icon toggles animate, and
+  takes `iconKey`.
+
+### Changed
+
+- Source, tests and stories follow atomic design: `components/atoms`
+  (`Spinner`, `Button`, `IconButton`, `Tooltip`), `components/molecules`
+  (`DialogActions`, `Toast`, `ContextMenu`) and `components/organisms`
+  (`Dialog`, `ToastProvider`). `DialogActions` and `ToastProvider` now have
+  their own folders and stylesheets. Story titles move from `Primitives/…` to
+  `Atoms/…`, `Molecules/…` and `Organisms/…`. Public exports, class names and
+  the built `styles.css` rules are unchanged.
+- Cross-folder imports in source, tests and stories use the `@/` alias for
+  `src/` instead of `../` paths. Published files keep relative paths.
+
 ## 0.9.1 - 2026-10-27
 
 ### Fixed

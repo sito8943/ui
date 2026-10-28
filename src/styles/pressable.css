@@ -1,0 +1,20 @@
+/* Press feedback for any clickable element, matching Button's :active scale.
+   Uses the standalone `scale` property so consumer `transform`s are kept. */
+.sito-ui-pressable {
+  transition: scale var(--sito-ui-motion-duration-press)
+    var(--sito-ui-motion-easing-press);
+}
+
+.sito-ui-pressable:not(:disabled):not([aria-disabled="true"]):active {
+  scale: var(--sito-ui-pressable-active-scale);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sito-ui-pressable {
+    transition: none;
+  }
+
+  .sito-ui-pressable:not(:disabled):not([aria-disabled="true"]):active {
+    scale: none;
+  }
+}

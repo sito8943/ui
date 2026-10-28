@@ -31,6 +31,7 @@ import {
   Dialog,
   DialogActions,
   DIALOG_INITIAL_FOCUS,
+  Icon,
   IconButton,
   ICON_BUTTON_SIZES,
   Spinner,
@@ -51,7 +52,8 @@ and `TOAST_PLACEMENTS` expose the
 supported values for public component contracts.
 
 Exported types include `ButtonProps`, `ButtonSize`, `IconButtonProps`,
-`DialogProps`, `DialogActionsProps`, `DialogState`, `IconButtonSize`, and
+`DialogProps`, `DialogActionsProps`, `DialogState`, `IconProps`,
+`IconButtonSize`, and
 `SpinnerProps`, `UseDialogReturn`, `ToastOptions`, `ToastFunction`,
 `ToastProviderProps`, plus the corresponding context-menu props and hook return
 types.
@@ -118,6 +120,27 @@ the default size.
 <Button size="md">Medium</Button>
 <Button size="lg">Large</Button>
 ```
+
+## Icon
+
+`Icon` renders any glyph (SVG, icon-font element, text) and blurs between
+glyphs when it changes. `IconButton` renders its `icon` through `Icon`, so
+toggles such as star/unstar animate with no extra code.
+
+```tsx
+<Icon icon={<FontAwesomeIcon icon={starred ? faStar : faStarOutline} />} />
+<IconButton aria-label="Star" icon={<StarIcon filled={starred} />} />
+```
+
+A swap happens when the glyph's element type, key or props change (compared
+deeply, so re-rendering the same icon does not animate). Pass `iconKey` (on
+`Icon` or `IconButton`) to set the identity yourself: then only a new `iconKey`
+animates. `Icon` is decorative (`aria-hidden`) unless it gets a `label`.
+
+The old glyph fades out with blur while the new one fades in, over
+`--sito-ui-icon-swap-duration` (`200ms`), blurring by `--sito-ui-icon-swap-blur`
+(`4px`) and scaling from `--sito-ui-icon-swap-scale` (`0.8`). With
+`prefers-reduced-motion: reduce`, the glyph swaps at once.
 
 ## Icon Button Sizes
 
@@ -223,6 +246,25 @@ press transition uses `--sito-ui-motion-duration-press` (`100ms`) and
 feedback. With `prefers-reduced-motion: reduce`, the press scale and its
 transition are disabled. The spinner keeps spinning at its reduced-motion
 duration.
+
+### Pressable
+
+Add `sito-ui-pressable` to any clickable element (cards, list rows, custom
+controls) to get the same press feedback:
+
+```tsx
+<div className="sito-ui-pressable" role="button" tabIndex={0}>
+  Open
+</div>
+```
+
+It scales to `--sito-ui-pressable-active-scale` (`0.97`) while `:active`,
+skips `:disabled` and `aria-disabled="true"` elements, and turns off with
+`prefers-reduced-motion: reduce`. It uses the standalone `scale` property, so
+the element's own `transform` is kept. It sets `transition`; if the element
+declares its own, add
+`scale var(--sito-ui-motion-duration-press) var(--sito-ui-motion-easing-press)`
+to it.
 
 ## Buttons as Links
 

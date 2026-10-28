@@ -1,4 +1,4 @@
-import type { ContextMenuPosition } from "../../components/ContextMenu";
+import type { ContextMenuPosition } from "@/components/molecules/ContextMenu";
 
 export type UseContextMenuReturn<T> = {
   open: boolean;

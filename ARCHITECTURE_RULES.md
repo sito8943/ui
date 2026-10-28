@@ -15,6 +15,7 @@ packages.
 ```txt
 @sito/ui
   Button
+  Icon
   IconButton
   Spinner
   Dialog
@@ -214,52 +215,73 @@ When in doubt, add or reuse a token.
 
 ## 8) Folder Structure
 
-The library is primitive-oriented, not feature-sliced.
+The library is primitive-oriented, not feature-sliced. Components are grouped
+by atomic design level, decided by what they compose:
+
+- `atoms/`: standalone primitives (`Spinner`, `Icon`, `Button`, `IconButton`,
+  `Tooltip`). An atom may build on another atom's internals (`Button` renders
+  `Spinner`, `IconButton` extends `ButtonBase` and renders `Icon`).
+- `molecules/`: primitives composed from atoms or from several small parts
+  (`DialogActions`, `Toast`, `ContextMenu` with its items).
+- `organisms/`: full interaction surfaces or providers that compose molecules
+  and atoms (`Dialog`, `ToastProvider`).
+- No `templates/` or `pages/`: page layouts and app workflows do not belong in
+  this package (see section 2).
+
+Imports only point down or sideways within a level: organisms may import
+molecules and atoms, molecules may import atoms, atoms never import molecules
+or organisms.
 
 ```txt
 src/
   components/
-    Button/
-      Button.tsx
-      styles.css
-      types.ts
-      index.ts
-    IconButton/
-      IconButton.tsx
-      styles.css
-      types.ts
-      index.ts
-    Spinner/
-      Spinner.tsx
-      styles.css
-      types.ts
-      index.ts
-    Dialog/
-      Dialog.tsx
-      DialogActions.tsx
-      styles.css
-      types.ts
-      utils.ts
-      index.ts
-    ContextMenu/
-      ContextMenu.tsx
-      ContextMenuItem.tsx
-      ContextMenuSeparator.tsx
-      styles.css
-      types.ts
-      constants.ts
-      index.ts
+    atoms/
+      Button/
+        Button.tsx
+        styles.css
+        types.ts
+        index.ts
+      Icon/
+      IconButton/
+      Spinner/
+      Tooltip/
+    molecules/
+      ContextMenu/
+        ContextMenu.tsx
+        ContextMenuItem.tsx
+        ContextMenuSeparator.tsx
+        styles.css
+        types.ts
+        constants.ts
+        index.ts
+      DialogActions/
+      Toast/
+    organisms/
+      Dialog/
+        Dialog.tsx
+        styles.css
+        types.ts
+        utils.ts
+        constants.ts
+        index.ts
+      ToastProvider/
+        ToastProvider.tsx
+        ToastContext.ts
+        styles.css
+        types.ts
+        constants.ts
+        index.ts
+    index.ts
   hooks/
     useDialog/
       useDialog.ts
       types.ts
       index.ts
     useContextMenu/
-      useContextMenu.ts
-      types.ts
-      index.ts
+    useToast/
   styles/
     theme.css
+    pressable.css
     styles.css
   utils/
     classNames.ts
@@ -267,10 +289,20 @@ src/
   main.ts
 ```
 
+Tests and stories mirror the levels: `tests/components/<level>/` and
+`stories/<level>/`, with story titles `Atoms/…`, `Molecules/…`, `Organisms/…`.
+
 Rules:
 
 - One component per file, except tightly coupled subcomponents such as
-  `DialogActions` may live in the same component folder.
+  `ContextMenuItem` may live in the same component folder.
+- A new component goes in the lowest level that fits what it composes.
+- Imports that leave the current folder use the `@/` alias for `src/`
+  (`@/utils`, `@/components/atoms/Button`); same-folder imports stay `./`.
+  Tests and stories import the package from `@/main`. CSS `@import`s stay
+  relative, because the `styles.css` build step only follows relative paths.
+  The alias is set in `tsconfig.json`, `vite.config.ts` and
+  `vitest.config.ts`; the emitted `.d.ts` files get relative paths.
 - One hook per file.
 - Reusable helpers go in `utils.ts` or `src/utils/`.
 - Constants go in `constants.ts`.

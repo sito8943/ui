@@ -114,6 +114,10 @@
   --sito-ui-context-menu-disabled-opacity: 0.5;
   --sito-ui-button-active-scale: 0.97;
   --sito-ui-icon-button-active-scale: 0.9;
+  --sito-ui-pressable-active-scale: 0.97;
+  --sito-ui-icon-swap-duration: 200ms;
+  --sito-ui-icon-swap-blur: 4px;
+  --sito-ui-icon-swap-scale: 0.8;
   --sito-ui-dialog-backdrop-background: rgb(16 24 40 / 20%);
   --sito-ui-dialog-backdrop-filter: blur(1rem);
 }
