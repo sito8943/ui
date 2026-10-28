@@ -1,5 +1,5 @@
-import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
-import { dirname, resolve } from "node:path";
+import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
+import { dirname, relative, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 
 import react from "@vitejs/plugin-react";
@@ -48,6 +48,28 @@ const styleEntrypoints = () => ({
   },
 });
 
+const sourceExists = (path: string) =>
+  [".ts", ".tsx", ".d.ts"].some((ext) => existsSync(`${path}${ext}`));
+
+// Resolve a relative .d.ts specifier against src/ and add the extension
+// required by moduleResolution node16/nodenext.
+const withJsExtension = (filePath: string, specifier: string) => {
+  const sourceDir = resolve(srcPath, relative(distPath, dirname(filePath)));
+  const target = resolve(sourceDir, specifier);
+  if (sourceExists(target)) return `${specifier}.js`;
+  if (sourceExists(resolve(target, "index"))) return `${specifier}/index.js`;
+  return specifier;
+};
+
+const addDtsExtensions = (filePath: string, content: string) =>
+  content.replace(
+    /(\bfrom\s*|\bimport\s*\(\s*)(["'])(\.{1,2}\/[^"']+?)\2/g,
+    (match, prefix: string, quote: string, specifier: string) =>
+      /\.(c|m)?js$/.test(specifier)
+        ? match
+        : `${prefix}${quote}${withJsExtension(filePath, specifier)}${quote}`,
+  );
+
 // https://vite.dev/config/
 export default defineConfig({
   resolve: {
@@ -55,7 +77,17 @@ export default defineConfig({
       "@": srcPath,
     },
   },
-  plugins: [react(), dts({ insertTypesEntry: true }), styleEntrypoints()],
+  plugins: [
+    react(),
+    dts({
+      insertTypesEntry: true,
+      beforeWriteFile: (filePath, content) => ({
+        filePath,
+        content: addDtsExtensions(filePath, content),
+      }),
+    }),
+    styleEntrypoints(),
+  ],
   build: {
     copyPublicDir: false,
     target: "es2020",
