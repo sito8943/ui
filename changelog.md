@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.10.0 - 2026-10-28
+
+### Added
+
+- `sito-ui-pressable` utility class: gives any clickable element the same
+  press feedback as `Button` (scale while `:active`, skipped when disabled or
+  `aria-disabled="true"`, off with reduced motion). Tuned with
+  `--sito-ui-pressable-active-scale` (`0.97`). Uses the standalone `scale`
+  property, so the element's own `transform` is kept.
+
 ## 0.9.1 - 2026-10-27
 
 ### Fixed
