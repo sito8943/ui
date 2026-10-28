@@ -114,6 +114,7 @@
   --sito-ui-context-menu-disabled-opacity: 0.5;
   --sito-ui-button-active-scale: 0.97;
   --sito-ui-icon-button-active-scale: 0.9;
+  --sito-ui-pressable-active-scale: 0.97;
   --sito-ui-dialog-backdrop-background: rgb(16 24 40 / 20%);
   --sito-ui-dialog-backdrop-filter: blur(1rem);
 }

@@ -224,6 +224,25 @@ feedback. With `prefers-reduced-motion: reduce`, the press scale and its
 transition are disabled. The spinner keeps spinning at its reduced-motion
 duration.
 
+### Pressable
+
+Add `sito-ui-pressable` to any clickable element (cards, list rows, custom
+controls) to get the same press feedback:
+
+```tsx
+<div className="sito-ui-pressable" role="button" tabIndex={0}>
+  Open
+</div>
+```
+
+It scales to `--sito-ui-pressable-active-scale` (`0.97`) while `:active`,
+skips `:disabled` and `aria-disabled="true"` elements, and turns off with
+`prefers-reduced-motion: reduce`. It uses the standalone `scale` property, so
+the element's own `transform` is kept. It sets `transition`; if the element
+declares its own, add
+`scale var(--sito-ui-motion-duration-press) var(--sito-ui-motion-easing-press)`
+to it.
+
 ## Buttons as Links
 
 `Button` and `IconButton` render a native `<button>` by default. Use `as` to
