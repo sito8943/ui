@@ -1,6 +1,7 @@
 @import "./theme.css";
 @import "./pressable.css";
 @import "../components/atoms/Spinner/styles.css";
+@import "../components/atoms/Icon/styles.css";
 @import "../components/atoms/Button/styles.css";
 @import "../components/atoms/IconButton/styles.css";
 @import "../components/atoms/Tooltip/styles.css";

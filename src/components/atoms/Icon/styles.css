@@ -1,0 +1,53 @@
+.sito-ui-icon {
+  position: relative;
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+
+.sito-ui-icon__glyph {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sito-ui-icon__glyph--enter {
+  animation: sito-ui-icon-enter var(--sito-ui-icon-swap-duration)
+    var(--sito-ui-motion-easing-standard) both;
+}
+
+.sito-ui-icon__glyph--exit {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  animation: sito-ui-icon-exit var(--sito-ui-icon-swap-duration)
+    var(--sito-ui-motion-easing-standard) forwards;
+}
+
+@keyframes sito-ui-icon-enter {
+  from {
+    opacity: 0;
+    filter: blur(var(--sito-ui-icon-swap-blur));
+    scale: var(--sito-ui-icon-swap-scale);
+  }
+}
+
+@keyframes sito-ui-icon-exit {
+  to {
+    opacity: 0;
+    filter: blur(var(--sito-ui-icon-swap-blur));
+    scale: var(--sito-ui-icon-swap-scale);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sito-ui-icon__glyph--enter {
+    animation: none;
+  }
+
+  .sito-ui-icon__glyph--exit {
+    display: none;
+  }
+}

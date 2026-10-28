@@ -24,6 +24,8 @@ type IconButtonAccessibleLabelProps =
 
 export type IconButtonOwnProps = {
   icon: ReactNode;
+  /** Identity of `icon`; see `IconProps.iconKey`. */
+  iconKey?: string | number;
   iconClassName?: string;
   iconSize?: number | string;
   size?: IconButtonSize;

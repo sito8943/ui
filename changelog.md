@@ -9,6 +9,14 @@
   `aria-disabled="true"`, off with reduced motion). Tuned with
   `--sito-ui-pressable-active-scale` (`0.97`). Uses the standalone `scale`
   property, so the element's own `transform` is kept.
+- `Icon` atom: renders any glyph and blurs between glyphs when it changes
+  (old glyph fades out with blur, new one fades in). Same glyph re-renders do
+  not animate; `iconKey` sets the identity explicitly. Tuned with
+  `--sito-ui-icon-swap-duration` (`200ms`), `--sito-ui-icon-swap-blur` (`4px`)
+  and `--sito-ui-icon-swap-scale` (`0.8`); reduced motion swaps at once.
+  Decorative unless it gets a `label`.
+- `IconButton` renders its `icon` through `Icon`, so icon toggles animate, and
+  takes `iconKey`.
 
 ### Changed
 

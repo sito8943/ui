@@ -9,6 +9,7 @@ import {
 import { classNames } from "../../../utils";
 import { type ButtonBaseProps, type ButtonRef } from "../Button";
 import { ButtonBase } from "../Button/Button";
+import { Icon } from "../Icon";
 // types
 import {
   ICON_BUTTON_SIZES,
@@ -43,6 +44,7 @@ function IconButtonBase(props: IconButtonImplProps) {
   const {
     children,
     icon,
+    iconKey,
     iconClassName,
     variant = "text",
     color = "default",
@@ -84,12 +86,11 @@ function IconButtonBase(props: IconButtonImplProps) {
       style={iconButtonStyle}
     >
       {loading ? null : (
-        <span
+        <Icon
+          icon={icon}
+          iconKey={iconKey}
           className={classNames("sito-ui-icon-button__icon", iconClassName)}
-          aria-hidden="true"
-        >
-          {icon}
-        </span>
+        />
       )}
       {children}
     </ButtonBase>

@@ -13,7 +13,10 @@ describe("IconButton", () => {
     expect(button).toHaveAttribute("data-sito-ui", "icon-button");
     expect(button).toHaveClass("sito-ui-icon-button--md");
     expect(button).not.toHaveClass("sito-ui-icon-button--with-content");
-    expect(screen.getByText("x")).toHaveAttribute("aria-hidden", "true");
+    expect(screen.getByText("x").closest(".sito-ui-icon")).toHaveAttribute(
+      "aria-hidden",
+      "true",
+    );
   });
 
   it("applies container size separately from icon size", () => {

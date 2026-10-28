@@ -20,6 +20,8 @@ export type {
   IconButtonSize,
 } from "./atoms/IconButton";
 export { IconButton, ICON_BUTTON_SIZES } from "./atoms/IconButton";
+export type { IconProps } from "./atoms/Icon";
+export { Icon } from "./atoms/Icon";
 export type { SpinnerProps } from "./atoms/Spinner";
 export { Spinner } from "./atoms/Spinner";
 export type { TooltipAlign, TooltipProps, TooltipSide } from "./atoms/Tooltip";

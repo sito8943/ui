@@ -15,6 +15,7 @@ packages.
 ```txt
 @sito/ui
   Button
+  Icon
   IconButton
   Spinner
   Dialog
@@ -217,9 +218,9 @@ When in doubt, add or reuse a token.
 The library is primitive-oriented, not feature-sliced. Components are grouped
 by atomic design level, decided by what they compose:
 
-- `atoms/`: standalone primitives (`Spinner`, `Button`, `IconButton`,
+- `atoms/`: standalone primitives (`Spinner`, `Icon`, `Button`, `IconButton`,
   `Tooltip`). An atom may build on another atom's internals (`Button` renders
-  `Spinner`, `IconButton` extends `ButtonBase`).
+  `Spinner`, `IconButton` extends `ButtonBase` and renders `Icon`).
 - `molecules/`: primitives composed from atoms or from several small parts
   (`DialogActions`, `Toast`, `ContextMenu` with its items).
 - `organisms/`: full interaction surfaces or providers that compose molecules
@@ -240,6 +241,7 @@ src/
         styles.css
         types.ts
         index.ts
+      Icon/
       IconButton/
       Spinner/
       Tooltip/
