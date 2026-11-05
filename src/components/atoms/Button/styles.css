@@ -44,7 +44,7 @@
       var(--sito-ui-motion-easing-standard),
     backdrop-filter var(--sito-ui-motion-duration-normal)
       var(--sito-ui-motion-easing-standard),
-    transform var(--sito-ui-motion-duration-press)
+    scale var(--sito-ui-motion-duration-press)
       var(--sito-ui-motion-easing-press);
   text-decoration: none;
 }
@@ -163,8 +163,11 @@
   background-color: var(--sito-ui-button-hover);
 }
 
+/* The standalone `scale` property, not `transform`: a consumer `transform`
+   (e.g. `translateY(-50%)` to centre an icon button inside an input) is kept
+   while pressed instead of being replaced. */
 .sito-ui-button:not(:disabled):not([aria-disabled="true"]):active {
-  transform: scale(var(--sito-ui-button-active-scale));
+  scale: var(--sito-ui-button-active-scale);
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -175,7 +178,7 @@
   }
 
   .sito-ui-button:not(:disabled):not([aria-disabled="true"]):active {
-    transform: none;
+    scale: none;
   }
 }
 

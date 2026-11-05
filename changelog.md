@@ -1,5 +1,15 @@
 # Changelog
 
+## Unreleased
+
+### Fixed
+
+- `Button` (and `IconButton`) press feedback uses the standalone `scale`
+  property instead of `transform`, like `sito-ui-pressable`. A consumer
+  `transform` is now kept while the button is pressed: an icon button centred
+  with `translateY(-50%)` (e.g. a password toggle) no longer drops half its
+  height on press, also with reduced motion.
+
 ## 0.10.1 - 2026-10-28
 
 ### Fixed
