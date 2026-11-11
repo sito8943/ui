@@ -15,7 +15,7 @@ export type ToastFunction = {
 
 export type ToastProviderProps = {
   children?: ReactNode;
-  /** Default visual variant for toasts. Defaults to `accent`. */
+  /** Default visual variant for toasts. Defaults to `filled`. */
   variant?: ToastVariant;
   placement?: ToastPlacement;
   /** Default duration in ms for non-error toasts. */

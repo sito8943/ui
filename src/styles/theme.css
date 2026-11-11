@@ -93,6 +93,7 @@
   --sito-ui-dialog-enter-transform: translateY(8px) scale(0.98);
   --sito-ui-toast-enter-duration: 180ms;
   --sito-ui-toast-exit-duration: 180ms;
+  --sito-ui-toast-icon-exit-duration: 600ms;
   --sito-ui-motion-duration-press: 100ms;
   --sito-ui-motion-duration-spinner: 600ms;
   --sito-ui-motion-duration-spinner-reduced: 1500ms;

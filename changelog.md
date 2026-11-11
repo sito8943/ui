@@ -2,6 +2,18 @@
 
 ## Unreleased
 
+### Changed
+
+- `Toast` and `ToastProvider` default to the `filled` variant: success, error,
+  warning and info toasts take their color as background instead of a colored
+  stripe. Filled toasts (including `default`) have no accent stripe, only the
+  thin border. Pass `variant="accent"` to keep the stripe.
+- A toast updated in place (e.g. "Saving…" → "Saved") fades to its new
+  color instead of switching at once; no transition with `prefers-reduced-motion`.
+- A removed toast icon (e.g. the spinner when "Saving…" becomes "Saved")
+  shrinks and fades out while the message slides into its place
+  (`--sito-ui-toast-icon-exit-duration`, 600ms).
+
 ### Added
 
 - `Toast` `color: "info"` (`TOAST_COLORS.INFO`), using the

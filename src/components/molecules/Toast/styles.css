@@ -17,6 +17,15 @@
   color: var(--sito-ui-color-text);
   box-shadow: var(--sito-ui-shadow-toast);
   pointer-events: auto;
+  /* An update in place (e.g. Saving… → Saved) fades to its new color. */
+  transition-property: background-color, border-color, color;
+  transition-duration: var(--sito-ui-motion-duration-normal, 300ms);
+  transition-timing-function: var(--sito-ui-motion-easing-standard, ease);
+}
+
+.sito-ui-toast :is(.sito-ui-toast__action, .sito-ui-toast__close) {
+  transition: color var(--sito-ui-motion-duration-normal, 300ms)
+    var(--sito-ui-motion-easing-standard, ease);
 }
 
 .sito-ui-toast--success {
@@ -33,6 +42,12 @@
 
 .sito-ui-toast--info {
   --sito-ui-toast-accent: var(--sito-ui-color-info-default);
+}
+
+/* Filled toasts have no accent stripe: a plain thin border all round. */
+.sito-ui-toast--filled {
+  border-left: var(--sito-ui-border-width-thin) solid
+    var(--sito-ui-color-border);
 }
 
 .sito-ui-toast--filled.sito-ui-toast--success,
@@ -101,9 +116,28 @@
 }
 
 .sito-ui-toast__icon {
-  display: inline-flex;
+  display: inline-grid;
   flex: none;
+  grid-template-columns: 1fr;
+  align-items: center;
   color: var(--sito-ui-toast-accent);
+  transition-property: grid-template-columns, margin, opacity, transform, color;
+  transition-duration: var(--sito-ui-toast-icon-exit-duration, 600ms);
+  transition-timing-function: var(--sito-ui-motion-easing-standard, ease);
+}
+
+.sito-ui-toast__icon-content {
+  display: inline-flex;
+  min-width: 0;
+  overflow: hidden;
+}
+
+/* A removed icon shrinks and fades; the message slides into its place. */
+.sito-ui-toast__icon--leaving {
+  grid-template-columns: 0fr;
+  margin-inline-end: calc(var(--sito-ui-space-2) * -1);
+  opacity: 0;
+  transform: scale(0.6);
 }
 
 .sito-ui-toast__message {
@@ -142,5 +176,11 @@
 @media (prefers-reduced-motion: reduce) {
   .sito-ui-toast {
     animation: none !important;
+  }
+
+  /* No color fade either; a spinner inside keeps its own reduced animation. */
+  .sito-ui-toast,
+  .sito-ui-toast * {
+    transition: none !important;
   }
 }
