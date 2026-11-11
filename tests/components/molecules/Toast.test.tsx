@@ -219,6 +219,16 @@ describe("ToastProvider", () => {
       "useToast must be used inside a ToastProvider.",
     );
   });
+  it("renders info toasts as status with the info color", () => {
+    renderProvider({ variant: "filled" });
+
+    show({ message: "New version available", color: "info" });
+
+    const status = screen.getByRole("status");
+    expect(status).toHaveAttribute("data-color", "info");
+    expect(status).toHaveClass("sito-ui-toast--info", "sito-ui-toast--filled");
+  });
+
   it("uses the accent variant unless a toast or the provider asks for filled", () => {
     renderProvider();
 
