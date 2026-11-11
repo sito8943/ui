@@ -88,7 +88,7 @@ const meta = {
     },
     color: {
       control: "select",
-      options: ["default", "success", "error", "warning"],
+      options: ["default", "success", "error", "warning", "info"],
     },
   },
   render: ({ placement, demo, color }) => (
@@ -109,5 +109,6 @@ export const Default: Story = { args: { color: "default" } };
 export const Success: Story = { args: { color: "success" } };
 export const Error: Story = { args: { color: "error" } };
 export const Warning: Story = { args: { color: "warning" } };
+export const Info: Story = { args: { color: "info" } };
 export const WithAction: Story = { args: { demo: "action" } };
 export const UpdateInPlace: Story = { args: { demo: "update" } };

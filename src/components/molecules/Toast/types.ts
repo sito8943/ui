@@ -5,6 +5,7 @@ export const TOAST_COLORS = {
   SUCCESS: "success",
   ERROR: "error",
   WARNING: "warning",
+  INFO: "info",
 } as const;
 
 export type ToastColor = (typeof TOAST_COLORS)[keyof typeof TOAST_COLORS];

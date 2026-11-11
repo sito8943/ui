@@ -1,5 +1,12 @@
 # Changelog
 
+## Unreleased
+
+### Added
+
+- `Toast` `color: "info"` (`TOAST_COLORS.INFO`), using the
+  `--sito-ui-color-info-*` tokens in the accent and filled variants.
+
 ## 0.10.3 - 2026-11-11
 
 ### Fixed

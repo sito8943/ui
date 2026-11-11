@@ -205,9 +205,9 @@ toast({
 toast.dismiss(id);
 ```
 
-- `color`: `default`, `success`, `error`, or `warning`. `icon` adds a leading
-  icon. `variant` can be `accent` (default) or `filled`; filled success, error
-  and warning toasts use the matching `--sito-ui-color-*-default` background
+- `color`: `default`, `success`, `error`, `warning`, or `info`. `icon` adds a
+  leading icon. `variant` can be `accent` (default) or `filled`; filled success,
+  error, warning and info toasts use the matching `--sito-ui-color-*-default` background
   and `--sito-ui-color-*-text` foreground tokens. Toasts with
   `color: "default"` keep their surface appearance with either variant.
 - `duration` in ms; `0` or `Infinity` keeps the toast until it is dismissed.
@@ -223,7 +223,7 @@ toast.dismiss(id);
   `"Notifications"`), `closeLabel`, `closeIcon`, `viewportClassName`,
   `toastClassName`, and `portalContainer`.
 
-The viewport is a polite live region. Default, success and warning toasts use
+The viewport is a polite live region. Default, success, warning and info toasts use
 `role="status"`; errors use `role="alert"`. Hovering or focusing a toast pauses
 its timer, and Escape dismisses the focused toast. Toasts animate in and out
 and skip the animation with `prefers-reduced-motion`. Tune them with
