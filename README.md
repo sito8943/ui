@@ -227,7 +227,7 @@ The viewport is a polite live region. Default, success and warning toasts use
 `role="status"`; errors use `role="alert"`. Hovering or focusing a toast pauses
 its timer, and Escape dismisses the focused toast. Toasts animate in and out
 and skip the animation with `prefers-reduced-motion`. Tune them with
-`--sito-ui-size-toast-width`, `--sito-ui-radius-toast`,
+`--sito-ui-size-toast-width` (min), `--sito-ui-size-toast-max-width`, `--sito-ui-radius-toast`,
 `--sito-ui-shadow-toast`, `--sito-ui-z-index-toast`,
 `--sito-ui-toast-enter-duration`, `--sito-ui-toast-exit-duration`, and
 `--sito-ui-toast-accent-width` (defaults to four thin borders). To remove the

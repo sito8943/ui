@@ -1,5 +1,14 @@
 # Changelog
 
+## Unreleased
+
+### Fixed
+
+- Toasts grow with their message instead of a fixed 22rem width, so short
+  messages stay on one line when there is room. Width goes from
+  `--sito-ui-size-toast-width` (min, 22rem) to the new
+  `--sito-ui-size-toast-max-width` (28rem), capped by the screen width.
+
 ## 0.10.2 - 2026-11-05
 
 ### Fixed
