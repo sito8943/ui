@@ -4,8 +4,15 @@
   display: flex;
   flex-direction: column;
   gap: var(--sito-ui-space-2);
-  width: min(
+  /* Grows with the message so short texts stay on one line when there is
+     room; wraps only past the max width or the screen edge. */
+  width: max-content;
+  min-width: min(
     var(--sito-ui-size-toast-width),
+    calc(100vw - (var(--sito-ui-space-4) * 2))
+  );
+  max-width: min(
+    var(--sito-ui-size-toast-max-width),
     calc(100vw - (var(--sito-ui-space-4) * 2))
   );
   pointer-events: none;
