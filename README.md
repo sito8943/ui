@@ -195,8 +195,18 @@ Wrap the app in `ToastProvider` once, then call `useToast()` anywhere below it:
 
 const toast = useToast();
 
-const id = toast({ message: "Saving…", duration: 0, dismissible: false });
-toast.update(id, { message: "Saved", color: "success", duration: 3000 });
+const id = toast({
+  message: "Saving…",
+  icon: <Spinner />,
+  duration: 0,
+  dismissible: false,
+});
+toast.update(id, {
+  message: "Saved",
+  icon: null,
+  color: "success",
+  duration: 3000,
+});
 toast({ message: "Not saved", color: "error" });
 toast({
   message: "Slide deleted",
@@ -206,7 +216,7 @@ toast.dismiss(id);
 ```
 
 - `color`: `default`, `success`, `error`, `warning`, or `info`. `icon` adds a
-  leading icon. `variant` can be `accent` (default) or `filled`; filled success,
+  leading icon. `variant` can be `filled` (default) or `accent`; filled success,
   error, warning and info toasts use the matching `--sito-ui-color-*-default` background
   and `--sito-ui-color-*-text` foreground tokens. Toasts with
   `color: "default"` keep their surface appearance with either variant.
@@ -216,7 +226,7 @@ toast.dismiss(id);
   the toast in place and restarts its timer.
 - `action` renders a text button; it dismisses the toast after `onClick` unless
   `dismiss: false`. `dismissible: false` hides the close button.
-- Provider props: `variant` (`accent` by default or `filled`),
+- Provider props: `variant` (`filled` by default or `accent`),
   `placement` (`top-left`, `top-center`, `top-right`,
   `bottom-left`, `bottom-center`, `bottom-right`), `duration`, `max` (default
   `3`, the oldest leaves first), `label` (region name, default
@@ -225,12 +235,13 @@ toast.dismiss(id);
 
 The viewport is a polite live region. Default, success, warning and info toasts use
 `role="status"`; errors use `role="alert"`. Hovering or focusing a toast pauses
-its timer, and Escape dismisses the focused toast. Toasts animate in and out
+its timer, and Escape dismisses the focused toast. Toasts animate in and out, fade to a new color when updated in place,
 and skip the animation with `prefers-reduced-motion`. Tune them with
 `--sito-ui-size-toast-width` (min), `--sito-ui-size-toast-max-width`, `--sito-ui-radius-toast`,
 `--sito-ui-shadow-toast`, `--sito-ui-z-index-toast`,
-`--sito-ui-toast-enter-duration`, `--sito-ui-toast-exit-duration`, and
-`--sito-ui-toast-accent-width` (defaults to four thin borders). To remove the
+`--sito-ui-toast-enter-duration`, `--sito-ui-toast-exit-duration`,
+`--sito-ui-toast-icon-exit-duration` (a removed icon shrinking out), and
+`--sito-ui-toast-accent-width` (accent variant only; filled toasts have no stripe; defaults to four thin borders). To remove the
 accent stripe with tokens, set its width to
 `var(--sito-ui-border-width-thin)` and
 `--sito-ui-toast-accent-border: var(--sito-ui-color-border)`. The accent color

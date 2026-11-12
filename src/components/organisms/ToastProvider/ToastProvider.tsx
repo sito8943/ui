@@ -31,7 +31,7 @@ export const ToastProvider = (props: ToastProviderProps) => {
   const {
     children,
     placement = TOAST_PLACEMENTS.BOTTOM_RIGHT,
-    variant = TOAST_VARIANTS.ACCENT,
+    variant = TOAST_VARIANTS.FILLED,
     duration = DEFAULT_TOAST_DURATION_MS,
     max = DEFAULT_TOAST_MAX,
     label = "Notifications",

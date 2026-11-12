@@ -2,8 +2,10 @@ import type { Meta, StoryObj } from "@storybook/react-vite";
 
 import {
   Button,
+  Spinner,
   type ToastColor,
   type ToastPlacement,
+  type ToastVariant,
   ToastProvider,
   useToast,
 } from "@/main";
@@ -46,10 +48,16 @@ const UpdateDemo = () => {
   const toast = useToast();
 
   const save = () => {
-    const id = toast({ message: "Saving…", duration: 0, dismissible: false });
+    const id = toast({
+      message: "Saving…",
+      icon: <Spinner />,
+      duration: 0,
+      dismissible: false,
+    });
     window.setTimeout(() => {
       toast.update(id, {
         message: "Saved",
+        icon: null,
         color: "success",
         duration: 3000,
         dismissible: true,
@@ -68,12 +76,18 @@ type DemoArgs = {
   placement: ToastPlacement;
   demo: "color" | "action" | "update";
   color: ToastColor;
+  variant: ToastVariant;
 };
 
 const meta = {
   title: "Molecules/Toast",
   tags: ["autodocs"],
-  args: { placement: "bottom-right", demo: "color", color: "default" },
+  args: {
+    placement: "bottom-right",
+    demo: "color",
+    color: "default",
+    variant: "filled",
+  },
   argTypes: {
     placement: {
       control: "select",
@@ -86,13 +100,14 @@ const meta = {
         "bottom-right",
       ],
     },
+    variant: { control: "inline-radio", options: ["filled", "accent"] },
     color: {
       control: "select",
       options: ["default", "success", "error", "warning", "info"],
     },
   },
-  render: ({ placement, demo, color }) => (
-    <ToastProvider placement={placement}>
+  render: ({ placement, demo, color, variant }) => (
+    <ToastProvider placement={placement} variant={variant}>
       <div style={{ padding: 24 }}>
         {demo === "action" ? <ActionDemo /> : null}
         {demo === "update" ? <UpdateDemo /> : null}

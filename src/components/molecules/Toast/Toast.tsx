@@ -15,6 +15,7 @@ import {
   DEFAULT_TOAST_EXIT_DURATION_MS,
 } from "./constants";
 import { TOAST_COLORS, TOAST_VARIANTS, type ToastProps } from "./types";
+import { useLeavingIcon } from "./useLeavingIcon";
 
 /**
  * Renders a single notification. Usually rendered by `ToastProvider`.
@@ -26,7 +27,7 @@ export const Toast = (props: ToastProps) => {
     id,
     message,
     color = TOAST_COLORS.DEFAULT,
-    variant = TOAST_VARIANTS.ACCENT,
+    variant = TOAST_VARIANTS.FILLED,
     icon,
     duration,
     action,
@@ -47,6 +48,7 @@ export const Toast = (props: ToastProps) => {
     (color === TOAST_COLORS.ERROR ? Infinity : DEFAULT_TOAST_DURATION_MS);
   const remainingRef = useRef(resolvedDuration);
   const paused = hovered || focused;
+  const shownIcon = useLeavingIcon(icon, toastRef);
   const autoDismisses =
     Number.isFinite(resolvedDuration) && resolvedDuration > 0;
 
@@ -138,9 +140,15 @@ export const Toast = (props: ToastProps) => {
       onBlur={handleBlur}
       onKeyDown={handleKeyDown}
     >
-      {icon ? (
-        <span className="sito-ui-toast__icon" aria-hidden="true">
-          {icon}
+      {shownIcon.icon ? (
+        <span
+          className={classNames(
+            "sito-ui-toast__icon",
+            shownIcon.leaving && "sito-ui-toast__icon--leaving",
+          )}
+          aria-hidden="true"
+        >
+          <span className="sito-ui-toast__icon-content">{shownIcon.icon}</span>
         </span>
       ) : null}
       <div className="sito-ui-toast__message">{message}</div>

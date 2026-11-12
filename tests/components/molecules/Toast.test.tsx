@@ -135,6 +135,24 @@ describe("ToastProvider", () => {
     expect(elements[0]).toHaveAttribute("data-state", "closing");
   });
 
+  it("animates a removed icon out before dropping it", () => {
+    vi.useFakeTimers();
+    renderProvider();
+
+    const id = show({
+      message: "Saving…",
+      icon: <span data-testid="spinner" />,
+      duration: 0,
+    });
+    act(() => toast.update(id, { message: "Saved", icon: null }));
+
+    const icon = screen.getByTestId("spinner").closest(".sito-ui-toast__icon");
+    expect(icon).toHaveClass("sito-ui-toast__icon--leaving");
+
+    act(() => vi.advanceTimersByTime(600));
+    expect(screen.queryByTestId("spinner")).not.toBeInTheDocument();
+  });
+
   it("reuses an existing id instead of stacking", () => {
     renderProvider();
 
@@ -229,23 +247,23 @@ describe("ToastProvider", () => {
     expect(status).toHaveClass("sito-ui-toast--info", "sito-ui-toast--filled");
   });
 
-  it("uses the accent variant unless a toast or the provider asks for filled", () => {
+  it("uses the filled variant unless a toast or the provider asks for accent", () => {
     renderProvider();
-
-    show({ message: "Saved", color: "success" });
-    show({ message: "Not saved", color: "error", variant: "filled" });
-
-    expect(screen.getByRole("status")).toHaveClass("sito-ui-toast--accent");
-    expect(screen.getByRole("alert")).toHaveClass("sito-ui-toast--filled");
-  });
-
-  it("applies the provider variant to toasts that don't set their own", () => {
-    renderProvider({ variant: "filled" });
 
     show({ message: "Saved", color: "success" });
     show({ message: "Not saved", color: "error", variant: "accent" });
 
     expect(screen.getByRole("status")).toHaveClass("sito-ui-toast--filled");
     expect(screen.getByRole("alert")).toHaveClass("sito-ui-toast--accent");
+  });
+
+  it("applies the provider variant to toasts that don't set their own", () => {
+    renderProvider({ variant: "accent" });
+
+    show({ message: "Saved", color: "success" });
+    show({ message: "Not saved", color: "error", variant: "filled" });
+
+    expect(screen.getByRole("status")).toHaveClass("sito-ui-toast--accent");
+    expect(screen.getByRole("alert")).toHaveClass("sito-ui-toast--filled");
   });
 });
