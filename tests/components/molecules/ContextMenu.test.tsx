@@ -243,4 +243,85 @@ describe("ContextMenu", () => {
     expect(screen.queryByRole("menu")).not.toBeInTheDocument();
     window.matchMedia = matchMedia;
   });
+
+  it("exposes checked items as menuitemcheckbox with a trailing check", () => {
+    render(
+      <ContextMenu open position={position} onClose={vi.fn()} ariaLabel="View">
+        <ContextMenuItem checked>Hidden files</ContextMenuItem>
+        <ContextMenuItem checked={false}>Previews</ContextMenuItem>
+        <ContextMenuItem>Refresh</ContextMenuItem>
+      </ContextMenu>,
+    );
+
+    const hidden = screen.getByRole("menuitemcheckbox", {
+      name: "Hidden files",
+    });
+    const previews = screen.getByRole("menuitemcheckbox", { name: "Previews" });
+    const refresh = screen.getByRole("menuitem", { name: "Refresh" });
+
+    expect(hidden).toHaveAttribute("aria-checked", "true");
+    expect(
+      hidden.querySelector(".sito-ui-context-menu__check svg"),
+    ).not.toBeNull();
+    expect(previews).toHaveAttribute("aria-checked", "false");
+    expect(previews.querySelector(".sito-ui-context-menu__check")).toBeNull();
+    expect(refresh).not.toHaveAttribute("aria-checked");
+    // Checkbox rows take part in keyboard navigation.
+    expect(hidden).toHaveFocus();
+  });
+
+  it("marks destructive items with the error color", () => {
+    render(
+      <ContextMenu open position={position} onClose={vi.fn()} ariaLabel="File">
+        <ContextMenuItem>Open</ContextMenuItem>
+        <ContextMenuItem color="error">Delete</ContextMenuItem>
+      </ContextMenu>,
+    );
+
+    const open = screen.getByRole("menuitem", { name: "Open" });
+    const remove = screen.getByRole("menuitem", { name: "Delete" });
+
+    expect(open).toHaveAttribute("data-color", "default");
+    expect(remove).toHaveAttribute("data-color", "error");
+    expect(remove).toHaveClass("sito-ui-context-menu__item--error");
+    expect(open).not.toHaveClass("sito-ui-context-menu__item--error");
+  });
+
+  it("focuses the hovered item so pointer and keyboard share one row", async () => {
+    const user = userEvent.setup();
+    const handlePointerEnter = vi.fn();
+
+    render(
+      <ContextMenu
+        open
+        position={position}
+        onClose={vi.fn()}
+        ariaLabel="Actions"
+      >
+        <ContextMenuItem>Open</ContextMenuItem>
+        <ContextMenuItem disabled>Rename</ContextMenuItem>
+        <ContextMenuItem onPointerEnter={handlePointerEnter}>
+          Refresh
+        </ContextMenuItem>
+        <ContextMenuItem>Delete</ContextMenuItem>
+      </ContextMenu>,
+    );
+
+    const open = screen.getByRole("menuitem", { name: "Open" });
+    const refresh = screen.getByRole("menuitem", { name: "Refresh" });
+
+    await user.hover(refresh);
+    expect(refresh).toHaveFocus();
+    expect(handlePointerEnter).toHaveBeenCalledTimes(1);
+
+    await user.keyboard("{ArrowDown}");
+    expect(screen.getByRole("menuitem", { name: "Delete" })).toHaveFocus();
+
+    // Disabled rows never take focus.
+    await user.hover(screen.getByRole("menuitem", { name: "Rename" }));
+    expect(screen.getByRole("menuitem", { name: "Delete" })).toHaveFocus();
+
+    await user.hover(open);
+    expect(open).toHaveFocus();
+  });
 });
