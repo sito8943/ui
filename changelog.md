@@ -1,5 +1,31 @@
 # Changelog
 
+## Unreleased
+
+### Added
+
+- `ContextMenuSubmenu`: a row with a chevron that opens a nested flyout menu
+  (`aria-haspopup="menu"`, `aria-expanded`). Opens on hover, ArrowRight, Enter
+  or Space; ArrowLeft / Escape close it and return focus to the row; a
+  `--sito-ui-context-menu-submenu-close-delay` (140ms) grace lets the pointer
+  reach the flyout. The flyout is portaled, flips left when there is no room
+  on the right and is clamped to the viewport; presses inside it count as
+  inside the menu. Submenus can nest. `CONTEXT_MENU_SUBMENU_SELECTOR` matches
+  flyouts for apps that own outside-press dismissal.
+- `ContextMenuItem` `checked`: `role="menuitemcheckbox"` with `aria-checked`,
+  and a trailing check mark when `true`.
+- `ContextMenuItem` `color="error"` (`CONTEXT_MENU_ITEM_COLORS`) for
+  destructive rows, using the `--sito-ui-color-error-*` tokens.
+- Tokens `--sito-ui-size-context-menu-indicator` and
+  `--sito-ui-size-context-menu-submenu-min-width`.
+
+### Changed
+
+- Hovering a context-menu item focuses it, so pointer and keyboard share one
+  current row.
+- `ContextMenuItem` `color` now only accepts `"default" | "error"` (it was the
+  unused HTML `color` attribute).
+
 ## 0.11.0 - 2026-11-12
 
 ### Changed

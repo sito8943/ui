@@ -29,15 +29,20 @@ export { Tooltip } from "./atoms/Tooltip";
 
 // Molecules
 export type {
+  ContextMenuItemColor,
   ContextMenuItemProps,
   ContextMenuPosition,
   ContextMenuProps,
   ContextMenuSeparatorProps,
+  ContextMenuSubmenuProps,
 } from "./molecules/ContextMenu";
 export {
   ContextMenu,
+  CONTEXT_MENU_ITEM_COLORS,
+  CONTEXT_MENU_SUBMENU_SELECTOR,
   ContextMenuItem,
   ContextMenuSeparator,
+  ContextMenuSubmenu,
 } from "./molecules/ContextMenu";
 export type {
   DialogActionButtonProps,

@@ -63,8 +63,10 @@
   display: grid;
   grid-template-columns:
     var(--sito-ui-size-context-menu-leading)
-    minmax(0, 1fr)
-    auto;
+    minmax(0, 1fr);
+  /* Shortcut, check and submenu chevron each add an auto column. */
+  grid-auto-columns: auto;
+  grid-auto-flow: column;
   align-items: center;
   gap: var(--sito-ui-space-2);
   width: 100%;
@@ -80,9 +82,21 @@
 }
 
 .sito-ui-context-menu__item:hover:not(:disabled),
-.sito-ui-context-menu__item:focus-visible {
+.sito-ui-context-menu__item:focus-visible,
+.sito-ui-context-menu__item[aria-expanded="true"] {
   outline: none;
   background: var(--sito-ui-color-primary-light);
+}
+
+/* Destructive rows (`color="error"`). */
+.sito-ui-context-menu__item--error,
+.sito-ui-context-menu__item--error .sito-ui-context-menu__leading {
+  color: var(--sito-ui-color-error-default);
+}
+
+.sito-ui-context-menu__item--error:hover:not(:disabled),
+.sito-ui-context-menu__item--error:focus-visible {
+  background: var(--sito-ui-color-error-light);
 }
 
 .sito-ui-context-menu__item:disabled {
@@ -105,6 +119,22 @@
   color: var(--sito-ui-color-text-muted);
   font-size: var(--sito-ui-font-size-context-menu-shortcut);
   white-space: nowrap;
+}
+
+.sito-ui-context-menu__check,
+.sito-ui-context-menu__submenu-indicator {
+  display: grid;
+  place-items: center;
+  font-size: var(--sito-ui-size-context-menu-indicator);
+}
+
+.sito-ui-context-menu__submenu-indicator {
+  color: var(--sito-ui-color-text-muted);
+}
+
+/* Flyout opened by `ContextMenuSubmenu`, portaled next to its parent row. */
+.sito-ui-context-menu--submenu {
+  min-width: var(--sito-ui-size-context-menu-submenu-min-width);
 }
 
 .sito-ui-context-menu__separator {
