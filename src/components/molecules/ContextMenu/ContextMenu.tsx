@@ -4,6 +4,7 @@ import {
   useCallback,
   useEffect,
   useLayoutEffect,
+  useMemo,
   useRef,
   useState,
 } from "react";
@@ -15,7 +16,8 @@ import {
   CONTEXT_MENU_ITEM_SELECTOR,
   CONTEXT_MENU_VIEWPORT_PADDING,
 } from "./constants";
-import type { ContextMenuProps } from "./types";
+import { ContextMenuContext } from "./ContextMenuContext";
+import type { ContextMenuContextValue, ContextMenuProps } from "./types";
 import { getMenuItems, getNavigationTarget } from "./utils";
 
 const useClientLayoutEffect =
@@ -42,6 +44,9 @@ export const ContextMenu = forwardRef<HTMLDivElement, ContextMenuProps>(
     const menuRef = useRef<HTMLDivElement>(null);
     const previousFocusedElementRef = useRef<HTMLElement | null>(null);
     const exitTimeoutRef = useRef<number | null>(null);
+    // Submenu flyouts are portaled outside the menu element; presses inside
+    // them still count as inside the menu.
+    const flyoutsRef = useRef(new Set<HTMLElement>());
     const [shouldRender, setShouldRender] = useState(open);
     const [isClosing, setIsClosing] = useState(false);
     const isInteractive = open && !isClosing;
@@ -151,9 +156,13 @@ export const ContextMenu = forwardRef<HTMLDivElement, ContextMenuProps>(
 
       const handlePointerDown = (event: PointerEvent) => {
         const target = event.target;
-        if (!(target instanceof Node) || !menuRef.current?.contains(target)) {
-          onClose();
-        }
+        const isInside =
+          target instanceof Node &&
+          (menuRef.current?.contains(target) ||
+            Array.from(flyoutsRef.current).some((flyout) =>
+              flyout.contains(target),
+            ));
+        if (!isInside) onClose();
       };
 
       document.addEventListener("pointerdown", handlePointerDown);
@@ -183,6 +192,23 @@ export const ContextMenu = forwardRef<HTMLDivElement, ContextMenuProps>(
       nextItem.focus();
     };
 
+    const registerFlyout = useCallback((element: HTMLElement) => {
+      flyoutsRef.current.add(element);
+      return () => {
+        flyoutsRef.current.delete(element);
+      };
+    }, []);
+
+    const contextValue = useMemo<ContextMenuContextValue>(
+      () => ({
+        isInteractive,
+        portalContainer,
+        viewportPadding,
+        registerFlyout,
+      }),
+      [isInteractive, portalContainer, registerFlyout, viewportPadding],
+    );
+
     if ((!open && !shouldRender) || typeof document === "undefined")
       return null;
 
@@ -202,7 +228,9 @@ export const ContextMenu = forwardRef<HTMLDivElement, ContextMenuProps>(
         onContextMenu={(event) => event.preventDefault()}
         onKeyDown={isInteractive ? handleKeyDown : undefined}
       >
-        {children}
+        <ContextMenuContext.Provider value={contextValue}>
+          {children}
+        </ContextMenuContext.Provider>
       </div>,
       portalContainer ?? document.body,
     );

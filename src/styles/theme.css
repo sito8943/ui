@@ -65,6 +65,7 @@
   --sito-ui-size-context-menu-item: 2rem;
   --sito-ui-size-context-menu-leading: 1rem;
   --sito-ui-size-context-menu-indicator: 0.875rem;
+  --sito-ui-size-context-menu-submenu-min-width: 10rem;
   --sito-ui-dialog-max-width: 32rem;
   --sito-ui-size-toast-width: 22rem;
   --sito-ui-size-toast-max-width: 28rem;
@@ -115,6 +116,7 @@
 
   --sito-ui-button-disabled-opacity: 0.6;
   --sito-ui-context-menu-disabled-opacity: 0.5;
+  --sito-ui-context-menu-submenu-close-delay: 140ms;
   --sito-ui-button-active-scale: 0.97;
   --sito-ui-icon-button-active-scale: 0.9;
   --sito-ui-pressable-active-scale: 0.97;

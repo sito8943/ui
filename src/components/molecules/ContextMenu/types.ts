@@ -40,4 +40,30 @@ export interface ContextMenuItemProps extends Omit<
   color?: ContextMenuItemColor;
 }
 
+export interface ContextMenuSubmenuProps extends Omit<
+  ButtonHTMLAttributes<HTMLButtonElement>,
+  "type" | "color" | "children"
+> {
+  /** Visible text of the row that opens the submenu. */
+  label: ReactNode;
+  leading?: ReactNode;
+  /** Submenu rows: `ContextMenuItem`, `ContextMenuSeparator` or nested `ContextMenuSubmenu`. */
+  children?: ReactNode;
+  /** Class name for the flyout menu element. */
+  menuClassName?: string;
+}
+
 export type ContextMenuSeparatorProps = HTMLAttributes<HTMLDivElement>;
+
+/** Internal: shared between `ContextMenu` and its submenus. */
+export type ContextMenuContextValue = {
+  /** Whether the owning menu accepts input (open and not closing). */
+  isInteractive: boolean;
+  portalContainer: Element | DocumentFragment | null | undefined;
+  viewportPadding: number;
+  /**
+   * Registers a portaled flyout so pointer presses inside it count as inside
+   * the menu. Returns the unregister function.
+   */
+  registerFlyout: (element: HTMLElement) => () => void;
+};
