@@ -16,6 +16,7 @@ import {
   CONTEXT_MENU_VIEWPORT_PADDING,
 } from "./constants";
 import type { ContextMenuProps } from "./types";
+import { getMenuItems, getNavigationTarget } from "./utils";
 
 const useClientLayoutEffect =
   typeof window === "undefined" ? useEffect : useLayoutEffect;
@@ -172,33 +173,14 @@ export const ContextMenu = forwardRef<HTMLDivElement, ContextMenuProps>(
         return;
       }
 
-      const items = Array.from(
-        menuRef.current?.querySelectorAll<HTMLElement>(
-          CONTEXT_MENU_ITEM_SELECTOR,
-        ) ?? [],
+      const nextItem = getNavigationTarget(
+        event.key,
+        getMenuItems(menuRef.current),
+        document.activeElement,
       );
-      if (items.length === 0) return;
-
-      const activeElement = document.activeElement;
-      const currentIndex =
-        activeElement instanceof HTMLElement
-          ? items.indexOf(activeElement)
-          : -1;
-      let nextIndex: number | null = null;
-
-      if (event.key === "ArrowDown") {
-        nextIndex = (currentIndex + 1 + items.length) % items.length;
-      } else if (event.key === "ArrowUp") {
-        nextIndex = (currentIndex - 1 + items.length) % items.length;
-      } else if (event.key === "Home") {
-        nextIndex = 0;
-      } else if (event.key === "End") {
-        nextIndex = items.length - 1;
-      }
-
-      if (nextIndex === null) return;
+      if (!nextItem) return;
       event.preventDefault();
-      items[nextIndex]?.focus();
+      nextItem.focus();
     };
 
     if ((!open && !shouldRender) || typeof document === "undefined")

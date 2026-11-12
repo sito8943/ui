@@ -29,6 +29,7 @@ export { Tooltip } from "./atoms/Tooltip";
 
 // Molecules
 export type {
+  ContextMenuItemColor,
   ContextMenuItemProps,
   ContextMenuPosition,
   ContextMenuProps,
@@ -36,6 +37,7 @@ export type {
 } from "./molecules/ContextMenu";
 export {
   ContextMenu,
+  CONTEXT_MENU_ITEM_COLORS,
   ContextMenuItem,
   ContextMenuSeparator,
 } from "./molecules/ContextMenu";
