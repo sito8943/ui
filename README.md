@@ -26,8 +26,11 @@ import {
   BUTTON_SIZES,
   BUTTON_VARIANTS,
   ContextMenu,
+  CONTEXT_MENU_ITEM_COLORS,
+  CONTEXT_MENU_SUBMENU_SELECTOR,
   ContextMenuItem,
   ContextMenuSeparator,
+  ContextMenuSubmenu,
   Dialog,
   DialogActions,
   DIALOG_INITIAL_FOCUS,
@@ -48,7 +51,7 @@ import {
 
 The runtime constants `BUTTON_COLOR_VARIANTS`, `BUTTON_VARIANTS`,
 `BUTTON_SIZES`, `ICON_BUTTON_SIZES`, `DIALOG_INITIAL_FOCUS`, `TOAST_COLORS`,
-and `TOAST_PLACEMENTS` expose the
+`TOAST_PLACEMENTS` and `CONTEXT_MENU_ITEM_COLORS` expose the
 supported values for public component contracts.
 
 Exported types include `ButtonProps`, `ButtonSize`, `IconButtonProps`,
@@ -109,6 +112,58 @@ already owns clamping. Closing menus remain mounted for
 `--sito-ui-motion-duration-normal`, restore focus to the trigger when closing
 starts, and ignore pointer and keyboard input during the exit. The built-in
 fade and scale motion is disabled when reduced motion is preferred.
+
+### Submenus, checked and destructive items
+
+```tsx
+<ContextMenu
+  open={menu.open}
+  position={menu.position}
+  onClose={menu.close}
+  ariaLabel="View"
+>
+  <ContextMenuSubmenu label="Sort by" leading={<SortIcon />}>
+    <ContextMenuItem checked={sort === "name"} onClick={() => pick("name")}>
+      Name
+    </ContextMenuItem>
+    <ContextMenuItem checked={sort === "date"} onClick={() => pick("date")}>
+      Date
+    </ContextMenuItem>
+  </ContextMenuSubmenu>
+  <ContextMenuItem checked={showHidden} onClick={toggleHidden}>
+    Show hidden files
+  </ContextMenuItem>
+  <ContextMenuSeparator />
+  <ContextMenuItem color="error" onClick={remove}>
+    Delete
+  </ContextMenuItem>
+</ContextMenu>
+```
+
+- `ContextMenuSubmenu` (`label`, `leading`, `disabled`, `menuClassName`,
+  children) renders a parent row with a chevron, `aria-haspopup="menu"` and
+  `aria-expanded`. Its flyout opens on hover, ArrowRight, Enter or Space
+  (keyboard opens focus the first sub-item) and closes on ArrowLeft / Escape
+  (focus returns to the row), when focus or the pointer leaves the row and
+  flyout (after `--sito-ui-context-menu-submenu-close-delay`, `140ms`, so the
+  pointer can reach the flyout), or on a press elsewhere. Flyouts can nest.
+- The flyout is portaled next to the menu and placed to the right of its row,
+  flipped to the left when there is no room, and clamped to the viewport. A
+  press inside it counts as inside the menu for `closeOnPointerDownOutside`.
+  Apps that own outside-press dismissal can test
+  `target.closest(CONTEXT_MENU_SUBMENU_SELECTOR)`.
+- Picking a sub-item closes its flyout. As with top-level items, the item's
+  `onClick` closes the whole menu (e.g. `menu.close()`).
+- `ContextMenuItem` `checked` makes the row a `menuitemcheckbox` with
+  `aria-checked`; `checked` shows a trailing check mark.
+- `ContextMenuItem` `color="error"` marks a destructive row: text and hover use
+  the `--sito-ui-color-error-*` tokens.
+- Hovering an enabled item focuses it, so pointer and keyboard share one
+  current row.
+
+Tokens: `--sito-ui-size-context-menu-indicator` (check and chevron size,
+`0.875rem`), `--sito-ui-size-context-menu-submenu-min-width` (`10rem`) and
+`--sito-ui-context-menu-submenu-close-delay` (`140ms`).
 
 ## Button Sizes
 
