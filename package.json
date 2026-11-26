@@ -73,27 +73,27 @@
     ]
   },
   "devDependencies": {
-    "@storybook/addon-docs": "10.6.7",
-    "@storybook/react-vite": "10.6.7",
-    "@testing-library/jest-dom": "7.0.1",
+    "@storybook/addon-docs": "10.6.8",
+    "@storybook/react-vite": "10.6.8",
+    "@testing-library/jest-dom": "8.0.0",
     "@testing-library/react": "16.3.3",
-    "@testing-library/user-event": "14.6.12",
+    "@testing-library/user-event": "14.6.13",
     "@types/node": "26.6.6",
     "@types/react": "19.3.0",
     "@types/react-dom": "19.3.0",
     "@typescript/typescript6": "^6.0.2",
     "@vitejs/plugin-react": "6.3.0",
-    "autoprefixer": "10.6.2",
+    "autoprefixer": "10.7.0",
     "jsdom": "31.0.1",
-    "oxlint": "1.94.0",
-    "oxlint-tsgolint": "7.0.2007",
+    "oxlint": "1.95.0",
+    "oxlint-tsgolint": "7.0.2008",
     "prettier": "3.10.1",
     "react": "19.3.1",
     "react-dom": "19.3.1",
-    "storybook": "10.6.7",
+    "storybook": "10.6.8",
     "typescript": "7.0.2",
     "vite": "8.3.8",
     "vite-plugin-dts": "5.1.2",
-    "vitest": "5.1.0"
+    "vitest": "5.1.1"
   }
 }
